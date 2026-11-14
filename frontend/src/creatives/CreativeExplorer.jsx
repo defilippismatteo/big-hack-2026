@@ -122,7 +122,7 @@ function ExplorerContent({ data, headingRef }) {
     const id = new URLSearchParams(hash.split('?')[1]).get('adset');
     return data.adsets.some((item) => item.id === id) ? id : '';
   });
-  const [query, setQuery] = useState('');
+  const [query, setQuery] = useState(() => new URLSearchParams(hash.split('?')[1]).get('asset') ?? '');
   const [sort, setSort] = useState({ key: 'efficiency', direction: -1 });
   const [selected, setSelected] = useState([]);
   const matchesDay = useMemo(() => creativesForDay(catalog, day), [catalog, day]);
@@ -205,7 +205,7 @@ function ExplorerContent({ data, headingRef }) {
     <div className="creative-source explorer-muted">
       {method} · {catalog.size} annunci con forecast nel periodo · Kit simulato Wevion
     </div>
-    {detailAd && <CreativeDetail key={detailAd.id} creative={detailAd} day={day} dates={data.dates}
+    {detailAd && <CreativeDetail key={detailAd.id} creative={detailAd} feedback={data.simulatedDecision?.[detailAd.assetId]} day={day} dates={data.dates}
       checked={selected.includes(detailAd.id)} canSelect={selected.length < 2}
       onCompare={toggleCompare} onClose={closeDetail} />}
   </>;

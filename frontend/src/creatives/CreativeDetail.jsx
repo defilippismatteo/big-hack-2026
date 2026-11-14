@@ -61,7 +61,7 @@ function DailyTrend({ creative, dates, day }) {
   </section>;
 }
 
-export function CreativeDetail({ creative, day, dates, checked, canSelect, onCompare, onClose }) {
+export function CreativeDetail({ creative, feedback, day, dates, checked, canSelect, onCompare, onClose }) {
   const panel = useRef(null);
   useLayoutEffect(() => { panel.current.showModal(); }, []);
 
@@ -92,6 +92,12 @@ export function CreativeDetail({ creative, day, dates, checked, canSelect, onCom
             <dd>{creative.asset?.visual || 'Non disponibile nel kit'}</dd></div>
         </dl>
       </section>
+      {feedback && <section className="detail-section">
+        <h3>Reazioni simulate · {feedback.n_personas} valutazioni</h3>
+        <p className="explorer-muted">Decision · {feedback.model}. La quota stimata di «Apre / clicca» è {pct(feedback.actions.click * 100)}.</p>
+        <p className="explorer-muted">{Object.entries(feedback.reason_distribution).sort((a, b) => b[1] - a[1]).slice(0, 3)
+          .map(([reason, weight]) => reason.replaceAll('_', ' ') + ' ' + pct(weight * 100)).join(' · ')}</p>
+      </section>}
       <DailyTrend creative={creative} dates={dates} day={day} />
       <button type="button" className="explorer-button" aria-pressed={checked} disabled={!checked && !canSelect}
         onClick={() => onCompare(creative.id)}>

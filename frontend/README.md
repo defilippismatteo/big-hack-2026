@@ -1,6 +1,6 @@
 # ADERA · Audience & Advertising Intelligence
 
-ADERA include l’Overview con dati del kit Wevion e navigazione fra le sei sezioni. Le pagine di dettaglio indicano quando i contenuti non sono ancora disponibili. L’avvio non richiede processi Python o credenziali.
+ADERA esplora i dati del kit simulato Wevion in sei viste. L’avvio usa gli snapshot versionati con il frontend e richiede soltanto Node.js.
 
 ## Avvio
 
@@ -15,6 +15,7 @@ npm run dev
 Apri http://127.0.0.1:5173. In VS Code usa `Browser: Open Integrated Browser` dalla palette comandi e inserisci l'indirizzo. Il server Vite è locale e aggiorna la pagina quando cambiano i file.
 
 ```sh
+npm test
 npm run build
 npm run preview
 ```
@@ -47,4 +48,30 @@ Per collegare un export T3 aggiungi `--personas ../artifacts/personas_t3/persona
 
 ## Creative Explorer
 
-La mappa e la classifica leggono le previsioni base del giorno selezionato, con il Black Friday come data iniziale. Puoi filtrare per campagna, cercare per headline, annuncio o asset, ordinare le colonne e scegliere fino a due annunci da confrontare. Il dettaglio usa i testi del catalogo Wevion e le sole date previste per l’annuncio. Lo script di esportazione include il testo, la CTA e la descrizione visuale degli asset.
+La mappa e la classifica leggono le previsioni base del giorno selezionato, con il Black Friday come data iniziale. Puoi filtrare per campagna e ad set, cercare per headline, annuncio, asset, leva o formato, ordinare le colonne e scegliere fino a due annunci da confrontare. Il dettaglio usa i testi del catalogo Wevion e le sole date previste per l’annuncio. Il collegamento a Budget Planner trasferisce data, campagna e ad set. Lo script di esportazione include il testo, la CTA e la descrizione visuale degli asset.
+
+## Audience Lab e Budget Planner
+
+Audience Lab mostra le 12 ipotesi per ad set con le evidenze storiche e i collegamenti alle creatività. Il filtro campagna seleziona il settore dei profili sintetici. Per alimentare le reazioni per asset, aggiungi `--simulations ../artifacts/personas_t3/analyses/summary.json` alla rigenerazione e usa un riepilogo Decision del contratto Market Mirror. Le reazioni sono punteggi simulati e le eventuali distribuzioni di età e genere riguardano i profili sintetici.
+
+Budget Planner usa il riferimento Market Mirror e le sue stime di spesa, impression e click. Nello scenario manuale seleziona una campagna e due ad set della stessa campagna. Il valore inserito è uno spostamento in euro per ogni giorno selezionato. Il limite è quello dell’export, con il totale giornaliero invariato e i coefficienti di pacing e pubblicazione fissi.
+
+## Export del ramo pilota
+
+Forecast Analytics consente di confrontare il riferimento Market Mirror, l’export pilota e il relativo scenario stagionale. Le tre serie coprono le stesse 699 coppie annuncio–giorno. L’export pilota da `2e817b282df525ef9ac6635b808d3752d684bdd2` usa la baseline per il CTR e il mix CatBoost–Timestral-28M per il CPM. Nelle timeline il peso è la spesa effettiva stimata e ripartita nell’export principale. Overview, Creative Explorer e Budget Planner usano il riferimento Market Mirror anche quando si esplora la serie pilota.
+
+Model Validation calcola e confronta gli errori sulle righe già prodotte dai modelli. Il confronto usa due finestre storiche e permette di selezionare settore o annunci con e senza storico. I risultati non misurano l’accuratezza durante gli eventi di fine novembre.
+
+Per rigenerare i due snapshot, dalla directory `frontend` con il ref pilota disponibile in Git:
+
+```sh
+pilot_ref=2e817b282df525ef9ac6635b808d3752d684bdd2
+pilot_files="$(mktemp -d)"
+git show "$pilot_ref:Prima_Analisi/Previsioni_Periodo_Vuoto/previsioni_2026-11-16_30.csv" > "$pilot_files/pilot.csv"
+git show "$pilot_ref:Prima_Analisi/Analisi_Completa_Black_Friday/previsioni_arricchite_2026-11-16_30.csv" > "$pilot_files/seasonal.csv"
+git show "$pilot_ref:Prima_Analisi/Validazione_Modelli/metriche.json" > "$pilot_files/backtest.json"
+git show "$pilot_ref:Prima_Analisi/Validazione_Modelli/previsioni_2026-10-19.csv" > "$pilot_files/fold-1.csv"
+git show "$pilot_ref:Prima_Analisi/Validazione_Modelli/previsioni_2026-11-02.csv" > "$pilot_files/fold-2.csv"
+python3 scripts/export_parallel.py --selected "$pilot_files/pilot.csv" --seasonal "$pilot_files/seasonal.csv" --source-ref "$pilot_ref"
+python3 scripts/export_validation.py --metrics "$pilot_files/backtest.json" --folds "$pilot_files/fold-1.csv" "$pilot_files/fold-2.csv" --source-ref "$pilot_ref"
+```

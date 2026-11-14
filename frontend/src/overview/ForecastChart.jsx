@@ -11,12 +11,13 @@ function plotScale(max) {
   return { ticks: Array.from({ length: 5 }, (_, i) => i * step), max: step * 4 };
 }
 
-export function ForecastChart({ timeline: forecast, seasonal, events, sourceMethod, title = 'Performance Forecast', note }) {
+export function ForecastChart({ timeline: forecast, seasonal, events, sourceMethod, title = 'Performance Forecast', note, scenario = false }) {
   const titleId = useId();
   const [active, setActive] = useState('ctr');
   const [view, setView] = useState('forecast');
   const isSeasonal = view === 'seasonal' && seasonal.length > 0;
   const timeline = isSeasonal ? seasonal : forecast;
+  const scenarioLabel = isSeasonal || scenario;
   const [selectedDay, setSelectedDay] = useState(null);
   const [hoveredDay, setHoveredDay] = useState(null);
   const { format } = metrics.find((m) => m.key === active);
@@ -41,7 +42,7 @@ export function ForecastChart({ timeline: forecast, seasonal, events, sourceMeth
   return (
     <section className="data-panel forecast-panel" aria-labelledby={titleId}>
       <div className="panel-head">
-        <div><span className={'data-tag ' + (isSeasonal ? 'tag-scenario' : 'tag-forecast')}>{isSeasonal ? 'Scenario' : 'Previsione'}</span>
+        <div><span className={'data-tag ' + (scenarioLabel ? 'tag-scenario' : 'tag-forecast')}>{scenarioLabel ? 'Scenario' : 'Previsione'}</span>
           <h2 id={titleId}>{title}</h2>
           <p>{isSeasonal ? 'Scenario centrale · benchmark Wevion 2025' : 'Andamento giornaliero · ' + sourceMethod}</p>
         </div>
@@ -74,8 +75,11 @@ export function ForecastChart({ timeline: forecast, seasonal, events, sourceMeth
                   stroke="#8062e3" opacity=".5" strokeDasharray="4 4" vectorEffect="non-scaling-stroke" />)}
                 <line x1={x(selectedIndex)} y1="0" x2={x(selectedIndex)} y2="100" stroke="#6044b2"
                   opacity=".32" vectorEffect="non-scaling-stroke" />
-                {paths.map((points) => <polyline key={points[0][0]} points={points.map((p) => p.join(',')).join(' ')}
-                  fill="none" stroke="#7653d3" strokeWidth="2.7" vectorEffect="non-scaling-stroke" />)}
+                {paths.map((points) => points.length === 1
+                  ? <line key={points[0][0]} x1={points[0][0]} x2={points[0][0]} y1={points[0][1]} y2={points[0][1]}
+                    stroke="#7653d3" strokeWidth="7" strokeLinecap="round" vectorEffect="non-scaling-stroke" />
+                  : <polyline key={points[0][0]} points={points.map((p) => p.join(',')).join(' ')}
+                    fill="none" stroke="#7653d3" strokeWidth="2.7" vectorEffect="non-scaling-stroke" />)}
               </svg>
               {series[selectedIndex] && <span className="plot-dot" aria-hidden="true" style={{
                 left: x(selectedIndex) + '%', top: series[selectedIndex][1] + '%',

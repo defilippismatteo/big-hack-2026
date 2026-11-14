@@ -1,5 +1,5 @@
 """Prepare aggregate audience inputs from existing Market Mirror artifacts."""
-from collections import Counter
+from collections import Counter, defaultdict
 import math
 
 ACTIONS = ("scroll", "glance", "stop", "click")
@@ -8,6 +8,7 @@ ACTIONS = ("scroll", "glance", "stop", "click")
 def population(cards):
     ids = set()
     groups = Counter()
+    interests = defaultdict(Counter)
     for card in cards:
         person_id = card["persona_id"]
         if card["data_kind"] != "synthetic" or not person_id or person_id in ids:
@@ -15,11 +16,14 @@ def population(cards):
         ids.add(person_id)
         groups[card["vertical"], card.get("age_band") or "Non specificata",
                card.get("gender_identity") or "Non specificato"] += 1
+        terms = {term.strip().casefold() for term in card.get("interests", []) if isinstance(term, str) and term.strip()}
+        interests[card["vertical"], card.get("age_band") or "Non specificata"].update(terms)
     return {
         "count": len(cards),
         "age": dict(Counter(card.get("age_band") or "Non specificata" for card in cards)),
         "gender": dict(Counter(card.get("gender_identity") or "Non specificato" for card in cards)),
         "groups": [[*group, count] for group, count in sorted(groups.items())],
+        "interestGroups": [[*group, dict(sorted(counts.items()))] for group, counts in sorted(interests.items())],
     }
 
 

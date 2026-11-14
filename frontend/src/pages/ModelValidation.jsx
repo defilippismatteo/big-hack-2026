@@ -33,7 +33,7 @@ function ValidationContent({ baseline }) {
   return <>
     <div className="data-panel analysis-filters" role="group" aria-label="Filtri backtest">
       <Filter label="Finestra" value={window} onChange={(value) => { setWindow(value); setSlice('all'); }}
-        options={[[ 'combined', 'Due finestre · 759 righe' ], ...baseline.folds.map((f) => [f.dal, shortDate(f.dal) + ' – ' + shortDate(f.al)])]} />
+        options={[[ 'combined', 'Due finestre · ' + whole(baseline.combined.righe) + ' righe' ], ...baseline.folds.map((f) => [f.dal, shortDate(f.dal) + ' – ' + shortDate(f.al)])]} />
       <Filter label="Campione" value={slice} onChange={setSlice} options={slices} />
       <Filter label="Metrica" value={metric} onChange={setMetric}
         options={[[ 'mae', 'MAE · errore assoluto medio' ], ['wmae', 'WMAE · pesato per impression']]} />

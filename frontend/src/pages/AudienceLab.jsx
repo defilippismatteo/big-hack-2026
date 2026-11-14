@@ -7,7 +7,7 @@ const actions = { scroll: 'Scroll / ignora', glance: 'Osserva', stop: 'Si soffer
 const label = (age) => age.replace('-', '–');
 const sum = (groups) => groups.reduce((n, r) => n + r[3], 0);
 
-function Distribution({ rows, title, total, onPick, selected }) {
+function Distribution({ rows, title, total, onPick, selected, children }) {
   return <Panel title={title}>
     <div className="analysis-bars">{rows.map(([key, n]) =>
       <div className="analysis-bar" key={key}>
@@ -15,6 +15,7 @@ function Distribution({ rows, title, total, onPick, selected }) {
           onClick={() => onPick(selected === key ? '' : key)}>{label(key)}</button> : <span>{label(key)}</span>}
         <meter aria-label={label(key)} min="0" max={Math.max(1, total)} value={n}>{n}</meter><strong>{whole(n)}</strong>
       </div>)}</div>
+    {children}
   </Panel>;
 }
 
@@ -33,6 +34,14 @@ function AudienceContent({ data }) {
   const activeGroups = groups.filter((row) => !age || row[1] === age);
   const runs = Object.entries(data.simulatedDecision ?? {}).filter(([, item]) => !vertical || item.vertical === vertical);
   const defaultA = ages[0], defaultB = ages[1];
+  function commonInterests(band) {
+    const totals = new Map();
+    for (const [sector, group, counts] of data.synthetic?.interestGroups ?? []) {
+      if (group !== band || (vertical && sector !== vertical)) continue;
+      for (const [term, count] of Object.entries(counts)) totals.set(term, (totals.get(term) ?? 0) + count);
+    }
+    return [...totals].sort((a, b) => b[1] - a[1] || a[0].localeCompare(b[0])).slice(0, 4);
+  }
   const references = (id) => '#/creatives?adset=' + encodeURIComponent(id);
 
   return <>
@@ -71,16 +80,23 @@ function AudienceContent({ data }) {
           <Filter label="Fascia A" value={first || defaultA} onChange={setFirst} options={ages.map((key) => [key, label(key)])} />
           <Filter label="Fascia B" value={second || defaultB} onChange={setSecond} options={ages.map((key) => [key, label(key)])} />
         </div>
-        <div className="analysis-grid">{[first || defaultA, second || defaultB].map((key, i) =>
-          <Distribution key={i} title={label(key)} total={sum(groups.filter((r) => r[1] === key))}
-            rows={genders.map((gender) => [gender, sum(groups.filter((r) => r[1] === key && r[2] === gender))])} />)}</div>
+        <div className="analysis-grid">{[first || defaultA, second || defaultB].map((key, i) => {
+          const group = groups.filter((row) => row[1] === key);
+          const interests = commonInterests(key);
+          return <Distribution key={i} title={label(key) + ' · ' + whole(sum(group)) + ' profili'} total={sum(group)}
+            rows={genders.map((gender) => [gender, sum(group.filter((r) => r[2] === gender))])}>
+            <p className="muted-copy">{interests.length ? 'Interessi ricorrenti · ' + interests.map(([term, n]) => term + ' (' + n + ')').join(' · ')
+              : 'Nessun interesse riportato per questa fascia.'}</p>
+          </Distribution>;
+        })}</div>
+        <p className="muted-copy">La ripartizione delle reazioni per fascia richiede valutazioni collegate ai singoli profili.</p>
       </Panel>
     </> : <Panel title="Profili sintetici" description="Nessun export di profili disponibile per la selezione. Le distribuzioni e la matrice saranno mostrate quando saranno disponibili dati T3." />}
     <Panel title="Reazioni simulate" description={runs.length
       ? 'Distribuzione delle azioni Decision per asset. Le probabilità sono punteggi del modello su profili sintetici.'
       : 'Nessun risultato Decision verificato disponibile per la selezione.'}>
       <div className="analysis-grid">{runs.map(([id, run]) => <article key={id} className="audience-card">
-        <h3>{id}</h3><p className="muted-copy">{run.n_personas} valutazioni · {run.model}</p>
+        <h3>{id}</h3><a className="analysis-link" href={'#/creatives?asset=' + encodeURIComponent(id)}>Cerca l’asset</a><p className="muted-copy">{run.n_personas} valutazioni · {run.model}</p>
         <div className="reaction-track" aria-hidden="true">{Object.keys(actions).map((key) =>
           <span key={key} style={{ width: run.actions[key] * 100 + '%' }} />)}</div>
         <p>{Object.entries(actions).map(([key, name]) => name + ' ' + pct(run.actions[key] * 100)).join(' · ')}</p>

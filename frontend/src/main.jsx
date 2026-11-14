@@ -1,7 +1,7 @@
 import React, { useEffect, useRef, useSyncExternalStore } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
-  ArrowLeft, CalendarDays, ChevronRight, Compass, Menu, X,
+  CalendarDays, ChevronRight, Menu, X,
 } from 'lucide-react';
 import '@fontsource-variable/inter';
 import { getSection, groups, sectionHref, sections } from './sections';
@@ -82,26 +82,10 @@ function Header({ current, onMenu, menuOpen }) {
   );
 }
 
-function SectionLanding({ section, headingRef }) {
-  const Icon = section.icon;
-  return (
-    <section className="section-landing" aria-labelledby="page-title">
-      <a className="back-link" href={sectionHref('overview')}><ArrowLeft size={16} aria-hidden="true" /> Overview</a>
-      <div className="section-title">
-        <span className={'module-icon ' + section.tone}><Icon size={23} aria-hidden="true" /></span>
-        <div>
-          <h1 id="page-title" ref={headingRef} tabIndex={-1}>{section.label}</h1>
-          <p>{section.description}</p>
-        </div>
-      </div>
-      <div className="empty-state">
-        <Compass size={26} strokeWidth={1.7} aria-hidden="true" />
-        <h2>Sezione in preparazione</h2>
-        <p>Questa anteprima include la navigazione. I dati e gli strumenti di questa sezione saranno disponibili in un prossimo aggiornamento.</p>
-      </div>
-    </section>
-  );
-}
+const pages = {
+  overview: Overview, audience: AudienceLab, creatives: CreativeExplorer,
+  forecast: ForecastAnalytics, budget: BudgetPlanner, validation: ModelValidation,
+};
 
 function App() {
   const current = useSyncExternalStore(subscribeRoute, getSection);
@@ -141,7 +125,7 @@ function App() {
     }
   }
 
-  const Page = { overview: Overview, creatives: CreativeExplorer, audience: AudienceLab, forecast: ForecastAnalytics, budget: BudgetPlanner, validation: ModelValidation }[current.id] ?? SectionLanding;
+  const Page = pages[current.id];
 
   return (
     <div className="app-shell">
@@ -162,7 +146,7 @@ function App() {
       <div className="workspace">
         <Header current={current} onMenu={openMenu} menuOpen={menuOpen} />
         <main className="main" id="main-content" tabIndex={-1}>
-          <Page section={current} headingRef={heading} />
+          <Page headingRef={heading} />
         </main>
         <footer className="footer">
           <span>Developed for Wevion · The Big Hack 2026</span>
