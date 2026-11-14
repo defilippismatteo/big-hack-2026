@@ -78,14 +78,16 @@ def prepare(catalog, cards, out, seed=2026):
 CONCISE_BATCH_RULES = """Intervista sintetica in batch: valuta ciascuna persona fittizia in `personas` separatamente in prima persona.
 Usa esclusivamente il JSON inline. Non leggere repository, file, storia o strumenti;
 non avviare subagenti, non usare API. Ogni persona risponde in modo indipendente senza
-influenzarsi con le altre. Nessuna persona conosce esiti comportamentali precedenti.
+influenzarsi con le altre e riflettendo la propria età, lavoro, bisogni e diffidenze reali.
+Nessuna persona conosce esiti comportamentali precedenti.
 I materiali sono descrizioni testuali, non immagini o video visti. Non inventare prezzi,
 ingredienti, certificazioni, landing page o prove non fornite.
-Per OGNI persona indica SOLO i punti a favore percepiti negli annunci in 1-2 frasi brevi
-(oppure 'nulla'), un eventuale freno principale in max 1 frase breve (oppure 'nulla'),
-e fino a 3 codici stimolo (C01-C12) più utili e meno utili (anche liste vuote).
+Per OGNI persona indica:
+- `punti_a_favore`: 1-2 frasi brevi e personalizzate su cosa apprezza negli annunci (oppure 'nulla'),
+- `perche_si_allontana`: 1 frase breve e concreta sul freno principale dal punto di vista del suo profilo (oppure 'nulla'),
+- `most_useful` e `least_useful`: fino a 3 codici stimolo (C01-C12) più utili e meno utili (anche liste vuote).
 Restituisci SOLO JSON valido:
-{"interviews":[{"persona_id":"...","punti_a_favore":"1-2 frasi brevi sui punti a favore","perche_si_allontana":"1 frase breve o nulla","most_useful":["C01"],"least_useful":["C05"]}]}.
+{"interviews":[{"persona_id":"...","punti_a_favore":"...","perche_si_allontana":"...","most_useful":["C01"],"least_useful":["C05"]}]}.
 """
 
 
@@ -422,6 +424,8 @@ def build_campaign_opinions(out, cards, summary, catalog=None):
             c_bucket["persona_summaries"].append({
                 "persona_id": pid,
                 "name": card.get("name", pid),
+                "age_years": card.get("age_years"),
+                "occupation": card.get("occupation", ""),
                 "cohort": cohort,
                 "interest_in_category": card.get("interest_in_category"),
                 "mode": "concise",
@@ -467,6 +471,8 @@ def build_campaign_opinions(out, cards, summary, catalog=None):
             c_bucket["persona_summaries"].append({
                 "persona_id": pid,
                 "name": card.get("name", pid),
+                "age_years": card.get("age_years"),
+                "occupation": card.get("occupation", ""),
                 "cohort": cohort,
                 "interest_in_category": card.get("interest_in_category"),
                 "mode": "full",
@@ -586,14 +592,16 @@ def report(out, cards, summary, analyst_notes, catalog=None, max_transcript_pair
             ci = f"{a['decision_click_intent']:.4f}" if a["decision_click_intent"] is not None else "n/d"
             lines.append(f"| {a['asset_id']} | {a['leva']} | {a['formato']} | {a['most_useful_count']} | {a['least_useful_count']} | {net:+d} | {ci} |")
         lines.append("")
-    lines += ["## Estratto punti a favore per persona (primi 12 profili)", ""]
-    for r in frozen["interviews"][:12]:
-        pid = r["persona_id"]
-        resp = r["response"]
-        punti = resp.get("punti_a_favore") or resp["overall"]["summary"]
-        most_lbl = ", ".join(r["mapping"][s] for s in resp["overall"]["most_useful"]) or "nessuno"
-        lines.append(f"- **{people[pid].get('name', pid)} (`{pid}`)** — Più utili: {most_lbl}. {punti}")
-    lines += ["", f"*Dataset completo e ricevute T3 in `{out}/frozen.json`, `{out}/campaign_opinions.json` e `{out}/preferences.html`.*", ""]
+    lines += ["## Estratto voci per campagna (nome, età, punti a favore e freni)", ""]
+    for camp in campaign_opinions["campaigns"]:
+        lines.append(f"### {camp['campaign_id']}")
+        for ps in camp["persona_summaries"][:4]:
+            age = f", {ps['age_years']} anni" if ps.get("age_years") else ""
+            most_lbl = ", ".join(ps["most_useful"]) or "nessuno"
+            freno = ps.get("perche_si_allontana", "nulla")
+            lines.append(f"- **{ps['name']}{age}** (`{ps['persona_id']}`, {ps['cohort']}) — Più utili: {most_lbl}. **A favore:** {ps['punti_a_favore']} | **Freno:** {freno}")
+        lines.append("")
+    lines += [f"*Dataset completo e ricevute T3 in `{out}/frozen.json`, `{out}/campaign_opinions.json` e `{out}/preferences.html`.*", ""]
     (out / "REPORT.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
     assets = sorted(all_assets)
     denom = max(1, max([positive[a] for a in assets] + [negative[a] for a in assets] + [1]))

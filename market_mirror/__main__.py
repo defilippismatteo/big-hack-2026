@@ -53,8 +53,24 @@ def parser():
     cmd.add_argument("--personas", type=Path, default=ROOT / "artifacts/personas_t3/persona_cards.json")
     cmd.add_argument("--out", type=Path, default=ROOT / "artifacts/personas_t3/interviews")
     cmd.add_argument("--seed", type=int)
+    cmd = sub.add_parser("interviews-prepare-batches", help="Prepara batch ciechi concisi per interviste rapide post-Decision")
+    cmd.add_argument("--catalog", type=Path, default=DEFAULT_OUT / "decision_inputs/creative_catalog.json")
+    cmd.add_argument("--personas", type=Path, default=ROOT / "artifacts/personas_t3_600/persona_cards.json")
+    cmd.add_argument("--out", type=Path, default=ROOT / "artifacts/personas_t3_600/interviews")
+    cmd.add_argument("--batch-size", type=int, default=25)
+    cmd.add_argument("--seed", type=int)
+    cmd = sub.add_parser("interviews-save-batch", help="Valida e salva una risposta batch concisa")
+    cmd.add_argument("--out", type=Path, default=ROOT / "artifacts/personas_t3_600/interviews")
+    cmd.add_argument("--batch-id", required=True)
+    cmd.add_argument("--response-file", required=True, type=Path)
+    cmd.add_argument("--receipt-file", required=True, type=Path)
     cmd = sub.add_parser("interviews-freeze", help="Valida e congela le interviste completate prima del confronto")
     cmd.add_argument("--out", type=Path, default=ROOT / "artifacts/personas_t3/interviews")
+    cmd = sub.add_parser("interviews-summarizer-packets", help="Prepara pacchetti per istanza riassunto separata")
+    cmd.add_argument("--out", type=Path, default=ROOT / "artifacts/personas_t3_600/interviews")
+    cmd.add_argument("--personas", type=Path, default=ROOT / "artifacts/personas_t3_600/persona_cards.json")
+    cmd.add_argument("--summary", type=Path, default=ROOT / "artifacts/personas_t3_600/analyses/summary.json")
+    cmd.add_argument("--catalog", type=Path, default=DEFAULT_OUT / "decision_inputs/creative_catalog.json")
     cmd = sub.add_parser("interviews-report", help="Genera report, comparison.json e campaign_opinions.json dalle interviste congelate")
     cmd.add_argument("--out", type=Path, default=ROOT / "artifacts/personas_t3/interviews")
     cmd.add_argument("--personas", type=Path, default=ROOT / "artifacts/personas_t3/persona_cards.json")
@@ -168,10 +184,24 @@ def main(argv=None):
             from .interviews import prepare
             jobs = prepare(read(args.catalog), read(args.personas), args.out, seed)
             print(f"Preparati {len(jobs)} job di intervista cieca in {args.out / 'jobs'}")
+        elif args.command == "interviews-prepare-batches":
+            from .interviews import prepare_concise_batches
+            bjobs = prepare_concise_batches(read(args.catalog), read(args.personas), args.out, seed, args.batch_size)
+            print(f"Preparati {len(bjobs)} batch concisi in {args.out / 'batch_jobs'} ({sum(len(b['persona_ids']) for b in bjobs)} persone)")
+        elif args.command == "interviews-save-batch":
+            from .interviews import save_concise_batch
+            raw_text = args.response_file.read_text(encoding="utf-8")
+            receipt = read(args.receipt_file)
+            saved = save_concise_batch(args.out, args.batch_id, raw_text, receipt)
+            print(f"Salvato batch {args.batch_id}: {len(saved)} interviste validate")
         elif args.command == "interviews-freeze":
             from .interviews import freeze
             records = freeze(args.out)
             print(f"Congelate {len(records)} interviste in {args.out / 'frozen.json'}")
+        elif args.command == "interviews-summarizer-packets":
+            from .interviews import build_summarizer_packets
+            written = build_summarizer_packets(args.out, read(args.personas), read(args.summary), read(args.catalog))
+            print(f"Preparati {len(written)} pacchetti riassunto: {', '.join(written)}")
         elif args.command == "interviews-report":
             from .interviews import report
             notes = args.notes_file.read_text(encoding='utf-8') if args.notes_file else ""

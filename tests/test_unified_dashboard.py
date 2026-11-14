@@ -191,3 +191,144 @@ class UnifiedDashboardTests(unittest.TestCase):
         ]:
             self.assertIn(token, html)
 
+    def test_concise_batch_interviews_mixed_with_full_and_js_syntax(self):
+        with tempfile.TemporaryDirectory() as tmp:
+            root = Path(tmp)
+            data = ROOT / "info fornite dagli organizzatori " / "dati"
+            context = build_context(data)
+            slots = generate_slots(context, n=6, seed=2026)
+            jobs = build_jobs(context, slots, batch_size=6)
+            cards = None
+            for job in jobs:
+                resp = {
+                    "personas": [
+                        {
+                            "persona_id": s["persona_id"],
+                            "name": f"Persona {s['persona_id']}",
+                            "interests": ["libri", "cucina", "sport"],
+                            **{k: f"Dettaglio {s['persona_id']}" for k in DETAIL_FIELDS},
+                        }
+                        for s in job["slots"]
+                    ]
+                }
+                cards = import_response(
+                    job,
+                    resp,
+                    {
+                        "providerInstanceId": "antigravity",
+                        "executedModel": "gemini-fixture",
+                        "taskId": f"t-{job['job_id']}",
+                        "link": "fixture://job",
+                    },
+                    existing=cards,
+                )
+            cards_path = root / "persona_cards.json"
+            catalog = build_catalog(data)
+            catalog_path = root / "creative_catalog.json"
+            write(cards_path, cards)
+            write(catalog_path, catalog)
+
+            analyses_dir = root / "analyses"
+            analyze_parallel(
+                catalog,
+                cards,
+                analyses_dir,
+                [("key_1", FakeDecisionAPI()), ("key_2", FakeDecisionAPI())],
+                asset_ids=["NDL-S1", "NDL-S2"],
+                batch_size=3,
+                min_interval_s=0.0,
+                tpm_limit=100000,
+                rpm_limit=60,
+                max_tokens_per_request=40000,
+            )
+
+            from market_mirror.interviews import (
+                build_summarizer_packets,
+                pending_batch_jobs,
+                prepare_concise_batches,
+                save_concise_batch,
+                save_interview_result,
+            )
+
+            interviews_dir = root / "interviews"
+            ijobs = prepare(catalog, cards, interviews_dir, seed=2026)
+            # Save 1 full interview first
+            p0 = ijobs[0]
+            sids0 = sorted(p0["mapping"])
+            save_interview_result(
+                interviews_dir,
+                p0["persona_id"],
+                {
+                    "answers": [
+                        {
+                            "stimulus_id": sid,
+                            "first_impression": "Chiaro",
+                            "positive": "Offerta esplicita",
+                            "negative": "Poca prova",
+                            "missing": "INCI",
+                            "next_step": "Valuto",
+                            "change": "Più prove",
+                        }
+                        for sid in sids0
+                    ],
+                    "overall": {"most_useful": [sids0[0]], "least_useful": [sids0[-1]], "summary": "Intervista completa 1."},
+                },
+                {"status": "completed", "providerInstanceId": "antigravity", "model": "gemini-4-hydrogen", "taskId": "t-full-1", "link": "t3://full-1"},
+            )
+
+            # Prepare concise batches skipping completed full interview
+            bjobs = prepare_concise_batches(catalog, cards, interviews_dir, seed=2026, batch_size=3, skip_completed=True)
+            self.assertEqual(sum(len(b["persona_ids"]) for b in bjobs), 5)
+            self.assertEqual(len(pending_batch_jobs(interviews_dir)), len(bjobs))
+
+            for b in bjobs:
+                bid = b["batch_id"]
+                prompt = (interviews_dir / "batch_jobs" / f"{bid}.prompt.txt").read_text(encoding="utf-8")
+                self.assertNotIn("click_intent_signal", prompt)
+                bsids = sorted(b["mapping"])
+                raw_batch = {
+                    "interviews": [
+                        {
+                            "persona_id": pid,
+                            "punti_a_favore": f"Apprezzo la chiarezza su {pid}.",
+                            "perche_si_allontana": "Mancano ingredienti dettagliati.",
+                            "most_useful": [bsids[0]],
+                            "least_useful": [bsids[-1]],
+                        }
+                        for pid in b["persona_ids"]
+                    ]
+                }
+                save_concise_batch(
+                    interviews_dir,
+                    bid,
+                    raw_batch,
+                    {"status": "completed", "providerInstanceId": "antigravity", "model": "gemini-4-hydrogen", "taskId": f"t-{bid}", "link": f"t3://{bid}"},
+                )
+
+            self.assertEqual(pending_batch_jobs(interviews_dir), [])
+            frozen = freeze(interviews_dir)
+            self.assertEqual(len(frozen), 6)
+            report(interviews_dir, cards, read(analyses_dir / "summary.json"), "Sintesi concisa separata.", catalog)
+            report_txt = (interviews_dir / "REPORT.md").read_text(encoding="utf-8")
+            self.assertIn("Apprezzo la chiarezza", report_txt)
+            packets = build_summarizer_packets(interviews_dir, cards, read(analyses_dir / "summary.json"), catalog)
+            self.assertEqual(len(packets), 1)
+            payload = build_unified_payload(
+                ROOT / "artifacts" / "wevion_v4",
+                cards_path,
+                catalog_path,
+                analyses_dir,
+                interviews_dir,
+                interviews_dir / "REPORT.md",
+            )
+            html = render_unified_dashboard(payload)
+            self.assertIn("Apprezzo la chiarezza", html)
+            import re, shutil, subprocess
+            m = re.search(r"<script>(.*)</script>", html, flags=re.DOTALL)
+            self.assertIsNotNone(m)
+            if shutil.which("node"):
+                js_path = root / "check.js"
+                js_path.write_text(m.group(1), encoding="utf-8")
+                subprocess.run(["node", "--check", str(js_path)], check=True)
+
+
