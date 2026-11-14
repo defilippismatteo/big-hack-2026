@@ -125,6 +125,7 @@ def main():
     delivery = index(csv_rows(args.artifacts / "ad_delivery.csv"), ("data", "ad_id"))
     if seasonal.keys() != forecasts.keys() or delivery.keys() != forecasts.keys():
         raise ValueError("Scenario stagionale o quote di pubblicazione incompleti")
+    ad_weights = {}
     seasonal_totals = defaultdict(lambda: [0.0, 0.0, 0.0])
     shares = defaultdict(float)
     seasonal_method = None
@@ -141,6 +142,7 @@ def main():
         share = metric(allocation["delivery_share"], upper=1)
         shares[day, adset] += share
         spend = metric(decision_rows[day, adset]["effective_spend_base_eur"]) * share
+        ad_weights[day, ad] = spend
         cpm = metric(row["cpm_scenario_eur"], lower=1e-9)
         impressions = 1000 * spend / cpm
         clicks = impressions * metric(row["ctr_scenario_pct"], upper=100) / 100
@@ -188,6 +190,7 @@ def main():
                                     "visual": row["descrizione_visual"]}
                          for (asset_id,), row in sorted(catalog.items())},
         "forecast": forecast,
+        "forecastSpend": [ad_weights[row[0], row[1]] for row in forecast],
         "hypotheses": [{"adsetId": r["adset_id"], "description": r["segmento_ipotizzato"],
                         "ctr": r["segnali_osservati"]["ctr_storico_pct"],
                         "confidence": r["confidence"], "evidence": r["segnali_osservati"],

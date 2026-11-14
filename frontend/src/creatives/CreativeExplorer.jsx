@@ -112,7 +112,11 @@ function ExplorerContent({ data, headingRef }) {
   const [dismissedHash, setDismissedHash] = useState(null);
   const [detail, setDetail] = useState(null);
   const openedFrom = useRef(null);
-  const [day, setDay] = useState(() => data.dates.find((date) => data.events[date] === 'Black Friday') ?? data.dates[0]);
+  const defaultDay = data.dates.find((date) => data.events[date] === 'Black Friday') ?? data.dates[0];
+  const [day, setDay] = useState(() => {
+    const fromUrl = new URLSearchParams(hash.split('?')[1]).get('date');
+    return data.dates.includes(fromUrl) ? fromUrl : defaultDay;
+  });
   const [campaign, setCampaign] = useState('');
   const [adset, setAdset] = useState(() => {
     const id = new URLSearchParams(hash.split('?')[1]).get('adset');
@@ -183,10 +187,10 @@ function ExplorerContent({ data, headingRef }) {
             onChange={(event) => setQuery(event.target.value)} />
         </span>
       </label>
-      {(campaign || adset || query || day !== (data.dates.find((date) => data.events[date] === 'Black Friday') ?? data.dates[0])) &&
+      {(campaign || adset || query || day !== defaultDay) &&
         <button type="button" className="clear-filters" onClick={() => {
           setCampaign(''); setAdset(''); setQuery('');
-          setDay(data.dates.find((date) => data.events[date] === 'Black Friday') ?? data.dates[0]);
+          setDay(defaultDay);
         }}>Ripristina filtri</button>}
     </div>
     <PerformanceMap rows={filtered} domain={matchesDay} onOpen={openDetail} />

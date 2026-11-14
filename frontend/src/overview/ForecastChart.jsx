@@ -1,5 +1,5 @@
 import { CalendarDays } from 'lucide-react';
-import { useState } from 'react';
+import { useId, useState } from 'react';
 import { money, pct, shortDate } from './model';
 
 const metrics = [{ key: 'ctr', label: 'CTR', format: pct }, { key: 'cpm', label: 'CPM', format: money }];
@@ -11,7 +11,8 @@ function plotScale(max) {
   return { ticks: Array.from({ length: 5 }, (_, i) => i * step), max: step * 4 };
 }
 
-export function ForecastChart({ timeline: forecast, seasonal, events, sourceMethod }) {
+export function ForecastChart({ timeline: forecast, seasonal, events, sourceMethod, title = 'Performance Forecast', note }) {
+  const titleId = useId();
   const [active, setActive] = useState('ctr');
   const [view, setView] = useState('forecast');
   const isSeasonal = view === 'seasonal' && seasonal.length > 0;
@@ -38,10 +39,10 @@ export function ForecastChart({ timeline: forecast, seasonal, events, sourceMeth
   const detailLabel = selected ? shortDate(selected.day) + (events[selected.day] ? ' · ' + events[selected.day] : '') : '';
 
   return (
-    <section className="data-panel forecast-panel" aria-labelledby="forecast-title">
+    <section className="data-panel forecast-panel" aria-labelledby={titleId}>
       <div className="panel-head">
         <div><span className={'data-tag ' + (isSeasonal ? 'tag-scenario' : 'tag-forecast')}>{isSeasonal ? 'Scenario' : 'Previsione'}</span>
-          <h2 id="forecast-title">Performance Forecast</h2>
+          <h2 id={titleId}>{title}</h2>
           <p>{isSeasonal ? 'Scenario centrale · benchmark Wevion 2025' : 'Andamento giornaliero · ' + sourceMethod}</p>
         </div>
         <div className="segmented" role="group" aria-label="Metrica del grafico">
@@ -102,9 +103,9 @@ export function ForecastChart({ timeline: forecast, seasonal, events, sourceMeth
               <span aria-hidden="true" />{event} <small>· {shortDate(day)}</small>
             </button>)}
         </div>
-        <p className="chart-note">Medie ponderate sulle impression stimate con il budget pianificato. {isSeasonal
-          ? 'Lo scenario applica gli indici del 2025 del kit. È un’ipotesi di pressione, senza intervalli calibrati.'
-          : 'Gli eventi sono riferimenti di calendario; la previsione base non applica uno shock stagionale.'}</p>
+        <p className="chart-note">{note ?? (isSeasonal
+          ? 'Medie ponderate sulle impression stimate. Lo scenario applica gli indici del 2025 del kit senza intervalli calibrati.'
+          : 'Medie ponderate sulle impression stimate. Gli eventi di calendario evidenziano i giorni di interesse.')}</p>
       </>}
     </section>
   );

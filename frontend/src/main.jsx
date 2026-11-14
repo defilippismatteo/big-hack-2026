@@ -7,6 +7,7 @@ import '@fontsource-variable/inter';
 import { getSection, groups, sectionHref, sections } from './sections';
 import './styles.css';
 import { Overview } from './overview/Overview';
+import { ForecastAnalytics } from './pages/ForecastAnalytics';
 import { AudienceLab } from './pages/AudienceLab';
 import { CreativeExplorer } from './creatives/CreativeExplorer';
 
@@ -138,7 +139,7 @@ function App() {
     }
   }
 
-  const Page = { overview: Overview, creatives: CreativeExplorer, audience: AudienceLab }[current.id] ?? SectionLanding;
+  const Page = { overview: Overview, creatives: CreativeExplorer, audience: AudienceLab, forecast: ForecastAnalytics }[current.id] ?? SectionLanding;
 
   return (
     <div className="app-shell">
