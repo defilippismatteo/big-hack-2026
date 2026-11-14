@@ -188,6 +188,9 @@ def main():
         "dates": dates,
         "events": events,
         "ads": ads,
+        "assetDetails": {asset_id: {"body": row["testo_principale"], "cta": row["call_to_action"],
+                                    "visual": row["descrizione_visual"]}
+                         for (asset_id,), row in sorted(catalog.items())},
         "forecast": forecast,
         "hypotheses": [{"adsetId": r["adset_id"], "description": r["segmento_ipotizzato"],
                         "ctr": r["segnali_osservati"]["ctr_storico_pct"],

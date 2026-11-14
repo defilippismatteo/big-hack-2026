@@ -7,6 +7,7 @@ import '@fontsource-variable/inter';
 import { getSection, groups, sectionHref, sections } from './sections';
 import './styles.css';
 import { Overview } from './overview/Overview';
+import { CreativeExplorer } from './creatives/CreativeExplorer';
 
 const logo = import.meta.env.BASE_URL + 'adera.svg';
 
@@ -136,6 +137,8 @@ function App() {
     }
   }
 
+  const Page = { overview: Overview, creatives: CreativeExplorer }[current.id] ?? SectionLanding;
+
   return (
     <div className="app-shell">
       <a className="skip-link" href="#main-content" onClick={(event) => {
@@ -155,9 +158,7 @@ function App() {
       <div className="workspace">
         <Header current={current} onMenu={openMenu} menuOpen={menuOpen} />
         <main className="main" id="main-content" tabIndex={-1}>
-          {current.id === 'overview'
-            ? <Overview headingRef={heading} />
-            : <SectionLanding section={current} headingRef={heading} />}
+          <Page section={current} headingRef={heading} />
         </main>
         <footer className="footer">
           <span>Developed for Wevion · The Big Hack 2026</span>

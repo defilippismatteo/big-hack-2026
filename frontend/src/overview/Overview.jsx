@@ -2,37 +2,12 @@ import {
   ArrowDownRight, ArrowLeftRight, ArrowRight, ArrowUpRight, BarChart3, Layers3,
   LayoutGrid, ListFilter, MousePointer2, Sparkles, UsersRound, WalletCards,
 } from 'lucide-react';
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
+import { useDashboardData } from '../data/useDashboardData';
 import { sectionHref } from '../sections';
 import { ForecastChart } from './ForecastChart';
 import { fixed, leverNames, modelNames, money, overviewModel, pct, shortDate, verticalNames, whole } from './model';
 import './overview.css';
-
-const dataUrl = import.meta.env.BASE_URL + 'data/overview.json';
-
-function useOverviewData() {
-  const [state, setState] = useState({ phase: 'loading' });
-  const [attempt, setAttempt] = useState(0);
-  useEffect(() => {
-    const controller = new AbortController();
-    async function load() {
-      try {
-        const response = await fetch(dataUrl, { signal: controller.signal, cache: 'no-cache' });
-        if (!response.ok) throw new Error('Dataset non disponibile');
-        const data = await response.json();
-        if (data?.schemaVersion !== 1 || !Array.isArray(data.forecast) || !Array.isArray(data.budgetScenario)) {
-          throw new Error('Versione dei dati non supportata');
-        }
-        if (!controller.signal.aborted) setState({ phase: 'ready', data });
-      } catch {
-        if (!controller.signal.aborted) setState({ phase: 'error' });
-      }
-    }
-    load();
-    return () => controller.abort();
-  }, [attempt]);
-  return { ...state, retry: () => { setState({ phase: 'loading' }); setAttempt((n) => n + 1); } };
-}
 
 function MetricCard({ icon: Icon, title, value, note, tone }) {
   return (
@@ -45,8 +20,8 @@ function MetricCard({ icon: Icon, title, value, note, tone }) {
   );
 }
 
-function PanelLink({ to, children }) {
-  return <a className="panel-link" href={sectionHref(to)}>{children} <ArrowRight size={15} aria-hidden="true" /></a>;
+function PanelLink({ to, href = sectionHref(to), children }) {
+  return <a className="panel-link" href={href}>{children} <ArrowRight size={15} aria-hidden="true" /></a>;
 }
 
 function CreativeSpotlight({ creative }) {
@@ -72,7 +47,9 @@ function CreativeSpotlight({ creative }) {
         </dl>
         <p className="support-copy">Il miglior rapporto fra CTR e CPM nella selezione: {fixed(creative.efficiency)} clic stimati per euro speso.</p>
       </> : <p className="panel-empty">Nessuna previsione per il Black Friday nella selezione.</p>}
-      <PanelLink to="creatives">Vai a Creative Explorer</PanelLink>
+      <PanelLink to="creatives" href={creative ? sectionHref('creatives') + '?ad=' + encodeURIComponent(creative.id) : undefined}>
+        {creative ? 'Apri il dettaglio creativo' : 'Vai a Creative Explorer'}
+      </PanelLink>
     </section>
   );
 }
@@ -134,7 +111,7 @@ function BudgetRecommendation({ budget, bound, singleAdset }) {
 }
 
 export function Overview({ headingRef }) {
-  const { phase, data, retry } = useOverviewData();
+  const { phase, data, retry } = useDashboardData();
   const [campaign, setCampaign] = useState('');
   const [adset, setAdset] = useState('');
   const model = useMemo(() => data && overviewModel(data, campaign, adset), [data, campaign, adset]);

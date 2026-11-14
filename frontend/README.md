@@ -44,3 +44,7 @@ python3 scripts/export_overview.py \
 ```
 
 Per collegare un export T3 aggiungi `--personas ../artifacts/personas_t3/persona_cards.json`: il JSON pubblico conserva solo numerosità aggregate, senza nomi o singole schede. Senza il file, il KPI dei profili e i segmenti demografici risultano non disponibili. Le ipotesi comportamentali rimangono consultabili.
+
+## Creative Explorer
+
+La mappa e la classifica leggono le previsioni base del giorno selezionato, con il Black Friday come data iniziale. Puoi filtrare per campagna, cercare per headline, annuncio o asset, ordinare le colonne e scegliere fino a due annunci da confrontare. Il dettaglio usa i testi del catalogo Wevion e le sole date previste per l’annuncio. Lo script di esportazione include il testo, la CTA e la descrizione visuale degli asset.

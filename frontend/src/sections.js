@@ -33,6 +33,6 @@ export const sections = [
 export const sectionHref = (id) => '#/' + id;
 
 export function getSection() {
-  const id = window.location.hash.slice(2);
+  const id = window.location.hash.slice(2).split('?')[0];
   return sections.find((section) => window.location.hash.startsWith('#/') && section.id === id) ?? sections[0];
 }
