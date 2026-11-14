@@ -75,11 +75,48 @@ def prepare(catalog, cards, out, seed=2026):
     return jobs
 
 
+CONCISE_BATCH_RULES = """Intervista sintetica in batch: valuta ciascuna persona fittizia in `personas` separatamente in prima persona.
+Usa esclusivamente il JSON inline. Non leggere repository, file, storia o strumenti;
+non avviare subagenti, non usare API. Ogni persona risponde in modo indipendente senza
+influenzarsi con le altre. Nessuna persona conosce esiti comportamentali precedenti.
+I materiali sono descrizioni testuali, non immagini o video visti. Non inventare prezzi,
+ingredienti, certificazioni, landing page o prove non fornite.
+Per OGNI persona indica SOLO i punti a favore percepiti negli annunci in 1-2 frasi brevi
+(oppure 'nulla'), un eventuale freno principale in max 1 frase breve (oppure 'nulla'),
+e fino a 3 codici stimolo (C01-C12) più utili e meno utili (anche liste vuote).
+Restituisci SOLO JSON valido:
+{"interviews":[{"persona_id":"...","punti_a_favore":"1-2 frasi brevi sui punti a favore","perche_si_allontana":"1 frase breve o nulla","most_useful":["C01"],"least_useful":["C05"]}]}.
+"""
+
+
+def _validate_concise_response(job, response):
+    punti = response.get("punti_a_favore")
+    if not isinstance(punti, str) or not punti.strip():
+        raise ValueError("Campo punti_a_favore mancante")
+    freno = response.get("perche_si_allontana", "nulla")
+    if not isinstance(freno, str) or not freno.strip():
+        raise ValueError("Campo perche_si_allontana non valido")
+    overall = response.get("overall")
+    if not isinstance(overall, dict):
+        raise ValueError("Campo overall mancante")
+    summary_txt = overall.get("summary")
+    if not isinstance(summary_txt, str) or not summary_txt.strip():
+        raise ValueError("Sintesi mancante")
+    valid_ids = set(job["mapping"])
+    for key in ("most_useful", "least_useful"):
+        selected = overall.get(key)
+        if not isinstance(selected, list) or len(selected) > 3 or len(set(selected)) != len(selected) or not set(selected) <= valid_ids:
+            raise ValueError("Preferenza non valida")
+
+
 def validate_response_and_receipt(job, response, receipt):
     if receipt.get("status") != "completed" or receipt.get("providerInstanceId") != "antigravity":
         raise ValueError("Ricevuta incompleta o provider inatteso")
     if not receipt.get("taskId") or not receipt.get("link"):
         raise ValueError("Ricevuta T3 mancante")
+    if response.get("mode") == "concise":
+        _validate_concise_response(job, response)
+        return
     ids = [a["stimulus_id"] for a in response["answers"]]
     if len(ids) != len(set(ids)) or set(ids) != set(job["mapping"]):
         raise ValueError("Stimoli mancanti, duplicati o inattesi")
@@ -148,6 +185,145 @@ def pending_jobs(out):
     return pending
 
 
+def prepare_concise_batches(catalog, cards, out, seed=2026, batch_size=20, skip_completed=True):
+    """Prepare blind concise-interview batches (~15-20 personas per call) over completed Decision 1 personas."""
+    out = Path(out)
+    if batch_size < 1:
+        raise ValueError("batch_size deve essere >= 1")
+    prepare(catalog, cards, out, seed)
+    manifest = read(out / "manifest.json")
+    eligible = set(pending_jobs(out)) if skip_completed else {j["persona_id"] for j in manifest["jobs"]}
+    summary = read(out.parent / "analyses/summary.json")
+    completed = {a["asset_id"]: {p["persona_id"] for p in a["per_person"]}
+                 for a in summary["ranking"]}
+
+    by_vertical = {}
+    for p in cards["personas"]:
+        pid = p["persona_id"]
+        if pid not in eligible:
+            continue
+        assets = [a for a in catalog["creatives"] if a["vertical"] == p["vertical"]
+                  and pid in completed.get(a["asset_id"], set())]
+        if not assets:
+            continue
+        by_vertical.setdefault(p["vertical"], []).append((p, assets))
+
+    batch_jobs = []
+    batch_dir = out / "batch_jobs"
+    batch_dir.mkdir(parents=True, exist_ok=True)
+    visible_fields = tuple(k for k in SLOT_FIELDS if k not in
+                           ("persona_id", "sampling_weight", "seed", "vertical")) + DETAIL_FIELDS + T3_FIELDS
+
+    for vertical, items in sorted(by_vertical.items()):
+        for idx in range(0, len(items), batch_size):
+            chunk = items[idx : idx + batch_size]
+            batch_id = f"{vertical}-B{idx // batch_size + 1:02d}"
+            # All personas in the same vertical share the completed creative pool; shuffle per batch deterministically.
+            assets = list(chunk[0][1])
+            random.Random(int(digest([batch_id, seed, "concise_batch"])[:16], 16)).shuffle(assets)
+            stimuli = [{"stimulus_id": f"C{i+1:02d}", "creative": project(a, CREATIVE_FIELDS)}
+                       for i, a in enumerate(assets)]
+            mapping = {s["stimulus_id"]: a["asset_id"] for s, a in zip(stimuli, assets)}
+            personas_payload = [
+                {
+                    "persona_id": p["persona_id"],
+                    "persona": project(p, visible_fields),
+                    "feed": exposure(p, seed),
+                }
+                for p, _ in chunk
+            ]
+            payload = {"vertical": vertical, "stimuli": stimuli, "personas": personas_payload}
+            prompt = CONCISE_BATCH_RULES + "\n" + json.dumps(payload, ensure_ascii=False)
+            job = {
+                "batch_id": batch_id,
+                "vertical": vertical,
+                "persona_ids": [p["persona_id"] for p, _ in chunk],
+                "mapping": mapping,
+                "payload_sha256": digest(payload),
+                "prompt_sha256": digest(prompt),
+            }
+            write(batch_dir / f"{batch_id}.json", job)
+            (batch_dir / f"{batch_id}.prompt.txt").write_text(prompt, encoding="utf-8")
+            batch_jobs.append(job)
+
+    write(out / "batch_manifest.json", {
+        "schema_version": "1.0",
+        "data_kind": "synthetic",
+        "method": "blind_concise_batch_reexposure",
+        "batch_size": batch_size,
+        "batches": batch_jobs,
+    })
+    return batch_jobs
+
+
+def pending_batch_jobs(out):
+    """Return batch_ids whose personas still have any pending interview."""
+    out = Path(out)
+    bman = read(out / "batch_manifest.json")
+    pending_pids = set(pending_jobs(out))
+    return [b["batch_id"] for b in bman["batches"] if any(pid in pending_pids for pid in b["persona_ids"])]
+
+
+def save_concise_batch(out, batch_id, raw_response, receipt):
+    """Validate and save all concise persona interviews from one T3 batch response."""
+    out = Path(out)
+    bjob = read(out / "batch_jobs" / f"{batch_id}.json")
+    parsed = _extract_json_object(raw_response)
+    items = parsed.get("interviews")
+    if not isinstance(items, list):
+        raise ValueError("Campo 'interviews' mancante nella risposta batch")
+    expected = bjob["persona_ids"]
+    by_pid = {}
+    for item in items:
+        pid = item.get("persona_id")
+        if not pid or pid in by_pid:
+            raise ValueError(f"persona_id mancante o duplicato nel batch {batch_id}: {pid}")
+        by_pid[pid] = item
+    if set(by_pid) != set(expected):
+        missing = sorted(set(expected) - set(by_pid))
+        extra = sorted(set(by_pid) - set(expected))
+        raise ValueError(f"Mismatch persona_id nel batch {batch_id}: mancanti={missing}, extra={extra}")
+
+    saved = []
+    batch_to_asset = bjob["mapping"]
+    for pid in expected:
+        item = by_pid[pid]
+        pjob = read(out / "jobs" / f"{pid}.json")
+        asset_to_psid = {aid: psid for psid, aid in pjob["mapping"].items()}
+        punti = str(item.get("punti_a_favore", "")).strip() or "nulla"
+        freno = str(item.get("perche_si_allontana", "nulla")).strip() or "nulla"
+
+        def _remap(raw_list):
+            if not isinstance(raw_list, list):
+                raise ValueError("most_useful/least_useful deve essere una lista")
+            out_sids = []
+            for bsid in raw_list[:3]:
+                if bsid not in batch_to_asset:
+                    raise ValueError(f"Stimolo {bsid} non valido nel batch {batch_id}")
+                aid = batch_to_asset[bsid]
+                psid = asset_to_psid.get(aid)
+                if psid and psid not in out_sids:
+                    out_sids.append(psid)
+            return out_sids
+
+        resp = {
+            "mode": "concise",
+            "punti_a_favore": punti,
+            "perche_si_allontana": freno,
+            "overall": {
+                "most_useful": _remap(item.get("most_useful", [])),
+                "least_useful": _remap(item.get("least_useful", [])),
+                "summary": punti if freno.lower() == "nulla" else f"{punti} Freno: {freno}",
+            },
+        }
+        pid_receipt = {**receipt, "batch_id": batch_id}
+        validate_response_and_receipt(pjob, resp, pid_receipt)
+        write(out / "responses" / f"{pid}.json", resp)
+        write(out / "responses" / f"{pid}.receipt.json", pid_receipt)
+        saved.append(pid)
+    return saved
+
+
 def freeze(out):
     """Validate complete responses and receipts before any cross-person synthesis."""
     out = Path(out)
@@ -190,6 +366,26 @@ def build_campaign_opinions(out, cards, summary, catalog=None):
 
     by_campaign = {}
     by_asset = {}
+
+    def _ensure_asset(aid, vertical, cid, camp_name):
+        cr = creatives.get(aid, {})
+        dec = decision_by_asset.get(aid, {})
+        return by_asset.setdefault(aid, {
+            "asset_id": aid,
+            "campaign_id": cid,
+            "campaign_name": camp_name,
+            "vertical": vertical,
+            "leva": cr.get("leva", ""),
+            "formato": cr.get("formato", ""),
+            "headline": cr.get("headline", ""),
+            "decision_click_intent": dec.get("click_intent_signal"),
+            "decision_attention": dec.get("attention_signal"),
+            "most_useful_count": 0,
+            "least_useful_count": 0,
+            "n_responses": 0,
+            "opinions": [],
+        })
+
     for r in frozen["interviews"]:
         pid = r["persona_id"]
         card = people.get(pid, {})
@@ -211,54 +407,93 @@ def build_campaign_opinions(out, cards, summary, catalog=None):
         })
         c_bucket["n_interviews"] += 1
         c_bucket["cohorts"][cohort] += 1
-        most_assets = [r["mapping"][s] for s in r["response"]["overall"]["most_useful"]]
-        least_assets = [r["mapping"][s] for s in r["response"]["overall"]["least_useful"]]
+        resp = r["response"]
+        most_assets = [r["mapping"][s] for s in resp["overall"]["most_useful"]]
+        least_assets = [r["mapping"][s] for s in resp["overall"]["least_useful"]]
         c_bucket["most_useful"].update(most_assets)
         c_bucket["least_useful"].update(least_assets)
-        c_bucket["persona_summaries"].append({
-            "persona_id": pid,
-            "name": card.get("name", pid),
-            "cohort": cohort,
-            "interest_in_category": card.get("interest_in_category"),
-            "most_useful": most_assets,
-            "least_useful": least_assets,
-            "summary": r["response"]["overall"]["summary"],
-        })
 
-        for ans in r["response"]["answers"]:
-            aid = r["mapping"][ans["stimulus_id"]]
-            cr = creatives.get(aid, {})
-            dec = decision_by_asset.get(aid, {})
-            ab = by_asset.setdefault(aid, {
-                "asset_id": aid,
-                "campaign_id": cid,
-                "campaign_name": camp["campaign_name"],
-                "vertical": vertical,
-                "leva": cr.get("leva", ""),
-                "formato": cr.get("formato", ""),
-                "headline": cr.get("headline", ""),
-                "decision_click_intent": dec.get("click_intent_signal"),
-                "decision_attention": dec.get("attention_signal"),
-                "most_useful_count": 0,
-                "least_useful_count": 0,
-                "n_responses": 0,
-                "opinions": [],
-            })
-            ab["n_responses"] += 1
-            if aid in most_assets:
-                ab["most_useful_count"] += 1
-            if aid in least_assets:
-                ab["least_useful_count"] += 1
-            ab["opinions"].append({
+        for aid in r["mapping"].values():
+            _ensure_asset(aid, vertical, cid, camp["campaign_name"])
+
+        if resp.get("mode") == "concise":
+            punti = resp["punti_a_favore"]
+            freno = resp.get("perche_si_allontana", "nulla")
+            c_bucket["persona_summaries"].append({
                 "persona_id": pid,
                 "name": card.get("name", pid),
                 "cohort": cohort,
-                "positive": ans["positive"],
-                "negative": ans["negative"],
-                "missing": ans["missing"],
-                "next_step": ans["next_step"],
-                "change": ans["change"],
+                "interest_in_category": card.get("interest_in_category"),
+                "mode": "concise",
+                "punti_a_favore": punti,
+                "perche_si_allontana": freno,
+                "most_useful": most_assets,
+                "least_useful": least_assets,
+                "summary": resp["overall"]["summary"],
             })
+            for aid in most_assets:
+                ab = _ensure_asset(aid, vertical, cid, camp["campaign_name"])
+                ab["most_useful_count"] += 1
+                ab["n_responses"] += 1
+                ab["opinions"].append({
+                    "persona_id": pid,
+                    "name": card.get("name", pid),
+                    "cohort": cohort,
+                    "positive": punti,
+                    "negative": freno,
+                    "missing": "",
+                    "next_step": "",
+                    "change": "",
+                })
+            for aid in least_assets:
+                if aid in most_assets:
+                    continue
+                ab = _ensure_asset(aid, vertical, cid, camp["campaign_name"])
+                ab["least_useful_count"] += 1
+                ab["n_responses"] += 1
+                ab["opinions"].append({
+                    "persona_id": pid,
+                    "name": card.get("name", pid),
+                    "cohort": cohort,
+                    "positive": "",
+                    "negative": freno,
+                    "missing": "",
+                    "next_step": "",
+                    "change": "",
+                })
+        else:
+            pos_list = [a["positive"] for a in resp["answers"] if a["positive"].lower() != "nulla"]
+            neg_list = [a["negative"] for a in resp["answers"] if a["negative"].lower() != "nulla"]
+            c_bucket["persona_summaries"].append({
+                "persona_id": pid,
+                "name": card.get("name", pid),
+                "cohort": cohort,
+                "interest_in_category": card.get("interest_in_category"),
+                "mode": "full",
+                "punti_a_favore": " | ".join(pos_list[:2]) if pos_list else "nulla",
+                "perche_si_allontana": " | ".join(neg_list[:2]) if neg_list else "nulla",
+                "most_useful": most_assets,
+                "least_useful": least_assets,
+                "summary": resp["overall"]["summary"],
+            })
+            for ans in resp["answers"]:
+                aid = r["mapping"][ans["stimulus_id"]]
+                ab = _ensure_asset(aid, vertical, cid, camp["campaign_name"])
+                ab["n_responses"] += 1
+                if aid in most_assets:
+                    ab["most_useful_count"] += 1
+                if aid in least_assets:
+                    ab["least_useful_count"] += 1
+                ab["opinions"].append({
+                    "persona_id": pid,
+                    "name": card.get("name", pid),
+                    "cohort": cohort,
+                    "positive": ans["positive"],
+                    "negative": ans["negative"],
+                    "missing": ans["missing"],
+                    "next_step": ans["next_step"],
+                    "change": ans["change"],
+                })
 
     campaigns_out = []
     for cid, cb in sorted(by_campaign.items()):
@@ -310,18 +545,20 @@ def build_campaign_opinions(out, cards, summary, catalog=None):
     return result
 
 
-def report(out, cards, summary, analyst_notes, catalog=None, max_transcript_pairs=120):
-    """Join only frozen interviews to saved Decision results, for the analyst."""
+def report(out, cards, summary, analyst_notes, catalog=None, max_transcript_pairs=0):
+    """Join only frozen interviews to saved Decision results, for the analyst (concise executive report)."""
     out = Path(out).resolve()
     frozen = read(out / "frozen.json")
     people = {p["persona_id"]: p for p in cards["personas"]}
     positive, negative = Counter(), Counter()
     pairs = []
+    all_assets = set()
     decision_by_asset = {a["asset_id"]: a for a in summary["ranking"]}
     for r in frozen["interviews"]:
+        all_assets.update(r["mapping"].values())
         for key, counter in (("most_useful", positive), ("least_useful", negative)):
             counter.update(r["mapping"][s] for s in r["response"]["overall"][key])
-        for a in r["response"]["answers"]:
+        for a in r["response"].get("answers", []):
             asset_id = r["mapping"][a["stimulus_id"]]
             decision = decision_by_asset[asset_id]
             person_decision = next(p for p in decision["per_person"] if p["persona_id"] == r["persona_id"])
@@ -335,69 +572,30 @@ def report(out, cards, summary, analyst_notes, catalog=None, max_transcript_pair
           "pairs": pairs})
     campaign_opinions = build_campaign_opinions(out, cards, summary, catalog)
     n_people = len(frozen["interviews"])
-    n_assets = len({p["asset_id"] for p in pairs})
-    n_pairs = len(pairs)
-    n_answers = n_pairs * len(QUESTIONS)
-    lines = ["# Interviste indipendenti dopo Decision — report", "",
-             f"{n_people} persone sintetiche, {n_assets} asset, {n_pairs} valutazioni qualitative e {n_answers} risposte aperte. "
-             "Provider T3 Antigravity, modello richiesto/configurato Gemini 4 Hydrogen, thinking low. "
-             "Nessuna nuova chiamata Decisions e nessuna API generativa Google.", "",
-             "## Risultati e interpretazione (riassunto da istanza dedicata)", "", analyst_notes, "",
-             "## Protocollo e visibilità", "",
-             "La selezione locale include tutte le coppie completate, indipendentemente da punteggi o esiti. "
-             "Le domande sono identiche e neutrali. Ogni colloquio è un nuovo subagente con il solo task inline, "
-             "senza storia del coordinatore, e vede una sola scheda più i propri 12 stimoli in ordine "
-             "mescolato con seed stabile. Il feed per persona conserva piattaforma, ora e posizione del test. "
-             "I codici C01–C12 sono locali alla singola intervista; la mappatura asset_id resta al coordinatore.", "",
-             "| Ruolo | Input visibile | Input escluso |", "|---|---|---|",
-             "| Persona intervistata | Propria biografia, feed, descrizioni testuali degli annunci, sei domande | Decision, azioni campionate, score, ranking, altre persone/risposte, pesi, KPI, audience inferite, forecast |",
-             "| Coordinatore | Repository e registri, payload e ricevute | Nessuna esclusione OS dichiarata |",
-             "| Istanza riassunto (dopo congelamento) | Interviste congelate e metriche per campagna/asset | Non influenza le interviste né modifica numeri/CTR |", "",
-             "L'intervista è una riesposizione riflessiva a più annunci, non ricordo spontaneo né spiegazione "
-             "del comportamento di una sessione. Non sono stati comunicati scroll/click della simulazione. "
-             "I risultati sono `synthetic`; Decision resta `simulated_decision`; trend e suggerimenti sono "
-             "`hypothesis`. Nessuna fixture `mock_not_model` entra nel confronto.", "",
-             "## Preferenze dichiarate per campagna e asset", "",
-             "Conteggi non pesati di persone che includono un asset tra massimo tre più/meno utili; "
-             "erano ammesse liste vuote. Non sono voti di qualità assoluta, percentuali di clienti o CTR.", ""]
+    n_assets = len(all_assets)
+    lines = ["# Interviste sintetiche post-Decision — sintesi esecutiva", "",
+             f"{n_people} persone sintetiche su {n_assets} asset (provider T3 Antigravity, Gemini 4 Hydrogen thinking low; nessuna chiamata Decision in intervista).", "",
+             "## Risultati chiave e punti a favore (istanza riassunto separata)", "", analyst_notes, "",
+             "## Classifica annunci per campagna (menzioni più/meno utili + Decision 1)", ""]
     for camp in campaign_opinions["campaigns"]:
         lines += [f"### {camp['campaign_id']} — {camp['campaign_name']} ({camp['n_interviews']} interviste)", "",
-                  "| Asset | Leva | Formato | Più utili | Meno utili | Saldo | Click Intent (Decision) |",
+                  "| Asset | Leva | Formato | Più utili | Meno utili | Saldo | Click Intent (D1) |",
                   "|---|---|---|---:|---:|---:|---:|"]
         for a in camp["assets"]:
             net = a["most_useful_count"] - a["least_useful_count"]
             ci = f"{a['decision_click_intent']:.4f}" if a["decision_click_intent"] is not None else "n/d"
             lines.append(f"| {a['asset_id']} | {a['leva']} | {a['formato']} | {a['most_useful_count']} | {a['least_useful_count']} | {net:+d} | {ci} |")
         lines.append("")
-    lines += ["## Sintesi per persona (estratto) e ricevute", ""]
-    for r in frozen["interviews"][:60]:
+    lines += ["## Estratto punti a favore per persona (primi 12 profili)", ""]
+    for r in frozen["interviews"][:12]:
         pid = r["persona_id"]
-        lines += [f"### {people[pid].get('name', pid)} — {pid}", "", r["response"]["overall"]["summary"], "",
-                  "Più utili: " + (", ".join(r["mapping"][s] for s in r["response"]["overall"]["most_useful"]) or "nessuno") + ".",
-                  "", "Meno utili: " + (", ".join(r["mapping"][s] for s in r["response"]["overall"]["least_useful"]) or "nessuno") + ".", "",
-                  r["receipt"]["link"], "",
-                  f"[Prompt completo]({out}/jobs/{pid}.prompt.txt) · [Risposta JSON]({out}/responses/{pid}.json) · [Ricevuta]({out}/responses/{pid}.receipt.json)", ""]
-    if n_people > 60:
-        lines += [f"*Nota: mostrati i primi 60 profili di {n_people}; tutte le sintesi e risposte integrali sono in `{out}/frozen.json` e `{out}/campaign_opinions.json`.*", ""]
-    lines += ["## Trascrizioni integrali e confronto per coppia", "",
-              "Le citazioni seguenti sono parole generate dal modello in ruolo, non testimonianze umane. "
-              "Le probabilità provengono esclusivamente dalle risposte Decision già salvate; "
-              "il massimo della distribuzione non è un'azione realmente compiuta.", ""]
-    for pair in pairs[:max_transcript_pairs]:
-        a, d = pair["interview"], pair["decision"]
-        lines += [f"### {people[pair['persona_id']].get('name', pair['persona_id'])} · {pair['asset_id']}", "",
-                  "Decision — " + "; ".join(f"{k}: {v:.3f}" for k, v in d["actions"].items()) + ".", "",
-                  "Distribuzione completa azione/motivo: " + json.dumps(d["probabilities"], ensure_ascii=False) + ".", ""]
-        for key, question in QUESTIONS.items():
-            lines += [f"**{question}**", "", "> " + a[key].replace("\n", "\n> "), ""]
-    if len(pairs) > max_transcript_pairs:
-        lines += [f"*Mostrate le prime {max_transcript_pairs} coppie su {len(pairs)} totali; il dataset completo è in `{out}/comparison.json` e `{out}/frozen.json`.*", ""]
-    lines += ["## Artefatti e riproducibilità", "",
-              f"[Manifest e hash degli input]({out}/manifest.json) · [Interviste congelate]({out}/frozen.json) · "
-              f"[Opinioni per campagna]({out}/campaign_opinions.json) · "
-              f"[Confronto strutturato]({out}/comparison.json) · [Grafico]({out}/preferences.html)", ""]
+        resp = r["response"]
+        punti = resp.get("punti_a_favore") or resp["overall"]["summary"]
+        most_lbl = ", ".join(r["mapping"][s] for s in resp["overall"]["most_useful"]) or "nessuno"
+        lines.append(f"- **{people[pid].get('name', pid)} (`{pid}`)** — Più utili: {most_lbl}. {punti}")
+    lines += ["", f"*Dataset completo e ricevute T3 in `{out}/frozen.json`, `{out}/campaign_opinions.json` e `{out}/preferences.html`.*", ""]
     (out / "REPORT.md").write_text("\n".join(lines) + "\n", encoding="utf-8")
-    assets = sorted({p["asset_id"] for p in pairs})
+    assets = sorted(all_assets)
     denom = max(1, max([positive[a] for a in assets] + [negative[a] for a in assets] + [1]))
     rows = "".join(f'<div class="row"><span>{escape(aid)}</span><div class="bars">'
                    f'<div class="bar pos" style="width:{positive[aid] * 100 / denom:.1f}%"></div>'

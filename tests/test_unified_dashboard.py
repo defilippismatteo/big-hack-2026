@@ -8,6 +8,7 @@ from market_mirror.decision_runs import analyze_parallel
 from market_mirror.interviews import QUESTIONS, freeze, prepare, report
 from market_mirror.starter import ROOT, build_catalog, build_context, generate_slots
 from market_mirror.t3_personas import build_jobs, import_response
+from market_mirror.design_dashboard import build_dashboard
 from market_mirror.unified_dashboard import build_unified_payload, render_unified_dashboard
 from tests.test_decision_runs import FakeDecisionAPI
 
@@ -162,3 +163,31 @@ class UnifiedDashboardTests(unittest.TestCase):
             self.assertIn("Chiarezza offerta", html)
             self.assertIn("NDL-C1", html)
             self.assertNotIn("__DATA_JSON__", html)
+
+    def test_design_dashboard_renders_all_project_sections(self):
+        html = build_dashboard(ROOT)
+        self.assertNotIn("__PAYLOAD__", html)
+        for token in [
+            'id="tab-btn-overview"',
+            'id="tab-btn-forecast"',
+            'id="tab-btn-audience"',
+            'id="tab-btn-creatives"',
+            'id="tab-btn-personas"',
+            'id="tab-btn-interviews"',
+            'id="tab-btn-validation"',
+            'id="tab-btn-evidence"',
+            'hidden="until-found"',
+            'closedby="any"',
+            'role="status"',
+            "aria-sort",
+            "Orizzonte completo a 106 giorni",
+            "Pool 600",
+            "previsioni_arricchite",
+            "NDL-C1",
+            "FGR-C1",
+            "CDF-C1",
+            "abbigliamento-P001",
+            "beforematch",
+        ]:
+            self.assertIn(token, html)
+

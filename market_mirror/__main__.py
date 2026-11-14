@@ -70,6 +70,9 @@ def parser():
     cmd.add_argument("--report-md", type=Path, default=ROOT / "artifacts/personas_t3_600/interviews/REPORT.md")
     cmd.add_argument("--out", type=Path, default=ROOT / "dashboard_unificata.html")
     cmd.add_argument("--seed", type=int)
+    cmd = sub.add_parser("design-dashboard", help="Genera la dashboard di presentazione offline da tutti gli artefatti locali")
+    cmd.add_argument("--root", type=Path, default=ROOT)
+    cmd.add_argument("--out", type=Path, default=ROOT / "dashboard_design.html")
     cmd = sub.add_parser("t3-prepare", help="Slot e prompt da delegare a Gemini tramite T3; nessuna API")
     cmd.add_argument("--data-dir", type=Path)
     cmd.add_argument("--out", type=Path, default=ROOT / "artifacts" / "personas_t3")
@@ -182,6 +185,11 @@ def main(argv=None):
             args.out.parent.mkdir(parents=True, exist_ok=True)
             args.out.write_text(render_unified_dashboard(payload), encoding="utf-8")
             print(f"Dashboard unificata: {args.out} ({payload['meta']['persona_count']} personas, {payload['meta']['interviews_count']} interviste)")
+        elif args.command == "design-dashboard":
+            from .design_dashboard import build_dashboard
+            args.out.parent.mkdir(parents=True, exist_ok=True)
+            args.out.write_text(build_dashboard(args.root), encoding="utf-8")
+            print(f"Dashboard design: {args.out}")
         elif args.command == "t3-prepare":
             from .t3_personas import prepare_jobs
             summary = prepare_jobs(args.data_dir or Path(cfg['data_dir']), args.out,

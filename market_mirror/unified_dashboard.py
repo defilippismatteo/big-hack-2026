@@ -148,7 +148,7 @@ def build_unified_payload(
         mapping = item["mapping"]
         resp = item["response"]
         answers = []
-        for a in resp["answers"]:
+        for a in resp.get("answers", []):
             answers.append({
                 "asset_id": mapping.get(a["stimulus_id"], a["stimulus_id"]),
                 "stimulus_id": a["stimulus_id"],
@@ -160,6 +160,9 @@ def build_unified_payload(
                 "change": a["change"],
             })
         interview_by_pid[pid] = {
+            "mode": resp.get("mode", "full"),
+            "punti_a_favore": resp.get("punti_a_favore", ""),
+            "perche_si_allontana": resp.get("perche_si_allontana", ""),
             "most_useful": [mapping.get(s, s) for s in resp["overall"]["most_useful"]],
             "least_useful": [mapping.get(s, s) for s in resp["overall"]["least_useful"]],
             "summary": resp["overall"]["summary"],
@@ -1040,10 +1043,19 @@ HTML_TEMPLATE = r'''<!doctype html>
       ).join('');
       const intv = p.interview;
       const intvByAsset = {};
-      if (intv) intv.answers.forEach(a => { intvByAsset[a.asset_id] = a; });
+      if (intv) (intv.answers || []).forEach(a => { intvByAsset[a.asset_id] = a; });
+      const mostSet = new Set(intv ? (intv.most_useful || []) : []);
+      const leastSet = new Set(intv ? (intv.least_useful || []) : []);
       const evalRows = p.evaluations.map(ev => {
         const ia = intvByAsset[ev.asset_id];
         const s = ev.actions.scroll * 100, g = (ev.actions.glance || 0) * 100, st = ev.actions.stop * 100, c = ev.actions.click * 100;
+        let opCell = '—';
+        if (ia) {
+          opCell = `<span class="badge pos">+</span> ${esc(ia.positive)}<br><span class="badge neg">-</span> ${esc(ia.negative)}`;
+        } else if (intv) {
+          if (mostSet.has(ev.asset_id)) opCell = `<span class="badge pos">Tra i più utili</span>`;
+          else if (leastSet.has(ev.asset_id)) opCell = `<span class="badge neg">Tra i meno utili</span>`;
+        }
         return `<tr>
           <th><code>${esc(ev.asset_id)}</code><br><span class="badge">${esc(LEVER_LABELS[ev.leva] || ev.leva)}</span></th>
           <td>
@@ -1056,7 +1068,7 @@ HTML_TEMPLATE = r'''<!doctype html>
             <div class="action-inline">Salta ${nf0.format(Math.round(s))}% · Occ. ${nf0.format(Math.round(g))}% · Stop ${nf0.format(Math.round(st))}% · <strong>Apre ${fmtPct1(c)}</strong></div>
           </td>
           <td><code>${esc(ev.top_pair)}</code> (${fmtPct1(ev.top_pair_prob * 100)})</td>
-          <td>${ia ? `<span class="badge pos">+</span> ${esc(ia.positive)}<br><span class="badge neg">-</span> ${esc(ia.negative)}` : '—'}</td>
+          <td>${opCell}</td>
         </tr>`;
       }).join('');
       el.innerHTML = `
@@ -1076,8 +1088,9 @@ HTML_TEMPLATE = r'''<!doctype html>
             <p class="muted">${esc(p.feed.platform)} ore ${esc(p.feed.hour)}:00 · pos. annuncio ${esc(p.feed.ad_position)}</p>
             <div class="feed-box">${feedItems}</div>
             ${intv ? `<div class="kv-list" style="margin-top:0.8rem;">
-              <div class="kv-item"><strong>Sintesi Intervista (${esc(p.name)})</strong>${esc(intv.summary)}</div>
-              <div class="kv-item"><strong>Più utili / Meno utili dichiarati</strong><span class="badge pos">Più utili: ${esc(intv.most_useful.join(', ') || 'nessuno')}</span> <span class="badge neg">Meno utili: ${esc(intv.least_useful.join(', ') || 'nessuno')}</span></div>
+              ${intv.punti_a_favore ? `<div class="kv-item"><strong>Punti a favore (${esc(p.name)})</strong>${esc(intv.punti_a_favore)}</div>` : `<div class="kv-item"><strong>Sintesi Intervista (${esc(p.name)})</strong>${esc(intv.summary)}</div>`}
+              ${intv.perche_si_allontana && intv.perche_si_allontana.toLowerCase() !== 'nulla' ? `<div class="kv-item"><strong>Freno principale</strong>${esc(intv.perche_si_allontana)}</div>` : ''}
+              <div class="kv-item"><strong>Più utili / Meno utili dichiarati</strong><span class="badge pos">Più utili: ${esc((intv.most_useful || []).join(', ') || 'nessuno')}</span> <span class="badge neg">Meno utili: ${esc((intv.least_useful || []).join(', ') || 'nessuno')}</span></div>
             </div>` : ''}
           </div>
         </div>
