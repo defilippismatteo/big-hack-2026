@@ -25,7 +25,23 @@
       "decision_habits": "Compra vestiti solo quando un capo si consuma o si rompe; preferisce provare formule pratiche come pantaloni resistenti o maglie traspiranti di marchi nuovi se promettono zero manutenzione e vestibilità chiara.",
       "ad_avoidance": "Ignora quasi tutti i banner online e chiude subito i popup con offerte a tempo; sui social apre raramente i feed e salta a piè pari i caroselli sponsorizzati di moda.",
       "provider": "t3:antigravity",
-      "model": "gemini-4-hydrogen"
+      "model": "gemini-4-hydrogen",
+      "interview": {
+        "mode": "full",
+        "punti_a_favore": "Nulla di particolare, a parte il fatto che dalla descrizione sembra almeno vedersi il cappotto indossato da una persona e non solo una grafica promozionale. | Nulla, non c'è nessun elemento nel testo che risponda a un mio bisogno pratico.",
+        "perche_si_allontana": "La pressione sul 'va a ruba' e sulle taglie in esaurimento mi allontana subito perché non sopporto le offerte costruite sulla fretta. Inoltre non c'è alcun dato concreto su tessuto o praticità, quindi per me resta solo rumore pubblicitario. | L'idea di 'capsule numerata' e le foto editoriali di modelli in strada non mi interessano affatto, anzi mi fanno saltare subito il carosello come faccio di solito con le pubblicità di moda. Non si capisce nemmeno di che singoli capi si tratti né quanto costino.",
+        "most_useful": [
+          "FGR-S4",
+          "FGR-U3"
+        ],
+        "least_useful": [
+          "FGR-S3",
+          "FGR-S1",
+          "FGR-B2"
+        ],
+        "summary": "Nel complesso quasi tutti questi annunci puntano su urgenza, sconti del Black Friday o estetica da social, lasciandomi poco o nulla su cui valutare praticità, tessuti e durata dei capi. Solo C07, perché nomina un piumino leggero potenzialmente utile, e C12, perché richiama spedizione e reso gratuiti, toccano aspetti vicini ai miei criteri, mentre proposte editoriali o da creator come C02, C08 e i saldi confusi di C06 sono per me del tutto inutili.",
+        "receipt_model": "gemini-4-hydrogen"
+      }
     },
     "beauty_skincare": {
       "persona_id": "beauty_skincare-P001",
@@ -46,71 +62,2161 @@
       "decision_habits": "Non cerca attivamente prodotti per il viso; al supermercato o in farmacia prende al massimo ciò che già conosce o che gli consiglia il medico di base se ha la pelle screpolata dal freddo. Prudentissimo negli acquisti online, preferisce pagare alla consegna o usare negozi fisici di quartiere.",
       "ad_avoidance": "Salta istantaneamente i banner promozionali e ignora le sponsorizzate su quel poco di notizie che legge online; chiude le email promozionali senza aprirle.",
       "provider": "t3:antigravity",
-      "model": "gemini-4-hydrogen"
+      "model": "gemini-4-hydrogen",
+      "interview": {
+        "mode": "concise",
+        "punti_a_favore": "Solo C11 mantiene un tono composto con una dermatologa che spiega con calma, mentre C12 va subito al sodo con poco testo sulla spedizione gratis.",
+        "perche_si_allontana": "Tutta questa fretta tra timer, scorte al 15% e sconti a tempo mi sa di trovata commerciale per farmi comprare online creme di cui non so nulla.",
+        "most_useful": [
+          "NDL-U3",
+          "NDL-U2"
+        ],
+        "least_useful": [
+          "NDL-U1",
+          "NDL-B4",
+          "NDL-U4"
+        ],
+        "summary": "Solo C11 mantiene un tono composto con una dermatologa che spiega con calma, mentre C12 va subito al sodo con poco testo sulla spedizione gratis. Freno: Tutta questa fretta tra timer, scorte al 15% e sconti a tempo mi sa di trovata commerciale per farmi comprare online creme di cui non so nulla.",
+        "receipt_model": "gemini-4-hydrogen"
+      }
     },
     "pet_ecommerce": {
-      "persona_id": "pet_ecommerce-P001",
-      "name": "Chiara Bellini",
+      "persona_id": "pet_ecommerce-P002",
+      "name": "Valentina Marchetti",
       "vertical": "pet_ecommerce",
-      "age_years": 22,
-      "occupation": "Studentessa magistrale in ingegneria biomedica e tutor di matematica part-time",
-      "persona_summary": "Chiara Bellini, donna di 22 anni, non possiede animali ma compra occasionalmente un piccolo snack o un accessorio quando torna dai genitori che hanno un cane; il suo interesse per la categoria è basso. Usa pochissimo i social, è guidata dalla praticità e, pur essendo aperta a provare nuovi negozi online per curiosità tecnologica, acquista solo se il processo è immediato.",
+      "age_years": 38,
+      "occupation": "Architetta d'interni freelance",
+      "persona_summary": "Valentina Marchetti, donna di 38 anni, vive con un gatto europeo e ha un interesse medio per l'e-commerce pet, che frequenta senza coinvolgimento emotivo particolare. Usa Instagram soprattutto per il lavoro e il design, si muove con indifferenza rispetto alle campagne promozionali ma è disposta a sperimentare negozi nuovi se propongono oggetti ben progettati.",
       "interests": [
-        "arrampicata indoor",
-        "podcast di divulgazione scientifica",
-        "cucina vegetariana veloce",
-        "fotografia analogica",
-        "viaggi in treno low-cost"
+        "restauro di mobili vintage",
+        "ceramica artigianale",
+        "architettura sostenibile",
+        "cinema d'autore",
+        "cura di gatti domestici",
+        "trekking appenninico"
       ],
-      "concerns": "Teme costi di spedizione sproporzionati rispetto al valore di un piccolo ordine e ritardi di consegna che la costringano a restare in casa ad aspettare il corriere.",
-      "trust_requirements": "Ritiro presso locker o tabaccheria sotto casa, costi totali visibili prima del checkout e recensioni sintetiche verificabili.",
-      "decision_habits": "Cerca su motore di ricerca ciò che le serve in quel momento, sceglie un prodotto compatto con consegna in punto di ritiro e conclude l'acquisto in pochi minuti senza creare account complessi.",
-      "ad_avoidance": "Chiude subito banner invasivi e popup di iscrizione newsletter; evita i social durante lo studio e salta senza esitazione i video sponsorizzati che interrompono i podcast.",
+      "concerns": "Teme oggetti ingombranti di qualità scadente che rovinino l'estetica del soggiorno o che il gatto ignori completamente dopo il primo giorno.",
+      "trust_requirements": "Fotografie reali dei prodotti in ambienti domestici, misure esatte indicate nella scheda e politica di reso semplice in caso di difetti.",
+      "decision_habits": "Non pianifica acquisti di categoria con anticipo; compra cibo base al supermercato vicino casa e ordina online solo quando un oggetto le colpisce l'occhio per estetica o funzionalità in casa.",
+      "ad_avoidance": "Scorre velocemente i caroselli troppo gridati o con sconti lampeggianti, mentre si ferma solo se la foto ha un'estetica curata e non sembra una televendita.",
       "provider": "t3:antigravity",
-      "model": "gemini-4-hydrogen"
+      "model": "gemini-4-hydrogen",
+      "interview": {
+        "mode": "concise",
+        "punti_a_favore": "In C07 apprezzo le foto naturali di casa con le cucce e gli animali veri, perché sembrano oggetti reali e non una televendita. Anche l'illustrazione ordinata di C03 sul gatto risulta più pulita rispetto al resto.",
+        "perche_si_allontana": "Quasi tutte le altre proposte usano grafiche nere gridate da Black Friday e sconti lampeggianti senza mostrarmi misure esatte, materiali o resa reale in appartamento.",
+        "most_useful": [
+          "CDF-S3",
+          "CDF-S4"
+        ],
+        "least_useful": [
+          "CDF-B1",
+          "CDF-B3",
+          "CDF-B4"
+        ],
+        "summary": "In C07 apprezzo le foto naturali di casa con le cucce e gli animali veri, perché sembrano oggetti reali e non una televendita. Anche l'illustrazione ordinata di C03 sul gatto risulta più pulita rispetto al resto. Freno: Quasi tutte le altre proposte usano grafiche nere gridate da Black Friday e sconti lampeggianti senza mostrarmi misure esatte, materiali o resa reale in appartamento.",
+        "receipt_model": "gemini-4-hydrogen"
+      }
     }
   },
-  "reportsKind": "mock_not_model",
-  "reportsStatus": "Esempio di struttura: non deriva dalle interviste. Il rapporto finale è in preparazione.",
+  "reportsKind": "synthetic_interviews",
+  "reportsSource": {
+    "frozenPath": "artifacts/personas_t3_600/interviews/frozen.json",
+    "frozenSha256": "e693a3749f826ef71b48d12304ee8d01a4c69a6a8c8d4c5054faac09959bbcf9",
+    "summaryPath": "artifacts/personas_t3_600/interviews/interview_summary.json",
+    "summarySha256": "d940fb2a7817cb2b96dd1904ee4e982ba42389ed338ec0e3184370d1afe014a3",
+    "nInterviews": 600,
+    "nAssets": 36
+  },
+  "reportsStatus": "Recap finale acquisito da 600 interviste cieche congelate (200 per campagna) e confrontato con 7.200 valutazioni Decision 1.",
+  "overallSummary": {
+    "executive_verdict": "Su 600 interviste cieche (200 per campagna) e 7.200 valutazioni Decision 1, i profili sintetici premiano la riduzione concreta del rischio d'acquisto (spedizione e reso gratuiti, soglia 29 €, guida taglie in cm, spiegazione dermatologica e composizione monoproteica) e penalizzano i countdown aggressivi e gli sconti Black Friday urlati privi di dettagli tecnici sul prodotto.",
+    "headline": "Recap finale su 600 interviste cieche (200 per settore) e 7.200 valutazioni Decision 1 (36 asset)",
+    "positive_highlights": [
+      "Trasparenza logistica e riduzione del rischio: FGR-U3 (48h spedizione e reso gratis, +151/-1, saldo +150), NDL-U2 (spedizione gratis fino a domenica, +110/-1, saldo +109) e CDF-U1 (-15% primo ordine con soglia 29 € esplicita, +102/-0, saldo +102) guidano il gradimento trasversale.",
+      "Prove visive reali e competenza tecnica: NDL-U3 (video con dermatologa, +137/-8, saldo +129), CDF-S3 (carosello cucce invernali in casa con 3 taglie chiare, +116/-1, saldo +115) e NDL-S4 (SPF 50 invisibile con punti elenco tecnici, +111/-12, saldo +99) costruiscono fiducia sia nella coorte generalista sia negli in-target critici.",
+      "Specificità di prodotto rispetto allo sconto generico: maglieria su sfondo neutro (FGR-U1, +128/-3, saldo +125) e crocchette monoproteiche/taurina (CDF-S1 +66/-23, CDF-S4 +52/-23) superano nettamente i messaggi promozionali indistinti."
+    ],
+    "negative_highlights": [
+      "Rigetto degli slogan Black Friday 'solo oggi' privi di contesto: NDL-B4 (-167, 2 più utili vs 169 meno utili), CDF-B1 (-133, 7 vs 140) e FGR-B1 (-113, 0 vs 113) sono percepiti come rumore promozionale o finta urgenza.",
+      "Diffidenza verso timer brevi e vincoli ricorrenti: i conti alla rovescia di 24-48 ore (NDL-U1 saldo -118, FGR-B4 saldo -100) e l'abbonamento riordino imposto in fretta (CDF-U3, 14 vs 119, saldo -105) bloccano i profili prudenti.",
+      "Assenza di schede tecniche verificabili: la mancanza di INCI/attivi (Beauty), composizione fibre e misure in centimetri (Abbigliamento) o percentuali di carne e consegna in punto di ritiro (Pet) frena la conversione dopo il primo sguardo."
+    ],
+    "recommendations": [
+      "Abbigliamento (FGR-C1): puntare su FGR-U3 e FGR-U1 integrando subito nel carosello composizione fibre (% lana/cotone), tabella taglie in cm e condizioni di reso gratuito senza stampante.",
+      "Beauty & Skincare (NDL-C1): combinare l'attrattività di formato di NDL-S3/NDL-B3 con il taglio informativo dermatologico di NDL-U3 e NDL-S4, esplicitando INCI, tipo di pelle e prezzo finale.",
+      "Pet E-commerce (CDF-C1): scalare CDF-S3 e CDF-U1 mantenendo in primo piano la soglia di spedizione gratuita a 29 €, la tabella taglie in cm e la composizione analitica (monoproteico, taurina), rimuovendo il vincolo di abbonamento da CDF-U3."
+    ]
+  },
   "reports": {
     "abbigliamento": {
+      "campaign_id": "FGR-C1",
+      "campaign_name": "FGR | Vendite | Autunno-Inverno",
+      "n_interviews": 200,
+      "headline": "FGR-C1 · Abbigliamento Autunno-Inverno (200 interviste cieche + 2.400 valutazioni Decision 1 su 12 asset)",
       "positive": [
-        "Una vestibilità facile da valutare riduce i dubbi.",
-        "Praticità e qualità del tessuto rendono il prodotto rilevante.",
-        "Un’offerta leggibile aiuta a capire il vantaggio."
+        "Spedizione e reso gratuiti come leva decisiva: FGR-U3 ('48 ore: spedizione e reso gratis', carosello) ottiene 151 menzioni tra i più utili e 1 sola tra i meno utili (saldo +150) ed è 1° su Decision 1 (click intent 14,96%), indicato da Chiara Bellini (46 anni, abbigliamento-P001) e Paola Ferrario (51 anni, abbigliamento-P102).",
+        "Offerta lineare su categoria concreta e fotografia pulita: FGR-U1 ('Solo fino a domenica: -20% sulla maglieria', 128 più utili / 3 meno utili, saldo +125, D1 click 13,22%) convince Sergio Lombardi (80 anni, abbigliamento-P002), Ettore Marchetti (79 anni, abbigliamento-P003) e Silvia Tommasini (55 anni, abbigliamento-P103).",
+        "Capi spalla e look abbinati: FGR-S4 ('Piumino leggero: ultimi pezzi', 45 / 12, saldo +33) e FGR-S3 ('Capsule limitata: 5 look, 300 pezzi', 58 / 28, saldo +30, D1 click 12,74%) attraggono chi cerca vestibilità pratica o abbinamenti pronti."
       ],
       "negative": [
-        "Taglie poco chiare possono bloccare la scelta.",
-        "La sola urgenza non spiega il valore del capo.",
-        "Resi e materiali devono essere facili da trovare."
+        "Ribassi Black Friday gridati senza dettagli sartoriali: FGR-B1 ('Black Friday anticipato: -30%', 0 più utili / 113 meno utili, saldo -113), FGR-B4 ('Black Friday: solo oggi -50%', 5 / 105, saldo -100) e FGR-B2 ('Black Week: cosa compro io', 0 / 95, saldo -95) generano sfiducia sulla qualità reale dei capi.",
+        "Saldi fine estate fuori stagione e taglie residue: FGR-S1 ('Saldi fine estate: ultime taglie', 0 più utili / 83 meno utili, saldo -83) risulta incoerente con il bisogno autunno-inverno.",
+        "Mancanza di composizione tessile (% lana, cotone, sintetico), guida taglie in centimetri e istruzioni di lavaggio."
       ],
-      "next": "Provare un messaggio con taglie, materiali e reso in evidenza."
+      "next": "Usare FGR-U3 e FGR-U1 come creatività cardine aggiungendo nello stesso carosello composizione del filato, misure in cm e garanzia di reso gratuito senza costi nascosti.",
+      "recommendations": [
+        "Usare FGR-U3 e FGR-U1 come creatività cardine aggiungendo nello stesso carosello composizione del filato, misure in cm e garanzia di reso gratuito senza costi nascosti."
+      ],
+      "by_lever": [
+        {
+          "leva": "urgency",
+          "n_assets": 4,
+          "most_useful_mentions": 355,
+          "least_useful_mentions": 86,
+          "net_mentions": 269,
+          "mean_decision_click_intent": 0.123838
+        },
+        {
+          "leva": "scarcity",
+          "n_assets": 4,
+          "most_useful_mentions": 114,
+          "least_useful_mentions": 158,
+          "net_mentions": -44,
+          "mean_decision_click_intent": 0.114219
+        },
+        {
+          "leva": "black_friday",
+          "n_assets": 4,
+          "most_useful_mentions": 23,
+          "least_useful_mentions": 356,
+          "net_mentions": -333,
+          "mean_decision_click_intent": 0.109797
+        }
+      ],
+      "top_assets": [
+        {
+          "asset_id": "FGR-U3",
+          "headline": "48 ore: spedizione e reso gratis",
+          "leva": "urgency",
+          "formato": "carosello",
+          "most_useful_count": 151,
+          "least_useful_count": 1,
+          "net_mentions": 150,
+          "decision_click_intent": 0.14955397402639758
+        },
+        {
+          "asset_id": "FGR-U1",
+          "headline": "Solo fino a domenica: -20% sulla maglieria",
+          "leva": "urgency",
+          "formato": "immagine",
+          "most_useful_count": 128,
+          "least_useful_count": 3,
+          "net_mentions": 125,
+          "decision_click_intent": 0.13223239935064401
+        },
+        {
+          "asset_id": "FGR-S4",
+          "headline": "Piumino leggero: ultimi pezzi",
+          "leva": "scarcity",
+          "formato": "video",
+          "most_useful_count": 45,
+          "least_useful_count": 12,
+          "net_mentions": 33,
+          "decision_click_intent": 0.11633115413205504
+        },
+        {
+          "asset_id": "FGR-S3",
+          "headline": "Capsule limitata: 5 look, 300 pezzi",
+          "leva": "scarcity",
+          "formato": "carosello",
+          "most_useful_count": 58,
+          "least_useful_count": 28,
+          "net_mentions": 30,
+          "decision_click_intent": 0.1273747606156659
+        }
+      ],
+      "least_assets": [
+        {
+          "asset_id": "FGR-B2",
+          "headline": "Black Week: cosa compro io",
+          "leva": "black_friday",
+          "formato": "video",
+          "most_useful_count": 0,
+          "least_useful_count": 95,
+          "net_mentions": -95,
+          "decision_click_intent": 0.08299027204665198
+        },
+        {
+          "asset_id": "FGR-B4",
+          "headline": "Black Friday: solo oggi -50%",
+          "leva": "black_friday",
+          "formato": "video",
+          "most_useful_count": 5,
+          "least_useful_count": 105,
+          "net_mentions": -100,
+          "decision_click_intent": 0.1052355182160968
+        },
+        {
+          "asset_id": "FGR-B1",
+          "headline": "Black Friday anticipato: -30%",
+          "leva": "black_friday",
+          "formato": "immagine",
+          "most_useful_count": 0,
+          "least_useful_count": 113,
+          "net_mentions": -113,
+          "decision_click_intent": 0.10307805037247243
+        }
+      ],
+      "voices": [
+        {
+          "persona_id": "abbigliamento-P001",
+          "name": "Chiara Bellini",
+          "age_years": 46,
+          "occupation": "Tecnica di laboratorio analisi chimiche a Padova",
+          "cohort": "unbiased",
+          "punti_a_favore": "Nulla di particolare, a parte il fatto che dalla descrizione sembra almeno vedersi il cappotto indossato da una persona e non solo una grafica promozionale. | Nulla, non c'è nessun elemento nel testo che risponda a un mio bisogno pratico.",
+          "perche_si_allontana": "La pressione sul 'va a ruba' e sulle taglie in esaurimento mi allontana subito perché non sopporto le offerte costruite sulla fretta. Inoltre non c'è alcun dato concreto su tessuto o praticità, quindi per me resta solo rumore pubblicitario. | L'idea di 'capsule numerata' e le foto editoriali di modelli in strada non mi interessano affatto, anzi mi fanno saltare subito il carosello come faccio di solito con le pubblicità di moda. Non si capisce nemmeno di che singoli capi si tratti né quanto costino.",
+          "most_useful": [
+            "FGR-S4",
+            "FGR-U3"
+          ],
+          "least_useful": [
+            "FGR-S3",
+            "FGR-S1",
+            "FGR-B2"
+          ]
+        },
+        {
+          "persona_id": "abbigliamento-P002",
+          "name": "Sergio Lombardi",
+          "age_years": 80,
+          "occupation": "Ex capostazione ferroviario in pensione e volontario in biblioteca a Bologna",
+          "cohort": "unbiased",
+          "punti_a_favore": "Vedere cinque look già abbinati potrebbe risultare pratico per non sbagliare accostamenti, ma nel testo fornito trovo ben poco di concreto. | Il prezzo fisso di 99 euro per tre capi insieme è chiaro, rientra in un budget ragionevole e l'idea del completo già pronto è pratica.",
+          "perche_si_allontana": "L'espressione 'capsule numerata' e l'urgenza del 'quando finisce non torna' mi sembrano rivolte a un pubblico giovane, e le foto editoriali su modelli non mostrano come cadono i capi su un corpo maturo. | La pressione delle 24 ore con il timer e il ritmo veloce non mi lasciano osservare con calma i capi né mi trasmettono solidità.",
+          "most_useful": [
+            "FGR-U1",
+            "FGR-B3"
+          ],
+          "least_useful": [
+            "FGR-B4",
+            "FGR-B2",
+            "FGR-S2"
+          ]
+        },
+        {
+          "persona_id": "abbigliamento-P003",
+          "name": "Ettore Marchetti",
+          "age_years": 79,
+          "occupation": "Architetto urbanista in pensione e consulente culturale a Torino",
+          "cohort": "unbiased",
+          "punti_a_favore": "Nulla di concreto: l'idea di uno sconto sulla stagione autunno-inverno potrebbe interessarmi solo sapendo di che capi si tratta, ma dal testo non emerge alcun dettaglio costruttivo. | Il riferimento a una 'prima produzione' farebbe pensare a una serie ridotta, cosa che in astratto può incuriosire chi osserva brand emergenti. Tuttavia dal solo testo non colgo nulla di concreto sulla fattura del cappotto.",
+          "perche_si_allontana": "La grafica nera dominata dal '-30%' gigante e da molte righe di condizioni mi respinge perché privilegia l'urgenza commerciale rispetto alla sobrietà e alla chiarezza sul prodotto. | L'enfasi sugli 'ultimi pezzi' e l'ambientazione frettolosa in camera da letto mi allontanano perché non aiutano a leggere proporzioni e dettagli sartoriali. Inoltre le taglie citate (S e M) e la presentazione non sembrano rivolte a me.",
+          "most_useful": [
+            "FGR-U1",
+            "FGR-S3"
+          ],
+          "least_useful": [
+            "FGR-B4",
+            "FGR-S1",
+            "FGR-U4"
+          ]
+        },
+        {
+          "persona_id": "abbigliamento-P101",
+          "name": "Chiara Bellini",
+          "age_years": 34,
+          "occupation": "Consulente ambientale freelance",
+          "cohort": "category_conditioned",
+          "punti_a_favore": "Mi interessano l'idea di una capsule limitata a 300 pezzi in C04, l'essenzialità di C11 e la sicurezza di non pagare il reso in C09.",
+          "perche_si_allontana": "I conti alla rovescia finti, i ribassi da svendita totale e l'assenza totale di etichetta fibre e tracciabilità della filiera mi fanno passare oltre.",
+          "most_useful": [
+            "FGR-S3",
+            "FGR-U1",
+            "FGR-U3"
+          ],
+          "least_useful": [
+            "FGR-B4",
+            "FGR-B1",
+            "FGR-S1"
+          ]
+        },
+        {
+          "persona_id": "abbigliamento-P102",
+          "name": "Paola Ferrario",
+          "age_years": 51,
+          "occupation": "Tecnica di laboratorio biomedico",
+          "cohort": "category_conditioned",
+          "punti_a_favore": "Mi sono utili C09 per spedizione e reso gratuiti, C11 per il -20% lineare su maglioni e cardigan che uso davvero e C07 per vedere i prezzi barrati.",
+          "perche_si_allontana": "I conti alla rovescia da poche ore e gli sconti al 50% senza tabella misure in centimetri né composizione del tessuto mi fanno dubitare del prezzo di partenza e della tenuta dei capi.",
+          "most_useful": [
+            "FGR-U3",
+            "FGR-U1",
+            "FGR-B3"
+          ],
+          "least_useful": [
+            "FGR-U4",
+            "FGR-U2",
+            "FGR-B2"
+          ]
+        },
+        {
+          "persona_id": "abbigliamento-P103",
+          "name": "Silvia Tommasini",
+          "age_years": 55,
+          "occupation": "Bibliotecaria comunale",
+          "cohort": "category_conditioned",
+          "punti_a_favore": "Apprezzo la presentazione tranquilla e leggibile della maglieria piegata su sfondo neutro in C04, così come l'idea dei look completi di C10 e la promessa di reso gratuito in C09, perché compro raramente online senza garanzie sul cambio.",
+          "perche_si_allontana": "Mancano del tutto dettagli su tessuti, cuciture, lavaggio e contatti reali dell'assistenza, mentre l'insistenza continua su timer, Black Friday e urgenze artificiali mi fa passare la voglia di approfondire.",
+          "most_useful": [
+            "FGR-U1",
+            "FGR-U3",
+            "FGR-S3"
+          ],
+          "least_useful": [
+            "FGR-U2",
+            "FGR-B4",
+            "FGR-B1"
+          ]
+        }
+      ]
     },
     "beauty_skincare": {
+      "campaign_id": "NDL-C1",
+      "campaign_name": "NDL | Vendite | Skincare",
+      "n_interviews": 200,
+      "headline": "NDL-C1 · Beauty & Skincare (200 interviste cieche + 2.400 valutazioni Decision 1 su 12 asset)",
       "positive": [
-        "Una routine semplice rende il beneficio comprensibile.",
-        "Ingredienti e modalità d’uso aiutano a valutare il prodotto.",
-        "Un risultato descritto in modo concreto incuriosisce."
+        "Spiegazione dermatologica e routine passo-passo: NDL-U3 ('48 ore per la tua routine a -15%') ottiene 137 menzioni tra i più utili e solo 8 tra i meno utili (saldo +129, D1 click 14,96%), apprezzato da Mauro Cattaneo (51 anni, beauty_skincare-P001) e Chiara Bellini (33 anni, beauty_skincare-P003) per il tono tecnico e calmo.",
+        "Azzeramento delle barriere di spedizione e chiarezza funzionale: NDL-U2 ('Spedizione gratis: scade domenica', 110 più utili / 1 meno utile, saldo +109) e NDL-S4 ('Rimasti in pochi: SPF 50 invisibile', 111 / 12, saldo +99) convincono Lorenzo Ferretti (24 anni, beauty_skincare-P101) e Matteo Rinaldi (31 anni, beauty_skincare-P103).",
+        "Carosello kit con recensioni verificabili: NDL-S3 ('Edizione limitata: kit routine autunno', 56 più utili / 21 meno utili, saldo +35) unisce il 2° miglior click intent su Decision 1 (17,38%) al favore di Giulia Baroni (24 anni, beauty_skincare-P002) e Giuliana Parodi (79 anni, beauty_skincare-P102)."
       ],
       "negative": [
-        "Promesse generiche possono ridurre la fiducia.",
-        "Mancano indicazioni per capire a quale pelle è adatto.",
-        "Lo sconto da solo non risolve i dubbi sul prodotto."
+        "Sconto Black Friday urlato senza INCI: NDL-B4 ('Black Friday: solo oggi -40%', video) registra 169 menzioni tra i meno utili e solo 2 tra i più utili (saldo -167), pur avendo un click intent immediato del 14,54% su Decision 1.",
+        "Pressione fino a mezzanotte percepita come artificiale: NDL-U1 ('Solo fino a mezzanotte: -20%', 3 più utili / 121 meno utili, saldo -118) e NDL-B1 ('Black Friday anticipato: -25%', saldo -61) allontanano chi teme reazioni cutanee o acquisti al buio.",
+        "Mancanza di concentrazioni degli attivi, indicazioni per pelle sensibile e formato in ml: i profili in-target critici segnalano che lo sconto non compensa l'assenza di scheda dermatologica."
       ],
-      "next": "Provare un annuncio che chiarisca tipo di pelle e modalità d’uso."
+      "next": "Affiancare al carosello ad alta apertura NDL-B3/NDL-S3 una slide con INCI sintetico, tipo di pelle consigliato e durata del flacone, mantenendo in rotazione NDL-U3 e NDL-S4.",
+      "recommendations": [
+        "Affiancare al carosello ad alta apertura NDL-B3/NDL-S3 una slide con INCI sintetico, tipo di pelle consigliato e durata del flacone, mantenendo in rotazione NDL-U3 e NDL-S4."
+      ],
+      "by_lever": [
+        {
+          "leva": "urgency",
+          "n_assets": 4,
+          "most_useful_mentions": 273,
+          "least_useful_mentions": 165,
+          "net_mentions": 108,
+          "mean_decision_click_intent": 0.138404
+        },
+        {
+          "leva": "scarcity",
+          "n_assets": 4,
+          "most_useful_mentions": 182,
+          "least_useful_mentions": 109,
+          "net_mentions": 73,
+          "mean_decision_click_intent": 0.141895
+        },
+        {
+          "leva": "black_friday",
+          "n_assets": 4,
+          "most_useful_mentions": 34,
+          "least_useful_mentions": 326,
+          "net_mentions": -292,
+          "mean_decision_click_intent": 0.140118
+        }
+      ],
+      "top_assets": [
+        {
+          "asset_id": "NDL-U3",
+          "headline": "48 ore per la tua routine a -15%",
+          "leva": "urgency",
+          "formato": "video",
+          "most_useful_count": 137,
+          "least_useful_count": 8,
+          "net_mentions": 129,
+          "decision_click_intent": 0.1495741303115171
+        },
+        {
+          "asset_id": "NDL-U2",
+          "headline": "Spedizione gratis: scade domenica",
+          "leva": "urgency",
+          "formato": "immagine",
+          "most_useful_count": 110,
+          "least_useful_count": 1,
+          "net_mentions": 109,
+          "decision_click_intent": 0.13391322770041172
+        },
+        {
+          "asset_id": "NDL-S4",
+          "headline": "Rimasti in pochi: SPF 50 invisibile",
+          "leva": "scarcity",
+          "formato": "immagine",
+          "most_useful_count": 111,
+          "least_useful_count": 12,
+          "net_mentions": 99,
+          "decision_click_intent": 0.1351019308876218
+        },
+        {
+          "asset_id": "NDL-S3",
+          "headline": "Edizione limitata: kit routine autunno",
+          "leva": "scarcity",
+          "formato": "carosello",
+          "most_useful_count": 56,
+          "least_useful_count": 21,
+          "net_mentions": 35,
+          "decision_click_intent": 0.17377524723002566
+        }
+      ],
+      "least_assets": [
+        {
+          "asset_id": "NDL-B1",
+          "headline": "Black Friday anticipato: -25%",
+          "leva": "black_friday",
+          "formato": "immagine",
+          "most_useful_count": 2,
+          "least_useful_count": 63,
+          "net_mentions": -61,
+          "decision_click_intent": 0.1290821510002607
+        },
+        {
+          "asset_id": "NDL-U1",
+          "headline": "Solo fino a mezzanotte: -20%",
+          "leva": "urgency",
+          "formato": "video",
+          "most_useful_count": 3,
+          "least_useful_count": 121,
+          "net_mentions": -118,
+          "decision_click_intent": 0.12078308952657464
+        },
+        {
+          "asset_id": "NDL-B4",
+          "headline": "Black Friday: solo oggi -40%",
+          "leva": "black_friday",
+          "formato": "video",
+          "most_useful_count": 2,
+          "least_useful_count": 169,
+          "net_mentions": -167,
+          "decision_click_intent": 0.1454361438361573
+        }
+      ],
+      "voices": [
+        {
+          "persona_id": "beauty_skincare-P001",
+          "name": "Mauro Cattaneo",
+          "age_years": 51,
+          "occupation": "Idraulico e termotecnico autonomo",
+          "cohort": "unbiased",
+          "punti_a_favore": "Solo C11 mantiene un tono composto con una dermatologa che spiega con calma, mentre C12 va subito al sodo con poco testo sulla spedizione gratis.",
+          "perche_si_allontana": "Tutta questa fretta tra timer, scorte al 15% e sconti a tempo mi sa di trovata commerciale per farmi comprare online creme di cui non so nulla.",
+          "most_useful": [
+            "NDL-U3",
+            "NDL-U2"
+          ],
+          "least_useful": [
+            "NDL-U1",
+            "NDL-B4",
+            "NDL-U4"
+          ]
+        },
+        {
+          "persona_id": "beauty_skincare-P002",
+          "name": "Giulia Baroni",
+          "age_years": 24,
+          "occupation": "Studentessa magistrale di giurisprudenza e bibliotecaria part-time",
+          "cohort": "unbiased",
+          "punti_a_favore": "Apprezzo C03 e C01 perché mostrano le recensioni degli acquirenti nel carosello, e C12 perché toglie le spese di spedizione senza complicazioni.",
+          "perche_si_allontana": "I video frenetici con countdown e sconti lampo mi mettono fretta di comprare al buio senza capire quanto dura il flacone o se può darmi brufoletti.",
+          "most_useful": [
+            "NDL-S3",
+            "NDL-U2",
+            "NDL-U4"
+          ],
+          "least_useful": [
+            "NDL-B4",
+            "NDL-U1",
+            "NDL-B1"
+          ]
+        },
+        {
+          "persona_id": "beauty_skincare-P003",
+          "name": "Chiara Bellini",
+          "age_years": 33,
+          "occupation": "Architetta d'interni",
+          "cohort": "unbiased",
+          "punti_a_favore": "Trovo validi C11 perché mette davanti la spiegazione tecnica della dermatologa in modo sobrio e C02 perché evidenzia subito un SPF 50 che non lascia bianco.",
+          "perche_si_allontana": "Vedo solo leve d'urgenza tra lotti limitati e ribassi giganti, senza alcun dettaglio reale su formulazione, attivi o test effettuati.",
+          "most_useful": [
+            "NDL-U3",
+            "NDL-S4",
+            "NDL-S3"
+          ],
+          "least_useful": [
+            "NDL-B4",
+            "NDL-U1",
+            "NDL-B1"
+          ]
+        },
+        {
+          "persona_id": "beauty_skincare-P101",
+          "name": "Lorenzo Ferretti",
+          "age_years": 24,
+          "occupation": "Studente magistrale in ingegneria chimica e borsista di laboratorio part-time",
+          "cohort": "category_conditioned",
+          "punti_a_favore": "Trovo utili i punti elenco sull'SPF 50 invisibile in C12 e la spiegazione della dermatologa in C11 perché danno un minimo di contesto tecnico.",
+          "perche_si_allontana": "Timer finti fino a mezzanotte, reel frettolosi e l'assenza di elenco ingredienti completo o prezzo chiaro mi bloccano subito.",
+          "most_useful": [
+            "NDL-S4",
+            "NDL-U3"
+          ],
+          "least_useful": [
+            "NDL-U1",
+            "NDL-B4",
+            "NDL-U4"
+          ]
+        },
+        {
+          "persona_id": "beauty_skincare-P102",
+          "name": "Giuliana Parodi",
+          "age_years": 79,
+          "occupation": "Ex impiegata amministrativa in pensione",
+          "cohort": "category_conditioned",
+          "punti_a_favore": "Mi aiuta vedere i prodotti del kit uno per uno con le recensioni in C09 e ascoltare la dermatologa che parla con calma in C11.",
+          "perche_si_allontana": "Le grafiche scure con molto testo fitto o i video troppo veloci non mi fanno capire se i flaconi siano comodi da aprire e leggibili per me.",
+          "most_useful": [
+            "NDL-S3",
+            "NDL-U3",
+            "NDL-U2"
+          ],
+          "least_useful": [
+            "NDL-B4",
+            "NDL-U1",
+            "NDL-B1"
+          ]
+        },
+        {
+          "persona_id": "beauty_skincare-P103",
+          "name": "Matteo Rinaldi",
+          "age_years": 31,
+          "occupation": "Architetto libero professionista",
+          "cohort": "category_conditioned",
+          "punti_a_favore": "Apprezzo il riferimento al lotto di settembre per il siero alla vitamina C in C04 e i punti tecnici sull'SPF 50 invisibile in C12, oltre al taglio sobrio di C11.",
+          "perche_si_allontana": "Il marketing urlato da Black Friday e gli sconti a tempo non mi interessano minimamente se mancano concentrazioni dichiarate e garanzie di stabilità.",
+          "most_useful": [
+            "NDL-S1",
+            "NDL-S4",
+            "NDL-U3"
+          ],
+          "least_useful": [
+            "NDL-B4",
+            "NDL-B3",
+            "NDL-B1"
+          ]
+        }
+      ]
     },
     "pet_ecommerce": {
+      "campaign_id": "CDF-C1",
+      "campaign_name": "CDF | Vendite | Cani e gatti",
+      "n_interviews": 200,
+      "headline": "CDF-C1 · Pet E-commerce Cani e Gatti (200 interviste cieche + 2.400 valutazioni Decision 1 su 12 asset)",
       "positive": [
-        "Un beneficio concreto per l’animale attira l’attenzione.",
-        "Ingredienti e composizione aiutano il confronto.",
-        "Una promozione semplice facilita la valutazione."
+        "Foto domestiche reali e taglie esplicite: CDF-S3 ('Cucce invernali: pochi pezzi per taglia', carosello) domina con 116 menzioni tra i più utili e 1 sola tra i meno utili (saldo +115) ed è al vertice anche su Decision 1 (click intent 15,56%, attenzione 73,76%), citato da Valentina Marchetti (38 anni, pet_ecommerce-P002).",
+        "Soglia di spedizione gratuita a 29 € e sconto primo ordine trasparente: CDF-U1 ('-15% sul primo ordine, solo questa settimana', 102 più utili / 0 meno utili, saldo +102) è 1° su Decision 1 (click intent 16,15%) e convince Chiara Bellini (22 anni, pet_ecommerce-P001) e Lorenzo Conti (33 anni, pet_ecommerce-P103).",
+        "Focus nutrizionale concreto (monoproteico, taurina, grain-free): CDF-S1 ('Le crocchette monoproteiche stanno finendo', 66 / 23, saldo +43) e CDF-S4 ('7 motivi per non restare senza', 52 / 23, saldo +29) rassicurano Patrizia Ferretti (63 anni, pet_ecommerce-P003) ed Ettore Ferraro (66 anni, pet_ecommerce-P101)."
       ],
       "negative": [
-        "Troppe condizioni rendono l’offerta difficile da leggere.",
-        "Non è sempre chiaro per quali animali è indicato.",
-        "Spedizione e costo totale possono restare incerti."
+        "Grafiche Black Friday generiche prive di specifiche per specie/età: CDF-B1 ('Black Friday anticipato: -20% su tutto', 7 più utili / 140 meno utili, saldo -133) e CDF-B4 ('Black Friday: solo oggi -35%', 15 / 106, saldo -91) vengono scartati come televendite indistinte.",
+        "Freno sull'abbonamento ricorrente con countdown: CDF-U3 ('48 ore: abbonamento riordino a -20%', 14 più utili / 119 meno utili, saldo -105) suscita timore di vincoli automatici prima di aver testato l'appetibilità del cibo.",
+        "Carenza di dettagli su percentuali di carne, tracciabilità dei lotti e ritiro in locker per chi lavora su turni."
       ],
-      "next": "Provare una versione con offerta, destinatario e costo totale espliciti."
+      "next": "Concentrare la pressione creativa su CDF-S3, CDF-U1 e CDF-S1 esplicitando peso della confezione, percentuale proteica e opzione di acquisto singolo senza vincolo di abbonamento.",
+      "recommendations": [
+        "Concentrare la pressione creativa su CDF-S3, CDF-U1 e CDF-S1 esplicitando peso della confezione, percentuale proteica e opzione di acquisto singolo senza vincolo di abbonamento."
+      ],
+      "by_lever": [
+        {
+          "leva": "scarcity",
+          "n_assets": 4,
+          "most_useful_mentions": 265,
+          "least_useful_mentions": 86,
+          "net_mentions": 179,
+          "mean_decision_click_intent": 0.13362
+        },
+        {
+          "leva": "urgency",
+          "n_assets": 4,
+          "most_useful_mentions": 160,
+          "least_useful_mentions": 208,
+          "net_mentions": -48,
+          "mean_decision_click_intent": 0.147592
+        },
+        {
+          "leva": "black_friday",
+          "n_assets": 4,
+          "most_useful_mentions": 65,
+          "least_useful_mentions": 306,
+          "net_mentions": -241,
+          "mean_decision_click_intent": 0.136801
+        }
+      ],
+      "top_assets": [
+        {
+          "asset_id": "CDF-S3",
+          "headline": "Cucce invernali: pochi pezzi per taglia",
+          "leva": "scarcity",
+          "formato": "carosello",
+          "most_useful_count": 116,
+          "least_useful_count": 1,
+          "net_mentions": 115,
+          "decision_click_intent": 0.1555792263882709
+        },
+        {
+          "asset_id": "CDF-U1",
+          "headline": "-15% sul primo ordine, solo questa settimana",
+          "leva": "urgency",
+          "formato": "immagine",
+          "most_useful_count": 102,
+          "least_useful_count": 0,
+          "net_mentions": 102,
+          "decision_click_intent": 0.16154740010580582
+        },
+        {
+          "asset_id": "CDF-S1",
+          "headline": "Le crocchette monoproteiche stanno finendo",
+          "leva": "scarcity",
+          "formato": "video",
+          "most_useful_count": 66,
+          "least_useful_count": 23,
+          "net_mentions": 43,
+          "decision_click_intent": 0.13893735623622974
+        },
+        {
+          "asset_id": "CDF-S4",
+          "headline": "7 motivi per non restare senza",
+          "leva": "scarcity",
+          "formato": "immagine",
+          "most_useful_count": 52,
+          "least_useful_count": 23,
+          "net_mentions": 29,
+          "decision_click_intent": 0.1265890138764995
+        }
+      ],
+      "least_assets": [
+        {
+          "asset_id": "CDF-B4",
+          "headline": "Black Friday: solo oggi -35%",
+          "leva": "black_friday",
+          "formato": "video",
+          "most_useful_count": 15,
+          "least_useful_count": 106,
+          "net_mentions": -91,
+          "decision_click_intent": 0.13543661144731398
+        },
+        {
+          "asset_id": "CDF-U3",
+          "headline": "48 ore: abbonamento riordino a -20%",
+          "leva": "urgency",
+          "formato": "video",
+          "most_useful_count": 14,
+          "least_useful_count": 119,
+          "net_mentions": -105,
+          "decision_click_intent": 0.13860914746097533
+        },
+        {
+          "asset_id": "CDF-B1",
+          "headline": "Black Friday anticipato: -20% su tutto",
+          "leva": "black_friday",
+          "formato": "immagine",
+          "most_useful_count": 7,
+          "least_useful_count": 140,
+          "net_mentions": -133,
+          "decision_click_intent": 0.1349171435345007
+        }
+      ],
+      "voices": [
+        {
+          "persona_id": "pet_ecommerce-P001",
+          "name": "Chiara Bellini",
+          "age_years": 22,
+          "occupation": "Studentessa magistrale in ingegneria biomedica e tutor di matematica part-time",
+          "cohort": "unbiased",
+          "punti_a_favore": "Apprezzo che C01 indichi subito la soglia dei 29 euro per la spedizione gratis, così capisco al volo se conviene per un piccolo acquisto per il cane dei miei genitori. Trovo utile anche C07 perché mostra foto di casa e tre taglie chiare invece di grafiche confuse.",
+          "perche_si_allontana": "Non avendo animali miei, tra scadenze continue, video troppo lenti come C09 e nessuna certezza su consegna in punto di ritiro e costi reali di spedizione per ordini piccoli, chiudo tutto subito.",
+          "most_useful": [
+            "CDF-U1",
+            "CDF-S3"
+          ],
+          "least_useful": [
+            "CDF-U3",
+            "CDF-B4",
+            "CDF-B1"
+          ]
+        },
+        {
+          "persona_id": "pet_ecommerce-P002",
+          "name": "Valentina Marchetti",
+          "age_years": 38,
+          "occupation": "Architetta d'interni freelance",
+          "cohort": "unbiased",
+          "punti_a_favore": "In C07 apprezzo le foto naturali di casa con le cucce e gli animali veri, perché sembrano oggetti reali e non una televendita. Anche l'illustrazione ordinata di C03 sul gatto risulta più pulita rispetto al resto.",
+          "perche_si_allontana": "Quasi tutte le altre proposte usano grafiche nere gridate da Black Friday e sconti lampeggianti senza mostrarmi misure esatte, materiali o resa reale in appartamento.",
+          "most_useful": [
+            "CDF-S3",
+            "CDF-S4"
+          ],
+          "least_useful": [
+            "CDF-B1",
+            "CDF-B3",
+            "CDF-B4"
+          ]
+        },
+        {
+          "persona_id": "pet_ecommerce-P003",
+          "name": "Patrizia Ferretti",
+          "age_years": 63,
+          "occupation": "Responsabile amministrativa in un'azienda vinicola",
+          "cohort": "unbiased",
+          "punti_a_favore": "Noto con favore che C12 parli almeno di crocchette monoproteiche con una proprietaria in casa e che C03 provi a elencare voci concrete come proteine e taurina. Anche le cucce fotografate in casa di C07 trasmettono un minimo di concretezza.",
+          "perche_si_allontana": "Non vedo da nessuna parte la tracciabilità del produttore, la scheda completa degli ingredienti o garanzie sui lotti, e le continue scadenze finte mi fanno diffidare per i miei due barboncini anziani.",
+          "most_useful": [
+            "CDF-S1",
+            "CDF-S4",
+            "CDF-S3"
+          ],
+          "least_useful": [
+            "CDF-B4",
+            "CDF-B1",
+            "CDF-U4"
+          ]
+        },
+        {
+          "persona_id": "pet_ecommerce-P101",
+          "name": "Ettore Ferraro",
+          "age_years": 66,
+          "occupation": "Ex agronomo e consulente ortofrutticolo in pensione",
+          "cohort": "category_conditioned",
+          "punti_a_favore": "Apprezzo il taglio concreto di C12 sulle crocchette monoproteiche in cucina e il cenno di C01 a proteine e grain free, anche se sono solo informazioni preliminari.",
+          "perche_si_allontana": "Mi frena non vedere né la composizione percentuale delle carni né la provenienza e gli imballaggi usati, al posto di una continua pressione con sconti lampo.",
+          "most_useful": [
+            "CDF-S1",
+            "CDF-S4"
+          ],
+          "least_useful": [
+            "CDF-B1",
+            "CDF-B4",
+            "CDF-U3"
+          ]
+        },
+        {
+          "persona_id": "pet_ecommerce-P102",
+          "name": "Aldo Marchetti",
+          "age_years": 78,
+          "occupation": "Ex orefice artigiano in pensione",
+          "cohort": "category_conditioned",
+          "punti_a_favore": "Apprezzo C01 perché nomina la taurina e le proteine per il gatto e C02 per la pulizia visiva del sacchetto di snack senza cereali.",
+          "perche_si_allontana": "Mi allontano perché mancano composizione completa, scadenza garantita e riferimenti di assistenza, e detesto i colori aggressivi e le finte urgenze.",
+          "most_useful": [
+            "CDF-S4",
+            "CDF-S2"
+          ],
+          "least_useful": [
+            "CDF-B1",
+            "CDF-B4",
+            "CDF-B3"
+          ]
+        },
+        {
+          "persona_id": "pet_ecommerce-P103",
+          "name": "Lorenzo Conti",
+          "age_years": 33,
+          "occupation": "Tecnico manutentore ferroviario",
+          "cohort": "category_conditioned",
+          "punti_a_favore": "Apprezzo C08 perché fissa subito la spedizione gratis sopra i 29 euro, C04 per il 3x2 sugli snack utile a ottimizzare la spesa e C02 per la chiarezza immediata.",
+          "perche_si_allontana": "Mi frena non sapere se consegnano in locker o punti di ritiro per i miei turni e temo i vincoli dell'abbonamento automatico o delle condizioni scritte piccole.",
+          "most_useful": [
+            "CDF-U1",
+            "CDF-U2",
+            "CDF-S2"
+          ],
+          "least_useful": [
+            "CDF-U3",
+            "CDF-B1",
+            "CDF-U4"
+          ]
+        }
+      ]
+    }
+  },
+  "assetInterviews": {
+    "FGR-S2": {
+      "asset_id": "FGR-S2",
+      "campaign_id": "FGR-C1",
+      "most_useful_count": 11,
+      "least_useful_count": 35,
+      "net_mentions": -24,
+      "n_responses": 73,
+      "sample_opinions": [
+        {
+          "persona_id": "abbigliamento-P001",
+          "name": "Chiara Bellini",
+          "cohort": "unbiased",
+          "positive": "Nulla di particolare, a parte il fatto che dalla descrizione sembra almeno vedersi il cappotto indossato da una persona e non solo una grafica promozionale.",
+          "negative": "La pressione sul 'va a ruba' e sulle taglie in esaurimento mi allontana subito perché non sopporto le offerte costruite sulla fretta. Inoltre non c'è alcun dato concreto su tessuto o praticità, quindi per me resta solo rumore pubblicitario."
+        },
+        {
+          "persona_id": "abbigliamento-P002",
+          "name": "Sergio Lombardi",
+          "cohort": "unbiased",
+          "positive": "Nulla per le mie esigenze, anche se una ripresa allo specchio è almeno meno artificiosa di una sfilata.",
+          "negative": "Il cartellino 'ultimi pezzi', le taglie piccole S e M in esaurimento e la ragazza in camera da letto mi fanno capire subito che non è un prodotto adatto a me."
+        },
+        {
+          "persona_id": "abbigliamento-P003",
+          "name": "Ettore Marchetti",
+          "cohort": "unbiased",
+          "positive": "Il riferimento a una 'prima produzione' farebbe pensare a una serie ridotta, cosa che in astratto può incuriosire chi osserva brand emergenti. Tuttavia dal solo testo non colgo nulla di concreto sulla fattura del cappotto.",
+          "negative": "L'enfasi sugli 'ultimi pezzi' e l'ambientazione frettolosa in camera da letto mi allontanano perché non aiutano a leggere proporzioni e dettagli sartoriali. Inoltre le taglie citate (S e M) e la presentazione non sembrano rivolte a me."
+        },
+        {
+          "persona_id": "abbigliamento-P004",
+          "name": "Simona Ferretti",
+          "cohort": "unbiased",
+          "positive": "Un cappotto è almeno un capo concreto della stagione fredda che ha un'utilità pratica, ma nell'annuncio non trovo altri elementi che apprezzi davvero.",
+          "negative": "La ripresa casalinga in camera da letto e l'apertura sul cartellino 'ultimi pezzi' non mi danno l'idea di un marchio consolidato e affidabile. Inoltre dire che le taglie S e M stanno finendo mette solo fretta senza alcuna garanzia sulla vestibilità."
+        }
+      ]
+    },
+    "FGR-S3": {
+      "asset_id": "FGR-S3",
+      "campaign_id": "FGR-C1",
+      "most_useful_count": 58,
+      "least_useful_count": 28,
+      "net_mentions": 30,
+      "n_responses": 106,
+      "sample_opinions": [
+        {
+          "persona_id": "abbigliamento-P001",
+          "name": "Chiara Bellini",
+          "cohort": "unbiased",
+          "positive": "Nulla, non c'è nessun elemento nel testo che risponda a un mio bisogno pratico.",
+          "negative": "L'idea di 'capsule numerata' e le foto editoriali di modelli in strada non mi interessano affatto, anzi mi fanno saltare subito il carosello come faccio di solito con le pubblicità di moda. Non si capisce nemmeno di che singoli capi si tratti né quanto costino."
+        },
+        {
+          "persona_id": "abbigliamento-P002",
+          "name": "Sergio Lombardi",
+          "cohort": "unbiased",
+          "positive": "Vedere cinque look già abbinati potrebbe risultare pratico per non sbagliare accostamenti, ma nel testo fornito trovo ben poco di concreto.",
+          "negative": "L'espressione 'capsule numerata' e l'urgenza del 'quando finisce non torna' mi sembrano rivolte a un pubblico giovane, e le foto editoriali su modelli non mostrano come cadono i capi su un corpo maturo."
+        },
+        {
+          "persona_id": "abbigliamento-P003",
+          "name": "Ettore Marchetti",
+          "cohort": "unbiased",
+          "positive": "Apprezzo l'idea della tiratura limitata e numerata unita a foto editoriali in formato carosello, che permettono di osservare proporzioni e accostamenti cromatici d'insieme. È un registro visivo più misurato, vicino a ciò che solitamente attira la mia curiosità.",
+          "negative": "La formula 'quando finisce non torna' introduce comunque una certa fretta senza spiegare perché la capsula meriti attenzione sul piano dei materiali o del taglio. Dalla descrizione non è neppure determinabile se i cinque look comprendano capi maschili."
+        },
+        {
+          "persona_id": "abbigliamento-P004",
+          "name": "Simona Ferretti",
+          "cohort": "unbiased",
+          "positive": "Nulla, perché né le collezioni limitate né le foto editoriali di moda corrispondono a ciò che cerco quando devo vestirmi.",
+          "negative": "L'idea che 'quando finisce non torna' è l'opposto di ciò che voglio, visto che io preferisco replicare nel tempo i soliti modelli collaudati. Anche lo stile da servizio fotografico di strada mi sembra lontanissimo dalla mia vita quotidiana."
+        }
+      ]
+    },
+    "FGR-B3": {
+      "asset_id": "FGR-B3",
+      "campaign_id": "FGR-C1",
+      "most_useful_count": 18,
+      "least_useful_count": 43,
+      "net_mentions": -25,
+      "n_responses": 94,
+      "sample_opinions": [
+        {
+          "persona_id": "abbigliamento-P001",
+          "name": "Chiara Bellini",
+          "cohort": "unbiased",
+          "positive": "L'unica cosa vagamente concreta è che nella descrizione si citano prezzi barrati, quindi almeno guardando le schede si dovrebbe vedere una cifra.",
+          "negative": "Lo sfondo nero da saldo aggressivo e la formula 'fino al -50%' senza dire di quali capi o materiali si parli mi lasciano indifferente. Di solito salto a piè pari i caroselli sponsorizzati che puntano solo sullo sconto."
+        },
+        {
+          "persona_id": "abbigliamento-P002",
+          "name": "Sergio Lombardi",
+          "cohort": "unbiased",
+          "positive": "Apprezzo il formato a schede fisse e la presenza dei prezzi barrati, che permettono di osservare con calma almeno l'ordine di spesa.",
+          "negative": "Lo sfondo nero e la dicitura 'fino al -50%' non chiariscono quali articoli abbiano davvero quello sconto, e dal testo non si capisce di che capi si tratti."
+        },
+        {
+          "persona_id": "abbigliamento-P003",
+          "name": "Ettore Marchetti",
+          "cohort": "unbiased",
+          "positive": "Il formato carosello su sei capi singoli è in linea di principio più ordinato di un'unica grafica affollata. Nel testo fornito, però, non trovo dettagli di stile o manifattura che mi attraggano.",
+          "negative": "Il richiamo al 'prezzo più basso dell'anno', i prezzi barrati e lo sfondo nero danno un'impronta puramente commerciale e anonima. Inoltre la definizione generica di 'capi più venduti' non garantisce nulla su taglio o materiali."
+        },
+        {
+          "persona_id": "abbigliamento-P004",
+          "name": "Simona Ferretti",
+          "cohort": "unbiased",
+          "positive": "Nulla di specifico, se non l'idea astratta di poter risparmiare su capi già richiesti; dal testo fornito però non emerge nulla che mi interessi davvero.",
+          "negative": "La scritta 'fino al -50%' su sfondo nero con prezzi barrati mi dà l'impressione di una promozione aggressiva e poco trasparente. Non vedo alcun riferimento a capi basici adatti alle mie abitudini né a un negozio che conosco."
+        }
+      ]
+    },
+    "FGR-U1": {
+      "asset_id": "FGR-U1",
+      "campaign_id": "FGR-C1",
+      "most_useful_count": 128,
+      "least_useful_count": 3,
+      "net_mentions": 125,
+      "n_responses": 148,
+      "sample_opinions": [
+        {
+          "persona_id": "abbigliamento-P001",
+          "name": "Chiara Bellini",
+          "cohort": "unbiased",
+          "positive": "Apprezzo che si capisca subito la categoria precisa, cioè maglioni e cardigan, e che la foto dall'alto su sfondo neutro sia pulita e leggibile senza troppi fronzoli.",
+          "negative": "Il banner 'solo fino a domenica' introduce comunque la solita fretta delle promozioni a scadenza, che tendenzialmente ignoro. Inoltre la maglieria senza dettagli chiari mi fa sempre temere capi che si deformano o richiedono cure delicate."
+        },
+        {
+          "persona_id": "abbigliamento-P002",
+          "name": "Sergio Lombardi",
+          "cohort": "unbiased",
+          "positive": "Maglioni e cardigan sono capi che porto volentieri, la presentazione su sfondo neutro è chiara e la durata fino a domenica lascia tempo per decidere senza ansia.",
+          "negative": "Essendo fotografati solo piegati dall'alto, non si vede come vestono addosso e non si capisce se i cardigan abbiano bottoni comodi da allacciare o cerniere robuste."
+        },
+        {
+          "persona_id": "abbigliamento-P003",
+          "name": "Ettore Marchetti",
+          "cohort": "unbiased",
+          "positive": "Apprezzo la fotografia statica dall'alto su sfondo neutro, che lascia spazio ai capi piegati permettendo di intuire ordine, palette cromatiche e consistenza della maglieria. Anche l'orizzonte 'fino a domenica' risulta molto meno aggressivo delle offerte di poche ore.",
+          "negative": "Il testo si limita comunque ad annunciare il '-20%' senza dare alcuna notizia sui filati o sulla lavorazione. Inoltre, nelle foto piatte da catalogo resta sempre il rischio che una luce studiata faccia sembrare naturale una fibra sintetica."
+        },
+        {
+          "persona_id": "abbigliamento-P004",
+          "name": "Simona Ferretti",
+          "cohort": "unbiased",
+          "positive": "Apprezzo la presentazione sobria dei capi piegati e il fatto che si parli chiaramente di maglioni e cardigan, cioè proprio dei capi basici che uso in ufficio e nella stagione fredda. Anche la scadenza fino a domenica mette meno fretta di un timer a ore.",
+          "negative": "Resta comunque una promozione a tempo e una foto dall'alto di capi piegati non mostra come vestono davvero addosso. Inoltre dal testo non si capisce se dietro ci sia un marchio consolidato di cui mi possa fidare."
+        }
+      ]
+    },
+    "FGR-B1": {
+      "asset_id": "FGR-B1",
+      "campaign_id": "FGR-C1",
+      "most_useful_count": 0,
+      "least_useful_count": 113,
+      "net_mentions": -113,
+      "n_responses": 148,
+      "sample_opinions": [
+        {
+          "persona_id": "abbigliamento-P001",
+          "name": "Chiara Bellini",
+          "cohort": "unbiased",
+          "positive": "Nulla, non leggo nessun dettaglio utile sul prodotto.",
+          "negative": "La grafica nera con percentuali giganti e 'molte righe di condizioni' mi infastidisce perché fa perdere tempo per capire cosa è davvero scontato e cosa no. Non c'è alcun riferimento concreto a che capi siano o a come vestano."
+        },
+        {
+          "persona_id": "abbigliamento-P002",
+          "name": "Sergio Lombardi",
+          "cohort": "unbiased",
+          "positive": "Il riferimento alla collezione autunno-inverno e al 30% di sconto può interessarmi in vista del cambio di stagione.",
+          "negative": "I capi relegati in basso e le tante righe di condizioni su sfondo nero rendono difficile leggere e mi fanno diffidare delle clausole nascoste."
+        },
+        {
+          "persona_id": "abbigliamento-P003",
+          "name": "Ettore Marchetti",
+          "cohort": "unbiased",
+          "positive": "Nulla di concreto: l'idea di uno sconto sulla stagione autunno-inverno potrebbe interessarmi solo sapendo di che capi si tratta, ma dal testo non emerge alcun dettaglio costruttivo.",
+          "negative": "La grafica nera dominata dal '-30%' gigante e da molte righe di condizioni mi respinge perché privilegia l'urgenza commerciale rispetto alla sobrietà e alla chiarezza sul prodotto."
+        },
+        {
+          "persona_id": "abbigliamento-P004",
+          "name": "Simona Ferretti",
+          "cohort": "unbiased",
+          "positive": "Il riferimento alla collezione autunno-inverno può avere senso in astratto se devo pensare al cambio di stagione, ma nell'annuncio non c'è nulla che attiri davvero la mia attenzione.",
+          "negative": "La grafica nera con la percentuale enorme e tante righe di condizioni mi fa subito pensare a clausole ed esclusioni complicate. Inoltre i capi restano troppo in secondo piano rispetto allo sconto."
+        }
+      ]
+    },
+    "FGR-S1": {
+      "asset_id": "FGR-S1",
+      "campaign_id": "FGR-C1",
+      "most_useful_count": 0,
+      "least_useful_count": 83,
+      "net_mentions": -83,
+      "n_responses": 108,
+      "sample_opinions": [
+        {
+          "persona_id": "abbigliamento-P001",
+          "name": "Chiara Bellini",
+          "cohort": "unbiased",
+          "positive": "Nulla di rilevante per me.",
+          "negative": "Il molto testo tra date, condizioni e percentuali mi allontana all'istante perché sembra un classico volantino confuso. Per di più, se sono 'ultime taglie' di fine estate, è probabile che manchi la mia misura o che siano capi che non mi servono ora."
+        },
+        {
+          "persona_id": "abbigliamento-P002",
+          "name": "Sergio Lombardi",
+          "cohort": "unbiased",
+          "positive": "Nulla di particolare, se non l'idea astratta che su una rimanenza si possa risparmiare qualcosina se si è fortunati con la misura.",
+          "negative": "Il testo troppo fitto e la scritta 'ultime taglie' mi stancano e mi fanno pensare a pochi scarti di magazzino dove difficilmente troverei una vestibilità comoda."
+        },
+        {
+          "persona_id": "abbigliamento-P003",
+          "name": "Ettore Marchetti",
+          "cohort": "unbiased",
+          "positive": "Nulla: né nel testo né nella descrizione visiva trovo riferimenti a capi, materiali o stile che possano suscitare il mio interesse.",
+          "negative": "L'accumulo di molto testo, percentuali grandi e la dicitura 'ULTIME TAGLIE' mi risulta graficamente confuso e distante dal mio gusto per l'ordine visivo. Comprare fondi di magazzino spinti solo dallo sconto non rientra nelle mie abitudini."
+        },
+        {
+          "persona_id": "abbigliamento-P004",
+          "name": "Simona Ferretti",
+          "cohort": "unbiased",
+          "positive": "Nulla, perché non compro tra le rimanenze di fine stagione né mi attirano le grafiche così affollate di scritte.",
+          "negative": "La dicitura 'ultime taglie' e tutto quel testo con date e condizioni mi scoraggiano subito: significa perdere tempo a cercare se c'è la mia taglia e rischiare un reso. Inoltre io compro all'inizio della stagione, non alla fine dell'estate."
+        }
+      ]
+    },
+    "FGR-S4": {
+      "asset_id": "FGR-S4",
+      "campaign_id": "FGR-C1",
+      "most_useful_count": 45,
+      "least_useful_count": 12,
+      "net_mentions": 33,
+      "n_responses": 86,
+      "sample_opinions": [
+        {
+          "persona_id": "abbigliamento-P001",
+          "name": "Chiara Bellini",
+          "cohort": "unbiased",
+          "positive": "Il soggetto in sé, cioè un piumino leggero, è tra i pochi capi che possono tornarmi utili tra bici, spostamenti e tempo libero, e il ritmo lento del video è meno fastidioso degli spot frenetici.",
+          "negative": "Il richiamo alle taglie centrali che stanno finendo mi sa della solita pressione all'acquisto. Inoltre il video della modella che cammina in città non mi dice nulla su come il piumino si comporti davvero con freddo, vento o sudore."
+        },
+        {
+          "persona_id": "abbigliamento-P002",
+          "name": "Sergio Lombardi",
+          "cohort": "unbiased",
+          "positive": "Un piumino leggero è un capo pratico per le camminate mattutine, e il ritmo lento del video non infastidisce la vista.",
+          "negative": "La modella che sfila in città e il solito avviso che le taglie stanno finendo mi fanno pensare a un capo femminile orientato all'immagine più che alla comodità."
+        },
+        {
+          "persona_id": "abbigliamento-P003",
+          "name": "Ettore Marchetti",
+          "cohort": "unbiased",
+          "positive": "Apprezzo il ritmo lento del video professionale e la chiarezza immediata del soggetto, il piumino leggero, con il logo visibile all'inizio senza stacchi frenetici. È un tono visivo molto più rispettoso di chi guarda.",
+          "negative": "La frase sulle taglie centrali che stanno finendo introduce comunque la solita pressione all'acquisto rapido. Inoltre nella descrizione compare una modella, quindi non è chiaro se il modello esista anche da uomo."
+        },
+        {
+          "persona_id": "abbigliamento-P004",
+          "name": "Simona Ferretti",
+          "cohort": "unbiased",
+          "positive": "Apprezzo il ritmo lento del video e la presenza del logo all'inizio, perché danno un'impressione più ordinata e meno chiassosa. Anche l'idea di un piumino leggero è vicina ai capi pratici che uso nei cambi di stagione.",
+          "negative": "L'avviso su 'ultimi pezzi' e taglie centrali in esaurimento mi crea ansia e mi fa temere di dover scegliere in fretta rischiando la taglia sbagliata. Inoltre vedere una modella che cammina non mi aiuta a capire la vestibilità su di me."
+        }
+      ]
+    },
+    "FGR-B2": {
+      "asset_id": "FGR-B2",
+      "campaign_id": "FGR-C1",
+      "most_useful_count": 0,
+      "least_useful_count": 95,
+      "net_mentions": -95,
+      "n_responses": 108,
+      "sample_opinions": [
+        {
+          "persona_id": "abbigliamento-P001",
+          "name": "Chiara Bellini",
+          "cohort": "unbiased",
+          "positive": "Nulla: né il contesto né il tono parlano alle mie esigenze.",
+          "negative": "L'apertura su 'BLACK WEEK' nei primi due secondi e il taglio da consiglio d'acquisto cittadino a Milano non mi convincono affatto, perché non seguo creator di moda e non mi fido dei suggerimenti generici legati agli eventi di sconto."
+        },
+        {
+          "persona_id": "abbigliamento-P002",
+          "name": "Sergio Lombardi",
+          "cohort": "unbiased",
+          "positive": "Nulla, perché questo formato basato su chi fa video per strada non incontra il mio modo pratico di valutare i vestiti.",
+          "negative": "Non mi convince affidarmi ai consigli di una persona che parla in camera camminando per Milano, senza fornire dati concreti sui capi o sulla vestibilità."
+        },
+        {
+          "persona_id": "abbigliamento-P003",
+          "name": "Ettore Marchetti",
+          "cohort": "unbiased",
+          "positive": "Nulla di rilevante dal testo: lo sfondo cittadino milanese potrebbe evocare un contesto urbano curato, ma non aggiunge informazioni concrete sui capi.",
+          "negative": "L'idea che una creator 'ti dica cosa prendere' e l'apertura immediata con 'BLACK WEEK' nei primi due secondi mi risultano poco autorevoli e troppo sbrigative. Preferisco giudicare direttamente linee e tessuti piuttosto che seguire segnalazioni generiche in movimento."
+        },
+        {
+          "persona_id": "abbigliamento-P004",
+          "name": "Simona Ferretti",
+          "cohort": "unbiased",
+          "positive": "Nulla, perché non seguo le creator sui social e non scelgo i vestiti in base a ciò che compra qualcun altro a Milano.",
+          "negative": "L'apertura diretta su 'BLACK WEEK' e l'impostazione 'cosa compro io' mi allontanano subito, perché le percepisco come pubblicità poco utili e lontane dalle mie abitudini. Preferisco informazioni concrete su un capo invece di chiacchiere davanti alla telecamera."
+        }
+      ]
+    },
+    "FGR-U4": {
+      "asset_id": "FGR-U4",
+      "campaign_id": "FGR-C1",
+      "most_useful_count": 34,
+      "least_useful_count": 34,
+      "net_mentions": 0,
+      "n_responses": 103,
+      "sample_opinions": [
+        {
+          "persona_id": "abbigliamento-P001",
+          "name": "Chiara Bellini",
+          "cohort": "unbiased",
+          "positive": "Nulla di forte; al massimo l'idea di vedere una maglia usata in più modi potrebbe suggerire un capo semplice, ma senza dettagli resta troppo vago.",
+          "negative": "La scritta 'scade stanotte' nei primi due secondi e i tagli rapidi a tempo di musica mi danno fastidio, perché sembrano fatti apposta per far cliccare d'impulso senza far capire com'è fatto il tessuto."
+        },
+        {
+          "persona_id": "abbigliamento-P002",
+          "name": "Sergio Lombardi",
+          "cohort": "unbiased",
+          "positive": "Apprezzo l'idea pratica di mostrare come una sola maglia si abbini a più look, cosa utile per chi vuole sfruttare i pantaloni che ha già nell'armadio.",
+          "negative": "I tagli veloci a tempo di musica e la scadenza a mezzanotte impediscono di vedere davvero come è fatta la maglia e mettono una fretta inutile."
+        },
+        {
+          "persona_id": "abbigliamento-P003",
+          "name": "Ettore Marchetti",
+          "cohort": "unbiased",
+          "positive": "L'idea in sé di mostrare come un singolo capo possa prestarsi a quattro abbinamenti diversi può avere un senso per chi valuta palette cromatiche e versatilità. Nel formato descritto, però, rimane un semplice spunto astratto.",
+          "negative": "Le transizioni a tempo di musica e la scritta 'scade stanotte' nei primi due secondi rientrano proprio nei video chiassosi e frettolosi che tendo a evitare. Con tagli così rapidi non si riesce a esaminare la maglia nei suoi dettagli."
+        },
+        {
+          "persona_id": "abbigliamento-P004",
+          "name": "Simona Ferretti",
+          "cohort": "unbiased",
+          "positive": "Sulla carta l'idea di una sola maglia sfruttabile in più modi è vicina al mio modo pratico di tenere pochi capi collaudati, ma la forma dell'annuncio non mi aiuta a valutarla.",
+          "negative": "La scritta 'scade stanotte' nei primi due secondi e i tagli veloci a tempo di musica mi infastidiscono e mi mettono fretta. Di sera dopo il lavoro non decido un acquisto solo perché scade a mezzanotte."
+        }
+      ]
+    },
+    "FGR-B4": {
+      "asset_id": "FGR-B4",
+      "campaign_id": "FGR-C1",
+      "most_useful_count": 5,
+      "least_useful_count": 105,
+      "net_mentions": -100,
+      "n_responses": 127,
+      "sample_opinions": [
+        {
+          "persona_id": "abbigliamento-P001",
+          "name": "Chiara Bellini",
+          "cohort": "unbiased",
+          "positive": "Nulla.",
+          "negative": "L'urgenza estrema ('solo oggi', 'fino a mezzanotte') unita a una carrellata velocissima di quattro capi in 15 secondi è esattamente il tipo di pubblicità social che chiudo o salto subito. Non trasmette alcuna affidabilità sulla durata o sulla qualità dei tessuti."
+        },
+        {
+          "persona_id": "abbigliamento-P002",
+          "name": "Sergio Lombardi",
+          "cohort": "unbiased",
+          "positive": "Nulla in particolare per me, oltre alla chiarezza numerica dello sconto a metà prezzo.",
+          "negative": "Vedere una ragazza che prova velocemente quattro capi con la scritta 'solo oggi' mi allontana subito perché non mi riguarda e dà un senso di fretta eccessiva."
+        },
+        {
+          "persona_id": "abbigliamento-P003",
+          "name": "Ettore Marchetti",
+          "cohort": "unbiased",
+          "positive": "Nulla: né l'offerta generalista né il ritmo del video rispondono a ciò che cerco quando guardo proposte di abbigliamento.",
+          "negative": "Il try-on veloce di quattro capi in 15 secondi con la scritta '-50% SOLO OGGI' nei primi due secondi è esattamente il tipo di comunicazione frenetica e chiassosa che evito. In un tempo così ridotto è impossibile osservare taglio, caduta o cuciture."
+        },
+        {
+          "persona_id": "abbigliamento-P004",
+          "name": "Simona Ferretti",
+          "cohort": "unbiased",
+          "positive": "Uno sconto del 50% su tutto può sembrare interessante per chi sta attento al bilancio, ma buttato lì in un video di quindici secondi non basta a farmi fidare.",
+          "negative": "La prova veloce di quattro capi e l'urgenza del 'solo oggi fino a mezzanotte' mi respingono per la troppa frenesia. Non è un modo serio e tranquillo per farmi valutare se un capo va bene per me."
+        }
+      ]
+    },
+    "FGR-U2": {
+      "asset_id": "FGR-U2",
+      "campaign_id": "FGR-C1",
+      "most_useful_count": 42,
+      "least_useful_count": 48,
+      "net_mentions": -6,
+      "n_responses": 109,
+      "sample_opinions": [
+        {
+          "persona_id": "abbigliamento-P001",
+          "name": "Chiara Bellini",
+          "cohort": "unbiased",
+          "positive": "L'unico punto apprezzabile rispetto ad altri è che almeno indica una cifra precisa, 99 euro, e dice chiaramente cosa c'è dentro: giacca, maglia e pantalone.",
+          "negative": "Il timer nei primi due secondi sulle 24 ore, il formato 'outfit check' veloce e il fatto che sia mostrato su un modello uomo senza chiarire se esistano tagli da donna mi allontanano subito. Inoltre tre capi a 99 euro mi fanno dubitare della tenuta dei tessuti dopo pochi lavaggi."
+        },
+        {
+          "persona_id": "abbigliamento-P002",
+          "name": "Sergio Lombardi",
+          "cohort": "unbiased",
+          "positive": "Il prezzo fisso di 99 euro per tre capi insieme è chiaro, rientra in un budget ragionevole e l'idea del completo già pronto è pratica.",
+          "negative": "La pressione delle 24 ore con il timer e il ritmo veloce non mi lasciano osservare con calma i capi né mi trasmettono solidità."
+        },
+        {
+          "persona_id": "abbigliamento-P003",
+          "name": "Ettore Marchetti",
+          "cohort": "unbiased",
+          "positive": "Almeno in questo caso l'offerta riguarda chiaramente un guardaroba maschile e indica subito quali tre capi siano inclusi e a quale prezzo.",
+          "negative": "Tre capi tra cui una giacca a 99 euro in un'offerta lampo di 24 ore fanno subito sorgere il timore di materiali sintetici e finiture dozzinali. Inoltre il ritmo veloce e il timer nei primi due secondi sono un registro che tendo a evitare."
+        },
+        {
+          "persona_id": "abbigliamento-P004",
+          "name": "Simona Ferretti",
+          "cohort": "unbiased",
+          "positive": "Il fatto che il prezzo complessivo di 99 euro sia indicato subito nel testo permette almeno di conoscere la spesa totale senza doverla cercare. Per il resto non c'è nulla che attiri la mia attenzione.",
+          "negative": "Il ritmo veloce, il timer nei primi due secondi e la scadenza di 24 ore mi mettono fretta e mi fanno subito passare la voglia di guardare. Inoltre nella descrizione compare un ragazzo e non vedo indicazioni su capi adatti a me o su un marchio conosciuto."
+        }
+      ]
+    },
+    "FGR-U3": {
+      "asset_id": "FGR-U3",
+      "campaign_id": "FGR-C1",
+      "most_useful_count": 151,
+      "least_useful_count": 1,
+      "net_mentions": 150,
+      "n_responses": 176,
+      "sample_opinions": [
+        {
+          "persona_id": "abbigliamento-P001",
+          "name": "Chiara Bellini",
+          "cohort": "unbiased",
+          "positive": "Apprezzo molto il riferimento a spedizione e reso gratuiti e al 'reso facile', perché per me provare un marchio nuovo online ha senso solo se posso restituire senza complicazioni o spese.",
+          "negative": "Anche qui c'è il timer delle 48 ore, che trovo superfluo e un po' forzato, e soprattutto l'annuncio parla solo di logistica senza spiegare cosa vendano davvero o come funzioni nel dettaglio quel reso."
+        },
+        {
+          "persona_id": "abbigliamento-P002",
+          "name": "Sergio Lombardi",
+          "cohort": "unbiased",
+          "positive": "Apprezzo l'indicazione di spedizione e reso gratuiti, perché comprando online ho sempre bisogno di poter restituire un capo senza problemi se stringe.",
+          "negative": "La presenza del timer sulle 48 ore e la totale mancanza di informazioni sul prodotto mi lasciano indifferente e mi fanno sembrare il messaggio vuoto."
+        },
+        {
+          "persona_id": "abbigliamento-P003",
+          "name": "Ettore Marchetti",
+          "cohort": "unbiased",
+          "positive": "Apprezzo l'attenzione al reso gratuito e facile, perché per chi valuta acquisti online la rapidità e semplicità nel cambiare taglia è un requisito concreto di fiducia.",
+          "negative": "Mettere in primo piano timer e imballaggi lasciando il prodotto sullo sfondo mi dà l'impressione che conti più l'incentivo delle 48 ore che la qualità del capo. Senza sapere che cosa si propone, il reso gratuito da solo non basta a interessarmi."
+        },
+        {
+          "persona_id": "abbigliamento-P004",
+          "name": "Simona Ferretti",
+          "cohort": "unbiased",
+          "positive": "Apprezzo molto che nel testo e nelle schede vengano evidenziati spedizione e reso gratuiti, perché temere di sbagliare taglia e perdere tempo o soldi con i resi è proprio ciò che mi frena dagli acquisti online.",
+          "negative": "Anche qui compare la fretta delle '48 ore' con un timer nella prima scheda, che non mi piace. Inoltre il messaggio è così concentrato sulla spedizione che non fa capire quali capi vengano effettivamente venduti."
+        }
+      ]
+    },
+    "NDL-S4": {
+      "asset_id": "NDL-S4",
+      "campaign_id": "NDL-C1",
+      "most_useful_count": 111,
+      "least_useful_count": 12,
+      "net_mentions": 99,
+      "n_responses": 123,
+      "sample_opinions": [
+        {
+          "persona_id": "beauty_skincare-P003",
+          "name": "Chiara Bellini",
+          "cohort": "unbiased",
+          "positive": "Trovo validi C11 perché mette davanti la spiegazione tecnica della dermatologa in modo sobrio e C02 perché evidenzia subito un SPF 50 che non lascia bianco.",
+          "negative": "Vedo solo leve d'urgenza tra lotti limitati e ribassi giganti, senza alcun dettaglio reale su formulazione, attivi o test effettuati."
+        },
+        {
+          "persona_id": "beauty_skincare-P004",
+          "name": "Lidia Ferretti",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Le grafiche nere piene di condizioni piccole, gli sconti lampo e i video rapidi su Instagram mi sembrano poco affidabili per fare acquisti online."
+        },
+        {
+          "persona_id": "beauty_skincare-P005",
+          "name": "Elena Marchetti",
+          "cohort": "unbiased",
+          "positive": "Mi è utile solo C02 perché chiarisce subito che la protezione non lascia bianco e C11 perché spiega prima la routine senza toni esaltati.",
+          "negative": "Quasi tutti gli annunci puntano su urgenza e offerte a tempo invece di spiegare in modo semplice se il prodotto è leggero e pratico da usare la mattina."
+        },
+        {
+          "persona_id": "beauty_skincare-P009",
+          "name": "Matteo Rinaldi",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Le infografiche fitte come C02, il testo fitto di C07 e i video statici troppo parlati come C11 mi rallentano senza mostrare se la texture si assorbe subito."
+        }
+      ]
+    },
+    "NDL-B4": {
+      "asset_id": "NDL-B4",
+      "campaign_id": "NDL-C1",
+      "most_useful_count": 2,
+      "least_useful_count": 169,
+      "net_mentions": -167,
+      "n_responses": 171,
+      "sample_opinions": [
+        {
+          "persona_id": "beauty_skincare-P001",
+          "name": "Mauro Cattaneo",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Tutta questa fretta tra timer, scorte al 15% e sconti a tempo mi sa di trovata commerciale per farmi comprare online creme di cui non so nulla."
+        },
+        {
+          "persona_id": "beauty_skincare-P002",
+          "name": "Giulia Baroni",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "I video frenetici con countdown e sconti lampo mi mettono fretta di comprare al buio senza capire quanto dura il flacone o se può darmi brufoletti."
+        },
+        {
+          "persona_id": "beauty_skincare-P003",
+          "name": "Chiara Bellini",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Vedo solo leve d'urgenza tra lotti limitati e ribassi giganti, senza alcun dettaglio reale su formulazione, attivi o test effettuati."
+        },
+        {
+          "persona_id": "beauty_skincare-P004",
+          "name": "Lidia Ferretti",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Le grafiche nere piene di condizioni piccole, gli sconti lampo e i video rapidi su Instagram mi sembrano poco affidabili per fare acquisti online."
+        }
+      ]
+    },
+    "NDL-B1": {
+      "asset_id": "NDL-B1",
+      "campaign_id": "NDL-C1",
+      "most_useful_count": 2,
+      "least_useful_count": 63,
+      "net_mentions": -61,
+      "n_responses": 65,
+      "sample_opinions": [
+        {
+          "persona_id": "beauty_skincare-P002",
+          "name": "Giulia Baroni",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "I video frenetici con countdown e sconti lampo mi mettono fretta di comprare al buio senza capire quanto dura il flacone o se può darmi brufoletti."
+        },
+        {
+          "persona_id": "beauty_skincare-P003",
+          "name": "Chiara Bellini",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Vedo solo leve d'urgenza tra lotti limitati e ribassi giganti, senza alcun dettaglio reale su formulazione, attivi o test effettuati."
+        },
+        {
+          "persona_id": "beauty_skincare-P004",
+          "name": "Lidia Ferretti",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Le grafiche nere piene di condizioni piccole, gli sconti lampo e i video rapidi su Instagram mi sembrano poco affidabili per fare acquisti online."
+        },
+        {
+          "persona_id": "beauty_skincare-P006",
+          "name": "Davide Lomanto",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Mancano spiegazioni concrete su come agiscono questi sieri su una pelle giovane e mista, sostituite da bollini rossi e countdown ripetitivi."
+        }
+      ]
+    },
+    "NDL-S1": {
+      "asset_id": "NDL-S1",
+      "campaign_id": "NDL-C1",
+      "most_useful_count": 13,
+      "least_useful_count": 26,
+      "net_mentions": -13,
+      "n_responses": 39,
+      "sample_opinions": [
+        {
+          "persona_id": "beauty_skincare-P006",
+          "name": "Davide Lomanto",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Mancano spiegazioni concrete su come agiscono questi sieri su una pelle giovane e mista, sostituite da bollini rossi e countdown ripetitivi."
+        },
+        {
+          "persona_id": "beauty_skincare-P008",
+          "name": "Federica Monti",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Non trovo quasi mai il formato in millilitri o il prezzo reale di partenza, e vedere grafiche piene di condizioni fitte come in C07 mi fa passare la voglia."
+        },
+        {
+          "persona_id": "beauty_skincare-P016",
+          "name": "Claudia Sanna",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "La skincare non attira la mia attenzione mentre scorro i social e questa sfilza di sconti e flaconi non mi dà alcun motivo per abbandonare i soliti due prodotti del supermercato."
+        },
+        {
+          "persona_id": "beauty_skincare-P018",
+          "name": "Alessia Grasso",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Quando mancano prezzo chiaro, formato in millilitri e dettagli sulle condizioni come in C07, temo che la convenienza reale venga mangiata da flaconi piccoli o spese extra."
+        }
+      ]
+    },
+    "NDL-U2": {
+      "asset_id": "NDL-U2",
+      "campaign_id": "NDL-C1",
+      "most_useful_count": 110,
+      "least_useful_count": 1,
+      "net_mentions": 109,
+      "n_responses": 111,
+      "sample_opinions": [
+        {
+          "persona_id": "beauty_skincare-P001",
+          "name": "Mauro Cattaneo",
+          "cohort": "unbiased",
+          "positive": "Solo C11 mantiene un tono composto con una dermatologa che spiega con calma, mentre C12 va subito al sodo con poco testo sulla spedizione gratis.",
+          "negative": "Tutta questa fretta tra timer, scorte al 15% e sconti a tempo mi sa di trovata commerciale per farmi comprare online creme di cui non so nulla."
+        },
+        {
+          "persona_id": "beauty_skincare-P002",
+          "name": "Giulia Baroni",
+          "cohort": "unbiased",
+          "positive": "Apprezzo C03 e C01 perché mostrano le recensioni degli acquirenti nel carosello, e C12 perché toglie le spese di spedizione senza complicazioni.",
+          "negative": "I video frenetici con countdown e sconti lampo mi mettono fretta di comprare al buio senza capire quanto dura il flacone o se può darmi brufoletti."
+        },
+        {
+          "persona_id": "beauty_skincare-P004",
+          "name": "Lidia Ferretti",
+          "cohort": "unbiased",
+          "positive": "Preferisco la pulizia visiva di C12 con poco testo leggibile e la presenza rassicurante della dermatologa in C11.",
+          "negative": "Le grafiche nere piene di condizioni piccole, gli sconti lampo e i video rapidi su Instagram mi sembrano poco affidabili per fare acquisti online."
+        },
+        {
+          "persona_id": "beauty_skincare-P005",
+          "name": "Elena Marchetti",
+          "cohort": "unbiased",
+          "positive": "Mi è utile solo C02 perché chiarisce subito che la protezione non lascia bianco e C11 perché spiega prima la routine senza toni esaltati.",
+          "negative": "Quasi tutti gli annunci puntano su urgenza e offerte a tempo invece di spiegare in modo semplice se il prodotto è leggero e pratico da usare la mattina."
+        }
+      ]
+    },
+    "NDL-S2": {
+      "asset_id": "NDL-S2",
+      "campaign_id": "NDL-C1",
+      "most_useful_count": 2,
+      "least_useful_count": 50,
+      "net_mentions": -48,
+      "n_responses": 52,
+      "sample_opinions": [
+        {
+          "persona_id": "beauty_skincare-P005",
+          "name": "Elena Marchetti",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Quasi tutti gli annunci puntano su urgenza e offerte a tempo invece di spiegare in modo semplice se il prodotto è leggero e pratico da usare la mattina."
+        },
+        {
+          "persona_id": "beauty_skincare-P007",
+          "name": "Silvana Ferrero",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "I video girati in bagno da ragazze giovanissime e i cartelli da svendita con timer e bollini mi danno un'impressione poco adatta a una pelle matura e delicata."
+        },
+        {
+          "persona_id": "beauty_skincare-P008",
+          "name": "Federica Monti",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Non trovo quasi mai il formato in millilitri o il prezzo reale di partenza, e vedere grafiche piene di condizioni fitte come in C07 mi fa passare la voglia."
+        },
+        {
+          "persona_id": "beauty_skincare-P011",
+          "name": "Paola De Luca",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "I video casalinghi col telefono e i cartelli neri da Black Friday banalizzano tutto in una corsa allo sconto senza raccontare qualità e sensorialità."
+        }
+      ]
+    },
+    "NDL-B2": {
+      "asset_id": "NDL-B2",
+      "campaign_id": "NDL-C1",
+      "most_useful_count": 1,
+      "least_useful_count": 61,
+      "net_mentions": -60,
+      "n_responses": 62,
+      "sample_opinions": [
+        {
+          "persona_id": "beauty_skincare-P023",
+          "name": "Marco Ferrari",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Tra sieri alla vitamina C, retinolo, unboxing a casa e offerte a mezzanotte mi sembra tutto troppo macchinoso rispetto ai due prodotti che uso da anni."
+        },
+        {
+          "persona_id": "beauty_skincare-P025",
+          "name": "Simona Trentin",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Tra pacchi aperti a casa, flaconi multipli e sconti frenetici da Black Friday vedo solo spinta al consumo superfluo e plastica senza nessun criterio ambientale."
+        },
+        {
+          "persona_id": "beauty_skincare-P026",
+          "name": "Lorenzo Bellini",
+          "cohort": "unbiased",
+          "positive": "Mi attirano il mini detergente in regalo di C01 per fare una prova senza rischi e gli spunti sintetici di C02 e C10 per capire subito i prodotti.",
+          "negative": "Le grafiche nere da sconto e i countdown nei primi due secondi non mi dicono come si applica il prodotto né se resta leggero sulla pelle."
+        },
+        {
+          "persona_id": "beauty_skincare-P027",
+          "name": "Davide Cattaneo",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Mancano dati operativi su formato in millilitri e tempi di consegna, mentre i video di unboxing o con scaffali vuoti aggiungono solo rumore inutile."
+        }
+      ]
+    },
+    "NDL-U3": {
+      "asset_id": "NDL-U3",
+      "campaign_id": "NDL-C1",
+      "most_useful_count": 137,
+      "least_useful_count": 8,
+      "net_mentions": 129,
+      "n_responses": 145,
+      "sample_opinions": [
+        {
+          "persona_id": "beauty_skincare-P001",
+          "name": "Mauro Cattaneo",
+          "cohort": "unbiased",
+          "positive": "Solo C11 mantiene un tono composto con una dermatologa che spiega con calma, mentre C12 va subito al sodo con poco testo sulla spedizione gratis.",
+          "negative": "Tutta questa fretta tra timer, scorte al 15% e sconti a tempo mi sa di trovata commerciale per farmi comprare online creme di cui non so nulla."
+        },
+        {
+          "persona_id": "beauty_skincare-P003",
+          "name": "Chiara Bellini",
+          "cohort": "unbiased",
+          "positive": "Trovo validi C11 perché mette davanti la spiegazione tecnica della dermatologa in modo sobrio e C02 perché evidenzia subito un SPF 50 che non lascia bianco.",
+          "negative": "Vedo solo leve d'urgenza tra lotti limitati e ribassi giganti, senza alcun dettaglio reale su formulazione, attivi o test effettuati."
+        },
+        {
+          "persona_id": "beauty_skincare-P004",
+          "name": "Lidia Ferretti",
+          "cohort": "unbiased",
+          "positive": "Preferisco la pulizia visiva di C12 con poco testo leggibile e la presenza rassicurante della dermatologa in C11.",
+          "negative": "Le grafiche nere piene di condizioni piccole, gli sconti lampo e i video rapidi su Instagram mi sembrano poco affidabili per fare acquisti online."
+        },
+        {
+          "persona_id": "beauty_skincare-P005",
+          "name": "Elena Marchetti",
+          "cohort": "unbiased",
+          "positive": "Mi è utile solo C02 perché chiarisce subito che la protezione non lascia bianco e C11 perché spiega prima la routine senza toni esaltati.",
+          "negative": "Quasi tutti gli annunci puntano su urgenza e offerte a tempo invece di spiegare in modo semplice se il prodotto è leggero e pratico da usare la mattina."
+        }
+      ]
+    },
+    "NDL-U4": {
+      "asset_id": "NDL-U4",
+      "campaign_id": "NDL-C1",
+      "most_useful_count": 23,
+      "least_useful_count": 35,
+      "net_mentions": -12,
+      "n_responses": 58,
+      "sample_opinions": [
+        {
+          "persona_id": "beauty_skincare-P001",
+          "name": "Mauro Cattaneo",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Tutta questa fretta tra timer, scorte al 15% e sconti a tempo mi sa di trovata commerciale per farmi comprare online creme di cui non so nulla."
+        },
+        {
+          "persona_id": "beauty_skincare-P002",
+          "name": "Giulia Baroni",
+          "cohort": "unbiased",
+          "positive": "Apprezzo C03 e C01 perché mostrano le recensioni degli acquirenti nel carosello, e C12 perché toglie le spese di spedizione senza complicazioni.",
+          "negative": "I video frenetici con countdown e sconti lampo mi mettono fretta di comprare al buio senza capire quanto dura il flacone o se può darmi brufoletti."
+        },
+        {
+          "persona_id": "beauty_skincare-P006",
+          "name": "Davide Lomanto",
+          "cohort": "unbiased",
+          "positive": "Mi incuriosiscono il mini detergente omaggio di C01 per testare il brand senza impegni e il kit in C03 completo di foto e recensioni.",
+          "negative": "Mancano spiegazioni concrete su come agiscono questi sieri su una pelle giovane e mista, sostituite da bollini rossi e countdown ripetitivi."
+        },
+        {
+          "persona_id": "beauty_skincare-P008",
+          "name": "Federica Monti",
+          "cohort": "unbiased",
+          "positive": "Guardo volentieri C09 perché mostra subito i kit con prezzo barrato e nuovo prezzo, e C12 perché chiarisce subito la spedizione gratuita.",
+          "negative": "Non trovo quasi mai il formato in millilitri o il prezzo reale di partenza, e vedere grafiche piene di condizioni fitte come in C07 mi fa passare la voglia."
+        }
+      ]
+    },
+    "NDL-B3": {
+      "asset_id": "NDL-B3",
+      "campaign_id": "NDL-C1",
+      "most_useful_count": 29,
+      "least_useful_count": 33,
+      "net_mentions": -4,
+      "n_responses": 62,
+      "sample_opinions": [
+        {
+          "persona_id": "beauty_skincare-P006",
+          "name": "Davide Lomanto",
+          "cohort": "unbiased",
+          "positive": "Mi incuriosiscono il mini detergente omaggio di C01 per testare il brand senza impegni e il kit in C03 completo di foto e recensioni.",
+          "negative": "Mancano spiegazioni concrete su come agiscono questi sieri su una pelle giovane e mista, sostituite da bollini rossi e countdown ripetitivi."
+        },
+        {
+          "persona_id": "beauty_skincare-P008",
+          "name": "Federica Monti",
+          "cohort": "unbiased",
+          "positive": "Guardo volentieri C09 perché mostra subito i kit con prezzo barrato e nuovo prezzo, e C12 perché chiarisce subito la spedizione gratuita.",
+          "negative": "Non trovo quasi mai il formato in millilitri o il prezzo reale di partenza, e vedere grafiche piene di condizioni fitte come in C07 mi fa passare la voglia."
+        },
+        {
+          "persona_id": "beauty_skincare-P013",
+          "name": "Ilaria Esposito",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Tra cofanetti multipli, sconti urgenti e lotti limitati sembra tutto costruito per farmi spendere online in routine complicate che non voglio seguire."
+        },
+        {
+          "persona_id": "beauty_skincare-P018",
+          "name": "Alessia Grasso",
+          "cohort": "unbiased",
+          "positive": "Mi attirano subito gli sconti forti di C08 e i kit con prezzo barrato di C09, oltre al mini detergente omaggio di C01 e alla spedizione gratis di C12.",
+          "negative": "Quando mancano prezzo chiaro, formato in millilitri e dettagli sulle condizioni come in C07, temo che la convenienza reale venga mangiata da flaconi piccoli o spese extra."
+        }
+      ]
+    },
+    "NDL-S3": {
+      "asset_id": "NDL-S3",
+      "campaign_id": "NDL-C1",
+      "most_useful_count": 56,
+      "least_useful_count": 21,
+      "net_mentions": 35,
+      "n_responses": 77,
+      "sample_opinions": [
+        {
+          "persona_id": "beauty_skincare-P002",
+          "name": "Giulia Baroni",
+          "cohort": "unbiased",
+          "positive": "Apprezzo C03 e C01 perché mostrano le recensioni degli acquirenti nel carosello, e C12 perché toglie le spese di spedizione senza complicazioni.",
+          "negative": "I video frenetici con countdown e sconti lampo mi mettono fretta di comprare al buio senza capire quanto dura il flacone o se può darmi brufoletti."
+        },
+        {
+          "persona_id": "beauty_skincare-P003",
+          "name": "Chiara Bellini",
+          "cohort": "unbiased",
+          "positive": "Trovo validi C11 perché mette davanti la spiegazione tecnica della dermatologa in modo sobrio e C02 perché evidenzia subito un SPF 50 che non lascia bianco.",
+          "negative": "Vedo solo leve d'urgenza tra lotti limitati e ribassi giganti, senza alcun dettaglio reale su formulazione, attivi o test effettuati."
+        },
+        {
+          "persona_id": "beauty_skincare-P006",
+          "name": "Davide Lomanto",
+          "cohort": "unbiased",
+          "positive": "Mi incuriosiscono il mini detergente omaggio di C01 per testare il brand senza impegni e il kit in C03 completo di foto e recensioni.",
+          "negative": "Mancano spiegazioni concrete su come agiscono questi sieri su una pelle giovane e mista, sostituite da bollini rossi e countdown ripetitivi."
+        },
+        {
+          "persona_id": "beauty_skincare-P009",
+          "name": "Matteo Rinaldi",
+          "cohort": "unbiased",
+          "positive": "Mi attirano i video brevi come C05 e C08 perché arrivano al punto in quindici secondi, e il kit unico di C03 per avere subito tutto senza perdere tempo.",
+          "negative": "Le infografiche fitte come C02, il testo fitto di C07 e i video statici troppo parlati come C11 mi rallentano senza mostrare se la texture si assorbe subito."
+        }
+      ]
+    },
+    "NDL-U1": {
+      "asset_id": "NDL-U1",
+      "campaign_id": "NDL-C1",
+      "most_useful_count": 3,
+      "least_useful_count": 121,
+      "net_mentions": -118,
+      "n_responses": 124,
+      "sample_opinions": [
+        {
+          "persona_id": "beauty_skincare-P001",
+          "name": "Mauro Cattaneo",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Tutta questa fretta tra timer, scorte al 15% e sconti a tempo mi sa di trovata commerciale per farmi comprare online creme di cui non so nulla."
+        },
+        {
+          "persona_id": "beauty_skincare-P002",
+          "name": "Giulia Baroni",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "I video frenetici con countdown e sconti lampo mi mettono fretta di comprare al buio senza capire quanto dura il flacone o se può darmi brufoletti."
+        },
+        {
+          "persona_id": "beauty_skincare-P003",
+          "name": "Chiara Bellini",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Vedo solo leve d'urgenza tra lotti limitati e ribassi giganti, senza alcun dettaglio reale su formulazione, attivi o test effettuati."
+        },
+        {
+          "persona_id": "beauty_skincare-P005",
+          "name": "Elena Marchetti",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Quasi tutti gli annunci puntano su urgenza e offerte a tempo invece di spiegare in modo semplice se il prodotto è leggero e pratico da usare la mattina."
+        }
+      ]
+    },
+    "CDF-U2": {
+      "asset_id": "CDF-U2",
+      "campaign_id": "CDF-C1",
+      "most_useful_count": 32,
+      "least_useful_count": 40,
+      "net_mentions": -8,
+      "n_responses": 72,
+      "sample_opinions": [
+        {
+          "persona_id": "pet_ecommerce-P004",
+          "name": "Matteo Rinaldi",
+          "cohort": "unbiased",
+          "positive": "I video veloci con i gatti come C02 e C10 almeno attirano l'attenzione tra un reel e l'altro e potrebbero darmi un'idea economica per il gatto di mia sorella. Anche lo snack singolo in C06 è immediato da capire.",
+          "negative": "Tra abbonamenti automatici come C09, scritte minuscole di condizioni in C08 e siti che non conosco a cui dovrei dare la mia prepagata di corsa per un timer, non compro nulla."
+        },
+        {
+          "persona_id": "pet_ecommerce-P008",
+          "name": "Simone Moretti",
+          "cohort": "unbiased",
+          "positive": "Apprezzo il taglio dinamico di C10 con il gatto vero che salta per lo snack e le foto domestiche naturali di C07, che almeno escono dalla solita grafica da catalogo. Anche C03 ha una composizione illustrata più ordinata.",
+          "negative": "Per il mio lavoro riconosco subito i format ripetitivi tra sfondi neri da Black Friday, righe di condizioni in C08 e video istituzionali lenti come C09, senza mai vedere materiali sicuri o un gioco davvero all'opera."
+        },
+        {
+          "persona_id": "pet_ecommerce-P009",
+          "name": "Roberto De Luca",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Non lascio mai i miei prodotti abituali per offerte lampo o abbonamenti come C09, soprattutto senza vedere marca ufficiale, peso del sacco e garanzia che non mi arrivi un lotto vicino alla scadenza per il mio pastore tedesco anziano."
+        },
+        {
+          "persona_id": "pet_ecommerce-P013",
+          "name": "Nicola Testa",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Non avendo animali miei, promo su crocchette o abbonamenti come C09 non mi servono a nulla, e i conti alla rovescia di 24 ore mi irritano al posto di spiegarmi materiali e tempi reali di consegna."
+        }
+      ]
+    },
+    "CDF-U1": {
+      "asset_id": "CDF-U1",
+      "campaign_id": "CDF-C1",
+      "most_useful_count": 102,
+      "least_useful_count": 0,
+      "net_mentions": 102,
+      "n_responses": 102,
+      "sample_opinions": [
+        {
+          "persona_id": "pet_ecommerce-P001",
+          "name": "Chiara Bellini",
+          "cohort": "unbiased",
+          "positive": "Apprezzo che C01 indichi subito la soglia dei 29 euro per la spedizione gratis, così capisco al volo se conviene per un piccolo acquisto per il cane dei miei genitori. Trovo utile anche C07 perché mostra foto di casa e tre taglie chiare invece di grafiche confuse.",
+          "negative": "Non avendo animali miei, tra scadenze continue, video troppo lenti come C09 e nessuna certezza su consegna in punto di ritiro e costi reali di spedizione per ordini piccoli, chiudo tutto subito."
+        },
+        {
+          "persona_id": "pet_ecommerce-P005",
+          "name": "Giulia Santoro",
+          "cohort": "unbiased",
+          "positive": "C01 mette in chiaro subito il -15% e la spedizione gratuita sopra i 29 euro, mentre C12 mostra almeno una situazione normale di crocchette monoproteiche per il cane. Anche C07 con le taglie delle cucce è abbastanza pratico.",
+          "negative": "Con i miei turni in ospedale non cambio marca al cane dietro a timer di Black Friday senza sapere che marchio vendono, come tracciano il pacco o se consegnano in un punto di ritiro."
+        },
+        {
+          "persona_id": "pet_ecommerce-P011",
+          "name": "Massimo Pellegrini",
+          "cohort": "unbiased",
+          "positive": "C01 va abbastanza al sodo con lo sconto sul primo ordine e la spedizione gratuita sopra i 29 euro, e C07 mostra almeno cucce concrete con tre taglie chiare in casa.",
+          "negative": "Tra sconti gridati da Black Friday, abbonamenti automatici come C09 e annunci in cui non si capisce né il marchio né il peso esatto del sacco, resto fedele al mio negozio di zona."
+        },
+        {
+          "persona_id": "pet_ecommerce-P015",
+          "name": "Paolo Benedetti",
+          "cohort": "unbiased",
+          "positive": "Apprezzo la chiarezza immediata di C01 su -15% e spedizione gratis sopra i 29 euro, così come la sintesi diretta di C08 e C05 sugli sconti per cibo e accessori.",
+          "negative": "Con due labrador che consumano molto non mi lego a un abbonamento in 48 ore (C09) né a un lotto che poi sparisce tre settimane (C12), e manca ogni dato su preavviso corriere e integrità dei sacchi."
+        }
+      ]
+    },
+    "CDF-S1": {
+      "asset_id": "CDF-S1",
+      "campaign_id": "CDF-C1",
+      "most_useful_count": 66,
+      "least_useful_count": 23,
+      "net_mentions": 43,
+      "n_responses": 89,
+      "sample_opinions": [
+        {
+          "persona_id": "pet_ecommerce-P003",
+          "name": "Patrizia Ferretti",
+          "cohort": "unbiased",
+          "positive": "Noto con favore che C12 parli almeno di crocchette monoproteiche con una proprietaria in casa e che C03 provi a elencare voci concrete come proteine e taurina. Anche le cucce fotografate in casa di C07 trasmettono un minimo di concretezza.",
+          "negative": "Non vedo da nessuna parte la tracciabilità del produttore, la scheda completa degli ingredienti o garanzie sui lotti, e le continue scadenze finte mi fanno diffidare per i miei due barboncini anziani."
+        },
+        {
+          "persona_id": "pet_ecommerce-P004",
+          "name": "Matteo Rinaldi",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Tra abbonamenti automatici come C09, scritte minuscole di condizioni in C08 e siti che non conosco a cui dovrei dare la mia prepagata di corsa per un timer, non compro nulla."
+        },
+        {
+          "persona_id": "pet_ecommerce-P005",
+          "name": "Giulia Santoro",
+          "cohort": "unbiased",
+          "positive": "C01 mette in chiaro subito il -15% e la spedizione gratuita sopra i 29 euro, mentre C12 mostra almeno una situazione normale di crocchette monoproteiche per il cane. Anche C07 con le taglie delle cucce è abbastanza pratico.",
+          "negative": "Con i miei turni in ospedale non cambio marca al cane dietro a timer di Black Friday senza sapere che marchio vendono, come tracciano il pacco o se consegnano in un punto di ritiro."
+        },
+        {
+          "persona_id": "pet_ecommerce-P009",
+          "name": "Roberto De Luca",
+          "cohort": "unbiased",
+          "positive": "C12 almeno mostra un cane vero alle prese con crocchette monoproteiche e C07 fa vedere cucce reali divise per taglia senza troppe trovate pubblicitarie.",
+          "negative": "Non lascio mai i miei prodotti abituali per offerte lampo o abbonamenti come C09, soprattutto senza vedere marca ufficiale, peso del sacco e garanzia che non mi arrivi un lotto vicino alla scadenza per il mio pastore tedesco anziano."
+        }
+      ]
+    },
+    "CDF-U4": {
+      "asset_id": "CDF-U4",
+      "campaign_id": "CDF-C1",
+      "most_useful_count": 12,
+      "least_useful_count": 49,
+      "net_mentions": -37,
+      "n_responses": 61,
+      "sample_opinions": [
+        {
+          "persona_id": "pet_ecommerce-P003",
+          "name": "Patrizia Ferretti",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Non vedo da nessuna parte la tracciabilità del produttore, la scheda completa degli ingredienti o garanzie sui lotti, e le continue scadenze finte mi fanno diffidare per i miei due barboncini anziani."
+        },
+        {
+          "persona_id": "pet_ecommerce-P010",
+          "name": "Andrea Cattaneo",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Non possiedo animali e per i rarissimi regali che faccio cerco schede tecniche sui materiali e filiere circolari, mentre qui trovo solo sconti a tempo, abbonamenti e zero trasparenza ambientale."
+        },
+        {
+          "persona_id": "pet_ecommerce-P013",
+          "name": "Nicola Testa",
+          "cohort": "unbiased",
+          "positive": "Se dovessi prendere un regalo al cane di mio fratello, C07 con le foto reali delle cucce per taglia e C04 con il cane che gioca offrono almeno un'idea concreta e immediata.",
+          "negative": "Non avendo animali miei, promo su crocchette o abbonamenti come C09 non mi servono a nulla, e i conti alla rovescia di 24 ore mi irritano al posto di spiegarmi materiali e tempi reali di consegna."
+        },
+        {
+          "persona_id": "pet_ecommerce-P019",
+          "name": "Sofia Vitale",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Soglie minime da 29 o 39 euro come in C01 e C04 o abbonamenti fissi come C09 sono troppo cari e inutili per il mio budget studentesco, visto che il gatto non è nemmeno mio."
+        }
+      ]
+    },
+    "CDF-S2": {
+      "asset_id": "CDF-S2",
+      "campaign_id": "CDF-C1",
+      "most_useful_count": 31,
+      "least_useful_count": 39,
+      "net_mentions": -8,
+      "n_responses": 70,
+      "sample_opinions": [
+        {
+          "persona_id": "pet_ecommerce-P004",
+          "name": "Matteo Rinaldi",
+          "cohort": "unbiased",
+          "positive": "I video veloci con i gatti come C02 e C10 almeno attirano l'attenzione tra un reel e l'altro e potrebbero darmi un'idea economica per il gatto di mia sorella. Anche lo snack singolo in C06 è immediato da capire.",
+          "negative": "Tra abbonamenti automatici come C09, scritte minuscole di condizioni in C08 e siti che non conosco a cui dovrei dare la mia prepagata di corsa per un timer, non compro nulla."
+        },
+        {
+          "persona_id": "pet_ecommerce-P005",
+          "name": "Giulia Santoro",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Con i miei turni in ospedale non cambio marca al cane dietro a timer di Black Friday senza sapere che marchio vendono, come tracciano il pacco o se consegnano in un punto di ritiro."
+        },
+        {
+          "persona_id": "pet_ecommerce-P006",
+          "name": "Davide Lombardi",
+          "cohort": "unbiased",
+          "positive": "C03 ha almeno il merito di riassumere in un'immagine veloce caratteristiche specifiche per gatti come grain free, proteine e taurina. Anche C06 isola uno snack senza cereali senza troppi giri emotivi.",
+          "negative": "Manca il prezzo al chilo e qualsiasi garanzia di continuità delle scorte, anzi annunci come C12 che prospettano tre settimane di attesa sono esattamente il disservizio che evito per i miei due gatti."
+        },
+        {
+          "persona_id": "pet_ecommerce-P012",
+          "name": "Federico Galli",
+          "cohort": "unbiased",
+          "positive": "C03 è l'unico che prova a mettere nero su bianco tre caratteristiche nutrizionali come grain free, proteine e taurina per gatti, e C06 specifica almeno snack senza cereali.",
+          "negative": "Con due gatti che hanno intolleranze alimentari non compro mai al buio davanti a timer o avvisi di scorte in esaurimento senza percentuali analitiche, lista completa degli ingredienti e nome del produttore."
+        }
+      ]
+    },
+    "CDF-U3": {
+      "asset_id": "CDF-U3",
+      "campaign_id": "CDF-C1",
+      "most_useful_count": 14,
+      "least_useful_count": 119,
+      "net_mentions": -105,
+      "n_responses": 133,
+      "sample_opinions": [
+        {
+          "persona_id": "pet_ecommerce-P001",
+          "name": "Chiara Bellini",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Non avendo animali miei, tra scadenze continue, video troppo lenti come C09 e nessuna certezza su consegna in punto di ritiro e costi reali di spedizione per ordini piccoli, chiudo tutto subito."
+        },
+        {
+          "persona_id": "pet_ecommerce-P004",
+          "name": "Matteo Rinaldi",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Tra abbonamenti automatici come C09, scritte minuscole di condizioni in C08 e siti che non conosco a cui dovrei dare la mia prepagata di corsa per un timer, non compro nulla."
+        },
+        {
+          "persona_id": "pet_ecommerce-P005",
+          "name": "Giulia Santoro",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Con i miei turni in ospedale non cambio marca al cane dietro a timer di Black Friday senza sapere che marchio vendono, come tracciano il pacco o se consegnano in un punto di ritiro."
+        },
+        {
+          "persona_id": "pet_ecommerce-P007",
+          "name": "Lorenzo Conti",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Non ho animali miei e in questi annunci vedo solo spinte all'acquisto con sconti e timer, senza alcun dato su origine delle materie prime, certificazioni ambientali o imballaggi riciclabili."
+        }
+      ]
+    },
+    "CDF-S3": {
+      "asset_id": "CDF-S3",
+      "campaign_id": "CDF-C1",
+      "most_useful_count": 116,
+      "least_useful_count": 1,
+      "net_mentions": 115,
+      "n_responses": 117,
+      "sample_opinions": [
+        {
+          "persona_id": "pet_ecommerce-P001",
+          "name": "Chiara Bellini",
+          "cohort": "unbiased",
+          "positive": "Apprezzo che C01 indichi subito la soglia dei 29 euro per la spedizione gratis, così capisco al volo se conviene per un piccolo acquisto per il cane dei miei genitori. Trovo utile anche C07 perché mostra foto di casa e tre taglie chiare invece di grafiche confuse.",
+          "negative": "Non avendo animali miei, tra scadenze continue, video troppo lenti come C09 e nessuna certezza su consegna in punto di ritiro e costi reali di spedizione per ordini piccoli, chiudo tutto subito."
+        },
+        {
+          "persona_id": "pet_ecommerce-P002",
+          "name": "Valentina Marchetti",
+          "cohort": "unbiased",
+          "positive": "In C07 apprezzo le foto naturali di casa con le cucce e gli animali veri, perché sembrano oggetti reali e non una televendita. Anche l'illustrazione ordinata di C03 sul gatto risulta più pulita rispetto al resto.",
+          "negative": "Quasi tutte le altre proposte usano grafiche nere gridate da Black Friday e sconti lampeggianti senza mostrarmi misure esatte, materiali o resa reale in appartamento."
+        },
+        {
+          "persona_id": "pet_ecommerce-P003",
+          "name": "Patrizia Ferretti",
+          "cohort": "unbiased",
+          "positive": "Noto con favore che C12 parli almeno di crocchette monoproteiche con una proprietaria in casa e che C03 provi a elencare voci concrete come proteine e taurina. Anche le cucce fotografate in casa di C07 trasmettono un minimo di concretezza.",
+          "negative": "Non vedo da nessuna parte la tracciabilità del produttore, la scheda completa degli ingredienti o garanzie sui lotti, e le continue scadenze finte mi fanno diffidare per i miei due barboncini anziani."
+        },
+        {
+          "persona_id": "pet_ecommerce-P005",
+          "name": "Giulia Santoro",
+          "cohort": "unbiased",
+          "positive": "C01 mette in chiaro subito il -15% e la spedizione gratuita sopra i 29 euro, mentre C12 mostra almeno una situazione normale di crocchette monoproteiche per il cane. Anche C07 con le taglie delle cucce è abbastanza pratico.",
+          "negative": "Con i miei turni in ospedale non cambio marca al cane dietro a timer di Black Friday senza sapere che marchio vendono, come tracciano il pacco o se consegnano in un punto di ritiro."
+        }
+      ]
+    },
+    "CDF-B4": {
+      "asset_id": "CDF-B4",
+      "campaign_id": "CDF-C1",
+      "most_useful_count": 15,
+      "least_useful_count": 106,
+      "net_mentions": -91,
+      "n_responses": 121,
+      "sample_opinions": [
+        {
+          "persona_id": "pet_ecommerce-P001",
+          "name": "Chiara Bellini",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Non avendo animali miei, tra scadenze continue, video troppo lenti come C09 e nessuna certezza su consegna in punto di ritiro e costi reali di spedizione per ordini piccoli, chiudo tutto subito."
+        },
+        {
+          "persona_id": "pet_ecommerce-P002",
+          "name": "Valentina Marchetti",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Quasi tutte le altre proposte usano grafiche nere gridate da Black Friday e sconti lampeggianti senza mostrarmi misure esatte, materiali o resa reale in appartamento."
+        },
+        {
+          "persona_id": "pet_ecommerce-P003",
+          "name": "Patrizia Ferretti",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Non vedo da nessuna parte la tracciabilità del produttore, la scheda completa degli ingredienti o garanzie sui lotti, e le continue scadenze finte mi fanno diffidare per i miei due barboncini anziani."
+        },
+        {
+          "persona_id": "pet_ecommerce-P004",
+          "name": "Matteo Rinaldi",
+          "cohort": "unbiased",
+          "positive": "I video veloci con i gatti come C02 e C10 almeno attirano l'attenzione tra un reel e l'altro e potrebbero darmi un'idea economica per il gatto di mia sorella. Anche lo snack singolo in C06 è immediato da capire.",
+          "negative": "Tra abbonamenti automatici come C09, scritte minuscole di condizioni in C08 e siti che non conosco a cui dovrei dare la mia prepagata di corsa per un timer, non compro nulla."
+        }
+      ]
+    },
+    "CDF-B2": {
+      "asset_id": "CDF-B2",
+      "campaign_id": "CDF-C1",
+      "most_useful_count": 15,
+      "least_useful_count": 14,
+      "net_mentions": 1,
+      "n_responses": 29,
+      "sample_opinions": [
+        {
+          "persona_id": "pet_ecommerce-P006",
+          "name": "Davide Lombardi",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Manca il prezzo al chilo e qualsiasi garanzia di continuità delle scorte, anzi annunci come C12 che prospettano tre settimane di attesa sono esattamente il disservizio che evito per i miei due gatti."
+        },
+        {
+          "persona_id": "pet_ecommerce-P012",
+          "name": "Federico Galli",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Con due gatti che hanno intolleranze alimentari non compro mai al buio davanti a timer o avvisi di scorte in esaurimento senza percentuali analitiche, lista completa degli ingredienti e nome del produttore."
+        },
+        {
+          "persona_id": "pet_ecommerce-P013",
+          "name": "Nicola Testa",
+          "cohort": "unbiased",
+          "positive": "Se dovessi prendere un regalo al cane di mio fratello, C07 con le foto reali delle cucce per taglia e C04 con il cane che gioca offrono almeno un'idea concreta e immediata.",
+          "negative": "Non avendo animali miei, promo su crocchette o abbonamenti come C09 non mi servono a nulla, e i conti alla rovescia di 24 ore mi irritano al posto di spiegarmi materiali e tempi reali di consegna."
+        },
+        {
+          "persona_id": "pet_ecommerce-P016",
+          "name": "Elena Farina",
+          "cohort": "unbiased",
+          "positive": "C01 spiega subito la soglia di 29 euro per non pagare la spedizione e C11 con il cane che apre la scatola è piacevole da guardare anche senza dover comprare.",
+          "negative": "Non ho un cane mio e per quello della nonna ricompro sempre e solo gli stessi biscotti conosciuti, quindi di certo non attivo abbonamenti automatici come C09 né cambio snack a caso."
+        }
+      ]
+    },
+    "CDF-S4": {
+      "asset_id": "CDF-S4",
+      "campaign_id": "CDF-C1",
+      "most_useful_count": 52,
+      "least_useful_count": 23,
+      "net_mentions": 29,
+      "n_responses": 75,
+      "sample_opinions": [
+        {
+          "persona_id": "pet_ecommerce-P002",
+          "name": "Valentina Marchetti",
+          "cohort": "unbiased",
+          "positive": "In C07 apprezzo le foto naturali di casa con le cucce e gli animali veri, perché sembrano oggetti reali e non una televendita. Anche l'illustrazione ordinata di C03 sul gatto risulta più pulita rispetto al resto.",
+          "negative": "Quasi tutte le altre proposte usano grafiche nere gridate da Black Friday e sconti lampeggianti senza mostrarmi misure esatte, materiali o resa reale in appartamento."
+        },
+        {
+          "persona_id": "pet_ecommerce-P003",
+          "name": "Patrizia Ferretti",
+          "cohort": "unbiased",
+          "positive": "Noto con favore che C12 parli almeno di crocchette monoproteiche con una proprietaria in casa e che C03 provi a elencare voci concrete come proteine e taurina. Anche le cucce fotografate in casa di C07 trasmettono un minimo di concretezza.",
+          "negative": "Non vedo da nessuna parte la tracciabilità del produttore, la scheda completa degli ingredienti o garanzie sui lotti, e le continue scadenze finte mi fanno diffidare per i miei due barboncini anziani."
+        },
+        {
+          "persona_id": "pet_ecommerce-P006",
+          "name": "Davide Lombardi",
+          "cohort": "unbiased",
+          "positive": "C03 ha almeno il merito di riassumere in un'immagine veloce caratteristiche specifiche per gatti come grain free, proteine e taurina. Anche C06 isola uno snack senza cereali senza troppi giri emotivi.",
+          "negative": "Manca il prezzo al chilo e qualsiasi garanzia di continuità delle scorte, anzi annunci come C12 che prospettano tre settimane di attesa sono esattamente il disservizio che evito per i miei due gatti."
+        },
+        {
+          "persona_id": "pet_ecommerce-P008",
+          "name": "Simone Moretti",
+          "cohort": "unbiased",
+          "positive": "Apprezzo il taglio dinamico di C10 con il gatto vero che salta per lo snack e le foto domestiche naturali di C07, che almeno escono dalla solita grafica da catalogo. Anche C03 ha una composizione illustrata più ordinata.",
+          "negative": "Per il mio lavoro riconosco subito i format ripetitivi tra sfondi neri da Black Friday, righe di condizioni in C08 e video istituzionali lenti come C09, senza mai vedere materiali sicuri o un gioco davvero all'opera."
+        }
+      ]
+    },
+    "CDF-B3": {
+      "asset_id": "CDF-B3",
+      "campaign_id": "CDF-C1",
+      "most_useful_count": 28,
+      "least_useful_count": 46,
+      "net_mentions": -18,
+      "n_responses": 74,
+      "sample_opinions": [
+        {
+          "persona_id": "pet_ecommerce-P002",
+          "name": "Valentina Marchetti",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Quasi tutte le altre proposte usano grafiche nere gridate da Black Friday e sconti lampeggianti senza mostrarmi misure esatte, materiali o resa reale in appartamento."
+        },
+        {
+          "persona_id": "pet_ecommerce-P007",
+          "name": "Lorenzo Conti",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Non ho animali miei e in questi annunci vedo solo spinte all'acquisto con sconti e timer, senza alcun dato su origine delle materie prime, certificazioni ambientali o imballaggi riciclabili."
+        },
+        {
+          "persona_id": "pet_ecommerce-P008",
+          "name": "Simone Moretti",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Per il mio lavoro riconosco subito i format ripetitivi tra sfondi neri da Black Friday, righe di condizioni in C08 e video istituzionali lenti come C09, senza mai vedere materiali sicuri o un gioco davvero all'opera."
+        },
+        {
+          "persona_id": "pet_ecommerce-P010",
+          "name": "Andrea Cattaneo",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Non possiedo animali e per i rarissimi regali che faccio cerco schede tecniche sui materiali e filiere circolari, mentre qui trovo solo sconti a tempo, abbonamenti e zero trasparenza ambientale."
+        }
+      ]
+    },
+    "CDF-B1": {
+      "asset_id": "CDF-B1",
+      "campaign_id": "CDF-C1",
+      "most_useful_count": 7,
+      "least_useful_count": 140,
+      "net_mentions": -133,
+      "n_responses": 147,
+      "sample_opinions": [
+        {
+          "persona_id": "pet_ecommerce-P001",
+          "name": "Chiara Bellini",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Non avendo animali miei, tra scadenze continue, video troppo lenti come C09 e nessuna certezza su consegna in punto di ritiro e costi reali di spedizione per ordini piccoli, chiudo tutto subito."
+        },
+        {
+          "persona_id": "pet_ecommerce-P002",
+          "name": "Valentina Marchetti",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Quasi tutte le altre proposte usano grafiche nere gridate da Black Friday e sconti lampeggianti senza mostrarmi misure esatte, materiali o resa reale in appartamento."
+        },
+        {
+          "persona_id": "pet_ecommerce-P003",
+          "name": "Patrizia Ferretti",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Non vedo da nessuna parte la tracciabilità del produttore, la scheda completa degli ingredienti o garanzie sui lotti, e le continue scadenze finte mi fanno diffidare per i miei due barboncini anziani."
+        },
+        {
+          "persona_id": "pet_ecommerce-P004",
+          "name": "Matteo Rinaldi",
+          "cohort": "unbiased",
+          "positive": "",
+          "negative": "Tra abbonamenti automatici come C09, scritte minuscole di condizioni in C08 e siti che non conosco a cui dovrei dare la mia prepagata di corsa per un timer, non compro nulla."
+        }
+      ]
     }
   }
 }

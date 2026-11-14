@@ -61,7 +61,7 @@ function DailyTrend({ creative, dates, day }) {
   </section>;
 }
 
-export function CreativeDetail({ creative, feedback, day, dates, checked, canSelect, onCompare, onClose }) {
+export function CreativeDetail({ creative, feedback, interviewFeedback, day, dates, checked, canSelect, onCompare, onClose }) {
   const panel = useRef(null);
   useLayoutEffect(() => { panel.current.showModal(); }, []);
 
@@ -97,6 +97,13 @@ export function CreativeDetail({ creative, feedback, day, dates, checked, canSel
         <p className="explorer-muted">Decision · {feedback.model}. La quota stimata di «Apre / clicca» è {pct(feedback.actions.click * 100)}.</p>
         <p className="explorer-muted">{Object.entries(feedback.reason_distribution).sort((a, b) => b[1] - a[1]).slice(0, 3)
           .map(([reason, weight]) => reason.replaceAll('_', ' ') + ' ' + pct(weight * 100)).join(' · ')}</p>
+      </section>}
+      {interviewFeedback && <section className="detail-section">
+        <h3>Interviste cieche acquisite · {interviewFeedback.asset_id}</h3>
+        <p className="explorer-muted">Citato tra i più utili da <b>{interviewFeedback.most_useful_count}</b> profili e tra i meno utili da <b>{interviewFeedback.least_useful_count}</b> (saldo <b>{interviewFeedback.net_mentions >= 0 ? '+' : ''}{interviewFeedback.net_mentions}</b> su 200 interviste del settore).</p>
+        {interviewFeedback.sample_opinions?.slice(0, 2).map((op) => <p key={op.persona_id} className="explorer-muted">
+          <b>{op.name}</b> ({op.persona_id}): {op.positive ? `«${op.positive}» ` : ''}{op.negative ? `Freno: «${op.negative}»` : ''}
+        </p>)}
       </section>}
       <DailyTrend creative={creative} dates={dates} day={day} />
       <button type="button" className="explorer-button" aria-pressed={checked} disabled={!checked && !canSelect}

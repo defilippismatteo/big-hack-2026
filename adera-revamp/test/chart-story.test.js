@@ -13,13 +13,18 @@ test('zoom and zero-based domains preserve and contain narrow, flat and missing 
  }
  const values=[1.160212851,1.17538999];assert(chartDomain(values).max-chartDomain(values).min<.1);
 });
-test('illustrative reports remain separate from generated persona examples and quantitative data',()=>{
+test('acquired interview reports remain separate from quantitative forecast data and cover all 600 interviews and 36 assets',()=>{
  const story=read('product-story'), overview=read('overview');
- assert.equal(story.reportsKind,'mock_not_model');assert.equal(story.examplesKind,'synthetic');
+ assert.equal(story.reportsKind,'synthetic_interviews');assert.equal(story.examplesKind,'synthetic');
  assert.match(story.examplesSource.sha256,/^[a-f0-9]{64}$/);
+ assert.match(story.reportsSource.frozenSha256,/^[a-f0-9]{64}$/);
+ assert.equal(story.reportsSource.nInterviews,600);
+ assert.equal(story.reportsSource.nAssets,36);
+ assert.equal(Object.keys(overview.simulatedDecision).length,36);
  for(const campaign of overview.campaigns) {
   const example=story.examples[campaign.vertical], report=story.reports[campaign.vertical];
-  assert.equal(example.vertical,campaign.vertical);assert(example.persona_id&&example.model&&example.provider);
+  assert.equal(example.vertical,campaign.vertical);assert(example.persona_id&&example.model&&example.provider&&example.interview);
+  assert.equal(report.n_interviews,200);
   assert.equal(report.positive.length,3);assert.equal(report.negative.length,3);
  }
  assert.equal(overview.forecast.length,699);assert(!('reports' in overview));
