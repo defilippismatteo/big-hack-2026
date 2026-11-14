@@ -58,6 +58,7 @@ def parser():
     cmd.add_argument("--personas", type=Path, default=ROOT / "artifacts/personas_t3_600/persona_cards.json")
     cmd.add_argument("--out", type=Path, default=ROOT / "artifacts/personas_t3_600/interviews")
     cmd.add_argument("--batch-size", type=int, default=25)
+    cmd.add_argument("--vertical", nargs="*")
     cmd.add_argument("--seed", type=int)
     cmd = sub.add_parser("interviews-save-batch", help="Valida e salva una risposta batch concisa")
     cmd.add_argument("--out", type=Path, default=ROOT / "artifacts/personas_t3_600/interviews")
@@ -186,7 +187,7 @@ def main(argv=None):
             print(f"Preparati {len(jobs)} job di intervista cieca in {args.out / 'jobs'}")
         elif args.command == "interviews-prepare-batches":
             from .interviews import prepare_concise_batches
-            bjobs = prepare_concise_batches(read(args.catalog), read(args.personas), args.out, seed, args.batch_size)
+            bjobs = prepare_concise_batches(read(args.catalog), read(args.personas), args.out, seed, args.batch_size, verticals=args.vertical)
             print(f"Preparati {len(bjobs)} batch concisi in {args.out / 'batch_jobs'} ({sum(len(b['persona_ids']) for b in bjobs)} persone)")
         elif args.command == "interviews-save-batch":
             from .interviews import save_concise_batch

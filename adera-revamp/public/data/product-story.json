@@ -1,0 +1,116 @@
+{
+  "schemaVersion": 1,
+  "examplesKind": "synthetic",
+  "examplesSource": {
+    "path": "artifacts/personas_t3_600/persona_cards.json",
+    "sha256": "85cf1dc212d00ea87f77a20621b8643ebf88f20f9eee7e39dacf12f89d720324"
+  },
+  "examples": {
+    "abbigliamento": {
+      "persona_id": "abbigliamento-P001",
+      "name": "Chiara Bellini",
+      "vertical": "abbigliamento",
+      "age_years": 46,
+      "occupation": "Tecnica di laboratorio analisi chimiche a Padova",
+      "persona_summary": "Donna di 46 anni, tecnica di laboratorio a Padova, poco interessata all'abbigliamento quotidiano e quasi assente dai social. Cerca essenzialmente praticità e facilità di gestione, ma è disposta a provare brand nuovi se risolvono un bisogno concreto senza fronzoli estetici.",
+      "interests": [
+        "escursionismo alpino",
+        "micologia",
+        "fotografia naturalistica",
+        "cucina vegetariana veloce",
+        "podcast di divulgazione scientifica"
+      ],
+      "concerns": "Teme che i capi di fascia media si deformino dopo pochi lavaggi o richiedano stiratura complessa, facendole perdere tempo prezioso prima del turno in laboratorio.",
+      "trust_requirements": "Etichetta chiara con composizione dei tessuti, indicazioni di lavaggio semplici in lavatrice a 30-40 gradi, tabella taglie in centimetri e reso gratuito senza dover stampare etichette.",
+      "decision_habits": "Compra vestiti solo quando un capo si consuma o si rompe; preferisce provare formule pratiche come pantaloni resistenti o maglie traspiranti di marchi nuovi se promettono zero manutenzione e vestibilità chiara.",
+      "ad_avoidance": "Ignora quasi tutti i banner online e chiude subito i popup con offerte a tempo; sui social apre raramente i feed e salta a piè pari i caroselli sponsorizzati di moda.",
+      "provider": "t3:antigravity",
+      "model": "gemini-4-hydrogen"
+    },
+    "beauty_skincare": {
+      "persona_id": "beauty_skincare-P001",
+      "name": "Mauro Cattaneo",
+      "vertical": "beauty_skincare",
+      "age_years": 51,
+      "occupation": "Idraulico e termotecnico autonomo",
+      "persona_summary": "Uomo di 51 anni, artigiano concreto e abitudinario, praticamente estraneo al mondo della skincare. Usa i social pochissimo e per puro svago passivo; acquista un detergente o una crema solo per necessità fisica evidente, con approccio prudente e totale indifferenza verso l'estetica cosmetica.",
+      "interests": [
+        "pesca sportiva sul fiume",
+        "manutenzione moto d'epoca",
+        "cucina alla brace",
+        "campionato di Serie B",
+        "escursioni in Val Brembana"
+      ],
+      "concerns": "Teme di perdere tempo con routine complicate e che i cosmetici lascino la pelle unta o causino prurito mentre lavora all'aperto.",
+      "trust_requirements": "Si fida soltanto del parere diretto del farmacista sotto casa o del medico curante; pretende etichette chiarissime senza termini inglesi né promesse miracolistiche.",
+      "decision_habits": "Non cerca attivamente prodotti per il viso; al supermercato o in farmacia prende al massimo ciò che già conosce o che gli consiglia il medico di base se ha la pelle screpolata dal freddo. Prudentissimo negli acquisti online, preferisce pagare alla consegna o usare negozi fisici di quartiere.",
+      "ad_avoidance": "Salta istantaneamente i banner promozionali e ignora le sponsorizzate su quel poco di notizie che legge online; chiude le email promozionali senza aprirle.",
+      "provider": "t3:antigravity",
+      "model": "gemini-4-hydrogen"
+    },
+    "pet_ecommerce": {
+      "persona_id": "pet_ecommerce-P001",
+      "name": "Chiara Bellini",
+      "vertical": "pet_ecommerce",
+      "age_years": 22,
+      "occupation": "Studentessa magistrale in ingegneria biomedica e tutor di matematica part-time",
+      "persona_summary": "Chiara Bellini, donna di 22 anni, non possiede animali ma compra occasionalmente un piccolo snack o un accessorio quando torna dai genitori che hanno un cane; il suo interesse per la categoria è basso. Usa pochissimo i social, è guidata dalla praticità e, pur essendo aperta a provare nuovi negozi online per curiosità tecnologica, acquista solo se il processo è immediato.",
+      "interests": [
+        "arrampicata indoor",
+        "podcast di divulgazione scientifica",
+        "cucina vegetariana veloce",
+        "fotografia analogica",
+        "viaggi in treno low-cost"
+      ],
+      "concerns": "Teme costi di spedizione sproporzionati rispetto al valore di un piccolo ordine e ritardi di consegna che la costringano a restare in casa ad aspettare il corriere.",
+      "trust_requirements": "Ritiro presso locker o tabaccheria sotto casa, costi totali visibili prima del checkout e recensioni sintetiche verificabili.",
+      "decision_habits": "Cerca su motore di ricerca ciò che le serve in quel momento, sceglie un prodotto compatto con consegna in punto di ritiro e conclude l'acquisto in pochi minuti senza creare account complessi.",
+      "ad_avoidance": "Chiude subito banner invasivi e popup di iscrizione newsletter; evita i social durante lo studio e salta senza esitazione i video sponsorizzati che interrompono i podcast.",
+      "provider": "t3:antigravity",
+      "model": "gemini-4-hydrogen"
+    }
+  },
+  "reportsKind": "mock_not_model",
+  "reportsStatus": "Esempio di struttura: non deriva dalle interviste. Il rapporto finale è in preparazione.",
+  "reports": {
+    "abbigliamento": {
+      "positive": [
+        "Una vestibilità facile da valutare riduce i dubbi.",
+        "Praticità e qualità del tessuto rendono il prodotto rilevante.",
+        "Un’offerta leggibile aiuta a capire il vantaggio."
+      ],
+      "negative": [
+        "Taglie poco chiare possono bloccare la scelta.",
+        "La sola urgenza non spiega il valore del capo.",
+        "Resi e materiali devono essere facili da trovare."
+      ],
+      "next": "Provare un messaggio con taglie, materiali e reso in evidenza."
+    },
+    "beauty_skincare": {
+      "positive": [
+        "Una routine semplice rende il beneficio comprensibile.",
+        "Ingredienti e modalità d’uso aiutano a valutare il prodotto.",
+        "Un risultato descritto in modo concreto incuriosisce."
+      ],
+      "negative": [
+        "Promesse generiche possono ridurre la fiducia.",
+        "Mancano indicazioni per capire a quale pelle è adatto.",
+        "Lo sconto da solo non risolve i dubbi sul prodotto."
+      ],
+      "next": "Provare un annuncio che chiarisca tipo di pelle e modalità d’uso."
+    },
+    "pet_ecommerce": {
+      "positive": [
+        "Un beneficio concreto per l’animale attira l’attenzione.",
+        "Ingredienti e composizione aiutano il confronto.",
+        "Una promozione semplice facilita la valutazione."
+      ],
+      "negative": [
+        "Troppe condizioni rendono l’offerta difficile da leggere.",
+        "Non è sempre chiaro per quali animali è indicato.",
+        "Spedizione e costo totale possono restare incerti."
+      ],
+      "next": "Provare una versione con offerta, destinatario e costo totale espliciti."
+    }
+  }
+}

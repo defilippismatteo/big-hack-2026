@@ -187,8 +187,8 @@ def pending_jobs(out):
     return pending
 
 
-def prepare_concise_batches(catalog, cards, out, seed=2026, batch_size=20, skip_completed=True):
-    """Prepare blind concise-interview batches (~15-20 personas per call) over completed Decision 1 personas."""
+def prepare_concise_batches(catalog, cards, out, seed=2026, batch_size=20, skip_completed=True, verticals=None):
+    """Prepare blind concise-interview batches (~15-30 personas per call) over completed Decision 1 personas."""
     out = Path(out)
     if batch_size < 1:
         raise ValueError("batch_size deve essere >= 1")
@@ -198,9 +198,12 @@ def prepare_concise_batches(catalog, cards, out, seed=2026, batch_size=20, skip_
     summary = read(out.parent / "analyses/summary.json")
     completed = {a["asset_id"]: {p["persona_id"] for p in a["per_person"]}
                  for a in summary["ranking"]}
+    allowed_verticals = set(verticals) if verticals else None
 
     by_vertical = {}
     for p in cards["personas"]:
+        if allowed_verticals is not None and p["vertical"] not in allowed_verticals:
+            continue
         pid = p["persona_id"]
         if pid not in eligible:
             continue
