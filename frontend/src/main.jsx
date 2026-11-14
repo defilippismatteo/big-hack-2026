@@ -1,11 +1,12 @@
 import React, { useEffect, useRef, useSyncExternalStore } from 'react';
 import { createRoot } from 'react-dom/client';
 import {
-  ArrowDown, ArrowLeft, ArrowUpRight, CalendarDays, ChevronRight, Compass, Menu, X,
+  ArrowLeft, CalendarDays, ChevronRight, Compass, Menu, X,
 } from 'lucide-react';
 import '@fontsource-variable/inter';
 import { getSection, groups, sectionHref, sections } from './sections';
 import './styles.css';
+import { Overview } from './overview/Overview';
 
 const logo = import.meta.env.BASE_URL + 'adera.svg';
 
@@ -73,82 +74,6 @@ function Header({ current, onMenu, menuOpen }) {
         <span className="period-short" aria-hidden="true">16–30 nov</span>
       </div>
     </header>
-  );
-}
-
-function Radar() {
-  return (
-    <svg className="radar" viewBox="0 0 420 300" aria-hidden="true">
-      <defs>
-        <pattern id="radar-grid" width="20" height="20" patternUnits="userSpaceOnUse">
-          <path d="M 20 0 L 0 0 0 20" stroke="#9b82e8" strokeWidth=".8" fill="none" />
-        </pattern>
-        <radialGradient id="radar-fade">
-          <stop offset="0" stopColor="white" />
-          <stop offset="1" stopColor="white" stopOpacity="0" />
-        </radialGradient>
-        <mask id="radar-mask"><ellipse cx="225" cy="150" rx="195" ry="150" fill="url(#radar-fade)" /></mask>
-        <linearGradient id="radar-a" x2="1" y2="1">
-          <stop stopColor="#9d87e7" /><stop offset="1" stopColor="#6041be" />
-        </linearGradient>
-      </defs>
-      <rect width="420" height="300" fill="url(#radar-grid)" mask="url(#radar-mask)" opacity=".55" />
-      <g fill="none" stroke="#8465d7">
-        <circle cx="233" cy="148" r="113" opacity=".26" strokeDasharray="4 6" />
-        <circle cx="233" cy="148" r="86" opacity=".35" />
-        <circle cx="233" cy="148" r="58" opacity=".25" />
-        <ellipse cx="233" cy="148" rx="146" ry="60" transform="rotate(-24 233 148)" opacity=".52" />
-        <path d="M124 203 343 94M233 21v254" opacity=".20" />
-      </g>
-      <circle cx="136" cy="192" r="5" fill="#a089ed" />
-      <circle cx="315" cy="80" r="5" fill="#8062e3" />
-      <circle cx="315" cy="80" r="10" fill="none" stroke="#8062e3" opacity=".42" />
-      <circle cx="260" cy="229" r="4" fill="#8062e3" />
-      <path d="M193 182 226 114a7 7 0 0 1 13 0l33 68m-63-17h47" fill="none" stroke="url(#radar-a)" strokeWidth="7" strokeLinecap="round" />
-      <path d="M267 112v21m-10.5-10.5h21" fill="none" stroke="#8062e3" strokeWidth="2.5" strokeLinecap="round" />
-    </svg>
-  );
-}
-
-function Overview({ headingRef }) {
-  function explore() {
-    const moduleHeading = document.getElementById('modules-title');
-    moduleHeading.focus();
-  }
-
-  return (
-    <>
-      <section className="hero" aria-labelledby="page-title">
-        <div className="hero-content">
-          <span className="hero-label"><span aria-hidden="true" /> BLACK FRIDAY 2026</span>
-          <h1 id="page-title" ref={headingRef} tabIndex={-1}>Decidi prima<br />di spendere.</h1>
-          <p>Esplora il pubblico, confronta gli annunci e valuta come distribuire il budget per il Black Friday.</p>
-          <button className="primary-button" type="button" onClick={explore}>
-            Esplora le sezioni <ArrowDown size={16} aria-hidden="true" />
-          </button>
-        </div>
-        <Radar />
-      </section>
-
-      <section className="modules" aria-labelledby="modules-title">
-        <div className="modules-intro">
-          <h2 id="modules-title" tabIndex={-1}>Esplora ADERA</h2>
-          <p>Cinque sezioni per orientare le decisioni sulle campagne.</p>
-        </div>
-        <div className="module-grid">
-          {sections.slice(1).map(({ id, icon: Icon, label, description, tone }) => (
-            <a className="module-card" key={id} href={sectionHref(id)}>
-              <div className="module-top">
-                <span className={'module-icon ' + tone}><Icon size={20} strokeWidth={1.8} aria-hidden="true" /></span>
-                <ArrowUpRight className="module-arrow" size={18} aria-hidden="true" />
-              </div>
-              <h3>{label}</h3>
-              <p>{description}</p>
-            </a>
-          ))}
-        </div>
-      </section>
-    </>
   );
 }
 
@@ -236,7 +161,7 @@ function App() {
         </main>
         <footer className="footer">
           <span>Developed for Wevion · The Big Hack 2026</span>
-          <span className="preview-label">Anteprima design</span>
+          <span className="preview-label">Anteprima ADERA</span>
         </footer>
       </div>
     </div>
