@@ -1,4 +1,4 @@
-import { leverNames, verticalNames } from '../overview/model';
+import { leverNames, verticalNames } from '../overview/model.js';
 
 export const sectorTones = {
   abbigliamento: 'purple',
@@ -25,7 +25,7 @@ export function creativeCatalog(data) {
   }
 
   for (const [day, id, ctr, cpm] of data.forecast) {
-    catalog.get(id).series.set(day, { ctr, cpm, cpc: ctr > 0 ? cpm / (10 * ctr) : null });
+    catalog.get(id).series.set(day, { ctr, cpm, efficiency: cpm > 0 ? 10 * ctr / cpm : null, cpc: ctr > 0 ? cpm / (10 * ctr) : null });
   }
 
   return catalog;

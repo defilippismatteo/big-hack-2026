@@ -2,7 +2,7 @@ import { ArrowDown, ArrowLeftRight, ArrowUp, ArrowUpDown, ArrowUpRight, Calendar
 import { useEffect, useMemo, useRef, useState, useSyncExternalStore } from 'react';
 import { useDashboardData } from '../data/useDashboardData';
 import { sectionHref } from '../sections';
-import { modelNames, money, pct, shortDate, verticalNames } from '../overview/model';
+import { fixed, modelNames, money, pct, shortDate, verticalNames } from '../overview/model';
 import { CreativeDetail, CreativeMetrics } from './CreativeDetail';
 import { PerformanceMap } from './PerformanceMap';
 import { creativeCatalog, creativesForDay, sortCreatives } from './model';
@@ -16,6 +16,7 @@ const columns = [
   { key: 'format', label: 'Formato' },
   { key: 'ctr', label: 'CTR', format: pct, direction: -1 },
   { key: 'cpm', label: 'CPM', format: money, direction: 1 },
+  { key: 'efficiency', label: 'Click stimati/€', format: (value) => value == null ? '—' : fixed(value), direction: -1 },
   { key: 'cpc', label: 'CPC', format: money, direction: 1 },
 ];
 
@@ -29,7 +30,7 @@ const getHash = () => window.location.hash;
 function Ranking({ rows, sort, onSort, selected, onCompare, onOpen, onViewComparison }) {
   return <section className="data-panel ranking-panel" aria-labelledby="ranking-title">
     <div className="explorer-panel-header">
-      <div><h2 id="ranking-title">Creative Ranking</h2><p>Seleziona due annunci per confrontarli sulla stessa data.</p></div>
+      <div><h2 id="ranking-title" tabIndex={-1}>Creative Ranking</h2><p>Seleziona due annunci per confrontarli sulla stessa data.</p></div>
       <div className="ranking-actions">
         <span className="result-count" aria-live="polite">{rows.length} {rows.length === 1 ? 'annuncio' : 'annunci'}</span>
         {selected.length > 0 && <button type="button" className="comparison-jump" onClick={onViewComparison}>
@@ -75,7 +76,7 @@ function Ranking({ rows, sort, onSort, selected, onCompare, onOpen, onViewCompar
   </section>;
 }
 
-function Comparison({ items, day, onCompare, onOpen }) {
+function Comparison({ items, day, onCompare, onOpen, onReset }) {
   const ctrDelta = items.length === 2 && items[0].series.has(day) && items[1].series.has(day)
     ? items[1].series.get(day).ctr - items[0].series.get(day).ctr : null;
   const deltaText = ctrDelta == null ? null
@@ -83,7 +84,7 @@ function Comparison({ items, day, onCompare, onOpen }) {
   return <section className="data-panel creative-comparison" aria-labelledby="comparison-title">
     <div className="explorer-panel-header">
       <div><h2 id="comparison-title" tabIndex={-1}>Confronta annunci</h2><p>Previsione base · {shortDate(day)}</p></div>
-      <span className="module-icon"><ArrowLeftRight size={17} aria-hidden="true" /></span>
+      <button type="button" className="comparison-jump" onClick={onReset}><ArrowLeftRight size={14} aria-hidden="true" /> Azzera confronto</button>
     </div>
     <div className="comparison-grid">
       {items.map((item) => <article key={item.id} className="comparison-card">
@@ -113,13 +114,14 @@ function ExplorerContent({ data, headingRef }) {
   const openedFrom = useRef(null);
   const [day, setDay] = useState(() => data.dates.find((date) => data.events[date] === 'Black Friday') ?? data.dates[0]);
   const [campaign, setCampaign] = useState('');
+  const [adset, setAdset] = useState('');
   const [query, setQuery] = useState('');
-  const [sort, setSort] = useState({ key: 'ctr', direction: -1 });
+  const [sort, setSort] = useState({ key: 'efficiency', direction: -1 });
   const [selected, setSelected] = useState([]);
   const matchesDay = useMemo(() => creativesForDay(catalog, day), [catalog, day]);
   const term = query.trim().toLocaleLowerCase('it');
-  const filtered = matchesDay.filter((r) => (!campaign || r.campaignId === campaign)
-    && [r.id, r.assetId, r.adsetId, r.headline].some((value) => value.toLocaleLowerCase('it').includes(term)));
+  const filtered = matchesDay.filter((r) => (!campaign || r.campaignId === campaign) && (!adset || r.adsetId === adset)
+    && [r.id, r.assetId, r.adsetId, r.headline, r.lever, r.format].some((value) => value.toLocaleLowerCase('it').includes(term)));
   const rows = sortCreatives(filtered, sort);
   const detailAd = catalog.get(detail ?? (dismissedHash === hash ? null : linkedAd));
   const method = modelNames[data.source.method] ?? data.source.method;
@@ -139,7 +141,7 @@ function ExplorerContent({ data, headingRef }) {
       window.location.replace(sectionHref('creatives'));
     }
     setDetail(null);
-    (openedFrom.current ?? headingRef.current)?.focus({ preventScroll: true });
+    (openedFrom.current?.isConnected ? openedFrom.current : headingRef.current)?.focus({ preventScroll: true });
     openedFrom.current = null;
   }
 
@@ -160,27 +162,39 @@ function ExplorerContent({ data, headingRef }) {
         </select>
       </label>
       <label><span>Campagna</span>
-        <select value={campaign} onChange={(event) => setCampaign(event.target.value)}>
+        <select value={campaign} onChange={(event) => { setCampaign(event.target.value); setAdset(''); }}>
           <option value="">Tutte le campagne</option>
           {data.campaigns.map((item) => <option key={item.id} value={item.id}>{verticalNames[item.vertical] ?? item.name}</option>)}
         </select>
       </label>
+      <label><span>Ad set</span>
+        <select value={adset} onChange={(event) => setAdset(event.target.value)}>
+          <option value="">Tutti gli ad set</option>
+          {data.adsets.filter((item) => !campaign || item.campaignId === campaign).map((item) =>
+            <option key={item.id} value={item.id}>{item.id}</option>)}
+        </select>
+      </label>
       <label className="search-field"><span>Cerca</span>
         <span className="search-input"><Search size={17} aria-hidden="true" />
-          <input type="search" placeholder="Headline, annuncio o asset" value={query}
+          <input type="search" placeholder="Headline, ID, leva o formato" value={query}
             onChange={(event) => setQuery(event.target.value)} />
         </span>
       </label>
+      {(campaign || adset || query || day !== (data.dates.find((date) => data.events[date] === 'Black Friday') ?? data.dates[0])) &&
+        <button type="button" className="clear-filters" onClick={() => {
+          setCampaign(''); setAdset(''); setQuery('');
+          setDay(data.dates.find((date) => data.events[date] === 'Black Friday') ?? data.dates[0]);
+        }}>Ripristina filtri</button>}
     </div>
     <PerformanceMap rows={filtered} domain={matchesDay} onOpen={openDetail} />
+    {selected.length > 0 && <Comparison items={selected.map((id) => catalog.get(id))}
+      day={day} onCompare={toggleCompare} onOpen={openDetail} onReset={() => { setSelected([]); document.getElementById('ranking-title')?.focus(); }} />}
     <Ranking rows={rows} sort={sort} onSort={setSort} selected={selected} onCompare={toggleCompare} onOpen={openDetail}
       onViewComparison={() => {
         const title = document.getElementById('comparison-title');
         title?.scrollIntoView({ block: 'start' });
         title?.focus({ preventScroll: true });
       }} />
-    {selected.length > 0 && <Comparison items={selected.map((id) => catalog.get(id))}
-      day={day} onCompare={toggleCompare} onOpen={openDetail} />}
     <div className="creative-source explorer-muted">
       {method} · {catalog.size} annunci con forecast nel periodo · Kit simulato Wevion
     </div>

@@ -221,3 +221,27 @@ body:has(.creative-drawer[open]) { overflow: hidden; }
   .scatter { padding-right: 17px; grid-template-columns: 34px minmax(0, 1fr); }
   .scatter-y, .scatter-x { font-size: 9px; }
 }
+
+.scatter-point[data-best='true']::after {
+  outline: 2px solid var(--action);
+  outline-offset: 3px;
+}
+.scatter-tooltip {
+  position: absolute;
+  z-index: 3;
+  display: grid;
+  gap: 4px;
+  width: max-content;
+  max-width: min(205px, 78%);
+  pointer-events: none;
+  padding: 8px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: var(--surface);
+  box-shadow: var(--shadow);
+  font-size: 11px;
+}
+@media (min-width: 901px) {
+  .scatter { grid-template-rows: 350px auto auto; }
+  .creative-filters { grid-template-columns: repeat(3, minmax(0, 1fr)) minmax(170px, 1.4fr); }
+}

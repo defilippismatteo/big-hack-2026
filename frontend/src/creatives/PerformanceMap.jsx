@@ -1,6 +1,6 @@
 import { useRef, useState } from 'react';
 import { money, pct } from '../overview/model';
-import { plotLimit, sectorTones } from './model';
+import { plotLimit, sectorTones, sortCreatives } from './model';
 import { verticalNames } from '../overview/model';
 
 const fractions = [0, 0.25, 0.5, 0.75, 1];
@@ -8,7 +8,8 @@ const fractions = [0, 0.25, 0.5, 0.75, 1];
 export function PerformanceMap({ rows, domain, onOpen }) {
   const [highlight, setHighlight] = useState(null);
   const points = useRef(new Map());
-  const active = rows.find((row) => row.id === highlight) ?? rows[0];
+  const best = sortCreatives(rows, { key: 'efficiency', direction: -1 })[0];
+  const active = rows.find((row) => row.id === highlight) ?? best;
   const maxCpm = plotLimit(Math.max(0, ...domain.map((row) => row.cpm)));
   const maxCtr = plotLimit(Math.max(0, ...domain.map((row) => row.ctr)));
   const sectors = Object.keys(sectorTones).filter((key) => rows.some((row) => row.vertical === key));
@@ -39,14 +40,22 @@ export function PerformanceMap({ rows, domain, onOpen }) {
             {fractions.map((f) => <div key={f} className="scatter-gridline" aria-hidden="true"
               style={{ '--grid-position': f * 100 + '%' }} />)}
             {rows.map((row, i) => <button key={row.id} type="button" className="scatter-point"
-              data-tone={row.tone} data-highlighted={active.id === row.id}
+              data-tone={row.tone} data-highlighted={active.id === row.id} data-best={best.id === row.id}
               style={{ left: row.cpm / maxCpm * 100 + '%', bottom: row.ctr / maxCtr * 100 + '%' }}
               tabIndex={active.id === row.id ? 0 : -1}
-              aria-label={row.id + ', ' + row.headline + ', CPM ' + money(row.cpm) + ', CTR ' + pct(row.ctr)}
+              aria-label={row.id + ', ' + row.headline + ', CPM ' + money(row.cpm) + ', CTR ' + pct(row.ctr) + ', ad set ' + row.adsetId}
               ref={(element) => { if (element) points.current.set(row.id, element); else points.current.delete(row.id); }}
+              onPointerLeave={() => setHighlight(null)} onBlur={() => setHighlight(null)}
               onPointerEnter={(event) => { if (event.pointerType === 'mouse') setHighlight(row.id); }}
               onFocus={() => setHighlight(row.id)} onKeyDown={(event) => onPointKey(event, i)}
               onClick={(event) => onOpen(row.id, event.currentTarget)} />)}
+            {highlight && active && <div className="scatter-tooltip" role="tooltip"
+              style={{ left: Math.max(0, Math.min(active.cpm / maxCpm * 100, 58)) + '%',
+                bottom: Math.min(active.ctr / maxCtr * 100 + 5, 80) + '%' }}>
+              <strong>{active.headline}</strong>
+              <span>{active.id} · {active.adsetId}</span>
+              <span>CTR {pct(active.ctr)} · CPM {money(active.cpm)}</span>
+            </div>}
           </div>
           <div className="scatter-x" aria-hidden="true">
             {fractions.map((f) => <span key={f} style={{ left: f * 100 + '%' }}>{money(f * maxCpm)}</span>)}
@@ -57,7 +66,7 @@ export function PerformanceMap({ rows, domain, onOpen }) {
           <div className="sector-legend">
             {sectors.map((key) => <span key={key} data-tone={sectorTones[key]}><i aria-hidden="true" />{verticalNames[key]}</span>)}
           </div>
-          <p className="scatter-readout"><strong>{active.id}</strong> <span>CTR {pct(active.ctr)} · CPM {money(active.cpm)}</span></p>
+          <p className="scatter-readout" title="Miglior rapporto tra CTR e CPM nella selezione"><strong>{active.id}</strong> <span>CTR {pct(active.ctr)} · CPM {money(active.cpm)}{active.id === best.id && ' · Miglior resa'}</span></p>
         </div>
         <p id="scatter-help" className="sr-only">Usa le frecce per scorrere gli annunci e Invio per aprire il dettaglio. Tutti gli annunci sono disponibili anche in tabella.</p>
       </> : <p className="panel-empty">Nessun annuncio corrisponde ai filtri.</p>}
