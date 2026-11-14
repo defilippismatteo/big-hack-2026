@@ -1,5 +1,7 @@
 # Prima analisi · Wevion BigHack 2026
 
+Il [confronto con CatBoost](Validazione_Modelli/README.md) estende questo pilota e aggiorna la scelta per lo sviluppo.
+
 Per questo pilota, **baseline a 14 giorni per il CTR e Timestral-28M per il CPM**. Nei due backtest la baseline ha avuto il CTR con l'errore più basso ponderato per impression. Il 28M ha ridotto l'errore CPM sullo stesso criterio e ha completato caricamento, due backtest e previsione in circa 11 secondi sul MacBook Air Intel con 8 GB di RAM. Il 5M ha impiegato circa 4 secondi.
 
 ## Verifica del branch
