@@ -114,7 +114,10 @@ function ExplorerContent({ data, headingRef }) {
   const openedFrom = useRef(null);
   const [day, setDay] = useState(() => data.dates.find((date) => data.events[date] === 'Black Friday') ?? data.dates[0]);
   const [campaign, setCampaign] = useState('');
-  const [adset, setAdset] = useState('');
+  const [adset, setAdset] = useState(() => {
+    const id = new URLSearchParams(hash.split('?')[1]).get('adset');
+    return data.adsets.some((item) => item.id === id) ? id : '';
+  });
   const [query, setQuery] = useState('');
   const [sort, setSort] = useState({ key: 'efficiency', direction: -1 });
   const [selected, setSelected] = useState([]);

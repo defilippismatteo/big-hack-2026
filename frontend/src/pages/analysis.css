@@ -1,0 +1,33 @@
+.analysis-page { display: grid; gap: 16px; }
+.analysis-panel { padding: clamp(14px, 2vw, 23px); }
+.analysis-panel h2 { font-size: 19px; letter-spacing: -.035em; }
+.analysis-panel h3 { font-size: 14px; }
+.analysis-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.analysis-filters { display: flex; flex-wrap: wrap; align-items: flex-end; gap: 10px; padding: 12px; }
+.analysis-filter { display: grid; min-width: 0; gap: 5px; font-size: 12px; font-weight: 650; }
+.analysis-filter select { min-height: 38px; width: 100%; padding: 5px 8px; border: 1px solid #ded9ea; border-radius: 7px; background: #faf9fd; color: var(--ink); font: inherit; }
+.analysis-page :is(select, input, summary, [tabindex]):focus-visible { outline: 2px solid var(--action); outline-offset: 2px; }
+.muted-copy { color: var(--muted); font-size: 12px; line-height: 1.5; margin: 6px 0; }
+.analysis-number { font-size: 25px; font-weight: 750; letter-spacing: -.045em; }
+.analysis-stat { display: grid; gap: 3px; min-width: 0; }
+.analysis-stat span { color: var(--muted); font-size: 12px; }
+.analysis-stats { display: flex; flex-wrap: wrap; gap: 12px 24px; margin: 10px 0; }
+.analysis-link { color: var(--action); font-weight: 650; font-size: 12px; text-decoration: underline; }
+.analysis-scroll { overflow: auto; max-height: 520px; margin-top: 10px; }
+.analysis-table { border-collapse: collapse; text-align: left; width: 100%; font-size: 12px; font-variant-numeric: tabular-nums; }
+.analysis-table th, .analysis-table td { padding: 7px 8px; border-bottom: 1px solid var(--border); vertical-align: middle; }
+.analysis-table thead th { position: sticky; top: 0; background: #f5f2fb; z-index: 2; }
+.analysis-table td button { min-height: 28px; width: 100%; border: 0; background: transparent; color: inherit; cursor: pointer; }
+.audience-card { display: grid; gap: 6px; padding: 12px; border: 1px solid var(--border); border-radius: 10px; }
+.audience-card > p { font-size: 13px; line-height: 1.45; }
+.audience-card summary { cursor: pointer; color: var(--action); font-size: 12px; }
+.audience-card .analysis-stats { margin: 4px 0; }
+.analysis-bars { display: grid; gap: 7px; margin-top: 10px; }
+.analysis-bar { display: grid; grid-template-columns: minmax(72px, 1fr) 3fr 55px; align-items: center; gap: 7px; font-size: 12px; }
+.analysis-bar meter { width: 100%; height: 18px; accent-color: var(--action); }
+.reaction-track { display: flex; height: 16px; overflow: hidden; border-radius: 5px; margin: 8px 0; }
+.reaction-track span:nth-child(1) { background: #d4cbe7; }
+.reaction-track span:nth-child(2) { background: #a996d6; }
+.reaction-track span:nth-child(3) { background: #8062e3; }
+.reaction-track span:nth-child(4) { background: #5834a0; }
+@media (max-width: 650px) { .analysis-grid { grid-template-columns: 1fr; } }

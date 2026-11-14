@@ -7,6 +7,7 @@ import '@fontsource-variable/inter';
 import { getSection, groups, sectionHref, sections } from './sections';
 import './styles.css';
 import { Overview } from './overview/Overview';
+import { AudienceLab } from './pages/AudienceLab';
 import { CreativeExplorer } from './creatives/CreativeExplorer';
 
 const logo = import.meta.env.BASE_URL + 'adera.svg';
@@ -137,7 +138,7 @@ function App() {
     }
   }
 
-  const Page = { overview: Overview, creatives: CreativeExplorer }[current.id] ?? SectionLanding;
+  const Page = { overview: Overview, creatives: CreativeExplorer, audience: AudienceLab }[current.id] ?? SectionLanding;
 
   return (
     <div className="app-shell">

@@ -9,6 +9,8 @@ from collections import Counter, defaultdict
 from decimal import Decimal
 from pathlib import Path
 
+from audience_data import population, reactions
+
 
 def csv_rows(path):
     with path.open(encoding="utf-8-sig", newline="") as handle:
@@ -46,6 +48,7 @@ def main():
     parser.add_argument("--artifacts", type=Path, required=True)
     parser.add_argument("--source-ref", required=True, help="SHA completo del runtime Market Mirror")
     parser.add_argument("--personas", type=Path, help="Export opzionale persona_cards.json di T3")
+    parser.add_argument("--simulations", type=Path, help="Summary.json di Market Mirror Decision")
     parser.add_argument("--out", type=Path, default=Path("public/data/overview.json"))
     args = parser.parse_args()
     if not re.fullmatch(r"[a-f0-9]{40}", args.source_ref):
@@ -165,15 +168,8 @@ def main():
             or index(hypotheses["adsets"], ("adset_id",)).keys() != {(adset,) for adset in adset_campaign}):
         raise ValueError("Copertura incoerente delle ipotesi per ad set")
 
-    profiles = None
-    if args.personas:
-        cards = json_read(args.personas)["personas"]
-        for card in cards:
-            if card["data_kind"] != "synthetic" or not card["persona_id"]:
-                raise ValueError("L'export può contenere solo profili sintetici")
-        index(cards, ("persona_id",))
-        profiles = {"count": len(cards), "age": dict(Counter(c.get("age_band") or "Non specificata" for c in cards)),
-                    "gender": dict(Counter(c.get("gender_identity") or "Non specificato" for c in cards))}
+    profiles = population(json_read(args.personas)["personas"]) if args.personas else None
+    simulated = reactions(json_read(args.simulations), {key[0] for key in catalog}) if args.simulations else {}
 
     events = {row["data"]: row["evento"].replace(" (venerdi)", "")
               for row in csv_rows(args.kit / "calendario.csv") if row["data"] in dates and row["evento"]}
@@ -194,8 +190,10 @@ def main():
         "forecast": forecast,
         "hypotheses": [{"adsetId": r["adset_id"], "description": r["segmento_ipotizzato"],
                         "ctr": r["segnali_osservati"]["ctr_storico_pct"],
-                        "confidence": r["confidence"]} for r in hypotheses["adsets"]],
+                        "confidence": r["confidence"], "evidence": r["segnali_osservati"],
+                        "alternatives": r["alternative"], "strategy": r["strategie"]} for r in hypotheses["adsets"]],
         "synthetic": profiles,
+        "simulatedDecision": simulated,
         "budgetScenario": scenario,
         "seasonalScenario": {"method": seasonal_method, "rows": [[day, adset, *amounts]
                              for (day, adset), amounts in sorted(seasonal_totals.items())]},
