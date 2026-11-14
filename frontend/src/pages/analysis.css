@@ -40,3 +40,10 @@
 .forecast-matrix .event-column { background: #eae2fb; }
 .forecast-matrix button { border-radius: 4px; }
 .forecast-matrix button[aria-pressed='true'] { box-shadow: inset 0 0 0 2px var(--action); }
+.budget-range { flex: 1 1 180px; }
+.budget-range input { accent-color: var(--action); min-height: 33px; }
+.budget-campaigns { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 8px; margin-top: 12px; }
+.budget-campaigns meter { width: 100%; }
+.budget-campaigns span { color: var(--action); font-size: 15px; font-weight: 700; }
+.budget-table td { white-space: nowrap; }
+.budget-context { background: #f1ebfc; }

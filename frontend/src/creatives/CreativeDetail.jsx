@@ -98,6 +98,9 @@ export function CreativeDetail({ creative, day, dates, checked, canSelect, onCom
         {checked ? 'Rimuovi dal confronto' : 'Aggiungi al confronto'}
       </button>
       {!checked && !canSelect && <p className="explorer-muted">Rimuovi un annuncio dalla selezione per aggiungerne un altro.</p>}
+      <p className="explorer-muted"><a className="analysis-link" href={'#/budget?' + new URLSearchParams({
+        campaign: creative.campaignId, adset: creative.adsetId, date: day,
+      })}>Esplora scenari di budget</a></p>
     </div>
   </dialog>;
 }
