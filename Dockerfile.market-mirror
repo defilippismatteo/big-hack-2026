@@ -1,0 +1,8 @@
+FROM python:3.12-slim
+WORKDIR /app
+COPY requirements-market-mirror.txt /app/
+RUN pip install --no-cache-dir -r requirements-market-mirror.txt
+COPY market_mirror /app/market_mirror
+COPY Wevion_Personas_Architettura_v1/scripts /app/Wevion_Personas_Architettura_v1/scripts
+# No organizer data, audit files, forecasts, .env, or .agents copied into the image.
+ENTRYPOINT ["python", "-m", "market_mirror"]

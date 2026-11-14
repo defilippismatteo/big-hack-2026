@@ -1,0 +1,443 @@
+{
+  "model": "gemini-decision-1",
+  "input": [
+    {
+      "type": "text",
+      "text": "Annuncio sponsorizzato Meta, obiettivo commerciale vendite. Settore: beauty_skincare. Formato: immagine. Titolo: Siero Vitamina C: ultimi 200 flaconi. Testo: Il lotto di settembre è quasi finito. Quando finisce, si riparte a ottobre.. CTA: Acquista ora. Descrizione visual fornita dagli organizzatori (non è un'immagine originale): Flacone del siero su sfondo arancio pieno, luce da studio, scritta 'ultimi 200' in un bollino rosso."
+    }
+  ],
+  "questions": {
+    "beauty_skincare-P001__outcome": {
+      "type": "choice",
+      "instructions": "Profilo fittizio e indipendente {\"age_band\": \"25-34\", \"gender_identity\": \"donna\", \"motivation\": \"sostenibilita\", \"social_habit\": \"facebook\", \"risk_attitude\": \"esplorativo\", \"interest_in_category\": \"low\"}. Considera la situazione di una normale esposizione nel feed. Non usare informazioni sulle risposte di altri utenti. Quale combinazione di azione e motivazione è più plausibile? Scegli una sola possibilità.",
+      "criteria": {
+        "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+        "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+        "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+        "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+        "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+        "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+        "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+        "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+        "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+        "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+        "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+        "click__more_info": "Apre il link per approfondire prima di decidere."
+      }
+    },
+    "beauty_skincare-P002__outcome": {
+      "type": "choice",
+      "instructions": "Profilo fittizio e indipendente {\"age_band\": \"55-64\", \"gender_identity\": \"donna\", \"motivation\": \"qualita\", \"social_habit\": \"uso_social_limitato\", \"risk_attitude\": \"esplorativo\", \"interest_in_category\": \"medium\"}. Considera la situazione di una normale esposizione nel feed. Non usare informazioni sulle risposte di altri utenti. Quale combinazione di azione e motivazione è più plausibile? Scegli una sola possibilità.",
+      "criteria": {
+        "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+        "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+        "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+        "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+        "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+        "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+        "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+        "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+        "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+        "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+        "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+        "click__more_info": "Apre il link per approfondire prima di decidere."
+      }
+    },
+    "beauty_skincare-P003__outcome": {
+      "type": "choice",
+      "instructions": "Profilo fittizio e indipendente {\"age_band\": \"45-54\", \"gender_identity\": \"uomo\", \"motivation\": \"abitudine\", \"social_habit\": \"social_misto\", \"risk_attitude\": \"prudente\", \"interest_in_category\": \"high\"}. Considera la situazione di una normale esposizione nel feed. Non usare informazioni sulle risposte di altri utenti. Quale combinazione di azione e motivazione è più plausibile? Scegli una sola possibilità.",
+      "criteria": {
+        "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+        "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+        "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+        "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+        "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+        "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+        "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+        "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+        "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+        "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+        "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+        "click__more_info": "Apre il link per approfondire prima di decidere."
+      }
+    },
+    "beauty_skincare-P004__outcome": {
+      "type": "choice",
+      "instructions": "Profilo fittizio e indipendente {\"age_band\": \"45-54\", \"gender_identity\": \"uomo\", \"motivation\": \"praticita\", \"social_habit\": \"uso_social_limitato\", \"risk_attitude\": \"esplorativo\", \"interest_in_category\": \"low\"}. Considera la situazione di una normale esposizione nel feed. Non usare informazioni sulle risposte di altri utenti. Quale combinazione di azione e motivazione è più plausibile? Scegli una sola possibilità.",
+      "criteria": {
+        "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+        "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+        "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+        "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+        "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+        "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+        "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+        "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+        "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+        "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+        "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+        "click__more_info": "Apre il link per approfondire prima di decidere."
+      }
+    },
+    "beauty_skincare-P005__outcome": {
+      "type": "choice",
+      "instructions": "Profilo fittizio e indipendente {\"age_band\": \"45-54\", \"gender_identity\": \"uomo\", \"motivation\": \"convenienza\", \"social_habit\": \"social_misto\", \"risk_attitude\": \"prudente\", \"interest_in_category\": \"medium\"}. Considera la situazione di una normale esposizione nel feed. Non usare informazioni sulle risposte di altri utenti. Quale combinazione di azione e motivazione è più plausibile? Scegli una sola possibilità.",
+      "criteria": {
+        "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+        "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+        "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+        "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+        "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+        "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+        "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+        "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+        "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+        "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+        "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+        "click__more_info": "Apre il link per approfondire prima di decidere."
+      }
+    },
+    "beauty_skincare-P006__outcome": {
+      "type": "choice",
+      "instructions": "Profilo fittizio e indipendente {\"age_band\": \"55-64\", \"gender_identity\": \"non_binary_or_undeclared\", \"motivation\": \"qualita\", \"social_habit\": \"instagram\", \"risk_attitude\": \"prudente\", \"interest_in_category\": \"high\"}. Considera la situazione di una normale esposizione nel feed. Non usare informazioni sulle risposte di altri utenti. Quale combinazione di azione e motivazione è più plausibile? Scegli una sola possibilità.",
+      "criteria": {
+        "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+        "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+        "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+        "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+        "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+        "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+        "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+        "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+        "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+        "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+        "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+        "click__more_info": "Apre il link per approfondire prima di decidere."
+      }
+    },
+    "beauty_skincare-P007__outcome": {
+      "type": "choice",
+      "instructions": "Profilo fittizio e indipendente {\"age_band\": \"35-44\", \"gender_identity\": \"uomo\", \"motivation\": \"fiducia\", \"social_habit\": \"instagram\", \"risk_attitude\": \"moderato\", \"interest_in_category\": \"low\"}. Considera la situazione di una normale esposizione nel feed. Non usare informazioni sulle risposte di altri utenti. Quale combinazione di azione e motivazione è più plausibile? Scegli una sola possibilità.",
+      "criteria": {
+        "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+        "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+        "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+        "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+        "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+        "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+        "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+        "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+        "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+        "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+        "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+        "click__more_info": "Apre il link per approfondire prima di decidere."
+      }
+    },
+    "beauty_skincare-P008__outcome": {
+      "type": "choice",
+      "instructions": "Profilo fittizio e indipendente {\"age_band\": \"18-24\", \"gender_identity\": \"donna\", \"motivation\": \"sostenibilita\", \"social_habit\": \"social_misto\", \"risk_attitude\": \"prudente\", \"interest_in_category\": \"medium\"}. Considera la situazione di una normale esposizione nel feed. Non usare informazioni sulle risposte di altri utenti. Quale combinazione di azione e motivazione è più plausibile? Scegli una sola possibilità.",
+      "criteria": {
+        "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+        "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+        "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+        "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+        "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+        "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+        "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+        "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+        "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+        "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+        "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+        "click__more_info": "Apre il link per approfondire prima di decidere."
+      }
+    },
+    "beauty_skincare-P009__outcome": {
+      "type": "choice",
+      "instructions": "Profilo fittizio e indipendente {\"age_band\": \"65+\", \"gender_identity\": \"uomo\", \"motivation\": \"indifferenza\", \"social_habit\": \"uso_social_limitato\", \"risk_attitude\": \"moderato\", \"interest_in_category\": \"high\"}. Considera la situazione di una normale esposizione nel feed. Non usare informazioni sulle risposte di altri utenti. Quale combinazione di azione e motivazione è più plausibile? Scegli una sola possibilità.",
+      "criteria": {
+        "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+        "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+        "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+        "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+        "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+        "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+        "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+        "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+        "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+        "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+        "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+        "click__more_info": "Apre il link per approfondire prima di decidere."
+      }
+    },
+    "beauty_skincare-P010__outcome": {
+      "type": "choice",
+      "instructions": "Profilo fittizio e indipendente {\"age_band\": \"65+\", \"gender_identity\": \"donna\", \"motivation\": \"abitudine\", \"social_habit\": \"social_misto\", \"risk_attitude\": \"esplorativo\", \"interest_in_category\": \"low\"}. Considera la situazione di una normale esposizione nel feed. Non usare informazioni sulle risposte di altri utenti. Quale combinazione di azione e motivazione è più plausibile? Scegli una sola possibilità.",
+      "criteria": {
+        "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+        "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+        "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+        "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+        "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+        "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+        "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+        "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+        "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+        "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+        "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+        "click__more_info": "Apre il link per approfondire prima di decidere."
+      }
+    },
+    "beauty_skincare-P011__outcome": {
+      "type": "choice",
+      "instructions": "Profilo fittizio e indipendente {\"age_band\": \"35-44\", \"gender_identity\": \"donna\", \"motivation\": \"curiosita\", \"social_habit\": \"social_misto\", \"risk_attitude\": \"esplorativo\", \"interest_in_category\": \"medium\"}. Considera la situazione di una normale esposizione nel feed. Non usare informazioni sulle risposte di altri utenti. Quale combinazione di azione e motivazione è più plausibile? Scegli una sola possibilità.",
+      "criteria": {
+        "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+        "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+        "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+        "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+        "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+        "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+        "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+        "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+        "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+        "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+        "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+        "click__more_info": "Apre il link per approfondire prima di decidere."
+      }
+    },
+    "beauty_skincare-P012__outcome": {
+      "type": "choice",
+      "instructions": "Profilo fittizio e indipendente {\"age_band\": \"18-24\", \"gender_identity\": \"non_binary_or_undeclared\", \"motivation\": \"qualita\", \"social_habit\": \"facebook\", \"risk_attitude\": \"moderato\", \"interest_in_category\": \"high\"}. Considera la situazione di una normale esposizione nel feed. Non usare informazioni sulle risposte di altri utenti. Quale combinazione di azione e motivazione è più plausibile? Scegli una sola possibilità.",
+      "criteria": {
+        "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+        "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+        "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+        "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+        "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+        "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+        "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+        "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+        "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+        "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+        "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+        "click__more_info": "Apre il link per approfondire prima di decidere."
+      }
+    },
+    "beauty_skincare-P013__outcome": {
+      "type": "choice",
+      "instructions": "Profilo fittizio e indipendente {\"age_band\": \"55-64\", \"gender_identity\": \"donna\", \"motivation\": \"abitudine\", \"social_habit\": \"instagram\", \"risk_attitude\": \"esplorativo\", \"interest_in_category\": \"low\"}. Considera la situazione di una normale esposizione nel feed. Non usare informazioni sulle risposte di altri utenti. Quale combinazione di azione e motivazione è più plausibile? Scegli una sola possibilità.",
+      "criteria": {
+        "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+        "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+        "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+        "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+        "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+        "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+        "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+        "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+        "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+        "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+        "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+        "click__more_info": "Apre il link per approfondire prima di decidere."
+      }
+    },
+    "beauty_skincare-P014__outcome": {
+      "type": "choice",
+      "instructions": "Profilo fittizio e indipendente {\"age_band\": \"55-64\", \"gender_identity\": \"uomo\", \"motivation\": \"fiducia\", \"social_habit\": \"instagram\", \"risk_attitude\": \"prudente\", \"interest_in_category\": \"medium\"}. Considera la situazione di una normale esposizione nel feed. Non usare informazioni sulle risposte di altri utenti. Quale combinazione di azione e motivazione è più plausibile? Scegli una sola possibilità.",
+      "criteria": {
+        "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+        "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+        "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+        "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+        "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+        "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+        "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+        "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+        "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+        "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+        "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+        "click__more_info": "Apre il link per approfondire prima di decidere."
+      }
+    },
+    "beauty_skincare-P015__outcome": {
+      "type": "choice",
+      "instructions": "Profilo fittizio e indipendente {\"age_band\": \"35-44\", \"gender_identity\": \"uomo\", \"motivation\": \"indifferenza\", \"social_habit\": \"facebook\", \"risk_attitude\": \"esplorativo\", \"interest_in_category\": \"high\"}. Considera la situazione di una normale esposizione nel feed. Non usare informazioni sulle risposte di altri utenti. Quale combinazione di azione e motivazione è più plausibile? Scegli una sola possibilità.",
+      "criteria": {
+        "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+        "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+        "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+        "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+        "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+        "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+        "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+        "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+        "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+        "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+        "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+        "click__more_info": "Apre il link per approfondire prima di decidere."
+      }
+    },
+    "beauty_skincare-P016__outcome": {
+      "type": "choice",
+      "instructions": "Profilo fittizio e indipendente {\"age_band\": \"18-24\", \"gender_identity\": \"uomo\", \"motivation\": \"convenienza\", \"social_habit\": \"uso_social_limitato\", \"risk_attitude\": \"moderato\", \"interest_in_category\": \"low\"}. Considera la situazione di una normale esposizione nel feed. Non usare informazioni sulle risposte di altri utenti. Quale combinazione di azione e motivazione è più plausibile? Scegli una sola possibilità.",
+      "criteria": {
+        "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+        "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+        "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+        "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+        "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+        "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+        "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+        "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+        "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+        "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+        "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+        "click__more_info": "Apre il link per approfondire prima di decidere."
+      }
+    },
+    "beauty_skincare-P017__outcome": {
+      "type": "choice",
+      "instructions": "Profilo fittizio e indipendente {\"age_band\": \"35-44\", \"gender_identity\": \"uomo\", \"motivation\": \"indifferenza\", \"social_habit\": \"instagram\", \"risk_attitude\": \"moderato\", \"interest_in_category\": \"medium\"}. Considera la situazione di una normale esposizione nel feed. Non usare informazioni sulle risposte di altri utenti. Quale combinazione di azione e motivazione è più plausibile? Scegli una sola possibilità.",
+      "criteria": {
+        "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+        "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+        "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+        "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+        "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+        "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+        "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+        "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+        "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+        "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+        "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+        "click__more_info": "Apre il link per approfondire prima di decidere."
+      }
+    },
+    "beauty_skincare-P018__outcome": {
+      "type": "choice",
+      "instructions": "Profilo fittizio e indipendente {\"age_band\": \"25-34\", \"gender_identity\": \"donna\", \"motivation\": \"convenienza\", \"social_habit\": \"social_misto\", \"risk_attitude\": \"moderato\", \"interest_in_category\": \"high\"}. Considera la situazione di una normale esposizione nel feed. Non usare informazioni sulle risposte di altri utenti. Quale combinazione di azione e motivazione è più plausibile? Scegli una sola possibilità.",
+      "criteria": {
+        "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+        "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+        "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+        "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+        "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+        "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+        "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+        "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+        "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+        "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+        "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+        "click__more_info": "Apre il link per approfondire prima di decidere."
+      }
+    },
+    "beauty_skincare-P019__outcome": {
+      "type": "choice",
+      "instructions": "Profilo fittizio e indipendente {\"age_band\": \"25-34\", \"gender_identity\": \"uomo\", \"motivation\": \"curiosita\", \"social_habit\": \"facebook\", \"risk_attitude\": \"prudente\", \"interest_in_category\": \"low\"}. Considera la situazione di una normale esposizione nel feed. Non usare informazioni sulle risposte di altri utenti. Quale combinazione di azione e motivazione è più plausibile? Scegli una sola possibilità.",
+      "criteria": {
+        "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+        "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+        "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+        "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+        "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+        "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+        "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+        "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+        "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+        "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+        "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+        "click__more_info": "Apre il link per approfondire prima di decidere."
+      }
+    },
+    "beauty_skincare-P020__outcome": {
+      "type": "choice",
+      "instructions": "Profilo fittizio e indipendente {\"age_band\": \"18-24\", \"gender_identity\": \"uomo\", \"motivation\": \"fiducia\", \"social_habit\": \"instagram\", \"risk_attitude\": \"moderato\", \"interest_in_category\": \"medium\"}. Considera la situazione di una normale esposizione nel feed. Non usare informazioni sulle risposte di altri utenti. Quale combinazione di azione e motivazione è più plausibile? Scegli una sola possibilità.",
+      "criteria": {
+        "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+        "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+        "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+        "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+        "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+        "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+        "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+        "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+        "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+        "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+        "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+        "click__more_info": "Apre il link per approfondire prima di decidere."
+      }
+    },
+    "beauty_skincare-P021__outcome": {
+      "type": "choice",
+      "instructions": "Profilo fittizio e indipendente {\"age_band\": \"65+\", \"gender_identity\": \"donna\", \"motivation\": \"sostenibilita\", \"social_habit\": \"uso_social_limitato\", \"risk_attitude\": \"moderato\", \"interest_in_category\": \"high\"}. Considera la situazione di una normale esposizione nel feed. Non usare informazioni sulle risposte di altri utenti. Quale combinazione di azione e motivazione è più plausibile? Scegli una sola possibilità.",
+      "criteria": {
+        "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+        "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+        "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+        "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+        "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+        "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+        "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+        "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+        "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+        "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+        "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+        "click__more_info": "Apre il link per approfondire prima di decidere."
+      }
+    },
+    "beauty_skincare-P022__outcome": {
+      "type": "choice",
+      "instructions": "Profilo fittizio e indipendente {\"age_band\": \"45-54\", \"gender_identity\": \"donna\", \"motivation\": \"curiosita\", \"social_habit\": \"facebook\", \"risk_attitude\": \"prudente\", \"interest_in_category\": \"low\"}. Considera la situazione di una normale esposizione nel feed. Non usare informazioni sulle risposte di altri utenti. Quale combinazione di azione e motivazione è più plausibile? Scegli una sola possibilità.",
+      "criteria": {
+        "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+        "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+        "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+        "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+        "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+        "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+        "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+        "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+        "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+        "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+        "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+        "click__more_info": "Apre il link per approfondire prima di decidere."
+      }
+    },
+    "beauty_skincare-P023__outcome": {
+      "type": "choice",
+      "instructions": "Profilo fittizio e indipendente {\"age_band\": \"25-34\", \"gender_identity\": \"donna\", \"motivation\": \"praticita\", \"social_habit\": \"facebook\", \"risk_attitude\": \"prudente\", \"interest_in_category\": \"medium\"}. Considera la situazione di una normale esposizione nel feed. Non usare informazioni sulle risposte di altri utenti. Quale combinazione di azione e motivazione è più plausibile? Scegli una sola possibilità.",
+      "criteria": {
+        "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+        "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+        "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+        "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+        "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+        "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+        "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+        "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+        "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+        "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+        "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+        "click__more_info": "Apre il link per approfondire prima di decidere."
+      }
+    },
+    "beauty_skincare-P024__outcome": {
+      "type": "choice",
+      "instructions": "Profilo fittizio e indipendente {\"age_band\": \"65+\", \"gender_identity\": \"donna\", \"motivation\": \"praticita\", \"social_habit\": \"uso_social_limitato\", \"risk_attitude\": \"esplorativo\", \"interest_in_category\": \"high\"}. Considera la situazione di una normale esposizione nel feed. Non usare informazioni sulle risposte di altri utenti. Quale combinazione di azione e motivazione è più plausibile? Scegli una sola possibilità.",
+      "criteria": {
+        "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+        "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+        "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+        "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+        "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+        "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+        "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+        "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+        "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+        "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+        "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+        "click__more_info": "Apre il link per approfondire prima di decidere."
+      }
+    }
+  }
+}
