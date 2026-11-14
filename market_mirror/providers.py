@@ -20,9 +20,28 @@ def settings():
             "forecast_csv": os.getenv("MM_FORECAST_CSV", "")}
 
 
-def client():
+def api_keys():
     settings()
-    key = os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
+    raw = []
+    for var in ("GEMINI_API_KEY", "GEMINI_API_KEY_2", "GOOGLE_API_KEY"):
+        val = (os.getenv(var) or "").strip()
+        if val:
+            raw.append(val)
+    extra = (os.getenv("GEMINI_API_KEYS") or "").strip()
+    if extra:
+        raw.extend(part.strip() for part in extra.split(",") if part.strip())
+    deduped = []
+    for key in raw:
+        if key not in deduped:
+            deduped.append(key)
+    if not deduped:
+        raise RuntimeError("Inserisci GEMINI_API_KEY nel file .env alla root")
+    return deduped
+
+
+def client(api_key=None):
+    settings()
+    key = api_key or os.getenv("GEMINI_API_KEY") or os.getenv("GOOGLE_API_KEY")
     if not key:
         raise RuntimeError("Inserisci GEMINI_API_KEY nel file .env alla root")
     try:
@@ -32,6 +51,10 @@ def client():
     return genai.Client(api_key=key, vertexai=False,
                         http_options={"api_version": "v1beta", "timeout": 60000,
                                       "retry_options": {"attempts": 1}})
+
+
+def clients():
+    return [(f"key_{i + 1}", client(k)) for i, k in enumerate(api_keys())]
 
 
 def decide(plan, api=None):
@@ -66,8 +89,8 @@ def decision_preflight(plan):
     """Validate a frozen T3 plan, including SDK schema, without a Google client."""
     from .signals import aggregate
     req = plan['request']
-    if not 1 <= len(req['questions']) <= 4:
-        raise ValueError('Il primo probe usa da 1 a 4 persone')
+    if not 1 <= len(req['questions']) <= 1000:
+        raise ValueError('CreateDecisionRequest supporta da 1 a 1000 domande per richiesta')
     if any(a['persona_data_kind'] != 'synthetic' for a in plan['assignments'].values()):
         raise ValueError('Servono schede effettivamente generate prima del preflight Decision')
     for a in plan['assignments'].values():

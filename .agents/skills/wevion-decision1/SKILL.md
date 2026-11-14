@@ -9,6 +9,14 @@ PRECHECK prima del LIVE. Questa è l'unica fase che usa un'API Google distinta.
 La chiave GEMINI_API_KEY serve solo a Decision 1, mai a generare le persone.
 
 Runtime: `market_mirror/feed.py` e `providers.decide`.
+Esecuzione registrata: `analyze --live`, con prima prova `--asset-id NDL-S1`.
+Il registro per persona/asset è `artifacts/personas_t3/analyses/ledger.sqlite`:
+le risposte completed vengono riusate anche se cambia l'ordine del panel o si
+aggiungono persone. Cambiare profilo, creatività, modello o feed crea un'analisi
+distinta. Conservare DB e raw insieme. Non avviare batch in parallelo; la cadenza
+predefinita di 6,5 secondi è prudenziale, non una quota Google certificata.
+Su429 fermare il batch e riprendere solo i rejected dopo cooldown esplicito.
+Su timeout o risposta non valida ispezionare prima lo stato: niente retry cieco.
 Una creatività nell'input condiviso; una domanda choice per persona con il solo
 profilo individuale e il suo feed. I metadati asset_id e sampling_weight restano
 nel piano locale, fuori dal payload al modello. Non mettere il pool completo

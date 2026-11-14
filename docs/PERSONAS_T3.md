@@ -1,5 +1,28 @@
 # Persone, feed e Decision: orchestrazione T3
 
+## Interviste qualitative dopo Decision
+
+Il primo round è salvato in `artifacts/personas_t3/interviews/REPORT.md`: quattro
+colloqui indipendenti tramite Gemini Hydrogen/Antigravity, dodici asset per
+persona, risposte complete e confronto con Decision dopo il congelamento.
+Il codice riutilizzabile è `market_mirror/interviews.py`: `prepare` costruisce
+job e prompt inline, `freeze` valida risposte e ricevute T3, `report` produce
+il report e il confronto strutturato. Non avvia automaticamente modelli/API.
+
+Ogni nuovo subagente riceve solo il proprio `.prompt.txt`, senza storia del
+coordinatore: scheda individuale, proprio feed, descrizioni degli annunci e sei
+domande neutrali. Nessun risultato Decision, azione campionata, score, altro
+profilo/risposta, KPI, audience o forecast. Completamento Decision seleziona le
+coppie ammesse, ma punteggi e risultati non cambiano le domande. Il coordinatore
+salva JSON e ricevuta effettiva in `interviews/responses/`, quindi congela tutte
+le interviste prima del confronto. Nessuna spiegazione suggerita alla persona.
+
+Si tratta di riesposizione riflessiva a più annunci, non ricordo spontaneo né
+spiegazione causale di uno scroll/click. Le risposte sono `synthetic`; le
+interpretazioni del coordinatore sono `hypothesis`. Si conservano anche le
+divergenze da Decision. Visibilità applicata mediante proiezioni e istruzioni,
+non sandbox OS. Il report documenta input, hash, ricevute, verbatim e limiti.
+
 Questa è l'architettura confermata dall'utente. Sostituisce il precedente writer
 via Google API. La pipeline forecasting e l'unione con Timestral restano separate.
 
@@ -100,3 +123,33 @@ python -m market_mirror aggregate --plan artifacts/personas_t3/decision_plan.jso
 
 Niente fallback inventato in caso di accesso o quota insufficienti. La presenza
 dei feed e la validazione locale non garantiscono l'esito o la qualità dell'API.
+
+## Analisi registrate: evitare richieste duplicate
+
+Il worker live usa ora `python -m market_mirror analyze --live`, iniziando con
+`--asset-id NDL-S1`. Il registro persistente è
+`artifacts/personas_t3/analyses/ledger.sqlite`, esportato anche in `ledger.json`.
+`summary.json`, `assets/` e `raw/` contengono rispettivamente confronto, risultati
+per asset e risposte API originali. Conservare la cartella per poter riusare i dati.
+
+La cache identifica persona, testo dell'asset, profilo effettivamente visibile,
+istruzioni/opzioni, modello e scenario/feed. Non reinvia completed. Se aumenti
+il panel vengono richieste solo le nuove persone; riordinare il panel non costa
+nuove analisi. Anche il vecchio comando `decide --live` usa questo registro.
+
+```bash
+python -m market_mirror analyze             # legge solo cache; zero API
+python -m market_mirror analysis-view       # produce analyses/results.html
+```
+
+I raw vengono salvati prima di validarli. Se il processo si interrompe dopo
+il salvataggio, il registro può recuperarli. Stati pending/ambiguous o risposta
+non valida non vengono ritentati automaticamente. Un HTTP429 viene registrato
+come rejected; dopo verifica/cooldown si può riprendere il solo asset con
+`--retry-rejected`. La cadenza predefinita tra nuovi invii è 6,5 secondi, una scelta
+prudenziale modificabile, non una quota Google verificata.
+
+Primo giro completato: 12 asset skincare, 48 risposte su 4 persone; 12 richieste
+riuscite e un primo tentativo rifiutato con429. Il replay ha riusato tutte48
+risposte con zero API. Il report del run è in `analyses/REPORT.md`; riporta
+score simulati e53.056 token input dichiarati, senza costi monetari inventati.

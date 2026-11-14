@@ -13,11 +13,15 @@ Interprete: `.venv-market-mirror/bin/python` nella root del progetto.
 2. Se il task richiesto è PRECHECK, fermati dopo aver letto il report. Non
    eseguire `--live` e non chiamare API. Riporta che i risultati Decision mancano.
 3. Se il task richiesto è LIVE e la chiave Decision è disponibile nell'ambiente
-   locale, esegui `decide --live` e salva `decision_raw.json`, poi `aggregate`
-   in `signals.json`. Leggi la chiave solo tramite il client Python: non
+   locale, usa `analyze --live --asset-id ASSET_ID` per il primo asset, poi
+   `analyze --live` sugli asset autorizzati. Il registro in analyses/ledger.sqlite
+   evita invii duplicati; non cambiare cartella del registro per aggirarlo.
+   Anche `decide --live` usa lo stesso registro. Leggi la chiave solo tramite il client Python: non
    stamparla, non copiarla in prompt, report o comandi con valore letterale.
 4. Se manca la chiave o l'API rifiuta la richiesta, registra il blocco senza
    sostituire le risposte con fixture o un modello diverso.
+   Un retry di stato rejected richiede una ripresa esplicita; pending/ambiguous
+   e invalid_response non vengono mai reinviati automaticamente.
 
 Ogni domanda della richiesta contiene una persona distinta e il suo feed;
 non unire i profili nel contesto condiviso e non usare risposte di altre persone.

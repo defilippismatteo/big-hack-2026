@@ -8,6 +8,8 @@ SLOT_FIELDS = (
     "persona_id", "vertical", "country", "age_band", "gender_identity", "motivation",
     "social_habit", "risk_attitude", "interest_in_category", "sampling_weight", "seed",
 )
+OPTIONAL_SLOT_FIELDS = ("cohort",)
+COHORT_VALUES = ("unbiased", "category_conditioned")
 DETAIL_FIELDS = (
     "occupation", "economic_context", "daily_routine", "decision_habits",
     "trust_requirements", "ad_avoidance", "concerns", "contradiction", "persona_summary",
@@ -45,8 +47,11 @@ def validate_card(card):
         required.update(T3_FIELDS)
     if not required.issubset(card):
         raise ValueError(f"Persona incompleta: {sorted(required - set(card))}")
-    if set(card) - required:
+    allowed = required | set(OPTIONAL_SLOT_FIELDS)
+    if set(card) - allowed:
         raise ValueError("Persona contiene campi non previsti dal contratto")
+    if "cohort" in card and card["cohort"] not in COHORT_VALUES:
+        raise ValueError("Coorte persona non valida")
     for key in DETAIL_FIELDS:
         if not isinstance(card[key], str) or not card[key].strip():
             raise ValueError(f"Dettaglio persona non valido: {key}")

@@ -131,3 +131,40 @@ class DecisionRunTests(unittest.TestCase):
         self.assertEqual(len(self.ledger.export()['requests']), 2)
         run_asset(self.ledger, self.plan, self.out, api)
         self.assertEqual(len(api.calls), 1)
+
+    def test_run_asset_chunks_questions_by_batch_size(self):
+        api = FakeDecisionAPI()
+        res = run_asset(self.ledger, self.plan, self.out, api, batch_size=2)
+        self.assertEqual(res['api_requests'], 2)
+        self.assertEqual(res['new_questions'], 4)
+        self.assertEqual(len(api.calls), 2)
+        self.assertEqual([len(c['questions']) for c in api.calls], [2, 2])
+        res2 = run_asset(self.ledger, self.plan, self.out, None, batch_size=2)
+        self.assertEqual(res2['reused_questions'], 4)
+        self.assertEqual(res2['api_requests'], 0)
+
+    def test_pack_question_chunks_and_parallel_two_keys_with_categorization(self):
+        from market_mirror.decision_runs import (
+            analyze_parallel, build_categorization, estimate_request_tokens, pack_question_chunks
+        )
+        from market_mirror.contracts import read
+        qids = list(self.plan['request']['questions'])
+        est_one = estimate_request_tokens(self.plan['request']['input'], {qids[0]: self.plan['request']['questions'][qids[0]]})
+        self.assertGreater(est_one, 800)
+        chunks = pack_question_chunks(self.plan, qids, batch_size=10, max_est_tokens=est_one + 50)
+        self.assertEqual(len(chunks), 4)
+        api1, api2 = FakeDecisionAPI(), FakeDecisionAPI()
+        res = analyze_parallel(
+            self.catalog, self.cards, self.out, [('key_1', api1), ('key_2', api2)],
+            asset_ids=['NDL-S1', 'NDL-S2'], batch_size=2, min_interval_s=0.0,
+            tpm_limit=100000, rpm_limit=60, max_tokens_per_request=40000,
+        )
+        self.assertEqual(len(res['assets']), 2)
+        self.assertEqual(res['api_requests'], 4)
+        self.assertGreaterEqual(len(api1.calls) + len(api2.calls), 4)
+        cat = read(self.out / 'categorization.json')
+        self.assertEqual(cat['n_personas_categorized'], 4)
+        self.assertEqual(cat['campaigns'][0]['campaign_id'], 'NDL-C1')
+        summary = read(self.out / 'summary.json')
+        self.assertEqual(build_categorization(summary, self.cards, self.catalog)['n_assets'], 2)
+

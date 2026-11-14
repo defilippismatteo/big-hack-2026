@@ -1,0 +1,86 @@
+{
+  "schema_version": "1.0",
+  "project_root": "/Users/fede/Documents/Progetti/hackathon/big-hack-2026",
+  "generated_at": "2026-11-14T15:03:30Z",
+  "scope": {
+    "source_extensions": [
+      ".cjs",
+      ".js",
+      ".jsx",
+      ".mjs",
+      ".py",
+      ".ts",
+      ".tsx"
+    ],
+    "excluded_directories": [
+      ".gemini",
+      ".git",
+      ".hg",
+      ".mypy_cache",
+      ".next",
+      ".nuxt",
+      ".pytest_cache",
+      ".ruff_cache",
+      ".svelte-kit",
+      ".svn",
+      ".venv",
+      ".venv-market-mirror",
+      "__pycache__",
+      "artifacts",
+      "build",
+      "coverage",
+      "dist",
+      "node_modules",
+      "out",
+      "outputs",
+      "target",
+      "vendor",
+      "venv"
+    ],
+    "source_files": 32,
+    "source_loc": 2662,
+    "source_bytes": 175896
+  },
+  "summary": {
+    "candidates": 1,
+    "proof_eligible": 0,
+    "potential_removable_loc": 129,
+    "potential_removable_bytes": 7642,
+    "by_category": {
+      "orphan-file": 1,
+      "unused-dependency": 0,
+      "unused-export": 0,
+      "duplicate-file": 0,
+      "commented-code": 0
+    }
+  },
+  "candidates": [
+    {
+      "category": "orphan-file",
+      "subject": "TEST INIZIALI FATTI DA CHAT GPT DA VERIFICARE /Wevion_Validation_Baseline.py",
+      "path": "TEST INIZIALI FATTI DA CHAT GPT DA VERIFICARE /Wevion_Validation_Baseline.py",
+      "confidence": "medium",
+      "initial_status": "REVIEW",
+      "risk": "medium",
+      "proof_eligible": false,
+      "loc": 129,
+      "bytes": 7642,
+      "evidence": [
+        "No resolved static inbound import was found.",
+        "The file is not a detected package or conventional entry point.",
+        "Repository text contains possible string/name references: Wevion_Validation_Baseline, Wevion_Validation_Baseline.py."
+      ],
+      "caveats": [
+        "Dynamic loading, reflection, external consumers, or incomplete framework detection can hide reachability.",
+        "Possible string reachability prevents high-confidence deletion."
+      ],
+      "id": "CRT-001"
+    }
+  ],
+  "limitations": [
+    "Static analysis cannot prove absence of dynamic, reflective, operational, platform-specific, or external use.",
+    "JavaScript/TypeScript and Python import resolution is intentionally conservative and does not implement every alias or framework convention.",
+    "Unused dependencies and exports are leads only until project-native tooling and focused proof support removal.",
+    "No project code, package command, or dependency was executed by this scanner."
+  ]
+}

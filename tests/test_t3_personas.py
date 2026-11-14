@@ -5,7 +5,7 @@ from unittest.mock import patch
 from market_mirror.contracts import DETAIL_FIELDS
 from market_mirror.feed import build_plan
 from market_mirror.starter import ROOT, build_context, build_catalog, generate_slots
-from market_mirror.t3_personas import build_jobs, import_response
+from market_mirror.t3_personas import apply_cohort_split, build_jobs, import_response
 from market_mirror.providers import decision_preflight
 
 
@@ -81,3 +81,21 @@ class T3PersonaTests(unittest.TestCase):
             report = decision_preflight(plan)
         self.assertEqual(report['api_calls'], 0)
         self.assertFalse(report['live_access_verified'])
+
+    def test_cohort_split_50_50_for_600_personas(self):
+        slots = apply_cohort_split(generate_slots(self.context, n=200, seed=2026), biased_share=0.5, seed=2026)
+        self.assertEqual(len(slots['slots']), 600)
+        jobs = build_jobs(self.context, slots, batch_size=25)
+        self.assertEqual(len(jobs), 24)
+        for v in ('beauty_skincare', 'pet_ecommerce', 'abbigliamento'):
+            vs = [s for s in slots['slots'] if s['vertical'] == v]
+            unbiased = [s for s in vs if s['cohort'] == 'unbiased']
+            conditioned = [s for s in vs if s['cohort'] == 'category_conditioned']
+            self.assertEqual(len(unbiased), 100)
+            self.assertEqual(len(conditioned), 100)
+            self.assertTrue(all(s['interest_in_category'] in ('high', 'medium') for s in conditioned))
+            self.assertTrue(all(s['motivation'] != 'indifferenza' for s in conditioned))
+        cards = import_response(jobs[-1], self.response(jobs[-1]), self.receipt)
+        self.assertEqual(len(cards['personas']), 25)
+        plan = build_plan(self.catalog, cards, 'FGR-S1', n=25)
+        self.assertNotIn('cohort', plan['request']['questions']['p0000']['instructions'])

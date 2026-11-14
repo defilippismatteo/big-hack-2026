@@ -35,17 +35,47 @@ def parser():
     cmd.add_argument("--asset-id", nargs="+")
     cmd.add_argument("--out", type=Path, default=ROOT / "artifacts/personas_t3/analyses")
     cmd.add_argument("--live", action="store_true")
+    cmd.add_argument("--parallel", action="store_true", help="Usa tutte le API key configurate in parallelo con pacing RPM/TPM per chiave")
     cmd.add_argument("--retry-rejected", action="store_true", help="Riprova solo richieste esplicitamente rifiutate, mai timeout/esiti incerti")
+    cmd.add_argument("--min-interval", type=float, default=6.5, help="Distanza minima fra nuove richieste, secondi; non è una quota Google verificata")
+    cmd.add_argument("--batch-size", type=int, default=25, help="Numero massimo di domande per richiesta Decision")
+    cmd.add_argument("--tpm-limit", type=int, default=45000, help="Budget prudenziale token/minuto per evitare HTTP 429 sul Free Tier")
+    cmd.add_argument("--rpm-limit", type=int, default=12, help="Limite prudenziale richieste/minuto per chiave in modalità parallela")
+    cmd.add_argument("--max-tokens-per-request", type=int, default=41000, help="Budget massimo di token stimati per singola richiesta")
+    cmd.add_argument("--max-429-retries", type=int, default=4, help="Numero massimo di retry espliciti con cooldown su HTTP 429")
     cmd.add_argument("--seed", type=int)
     cmd = sub.add_parser("analysis-view", help="Mostra le risposte Decision già salvate")
     cmd.add_argument("--run", type=Path, default=ROOT / "artifacts/personas_t3/analyses")
     cmd.add_argument("--personas", type=Path, default=ROOT / "artifacts/personas_t3/persona_cards.json")
     cmd.add_argument("--catalog", type=Path, default=DEFAULT_OUT / "decision_inputs/creative_catalog.json")
+    cmd = sub.add_parser("interviews-prepare", help="Prepara job ciechi per interviste post-Decision")
+    cmd.add_argument("--catalog", type=Path, default=DEFAULT_OUT / "decision_inputs/creative_catalog.json")
+    cmd.add_argument("--personas", type=Path, default=ROOT / "artifacts/personas_t3/persona_cards.json")
+    cmd.add_argument("--out", type=Path, default=ROOT / "artifacts/personas_t3/interviews")
+    cmd.add_argument("--seed", type=int)
+    cmd = sub.add_parser("interviews-freeze", help="Valida e congela le interviste completate prima del confronto")
+    cmd.add_argument("--out", type=Path, default=ROOT / "artifacts/personas_t3/interviews")
+    cmd = sub.add_parser("interviews-report", help="Genera report, comparison.json e campaign_opinions.json dalle interviste congelate")
+    cmd.add_argument("--out", type=Path, default=ROOT / "artifacts/personas_t3/interviews")
+    cmd.add_argument("--personas", type=Path, default=ROOT / "artifacts/personas_t3/persona_cards.json")
+    cmd.add_argument("--summary", type=Path, default=ROOT / "artifacts/personas_t3/analyses/summary.json")
+    cmd.add_argument("--catalog", type=Path, default=DEFAULT_OUT / "decision_inputs/creative_catalog.json")
+    cmd.add_argument("--notes-file", type=Path)
+    cmd = sub.add_parser("unified-dashboard", help="Genera la dashboard unificata HTML combinando v4, 600 personas, Decision 1 e interviste")
+    cmd.add_argument("--v4-dir", type=Path, default=ROOT / "artifacts/wevion_v4")
+    cmd.add_argument("--personas", type=Path, default=ROOT / "artifacts/personas_t3_600/persona_cards.json")
+    cmd.add_argument("--catalog", type=Path, default=DEFAULT_OUT / "decision_inputs/creative_catalog.json")
+    cmd.add_argument("--analyses", type=Path, default=ROOT / "artifacts/personas_t3_600/analyses")
+    cmd.add_argument("--interviews", type=Path, default=ROOT / "artifacts/personas_t3_600/interviews")
+    cmd.add_argument("--report-md", type=Path, default=ROOT / "artifacts/personas_t3_600/interviews/REPORT.md")
+    cmd.add_argument("--out", type=Path, default=ROOT / "dashboard_unificata.html")
+    cmd.add_argument("--seed", type=int)
     cmd = sub.add_parser("t3-prepare", help="Slot e prompt da delegare a Gemini tramite T3; nessuna API")
     cmd.add_argument("--data-dir", type=Path)
     cmd.add_argument("--out", type=Path, default=ROOT / "artifacts" / "personas_t3")
     cmd.add_argument("--n-per-vertical", type=int, default=24)
     cmd.add_argument("--batch-size", type=int, default=4)
+    cmd.add_argument("--biased-share", type=float, default=0.0, help="Quota 0–1 di profili category_conditioned (in-target critici)")
     cmd.add_argument("--seed", type=int)
     cmd = sub.add_parser("t3-import", help="Valida le schede restituite da un subagente T3")
     cmd.add_argument("--job", required=True, type=Path)
@@ -84,6 +114,7 @@ def parser():
     cmd.add_argument("--out", type=Path, default=DEFAULT_OUT / "decisions/raw.json")
     cmd.add_argument("--live", action="store_true")
     cmd.add_argument("--preflight", action="store_true", help="Verifica piano e parser senza rete o chiamate API")
+    cmd.add_argument("--ledger-dir", type=Path, default=ROOT / "artifacts/personas_t3/analyses")
     cmd = sub.add_parser("aggregate")
     cmd.add_argument("--plan", type=Path, default=DEFAULT_OUT / "decision_inputs/plan.json")
     cmd.add_argument("--raw", type=Path, default=DEFAULT_OUT / "decisions/raw.json")
@@ -104,22 +135,57 @@ def main(argv=None):
         seed = getattr(args, "seed", None)
         seed = seed if seed is not None else cfg["seed"]
         if args.command == "analyze":
-            from .decision_runs import analyze
-            from contextlib import nullcontext
-            with client() if args.live else nullcontext(None) as api:
-                result = analyze(read(args.catalog), read(args.personas), args.out, api,
-                                 args.asset_id, cfg['decision_model'], seed, args.retry_rejected)
-            print(f"Asset completati: {len(result)}; nuove richieste API: {sum(r['api_requests'] for r in result)}; risposte riusate: {sum(r['reused_questions'] for r in result)}")
+            from .decision_runs import analyze, analyze_parallel
+            from .providers import clients
+            from contextlib import ExitStack, nullcontext
+            if args.parallel and args.live:
+                with ExitStack() as stack:
+                    apis = [(lbl, stack.enter_context(cli)) for lbl, cli in clients()]
+                    res = analyze_parallel(
+                        read(args.catalog), read(args.personas), args.out, apis,
+                        args.asset_id, cfg['decision_model'], seed, args.retry_rejected,
+                        args.min_interval, args.batch_size, args.tpm_limit,
+                        args.rpm_limit, args.max_tokens_per_request, args.max_429_retries,
+                        progress_cb=lambda msg: print(msg, flush=True),
+                    )
+                print(f"Asset completati: {len(res['assets'])}; nuove richieste API: {res['api_requests']}; risposte riusate: {res['reused_questions']}")
+            else:
+                with client() if args.live else nullcontext(None) as api:
+                    result = analyze(read(args.catalog), read(args.personas), args.out, api,
+                                     args.asset_id, cfg['decision_model'], seed, args.retry_rejected,
+                                     args.min_interval, args.batch_size, args.tpm_limit)
+                print(f"Asset completati: {len(result)}; nuove richieste API: {sum(r['api_requests'] for r in result)}; risposte riusate: {sum(r['reused_questions'] for r in result)}")
             print(f"Registro: {args.out / 'ledger.json'}")
         elif args.command == "analysis-view":
             from .decision_view import render_analysis
             dest = args.run / 'results.html'
             dest.write_text(render_analysis(read(args.run / 'summary.json'), read(args.personas), read(args.catalog), read(args.run / 'ledger.json')), encoding='utf-8')
             print(f"Risultati: {dest}")
+        elif args.command == "interviews-prepare":
+            from .interviews import prepare
+            jobs = prepare(read(args.catalog), read(args.personas), args.out, seed)
+            print(f"Preparati {len(jobs)} job di intervista cieca in {args.out / 'jobs'}")
+        elif args.command == "interviews-freeze":
+            from .interviews import freeze
+            records = freeze(args.out)
+            print(f"Congelate {len(records)} interviste in {args.out / 'frozen.json'}")
+        elif args.command == "interviews-report":
+            from .interviews import report
+            notes = args.notes_file.read_text(encoding='utf-8') if args.notes_file else ""
+            report(args.out, read(args.personas), read(args.summary), notes, read(args.catalog))
+            print(f"Report e opinion aggregation salvati in {args.out}")
+        elif args.command == "unified-dashboard":
+            from .unified_dashboard import build_unified_payload, render_unified_dashboard
+            payload = build_unified_payload(
+                args.v4_dir, args.personas, args.catalog, args.analyses, args.interviews, args.report_md, seed
+            )
+            args.out.parent.mkdir(parents=True, exist_ok=True)
+            args.out.write_text(render_unified_dashboard(payload), encoding="utf-8")
+            print(f"Dashboard unificata: {args.out} ({payload['meta']['persona_count']} personas, {payload['meta']['interviews_count']} interviste)")
         elif args.command == "t3-prepare":
             from .t3_personas import prepare_jobs
             summary = prepare_jobs(args.data_dir or Path(cfg['data_dir']), args.out,
-                                   args.n_per_vertical, args.batch_size, seed)
+                                   args.n_per_vertical, args.batch_size, seed, args.biased_share)
             print(f"Preparati {summary['n_slots']} slot e {summary['n_jobs']} job T3. Nessuna API chiamata.")
             print(f"Prompt riutilizzabile: {args.out / 'ORCHESTRATE.md'}")
         elif args.command == "t3-import":
@@ -194,8 +260,15 @@ def main(argv=None):
             elif args.live:
                 if len(plan["request"]["questions"]) > 4:
                     raise ValueError("Primo probe live limitato a 4 persone/1 asset")
+                from .decision_runs import Ledger, run_asset
+                ledger = Ledger(args.ledger_dir / 'ledger.sqlite')
                 with client() as api:
-                    raw = decide(plan, api)
+                    try:
+                        run_asset(ledger, plan, args.ledger_dir.resolve(), api, min_interval_s=6.5)
+                        raw = read(args.ledger_dir / 'assets' / plan['asset_id'] / 'combined_raw.json')
+                    finally:
+                        write(args.ledger_dir / 'ledger.json', ledger.export())
+                        ledger.close()
             else:
                 raw = decide(plan)
             # Save the raw response before parsing, including incomplete/blocked responses.

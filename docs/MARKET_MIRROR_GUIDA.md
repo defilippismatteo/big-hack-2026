@@ -67,9 +67,9 @@ Traccia in `docs/VIDEO_180S.md`. Il pool di persone e Decision 1 vengono dopo.
 | Percorso | Ruolo e scelta corrente |
 |---|---|
 | `BigHack2026_Wevion_Specifica_Operativa_v4.md` | Specifica della challenge aggiornata: forecast, 12 pubblici ipotizzati e decisioni |
-| `Specifica_Operativa_v3.md` | Versione precedente, da leggere tenendo presenti le correzioni v4 |
+| `archive/specifications/Specifica_Operativa_v3.md` | Versione precedente archiviata, da leggere tenendo presenti le correzioni v4 |
 | `info fornite dagli organizzatori /` | Kit sorgente: CSV sintetici e brief. Il nome della cartella termina con uno spazio |
-| `Wevion_Personas_Skill_Starter/` | Prima proposta: persone condizionate da audience inferite. Le sue skill non sono runtime |
+| `archive/source-packages/Wevion_Personas_Skill_Starter/` | Prima proposta archiviata: persone condizionate da audience inferite. Le sue skill non sono runtime |
 | `Wevion_Personas_Architettura_v1/` | Proposta successiva: pool indipendenti per settore. Riutilizziamo i preparatori Python di questa versione |
 | `.agents/skills/` | Istruzioni canoniche aggiornate ai comandi attuali; le copie nei pacchetti sono riferimenti storici |
 | `market_mirror/` | Pipeline v4 e viewer; moduli feed/Decisions come estensione opzionale |

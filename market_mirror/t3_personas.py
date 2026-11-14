@@ -3,21 +3,53 @@ import json
 import random
 from pathlib import Path
 
-from .contracts import DETAIL_FIELDS, SLOT_FIELDS, digest, project, validate_card, write
+from .contracts import DETAIL_FIELDS, OPTIONAL_SLOT_FIELDS, SLOT_FIELDS, digest, project, validate_card, write
 from .personas import writer_payload
 from .starter import build_context, generate_slots
 
+TARGET_MOTIVATIONS = ('curiosita', 'convenienza', 'qualita', 'abitudine', 'sostenibilita', 'fiducia', 'praticita')
+
+
+def apply_cohort_split(slots, biased_share=0.0, seed=2026):
+    if not 0.0 <= biased_share <= 1.0:
+        raise ValueError("biased_share deve essere compreso tra 0 e 1")
+    if biased_share == 0.0:
+        return slots
+    by_vertical = {}
+    for s in slots['slots']:
+        by_vertical.setdefault(s['vertical'], []).append(dict(s))
+    updated = []
+    for vertical, vslots in by_vertical.items():
+        n_biased = round(len(vslots) * biased_share)
+        n_unbiased = len(vslots) - n_biased
+        rng = random.Random(int(digest([seed, vertical, 'category_conditioned'])[:16], 16))
+        n_high = round(n_biased * 0.7)
+        interests = ['high'] * n_high + ['medium'] * (n_biased - n_high)
+        rng.shuffle(interests)
+        for idx, slot in enumerate(vslots):
+            if idx < n_unbiased:
+                slot['cohort'] = 'unbiased'
+            else:
+                slot['cohort'] = 'category_conditioned'
+                slot['interest_in_category'] = interests[idx - n_unbiased]
+                if slot['motivation'] == 'indifferenza':
+                    slot['motivation'] = rng.choice(TARGET_MOTIVATIONS)
+            updated.append(slot)
+    return {**slots, 'cohort_split': {'biased_share': biased_share, 'unbiased': 'balanced_low_medium_high',
+                                       'category_conditioned': '70pct_high_30pct_medium_critical'},
+            'slots': updated}
+
 
 def build_jobs(context, slots, batch_size=4):
-    if not 1 <= batch_size <= 24:
-        raise ValueError("Batch size consentito: 1–24")
+    if not 1 <= batch_size <= 30:
+        raise ValueError("Batch size consentito: 1–30")
     jobs = []
     for sector in context['verticals']:
         selected = [s for s in slots['slots'] if s['vertical'] == sector['vertical']]
         for offset in range(0, len(selected), batch_size):
             records = []
             for source in selected[offset:offset + batch_size]:
-                slot = project(source, SLOT_FIELDS)
+                slot = project(source, SLOT_FIELDS + OPTIONAL_SLOT_FIELDS)
                 band = slot['age_band']
                 low, high = (int(band[:-1]), 80) if band.endswith('+') else map(int, band.split('-'))
                 rng = random.Random(int(digest([slot['seed'], slot['persona_id'], 'exact_age'])[:16], 16))
@@ -35,16 +67,24 @@ def build_jobs(context, slots, batch_size=4):
 
 
 def task_prompt(job):
+    has_conditioned = any(s.get('cohort') == 'category_conditioned' for s in job['slots'])
+    cohort_note = (
+        'Per gli slot con cohort="category_conditioned" (in-target): la persona è davvero interessata o attiva nella categoria, '
+        'MA deve restare critica e selettiva: mantieni vincoli di budget reali, scetticismo su sconti/urgenza/scarsità non dimostrate, '
+        'dubbi concreti su qualità/ingredienti/taglie/affidabilità e una contraddizione plausibile, così da non farla cliccare automaticamente. '
+        if has_conditioned else ''
+    )
     return (
         'TASK PERSONA WRITER — esegui solo questo task di generazione.\n'
         'Usa esclusivamente i dati inline qui sotto. Non usare strumenti, non leggere file, '
         'non consultare internet, repository, cronologia del coordinatore, creatività o KPI. '
         'Non lanciare subagenti e non chiamare API. Rispondi soltanto con JSON valido.\n'
         'Crea una persona fittizia per ogni slot. Python ha già scelto settore, età esatta, '
-        'genere, motivazione, uso social, rischio e interesse: non modificarli. '
+        'genere, motivazione, uso social, rischio, interesse e eventuale cohort: non modificarli. '
         'Restituisci persona_id, nome, 3–8 interessi distinti (anche estranei alla categoria) '
         'e tutti i campi del contratto. Gli interessi devono rispettare anche un interesse '
         'basso nella categoria: non trasformare tutti in clienti ideali. '
+        + cohort_note +
         'Differenzia professioni, contesto economico, bisogni e occasioni d’acquisto; '
         'scrivi routine concrete, requisiti di fiducia, timori e una contraddizione plausibile. '
         'Evita stereotipi e schede uguali; non dedurre preferenze dal solo genere o età. '
@@ -87,9 +127,9 @@ def import_response(job, response, receipt, existing=None):
             'runs': receipts, 'isolation': 'fresh T3 task with inline projected inputs; filesystem not sandboxed'}
 
 
-def prepare_jobs(data_dir, out, n=24, batch_size=4, seed=2026):
+def prepare_jobs(data_dir, out, n=24, batch_size=4, seed=2026, biased_share=0.0):
     context = build_context(data_dir)
-    slots = generate_slots(context, n, seed)
+    slots = apply_cohort_split(generate_slots(context, n, seed), biased_share, seed)
     jobs = build_jobs(context, slots, batch_size)
     out = Path(out)
     write(out / 'safe_inputs/public_context.json', context)
@@ -98,7 +138,8 @@ def prepare_jobs(data_dir, out, n=24, batch_size=4, seed=2026):
         write(out / 'jobs' / f"{job['job_id']}.json", job)
         (out / 'jobs' / f"{job['job_id']}.prompt.txt").write_text(task_prompt(job), encoding='utf-8')
     summary = {'schema_version': '2.0', 'n_slots': len(slots['slots']), 'n_jobs': len(jobs),
-               'batch_size': batch_size, 'seed': seed, 'generation_transport': 'T3 subagent, Antigravity subscription',
+               'batch_size': batch_size, 'seed': seed, 'biased_share': biased_share,
+               'generation_transport': 'T3 subagent, Antigravity subscription',
                'external_api': 'Gemini Decisions only', 'first_probe': jobs[0]['job_id']}
     write(out / 'manifest.json', summary)
     (out / 'ORCHESTRATE.md').write_text(
