@@ -2,7 +2,7 @@
 
 **Ambito:** Forecasting CTR/CPM (`699` righe `2026-11-16` → `2026-11-30`), validazione cronologica (`759` righe su 2 fold), calibrazione/incertezza e scenari Black Friday/Cyber Monday.  
 **Fonti verificate nel repository:**
-- `main`: [market_mirror/forecast.py](../../market_mirror/forecast.py), [market_mirror/delivery.py](../../market_mirror/delivery.py), [Wevion_Validation_Baseline.py](../../TEST%20INIZIALI%20FATTI%20DA%20CHAT%20GPT%20DA%20VERIFICARE%20/Wevion_Validation_Baseline.py), [TIMESTRAL_REPLICA_E_STATO_V4.md](../TIMESTRAL_REPLICA_E_STATO_V4.md), [method_comparison.csv](../../artifacts/timestral_reproduction/results/method_comparison.csv), [interval_diagnostics.csv](../../artifacts/timestral_reproduction/results/interval_diagnostics.csv).
+- `main`: [personas_simulation.runtime/forecast.py](../../personas_simulation.runtime/forecast.py), [personas_simulation.runtime/delivery.py](../../personas_simulation.runtime/delivery.py), [Wevion_Validation_Baseline.py](../../TEST%20INIZIALI%20FATTI%20DA%20CHAT%20GPT%20DA%20VERIFICARE%20/Wevion_Validation_Baseline.py), [TIMESTRAL_REPLICA_E_STATO_V4.md](../TIMESTRAL_REPLICA_E_STATO_V4.md), [method_comparison.csv](../../artifacts/timestral_reproduction/results/method_comparison.csv), [interval_diagnostics.csv](../../artifacts/timestral_reproduction/results/interval_diagnostics.csv).
 - `origin/feat/timestral-pilot`: `Test_Timestral/timestral_pilot.py`, `Prima_Analisi/analisi.py`, `Prima_Analisi/valida_modelli.py`, `Prima_Analisi/prevedi_periodo_vuoto.py`, `Prima_Analisi/arricchisci_black_friday.py`, `Prima_Analisi/Validazione_Modelli/metriche.json`, `Prima_Analisi/Analisi_Completa_Black_Friday/riepilogo_analisi.json`.
 
 ---
@@ -12,7 +12,7 @@
 Nel corso del progetto sono stati sviluppati, replicati e confrontati **6 approcci quantitativi principali** (più 2 varianti di analisi di sensibilità/scenario):
 
 ### Approccio 1 — Baseline Gerarchica Ponderata a 14 Giorni (`weighted_hierarchical_14d_v1`)
-- **Dove si trova:** `baseline()` in [market_mirror/forecast.py](../../market_mirror/forecast.py), `heuristic()` in [Wevion_Validation_Baseline.py](../../TEST%20INIZIALI%20FATTI%20DA%20CHAT%20GPT%20DA%20VERIFICARE%20/Wevion_Validation_Baseline.py), `baseline()` in `Test_Timestral/timestral_pilot.py`.
+- **Dove si trova:** `baseline()` in [personas_simulation.runtime/forecast.py](../../personas_simulation.runtime/forecast.py), `heuristic()` in [Wevion_Validation_Baseline.py](../../TEST%20INIZIALI%20FATTI%20DA%20CHAT%20GPT%20DA%20VERIFICARE%20/Wevion_Validation_Baseline.py), `baseline()` in `Test_Timestral/timestral_pilot.py`.
 - **Funzionamento:** usa gli ultimi 14 giorni prima del cutoff (`cutoff - 13gg → cutoff`). Calcola tassi aggregati sui conteggi (`CTR = 100 * sum(click) / sum(impression)`, `CPM = 1000 * sum(spesa) / sum(impression)`) lungo una cascata di fallback:
   $$\text{ad\_id} \rightarrow \text{asset\_id} \rightarrow \text{adset\_id} \rightarrow \text{vertical} \rightarrow \text{globale (tutto lo storico)}$$
 - **Caratteristiche:** zero parametri da addestrare, deterministica (scarto 0 tra piattaforme), gestisce naturalmente i 12 annunci cold-start risalendo a `asset_id` o `adset_id`. **Limite:** predice un valore costante piatto per i 15 giorni futuri (nessuna dinamica temporale né shock Black Friday).
@@ -43,7 +43,7 @@ Nel corso del progetto sono stati sviluppati, replicati e confrontati **6 approc
 - **Limiti:** i flag `black_week`, `black_friday`, `cyber_monday` sono tutti `0` nel contesto storico (il modello non ha mai visto l'impulso nello storico); inoltre `market_cpm_2025 / 100` raggiunge `1,599` nel futuro oltre il massimo storico visto (`1,218`), richiedendo estrapolazione fuori range; i quantili trasformati non sono calibrati a livello annuncio.
 
 ### Approccio 4 — Selezione Separata su Fold 1 in `main` (`ctr_baseline14d__cpm_timestral28m`)
-- **Dove si trova:** `from_timestral_ref()` in [market_mirror/forecast.py](../../market_mirror/forecast.py) e deliverable in [artifacts/wevion_v4/forecasts_2026-11-16_30.csv](../../artifacts/wevion_v4/forecasts_2026-11-16_30.csv).
+- **Dove si trova:** `from_timestral_ref()` in [personas_simulation.runtime/forecast.py](../../personas_simulation.runtime/forecast.py) e deliverable in [artifacts/wevion_v4/forecasts_2026-11-16_30.csv](../../artifacts/wevion_v4/forecasts_2026-11-16_30.csv).
 - **Funzionamento:** legge l'export `previsioni_28m.csv` dal commit `2d8adf0`, applica una regola fissa di selezione per singolo target sulla WMAE del **primo fold (`2026-10-19 → 2026-11-01`)** tra `baseline` e `Timestral-28M` (escludendo CatBoost dal confronto). Risultato: **Baseline 14g per CTR** + **Timestral-28M per CPM**.
 
 ### Approccio 5 — Ensemble Mix 50/50 CatBoost + Timestral-28M (`origin/feat/timestral-pilot`)
@@ -59,7 +59,7 @@ Nel repository coesistono **tre modalità distinte** di modellazione dello shock
    - **Rimozione doppio conteggio CPM:** poiché `cpm_scelto_eur` (Mix 50/50) include già una parte di stagionalità dalla covariata di Timestral, divide il fattore settimanale atteso per la variazione media già espressa dal modello (`cpm_scelto / cpm_baseline`), portando il livello settimanale esattamente a quello del benchmark 2025.
    - **Concentrazione intra-settimanale:** nella settimana `23–29 nov` assegna peso `2,2` al Black Friday (`27/11`) e `0,8` agli altri 6 giorni (media esatta `(6×0,8 + 2,2)/7 = 1,0`); sul Cyber Monday (`30/11`) applica peso `1,35` sull'incremento della Black Week per evitare il calo artificiale di dicembre.
    - **Effetto sui 15 giorni:** mediana CPM BF (`27/11`) passa da `€11,70` → **`€17,04`**; mediana CTR BF da `1,05%` → **`1,55%`**; mediana CPM CM (`30/11`) `€11,27` → **`€13,82`**; mediana CTR CM `1,05%` → **`1,36%`**.
-2. **Scenari stagionali ex-ante (`seasonal_scenarios()` in `market_mirror/forecast.py`):**
+2. **Scenari stagionali ex-ante (`seasonal_scenarios()` in `personas_simulation.runtime/forecast.py`):**
    - Applicati sopra la `baseline_14d` con esponenti assunti ex-ante `strength ∈ {0.5 (conservative), 1.0 (central), 1.5 (high_pressure)}` sul rapporto tra indice 2025 futuro e indice 2025 degli ultimi 14 giorni. Mantenuti in file separato (`seasonal_scenarios.csv`) come analisi di sensibilità.
 3. **Scenari esterni da letteratura (`Prima_Analisi/analisi.py` + `scenari_cpm.csv` / `Fonti.md`):**
    - Moltiplicatori Biddyco (`1,35×` BW, `1,57×` BF, `1,41×` CM) e Olifant (`2,12×` BF) applicati al CPM di ottobre per vertical. **Correttamente esclusi da `predict()`** perché provengono da account reali USA/EU non comparabili direttamente al dataset simulato.

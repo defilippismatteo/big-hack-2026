@@ -7,7 +7,7 @@ Percorso corrente: Python → subagente Gemini T3 → schede congelate → worke
 Decision. Vedi [PERSONAS_T3.md](../../../docs/PERSONAS_T3.md).
 
 
-Esegui `python -m market_mirror aggregate`; codice in `market_mirror/signals.py`.
+Esegui `python -m personas_simulation.runtime aggregate`; codice in `personas_simulation.runtime/signals.py`.
 Controlla corrispondenza hash richiesta, copertura esatta delle domande,
 probabilità finite, opzioni complete, massa 1, choice e confidence coerenti.
 Non imputare risposte mancanti; conserva raw per ispezione.
@@ -19,4 +19,4 @@ Le azioni campionate per demo usano seed locale e non sono clic osservati.
 Non chiamare un LLM per inventare feedback o calibrare gli score sullo storico.
 Il file segnali deve conservare data_kind e calibrated_to_ctr=false.
 
-Vedi [handoff Analytics](../../../docs/MARKET_MIRROR_GUIDA.md).
+Vedi [handoff Analytics](../../../docs/PERSONAS_T3.md).

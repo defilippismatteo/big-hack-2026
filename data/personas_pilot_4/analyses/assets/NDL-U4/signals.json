@@ -1,0 +1,144 @@
+{
+  "schema_version": "1.0",
+  "data_kind": "simulated_decision",
+  "calibrated_to_ctr": false,
+  "asset_id": "NDL-U4",
+  "vertical": "beauty_skincare",
+  "seed": 2026,
+  "scenario": "single_exposure_text_feed_v1",
+  "provider": "google",
+  "model": "gemini-decision-1",
+  "request_sha256": "55e4f891990376063208d107069040146973e1bcc0f786ab5078638a881cf86a",
+  "run_id": "78e93030562fb122",
+  "n_personas": 4,
+  "coverage": 1.0,
+  "attention_signal": 0.6193829009429532,
+  "click_intent_signal": 0.11875270462845985,
+  "actions": {
+    "scroll": 0.3806170990570467,
+    "glance": 0.3037840793837613,
+    "stop": 0.19684611693073215,
+    "click": 0.11875270462845985
+  },
+  "reason_distribution": {
+    "interested": 0.07856788852648285,
+    "curiosity": 0.07325838060449087,
+    "utility": 0.029970589050746926,
+    "offer": 0.04985513764048485,
+    "skeptical": 0.1667666100102799,
+    "busy": 0.07624520360050757,
+    "weak_offer": 0.12593626030846516,
+    "low_need": 0.09392299226125014,
+    "more_info": 0.03892697793722808,
+    "irrelevant": 0.13760528544625927,
+    "visual": 0.083924826814046,
+    "trust_check": 0.04501984779975841
+  },
+  "per_person": [
+    {
+      "persona_id": "beauty_skincare-P001",
+      "probabilities": {
+        "stop__interested": 0.04600562637401971,
+        "stop__curiosity": 0.055292003449777,
+        "click__utility": 0.008997517849727292,
+        "click__offer": 0.013194943975678811,
+        "scroll__skeptical": 0.24518006971710762,
+        "scroll__busy": 0.07431771503444524,
+        "glance__weak_offer": 0.13450425161088825,
+        "glance__low_need": 0.12131738831487669,
+        "click__more_info": 0.012342044334646739,
+        "scroll__irrelevant": 0.2030878058853733,
+        "glance__visual": 0.05626909132520106,
+        "stop__trust_check": 0.02949154212825819
+      },
+      "actions": {
+        "scroll": 0.5225855906369262,
+        "glance": 0.31209073125096604,
+        "stop": 0.13078917195205492,
+        "click": 0.03453450616005284
+      },
+      "confidence": 0.24518006971710762,
+      "sampled_outcome_for_demo": "glance__low_need",
+      "persona_sha256": "2b2f284bc5735dc51d5c84ab05b0a1e3d52636fce27be0da37f8414f952704b2"
+    },
+    {
+      "persona_id": "beauty_skincare-P002",
+      "probabilities": {
+        "click__utility": 0.049475311871086315,
+        "stop__curiosity": 0.0751070334996906,
+        "click__offer": 0.0970441954879376,
+        "scroll__busy": 0.07080971510190831,
+        "stop__interested": 0.08737114232045995,
+        "glance__visual": 0.08663088281509099,
+        "scroll__skeptical": 0.13230030963694364,
+        "glance__low_need": 0.0732866216109167,
+        "stop__trust_check": 0.05596500942391927,
+        "click__more_info": 0.08139988044181647,
+        "scroll__irrelevant": 0.07700085712283353,
+        "glance__weak_offer": 0.11360904066739673
+      },
+      "actions": {
+        "scroll": 0.2801108818616855,
+        "glance": 0.2735265450934044,
+        "stop": 0.21844318524406983,
+        "click": 0.22791938780084037
+      },
+      "confidence": 0.13230030963694364,
+      "sampled_outcome_for_demo": "scroll__irrelevant",
+      "persona_sha256": "4ae591a09be65f89861f898626c3410666b91b70a8690b0c9fbe1ba5cba556a4"
+    },
+    {
+      "persona_id": "beauty_skincare-P003",
+      "probabilities": {
+        "click__offer": 0.023316165599020933,
+        "scroll__busy": 0.05796841338031024,
+        "stop__trust_check": 0.06650004147452895,
+        "glance__visual": 0.11796652406119995,
+        "stop__interested": 0.14045337820813633,
+        "glance__weak_offer": 0.13754721641825696,
+        "scroll__skeptical": 0.22820238541550875,
+        "scroll__irrelevant": 0.042276609826377744,
+        "stop__curiosity": 0.10457276648789446,
+        "click__utility": 0.02257566771101423,
+        "click__more_info": 0.03252310138683965,
+        "glance__low_need": 0.026097730030911988
+      },
+      "actions": {
+        "scroll": 0.32844740862219673,
+        "glance": 0.2816114705103689,
+        "stop": 0.3115261861705597,
+        "click": 0.07841493469687481
+      },
+      "confidence": 0.22820238541550875,
+      "sampled_outcome_for_demo": "stop__trust_check",
+      "persona_sha256": "101c91173268a47293877a6c30e864e75794d3b256843a2b6f74bef9669afab1"
+    },
+    {
+      "persona_id": "beauty_skincare-P004",
+      "probabilities": {
+        "scroll__skeptical": 0.06138367527155959,
+        "glance__visual": 0.07483280905469201,
+        "stop__interested": 0.04044140720331541,
+        "stop__trust_check": 0.028122798172327226,
+        "scroll__busy": 0.10188497088536651,
+        "click__offer": 0.06586524549930206,
+        "click__utility": 0.03883385877115988,
+        "glance__low_need": 0.15499022908829524,
+        "click__more_info": 0.02944288558560947,
+        "glance__weak_offer": 0.11808453253731872,
+        "stop__curiosity": 0.05806171898060147,
+        "scroll__irrelevant": 0.22805586895045246
+      },
+      "actions": {
+        "scroll": 0.39132451510737853,
+        "glance": 0.347907570680306,
+        "stop": 0.12662592435624412,
+        "click": 0.13414198985607143
+      },
+      "confidence": 0.22805586895045246,
+      "sampled_outcome_for_demo": "glance__low_need",
+      "persona_sha256": "da23f7ac8afe356707d088bbe7461b809d66b2abbba64243627f6f661fe7a4b6"
+    }
+  ],
+  "uncertainty": "Closed-set model scores; no calibrated human-population interval"
+}

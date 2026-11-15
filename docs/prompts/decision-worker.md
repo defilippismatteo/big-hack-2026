@@ -5,9 +5,9 @@ o riscrivere persone, non aprire storico, budget, forecast, audience ipotizzate,
 risposte precedenti o repository diversi. Non delegare altro lavoro.
 
 Input unico: `artifacts/personas_t3/decision_plan.json`.
-Interprete: `.venv-market-mirror/bin/python` nella root del progetto.
+Interprete: `.venv-adera/bin/python` nella root del progetto.
 
-1. Esegui `python -m market_mirror decide --preflight` usando quel piano e
+1. Esegui `python -m personas_simulation.runtime decide --preflight` usando quel piano e
    scrivendo `artifacts/personas_t3/decision_preflight.json`. Questo controllo
    deve avvenire prima della chiamata API.
 2. Se il task richiesto è PRECHECK, fermati dopo aver letto il report. Non

@@ -1,0 +1,211 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>ADERA — Video preliminare</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="assets/vendor/gsap.min.js"></script>
+  <script src="assets/kit-data.js"></script>
+</head>
+<body>
+<main id="adera" data-composition-id="adera" data-width="1920" data-height="1080" data-start="0" data-duration="150">
+  <section class="scene plum" id="question">
+    <div class="orbit" data-layout-ignore></div>
+    <div class="scene-content columns">
+      <div class="copy opening">
+        <h1><span>E se potessi</span><span>testare una</span><span>campagna</span><span class="tint">prima di investirci?</span></h1>
+      </div>
+      <div class="open-deck" aria-hidden="true" data-layout-ignore>
+        <div class="open-card back-card"><div class="ghost-percent">%</div></div>
+        <div class="open-card mid-card"><span>COLLEZIONE</span><div class="open-bars"><i></i><i></i><i></i></div></div>
+        <div class="open-card front-card shimmer-sweep-target"><span>ANNUNCIO</span><b>−30%</b><div class="open-rule"></div><small>Autunno / Inverno</small><div class="shimmer-mask"></div></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene paper" id="brand">
+    <div class="orbit" data-layout-ignore></div>
+    <div class="scene-content centered">
+      <div class="logo" data-layout-allow-overflow role="img" aria-label="ADERA">
+        <div class="logo-symbol"><div class="logo-original"></div></div>
+        <div class="logo-type"><div class="logo-original"></div></div>
+      </div>
+      <h2 class="signature">Prima di investire, <em>capisci.</em></h2>
+    </div>
+  </section>
+
+  <section class="scene paper" id="dataset">
+    <div class="orbit" data-layout-ignore></div>
+    <div class="scene-content columns split-data">
+      <div class="copy">
+        <p class="eyebrow">Kit simulato della challenge</p>
+        <h2>Partiamo<br> dai dati.</h2>
+        <div class="row-count"><b id="record-count"></b><span>righe nello storico giornaliero</span></div>
+      </div>
+      <div class="data-stack">
+        <div class="data-table card">
+          <div class="panel-label"><span>Storico giornaliero</span><i></i></div>
+          <table><thead><tr><th>DATA</th><th>ANNUNCIO</th><th>IMPRESSION</th><th>CLIC</th><th>CPM €</th></tr></thead><tbody id="kit-rows"></tbody></table>
+        </div>
+        <div class="data-strip"><span>Per data e annuncio</span><strong>→</strong><span>Serie temporali</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene plum" id="forecast">
+    <div class="orbit" data-layout-ignore></div>
+    <div class="scene-content chart-content">
+      <div class="chart-heading">
+        <div><p class="eyebrow">Forecast · FGR-AD05</p><h2>Come cambia il CPM?</h2></div>
+        <div class="legend"><span><i class="historic-dot"></i>Storico simulato</span><span><i></i>Previsione Timestral 28M</span></div>
+      </div>
+      <div class="chart-plate" data-layout-allow-overflow>
+        <div class="chart-camera">
+          <svg id="cpm-chart" role="img" aria-label="Grafico del CPM storico e previsto, in euro" viewBox="0 0 1550 540"></svg>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene paper" id="events">
+    <div class="orbit" data-layout-ignore></div>
+    <div class="scene-content events-content">
+      <div class="event-head"><p class="eyebrow">Novembre 2026</p><h2>Le date della campagna.</h2></div>
+      <div class="calendar" id="calendar"></div>
+      <div class="model-row">
+        <div class="card model"><img src="assets/brands/mistral.svg" alt="Mistral"><div><b>Timestral 28M</b><span>Previsione CPM</span></div></div>
+        <div class="card model"><img src="assets/brands/catboost.svg" alt=""><div><b>CatBoost</b><span>Confronto nei backtest</span></div></div>
+        <div class="card model model-result"><small>WMAE CPM · 2–15 nov</small><strong id="model-numbers"></strong><span>Timestral / CatBoost</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene ink" id="agents">
+    <div class="orbit" data-layout-ignore></div>
+    <div class="scene-content columns">
+      <div class="copy"><p class="eyebrow">Orchestrazione</p><h2>Il lavoro<br> degli agenti.</h2><p class="bodycopy">T3 Code coordina il flusso.</p></div>
+      <div class="network">
+        <svg class="network-lines" viewBox="0 0 820 600" aria-hidden="true" data-layout-ignore>
+          <path d="M410 230V340M410 340H132V437M410 340V437M410 340H688V437"/>
+          <circle cx="410" cy="340" r="12"/>
+        </svg>
+        <div class="agent-hub"><img src="assets/brands/t3-code.svg" alt=""><b>T3 Code</b></div>
+        <div class="agent-row">
+          <div class="agent"><img src="assets/brands/claude.svg" alt=""><span>Claude</span></div>
+          <div class="agent"><img src="assets/brands/gemini.svg" alt=""><span>Gemini</span></div>
+          <div class="agent"><img src="assets/brands/chatgpt.svg" alt=""><span>ChatGPT</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene paper" id="persona">
+    <div class="orbit" data-layout-ignore></div>
+    <div class="scene-content columns">
+      <div class="copy"><p class="eyebrow">Simulazione di pubblico</p><h2>Un pubblico sintetico. <em>Profili diversi.</em></h2></div>
+      <div class="persona-plate card">
+        <div class="portrait-field"><div class="portrait-ring" data-layout-ignore></div><div class="portrait hero-portrait" role="img" aria-label="Ritratto illustrato di Chiara Bellini"></div></div>
+        <div class="persona-meta"><strong>Chiara Bellini</strong><p>46 anni · Padova</p><span>Tecnica di laboratorio analisi chimiche</span></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene ink" id="feed">
+    <div class="orbit" data-layout-ignore></div>
+    <div class="scene-content columns feed-columns">
+      <div class="copy">
+        <p class="eyebrow">Feed simulato · Abbigliamento</p>
+        <h2>Tre annunci.<br> Tre leve.</h2>
+        <div class="feed-notes">
+          <div class="feed-note"><b>01 · Urgenza</b><span>Spedizione e reso gratis per 48 ore.</span></div>
+          <div class="feed-note"><b>02 · Black Friday</b><span>Lo sconto anticipa la promozione.</span></div>
+          <div class="feed-note"><b>03 · Scarsità</b><span>La disponibilità diventa il messaggio.</span></div>
+        </div>
+      </div>
+      <div class="feed-visual">
+        <div class="feed-frame" data-layout-allow-overflow>
+          <header><span class="profile-dot"></span><b>Collezione</b><span class="feed-dots">···</span></header>
+          <div class="ad-deck" data-layout-allow-overlap>
+            <article class="ad ad-scarcity"><small>FGR-S1</small><strong>Ultime<br>taglie</strong><span>Fino al −50%</span></article>
+            <article class="ad ad-discount" data-layout-allow-occlusion><small>FGR-B1 · BLACK FRIDAY</small><strong>−30%</strong><span>Collezione autunno-inverno</span></article>
+            <article class="ad ad-promo" data-layout-allow-occlusion><small>FGR-U3 · CAROSELLO</small><strong>48<span>h</span></strong><span>Spedizione e reso gratis</span>
+              <div class="carousel-icons" aria-label="Timer, pacco, capo, reso">
+                <svg viewBox="0 0 32 32"><circle cx="16" cy="17" r="10"/><path d="M16 11v6h4M12 3h8"/></svg>
+                <svg viewBox="0 0 32 32"><path d="m5 10 11-5 11 5v14l-11 5-11-5zm0 0 11 5 11-5M16 15v14m-5-22 11 5"/></svg>
+                <svg viewBox="0 0 32 32"><path d="m12 5-8 4 2 8 5-2v12h10V15l5 2 2-8-8-4c-1 5-7 5-8 0Z"/></svg>
+                <svg viewBox="0 0 32 32"><path d="M7 14a10 10 0 1 1 3 11M7 6v8h8"/></svg>
+              </div>
+            </article>
+          </div>
+          <footer><span>↔</span><div class="feed-progress"><i></i><i></i><i></i></div><span>↗</span></footer>
+        </div>
+        <div class="swipe-cue" aria-hidden="true" data-layout-ignore>↗</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene plum" id="audience">
+    <div class="orbit" data-layout-ignore></div>
+    <div class="scene-content audience-content">
+      <div class="audience-title"><p class="eyebrow">Pubblico sintetico</p><h2>Uno stesso annuncio, <span class="tint">più prospettive.</span></h2></div>
+      <div class="cast" role="img" aria-label="Dieci profili illustrati" data-layout-allow-overflow></div>
+    </div>
+  </section>
+
+  <section class="scene paper" id="signals">
+    <div class="orbit" data-layout-ignore></div>
+    <div class="scene-content columns">
+      <div class="copy"><p class="eyebrow">Schema delle azioni simulate</p><h2>Dalle reazioni, <em>segnali.</em></h2></div>
+      <div class="signal-board" data-layout-allow-overflow>
+        <div class="doc card"><div class="doc-fold"></div><p>Decision</p><strong>Segnali</strong><div class="signal-rows">
+          <div><i>↓</i>Scorre</div><div><i>◉</i>Osserva</div><div><i>−</i>Si sofferma</div><div><i>↗</i>Clicca</div>
+        </div></div>
+        <div class="signal-chip chip-a" aria-hidden="true">↓</div><div class="signal-chip chip-b" aria-hidden="true">◉</div>
+        <div class="signal-chip chip-c" aria-hidden="true">−</div><div class="signal-chip chip-d" aria-hidden="true">↗</div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene plum" id="interview">
+    <div class="orbit" data-layout-ignore></div>
+    <div class="scene-content columns interview-columns">
+      <div class="copy"><p class="eyebrow">Intervista simulata · Esempio</p><h2>Che cosa attira <span class="tint">l’attenzione?</span></h2>
+        <div class="interview-marks"><span><i class="mark-t3" aria-hidden="true"></i>T3 Code</span><span><i class="mark-gemini" aria-hidden="true"></i>Gemini</span></div>
+      </div>
+      <div class="conversation">
+        <div class="question-card lead-question"><span>DOMANDA</span><strong>Quale elemento del carosello ti ha colpito per primo?</strong></div>
+        <div class="question-card follow-question"><span>APPROFONDIMENTO</span><strong>Il reso gratuito cambierebbe la tua scelta?</strong></div>
+        <div class="question-card follow-question"><span>APPROFONDIMENTO</span><strong>Che informazione ti servirebbe prima di cliccare?</strong></div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene paper" id="dashboard">
+    <div class="orbit" data-layout-ignore></div>
+    <div class="scene-content dashboard-content">
+      <div class="dashboard-head"><div><p class="eyebrow">Workspace ADERA</p><h2>Una dashboard per esplorare.</h2></div><span class="pan-arrow" aria-hidden="true">←</span></div>
+      <div class="dash-viewport" data-layout-allow-overflow>
+        <div class="dash-reel">
+          <figure class="dash-frame"><figcaption>Overview</figcaption><img src="assets/dashboard/overview.png" alt="Panoramica della dashboard ADERA"></figure>
+          <figure class="dash-frame"><figcaption>Forecast Analytics</figcaption><img src="assets/dashboard/forecast.png" alt="Schermata delle previsioni"></figure>
+          <figure class="dash-frame"><figcaption>Creative Explorer</figcaption><img src="assets/dashboard/creatives.png" alt="Schermata delle creatività"></figure>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="scene paper" id="end">
+    <div class="orbit" data-layout-ignore></div>
+    <div class="scene-content centered">
+      <div class="logo" data-layout-allow-overflow role="img" aria-label="ADERA">
+        <div class="logo-symbol"><div class="logo-original"></div></div>
+        <div class="logo-type"><div class="logo-original"></div></div>
+      </div>
+      <h2 class="signature">Prima di investire, <em>capisci.</em></h2>
+    </div>
+  </section>
+</main>
+<script src="composition.js"></script>
+</body>
+</html>

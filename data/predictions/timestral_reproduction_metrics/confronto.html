@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="it"><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Replica Timestral · confronto</title>
+<style>
+*{box-sizing:border-box}body{margin:0;color:var(--foreground,#222);font-family:var(--font-sans,system-ui)}p{line-height:1.5;margin:0 0 16px}small,.note{color:var(--muted-foreground,#777)}.controls{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin:12px 0 20px}button{font:inherit;padding:8px 12px;border-radius:var(--radius,8px);border:1px solid var(--border,#999);background:transparent;color:inherit;cursor:pointer}button[aria-pressed=true]{background:var(--primary,#6749cb);color:var(--primary-foreground,#fff)}.grid{display:grid;grid-template-columns:1fr 1fr;gap:16px}.panel{border-radius:var(--radius,10px);padding:16px;background:var(--card,#f5f5f5)}h2{font-size:15px;margin:0 0 4px}.panel p{font-size:12px;margin-bottom:10px}.plot{width:100%;height:235px;display:block}svg text{fill:var(--foreground,#222);font-family:inherit;font-size:11px}svg .muted{fill:var(--muted-foreground,#777)}.note{font-size:13px;margin-top:16px}#status{font-size:13px}.checks{display:flex;gap:18px;flex-wrap:wrap;margin-bottom:18px}.checks span{font-size:13px}.checks strong{display:block;color:var(--success,#24804a);font-size:20px;margin-bottom:2px}@media(max-width:560px){.grid{grid-template-columns:1fr}}
+</style>
+<div class="checks"><span><strong>2 / 2</strong>modelli, pesi identici</span><span><strong>699</strong>righe per modello</span><span><strong>0</strong>differenze nelle metriche pubblicate</span></div>
+<p>Due holdout cronologici sui <b>dati simulati del kit</b>. Errore più basso = risultato migliore. La replica conferma i numeri del report; il confronto aggiunge CatBoost.</p>
+<div class="controls"><span>Errore:</span><button type="button" data-mode="wmae" aria-pressed="true">WMAE · per impression</button><button type="button" data-mode="mae" aria-pressed="false">MAE · per riga</button></div>
+<div id="charts" class="grid"></div>
+<p id="status" role="status" aria-live="polite"></p>
+<p class="note">Il primo fold usa dati fino al 18/10; il secondo fino al 01/11. Nessun fold verifica il Black Friday. Le metriche coincidono a 4 decimali; i CSV hanno piccoli scarti numerici tra CPU Intel e Apple. Nel 28M lo scarto massimo del CPM mediano è €0,000054.</p>
+<script>
+const data=[{"model": "28m", "start": "2026-10-19", "end": "2026-11-01", "method": "baseline", "mae_ctr_pp": 0.2451, "mae_cpm_eur": 0.7986, "wmae_ctr_pp": 0.1977, "wmae_cpm_eur": 0.7143, "name": "Baseline"}, {"model": "5m", "start": "2026-10-19", "end": "2026-11-01", "method": "timestral_adjusted", "mae_ctr_pp": 0.2727, "mae_cpm_eur": 0.7705, "wmae_ctr_pp": 0.2235, "wmae_cpm_eur": 0.7013, "name": "Timestral-5M"}, {"model": "28m", "start": "2026-10-19", "end": "2026-11-01", "method": "timestral_adjusted", "mae_ctr_pp": 0.242, "mae_cpm_eur": 0.7649, "wmae_ctr_pp": 0.202, "wmae_cpm_eur": 0.6927, "name": "Timestral-28M"}, {"model": "catboost", "start": "2026-10-19", "end": "2026-11-01", "method": "catboost", "mae_ctr_pp": 0.3536, "mae_cpm_eur": 0.7122, "wmae_ctr_pp": 0.3057, "wmae_cpm_eur": 0.6862, "name": "CatBoost"}, {"model": "28m", "start": "2026-11-02", "end": "2026-11-15", "method": "baseline", "mae_ctr_pp": 0.3163, "mae_cpm_eur": 1.0218, "wmae_ctr_pp": 0.2576, "wmae_cpm_eur": 0.8022, "name": "Baseline"}, {"model": "5m", "start": "2026-11-02", "end": "2026-11-15", "method": "timestral_adjusted", "mae_ctr_pp": 0.3585, "mae_cpm_eur": 0.9673, "wmae_ctr_pp": 0.2859, "wmae_cpm_eur": 0.7573, "name": "Timestral-5M"}, {"model": "28m", "start": "2026-11-02", "end": "2026-11-15", "method": "timestral_adjusted", "mae_ctr_pp": 0.3446, "mae_cpm_eur": 0.8841, "wmae_ctr_pp": 0.2815, "wmae_cpm_eur": 0.7067, "name": "Timestral-28M"}, {"model": "catboost", "start": "2026-11-02", "end": "2026-11-15", "method": "catboost", "mae_ctr_pp": 0.2743, "mae_cpm_eur": 0.9274, "wmae_ctr_pp": 0.2103, "wmae_cpm_eur": 0.7161, "name": "CatBoost"}];
+const colors=['var(--chart-1,#7a7a8d)','var(--chart-2,#7295aa)','var(--chart-3,#8158d7)','var(--chart-4,#bd875a)'];
+function draw(mode){
+ const charts=document.querySelector('#charts');charts.replaceChildren();
+ for(const start of ['2026-10-19','2026-11-02']){
+  const rows=data.filter(r=>r.start===start);
+  for(const target of ['ctr','cpm']){
+   const key=mode+'_'+target+(target==='ctr'?'_pp':'_eur');
+   const unit=target==='ctr'?'punti percentuali':'euro / 1000 impression';
+   const max=Math.max(...rows.map(r=>r[key]))*1.2;
+   const best=Math.min(...rows.map(r=>r[key]));
+   const panel=document.createElement('section');panel.className='panel';
+   const title=document.createElement('h2');title.textContent=(target==='ctr'?'CTR':'CPM')+' · '+(start==='2026-10-19'?'19 ott – 1 nov':'2 – 15 nov');panel.append(title);
+   const caption=document.createElement('p');caption.textContent=unit+' · '+(start==='2026-10-19'?'315 righe':'444 righe');panel.append(caption);
+   const ns='http://www.w3.org/2000/svg',svg=document.createElementNS(ns,'svg');svg.setAttribute('class','plot');svg.setAttribute('viewBox','0 0 320 235');svg.setAttribute('role','img');svg.setAttribute('aria-label',rows.map(r=>r.name+': '+r[key].toFixed(4)).join('; '));
+   function node(tag,attrs,text){const n=document.createElementNS(ns,tag);for(const [k,v] of Object.entries(attrs))n.setAttribute(k,v);if(text!==undefined)n.textContent=text;svg.append(n);return n;}
+   for(let tick=0;tick<=4;tick++){const x=112+tick*42;node('line',{x1:x,x2:x,y1:10,y2:202,stroke:'var(--border,#bbb)','stroke-width':.5});node('text',{x,y:221,'text-anchor':'middle',class:'muted'},(max*tick/4).toFixed(2));}
+   rows.forEach((r,i)=>{const y=24+i*47;node('text',{x:104,y:y+16,'text-anchor':'end'},r.name);node('rect',{x:112,y,width:168*r[key]/max,height:26,rx:3,fill:colors[i]});node('text',{x:Math.min(307,118+168*r[key]/max),y:y+17,'font-weight':r[key]===best?'700':'400'},r[key].toFixed(4));if(r[key]===best)node('circle',{cx:306,cy:y+13,r:3,fill:'var(--success,#24804a)'});});panel.append(svg);charts.append(panel);
+  }
+ }
+ document.querySelectorAll('[data-mode]').forEach(b=>b.setAttribute('aria-pressed',String(b.dataset.mode===mode)));
+ document.querySelector('#status').textContent=mode==='wmae'?'WMAE: baseline vince sul CTR nel primo fold; CatBoost nel secondo. Sul CPM vincono CatBoost nel primo e Timestral-28M nel secondo.':'MAE: Timestral-28M vince sul CTR nel primo fold; CatBoost nel secondo. Sul CPM vincono CatBoost nel primo e Timestral-28M nel secondo.';
+}
+document.querySelectorAll('[data-mode]').forEach(b=>b.addEventListener('click',()=>draw(b.dataset.mode)));draw('wmae');
+</script></html>

@@ -1,0 +1,117 @@
+{
+  "schema_version": "1.0",
+  "data_kind": "simulated_decision",
+  "provider": "google",
+  "model": "gemini-decision-1",
+  "request_sha256": "5beae845a36c3f1f2873601a6be18916c37e8d33ad6c66e592877f5ed015ca08",
+  "response": {
+    "answers": {
+      "p0195": {
+        "choice": "glance__weak_offer",
+        "confidence": 0.1710787454293864,
+        "probabilities": {
+          "scroll__skeptical": 0.0753738251231588,
+          "click__utility": 0.07637206276671205,
+          "stop__curiosity": 0.09185244736184808,
+          "glance__visual": 0.0715308012319025,
+          "stop__interested": 0.11095634727470718,
+          "stop__trust_check": 0.07520953822424048,
+          "click__offer": 0.12228733609622652,
+          "glance__low_need": 0.02427417344492208,
+          "scroll__busy": 0.0247690433103542,
+          "scroll__irrelevant": 0.016544047211521914,
+          "click__more_info": 0.1397516325250198,
+          "glance__weak_offer": 0.1710787454293864
+        },
+        "type": "choice"
+      },
+      "p0198": {
+        "choice": "glance__weak_offer",
+        "confidence": 0.2385911883709792,
+        "probabilities": {
+          "click__offer": 0.0465411462243999,
+          "stop__interested": 0.08619552789637451,
+          "scroll__busy": 0.0466430770920856,
+          "glance__visual": 0.07058366409381366,
+          "click__more_info": 0.048781401112729196,
+          "click__utility": 0.028402482167751365,
+          "scroll__skeptical": 0.19357963963526384,
+          "scroll__irrelevant": 0.1026191279279886,
+          "stop__trust_check": 0.0453422167245083,
+          "glance__low_need": 0.029369317593518036,
+          "glance__weak_offer": 0.2385911883709792,
+          "stop__curiosity": 0.06335121116058794
+        },
+        "type": "choice"
+      },
+      "p0199": {
+        "choice": "scroll__skeptical",
+        "confidence": 0.261492068424213,
+        "probabilities": {
+          "scroll__irrelevant": 0.025435811929344673,
+          "glance__weak_offer": 0.15881637057411577,
+          "stop__interested": 0.1389189828079655,
+          "scroll__busy": 0.03107183909340677,
+          "stop__trust_check": 0.04437831906302565,
+          "glance__low_need": 0.018204767965551438,
+          "click__offer": 0.030246649248033275,
+          "stop__curiosity": 0.09722389931536243,
+          "glance__visual": 0.08900673484814255,
+          "scroll__skeptical": 0.261492068424213,
+          "click__utility": 0.018001738308742864,
+          "click__more_info": 0.08720281842209598
+        },
+        "type": "choice"
+      },
+      "p0196": {
+        "choice": "scroll__skeptical",
+        "confidence": 0.2253304496463158,
+        "probabilities": {
+          "scroll__irrelevant": 0.061069621755028995,
+          "stop__interested": 0.13973430877765164,
+          "glance__weak_offer": 0.14351068126123345,
+          "stop__curiosity": 0.10380944171528153,
+          "scroll__skeptical": 0.2253304496463158,
+          "click__more_info": 0.04518701976203008,
+          "click__offer": 0.016033020179179097,
+          "scroll__busy": 0.03497060992518431,
+          "glance__visual": 0.0899295904011779,
+          "glance__low_need": 0.051945698340445566,
+          "stop__trust_check": 0.07575199952807356,
+          "click__utility": 0.012727558708398005
+        },
+        "type": "choice"
+      },
+      "p0197": {
+        "choice": "click__utility",
+        "confidence": 0.18106254795934967,
+        "probabilities": {
+          "scroll__skeptical": 0.04729446326627952,
+          "glance__low_need": 0.038624919768081176,
+          "stop__trust_check": 0.05493751203905123,
+          "glance__visual": 0.09118367961698035,
+          "click__more_info": 0.12290670622465216,
+          "click__utility": 0.18106254795934967,
+          "scroll__busy": 0.04548203357643827,
+          "stop__curiosity": 0.06824667339003178,
+          "click__offer": 0.10356772877759694,
+          "scroll__irrelevant": 0.031853300568770705,
+          "glance__weak_offer": 0.09143150261196237,
+          "stop__interested": 0.12340893220080593
+        },
+        "type": "choice"
+      }
+    },
+    "usage": {
+      "input_tokens_by_modality": [
+        {
+          "modality": "text",
+          "tokens": 5817
+        }
+      ],
+      "total_input_tokens": 5817,
+      "total_output_tokens": 0,
+      "total_tokens": 5817
+    }
+  }
+}

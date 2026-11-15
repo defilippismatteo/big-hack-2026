@@ -1,0 +1,656 @@
+{
+  "schema_version": "1.0",
+  "cutoff": "2026-11-01",
+  "data_kind": "hypothesis",
+  "provider": "deterministic_evidence_rules",
+  "adsets": [
+    {
+      "schema_version": "1.0",
+      "adset_id": "CDF-AS1",
+      "campaign_id": "CDF-C1",
+      "vertical": "pet_ecommerce",
+      "cutoff": "2026-11-01",
+      "data_kind": "hypothesis",
+      "method": "evidence_rules_v1",
+      "segmento_ipotizzato": "Persone plausibilmente sensibili alla disponibilità limitata, quando il prodotto è già pertinente",
+      "ipotesi": [
+        "Persone plausibilmente sensibili alla disponibilità limitata, quando il prodotto è già pertinente",
+        "Il formato video merita un test controllato su questo gruppo"
+      ],
+      "segnali_osservati": {
+        "ctr_storico_pct": 1.1723893105416179,
+        "cpm_storico_eur": 5.03310310944547,
+        "ctr_recente_pct": 0.9697451438223459,
+        "leva_con_ctr_piu_alto": {
+          "lever": "scarcity",
+          "rows": 77,
+          "impressions": 927339.0,
+          "clicks": 11050.0,
+          "spend_eur": 4581.69,
+          "ctr_pct": 1.1915815036356716,
+          "cpm_eur": 4.94068512162219
+        },
+        "formato_con_ctr_piu_alto": {
+          "format": "video",
+          "rows": 91,
+          "impressions": 1002498.0,
+          "clicks": 12259.0,
+          "spend_eur": 4775.3,
+          "ctr_pct": 1.2228453323597652,
+          "cpm_eur": 4.763401024241445
+        },
+        "confronto_stesso_asset_giorno": [
+          {
+            "own_ctr_pct": 1.1723893105416179,
+            "peer_ctr_pct": 1.8768732956487864,
+            "delta_ctr_pp": -0.7044839851071685,
+            "matched_own_rows": 126,
+            "method": "same campaign, asset and day; observational, delivery not controlled"
+          }
+        ]
+      },
+      "alternative": [
+        "Il divario può dipendere da contenuto specifico, calendario, costo d'asta o selezione della delivery, senza riflettere un diverso pubblico",
+        "CTR alto può indicare curiosità: mancano conversioni per dimostrare acquisti o redditività"
+      ],
+      "confidence": "bassa",
+      "demografia": "Non identificabile dai dati forniti",
+      "strategie": "Testare scarcity e video entro budget; scegliere i giorni dal forecast, non dal solo CTR storico",
+      "caution": "Associazione osservazionale; ranking di leve/formati non corretto causalmente per il mix di asset e periodi"
+    },
+    {
+      "schema_version": "1.0",
+      "adset_id": "CDF-AS2",
+      "campaign_id": "CDF-C1",
+      "vertical": "pet_ecommerce",
+      "cutoff": "2026-11-01",
+      "data_kind": "hypothesis",
+      "method": "evidence_rules_v1",
+      "segmento_ipotizzato": "Persone plausibilmente sensibili alla disponibilità limitata, quando il prodotto è già pertinente",
+      "ipotesi": [
+        "Persone plausibilmente sensibili alla disponibilità limitata, quando il prodotto è già pertinente",
+        "Il formato video merita un test controllato su questo gruppo"
+      ],
+      "segnali_osservati": {
+        "ctr_storico_pct": 1.0443203426010104,
+        "cpm_storico_eur": 6.236067681016081,
+        "ctr_recente_pct": 0.985162611779987,
+        "leva_con_ctr_piu_alto": {
+          "lever": "scarcity",
+          "rows": 56,
+          "impressions": 269465.0,
+          "clicks": 2953.0,
+          "spend_eur": 1748.19,
+          "ctr_pct": 1.0958751600393373,
+          "cpm_eur": 6.487632902232201
+        },
+        "formato_con_ctr_piu_alto": {
+          "format": "video",
+          "rows": 28,
+          "impressions": 118965.0,
+          "clicks": 1298.0,
+          "spend_eur": 759.29,
+          "ctr_pct": 1.091077207582062,
+          "cpm_eur": 6.382465431009121
+        },
+        "confronto_stesso_asset_giorno": [
+          {
+            "own_ctr_pct": 1.0443203426010104,
+            "peer_ctr_pct": 1.2724658137572764,
+            "delta_ctr_pp": -0.22814547115626604,
+            "matched_own_rows": 119,
+            "method": "same campaign, asset and day; observational, delivery not controlled"
+          }
+        ]
+      },
+      "alternative": [
+        "Il divario può dipendere da contenuto specifico, calendario, costo d'asta o selezione della delivery, senza riflettere un diverso pubblico",
+        "CTR alto può indicare curiosità: mancano conversioni per dimostrare acquisti o redditività"
+      ],
+      "confidence": "bassa",
+      "demografia": "Non identificabile dai dati forniti",
+      "strategie": "Testare scarcity e video entro budget; scegliere i giorni dal forecast, non dal solo CTR storico",
+      "caution": "Associazione osservazionale; ranking di leve/formati non corretto causalmente per il mix di asset e periodi"
+    },
+    {
+      "schema_version": "1.0",
+      "adset_id": "CDF-AS3",
+      "campaign_id": "CDF-C1",
+      "vertical": "pet_ecommerce",
+      "cutoff": "2026-11-01",
+      "data_kind": "hypothesis",
+      "method": "evidence_rules_v1",
+      "segmento_ipotizzato": "Persone plausibilmente sensibili alla disponibilità limitata, quando il prodotto è già pertinente",
+      "ipotesi": [
+        "Persone plausibilmente sensibili alla disponibilità limitata, quando il prodotto è già pertinente",
+        "Il formato video merita un test controllato su questo gruppo"
+      ],
+      "segnali_osservati": {
+        "ctr_storico_pct": 1.2515658536196153,
+        "cpm_storico_eur": 5.9520150641102365,
+        "ctr_recente_pct": 1.0023043824051228,
+        "leva_con_ctr_piu_alto": {
+          "lever": "scarcity",
+          "rows": 112,
+          "impressions": 522302.0,
+          "clicks": 6700.0,
+          "spend_eur": 3038.57,
+          "ctr_pct": 1.2827827578680533,
+          "cpm_eur": 5.81764955906736
+        },
+        "formato_con_ctr_piu_alto": {
+          "format": "video",
+          "rows": 77,
+          "impressions": 427745.0,
+          "clicks": 5746.0,
+          "spend_eur": 2428.25,
+          "ctr_pct": 1.3433237092192778,
+          "cpm_eur": 5.676863551882547
+        },
+        "confronto_stesso_asset_giorno": [
+          {
+            "own_ctr_pct": 1.260319813548931,
+            "peer_ctr_pct": 1.1948091526489486,
+            "delta_ctr_pp": 0.06551066089998248,
+            "matched_own_rows": 133,
+            "method": "same campaign, asset and day; observational, delivery not controlled"
+          }
+        ]
+      },
+      "alternative": [
+        "Il divario può dipendere da contenuto specifico, calendario, costo d'asta o selezione della delivery, senza riflettere un diverso pubblico",
+        "CTR alto può indicare curiosità: mancano conversioni per dimostrare acquisti o redditività"
+      ],
+      "confidence": "bassa",
+      "demografia": "Non identificabile dai dati forniti",
+      "strategie": "Testare scarcity e video entro budget; scegliere i giorni dal forecast, non dal solo CTR storico",
+      "caution": "Associazione osservazionale; ranking di leve/formati non corretto causalmente per il mix di asset e periodi"
+    },
+    {
+      "schema_version": "1.0",
+      "adset_id": "CDF-AS4",
+      "campaign_id": "CDF-C1",
+      "vertical": "pet_ecommerce",
+      "cutoff": "2026-11-01",
+      "data_kind": "hypothesis",
+      "method": "evidence_rules_v1",
+      "segmento_ipotizzato": "Persone plausibilmente disponibili a decidere entro una scadenza chiara",
+      "ipotesi": [
+        "Persone plausibilmente disponibili a decidere entro una scadenza chiara",
+        "Il formato video merita un test controllato su questo gruppo"
+      ],
+      "segnali_osservati": {
+        "ctr_storico_pct": 2.419250919506798,
+        "cpm_storico_eur": 9.613383748200565,
+        "ctr_recente_pct": 2.453192621907473,
+        "leva_con_ctr_piu_alto": {
+          "lever": "urgency",
+          "rows": 84,
+          "impressions": 215701.0,
+          "clicks": 5222.0,
+          "spend_eur": 2012.75,
+          "ctr_pct": 2.420943806472849,
+          "cpm_eur": 9.331203842355853
+        },
+        "formato_con_ctr_piu_alto": {
+          "format": "video",
+          "rows": 42,
+          "impressions": 111537.0,
+          "clicks": 3188.0,
+          "spend_eur": 1046.98,
+          "ctr_pct": 2.858244349408716,
+          "cpm_eur": 9.386840241354887
+        },
+        "confronto_stesso_asset_giorno": [
+          {
+            "own_ctr_pct": 2.419250919506798,
+            "peer_ctr_pct": 1.0609610391344106,
+            "delta_ctr_pp": 1.3582898803723875,
+            "matched_own_rows": 112,
+            "method": "same campaign, asset and day; observational, delivery not controlled"
+          }
+        ]
+      },
+      "alternative": [
+        "Il divario può dipendere da contenuto specifico, calendario, costo d'asta o selezione della delivery, senza riflettere un diverso pubblico",
+        "CTR alto può indicare curiosità: mancano conversioni per dimostrare acquisti o redditività"
+      ],
+      "confidence": "bassa",
+      "demografia": "Non identificabile dai dati forniti",
+      "strategie": "Testare urgency e video entro budget; scegliere i giorni dal forecast, non dal solo CTR storico",
+      "caution": "Associazione osservazionale; ranking di leve/formati non corretto causalmente per il mix di asset e periodi"
+    },
+    {
+      "schema_version": "1.0",
+      "adset_id": "FGR-AS1",
+      "campaign_id": "FGR-C1",
+      "vertical": "abbigliamento",
+      "cutoff": "2026-11-01",
+      "data_kind": "hypothesis",
+      "method": "evidence_rules_v1",
+      "segmento_ipotizzato": "Persone plausibilmente disponibili a decidere entro una scadenza chiara",
+      "ipotesi": [
+        "Persone plausibilmente disponibili a decidere entro una scadenza chiara",
+        "Il formato carosello merita un test controllato su questo gruppo"
+      ],
+      "segnali_osservati": {
+        "ctr_storico_pct": 0.895899853779356,
+        "cpm_storico_eur": 5.808622541851929,
+        "ctr_recente_pct": 1.1457867668676325,
+        "leva_con_ctr_piu_alto": {
+          "lever": "urgency",
+          "rows": 49,
+          "impressions": 626080.0,
+          "clicks": 6103.0,
+          "spend_eur": 3602.25,
+          "ctr_pct": 0.9747955532839254,
+          "cpm_eur": 5.7536576795297725
+        },
+        "formato_con_ctr_piu_alto": {
+          "format": "carosello",
+          "rows": 28,
+          "impressions": 333392.0,
+          "clicks": 3718.0,
+          "spend_eur": 2147.33,
+          "ctr_pct": 1.1152037241445505,
+          "cpm_eur": 6.4408564092719685
+        },
+        "confronto_stesso_asset_giorno": [
+          {
+            "own_ctr_pct": 0.895899853779356,
+            "peer_ctr_pct": 1.9485536066840252,
+            "delta_ctr_pp": -1.0526537529046691,
+            "matched_own_rows": 98,
+            "method": "same campaign, asset and day; observational, delivery not controlled"
+          }
+        ]
+      },
+      "alternative": [
+        "Il divario può dipendere da contenuto specifico, calendario, costo d'asta o selezione della delivery, senza riflettere un diverso pubblico",
+        "CTR alto può indicare curiosità: mancano conversioni per dimostrare acquisti o redditività"
+      ],
+      "confidence": "bassa",
+      "demografia": "Non identificabile dai dati forniti",
+      "strategie": "Testare urgency e carosello entro budget; scegliere i giorni dal forecast, non dal solo CTR storico",
+      "caution": "Associazione osservazionale; ranking di leve/formati non corretto causalmente per il mix di asset e periodi"
+    },
+    {
+      "schema_version": "1.0",
+      "adset_id": "FGR-AS2",
+      "campaign_id": "FGR-C1",
+      "vertical": "abbigliamento",
+      "cutoff": "2026-11-01",
+      "data_kind": "hypothesis",
+      "method": "evidence_rules_v1",
+      "segmento_ipotizzato": "Persone plausibilmente sensibili alla disponibilità limitata, quando il prodotto è già pertinente",
+      "ipotesi": [
+        "Persone plausibilmente sensibili alla disponibilità limitata, quando il prodotto è già pertinente",
+        "Il formato video merita un test controllato su questo gruppo"
+      ],
+      "segnali_osservati": {
+        "ctr_storico_pct": 1.206156206187641,
+        "cpm_storico_eur": 7.0612948654272945,
+        "ctr_recente_pct": 1.1073816143039117,
+        "leva_con_ctr_piu_alto": {
+          "lever": "scarcity",
+          "rows": 56,
+          "impressions": 342778.0,
+          "clicks": 5075.0,
+          "spend_eur": 2372.41,
+          "ctr_pct": 1.4805500936466167,
+          "cpm_eur": 6.9211267934348175
+        },
+        "formato_con_ctr_piu_alto": {
+          "format": "video",
+          "rows": 56,
+          "impressions": 342778.0,
+          "clicks": 5075.0,
+          "spend_eur": 2372.41,
+          "ctr_pct": 1.4805500936466167,
+          "cpm_eur": 6.9211267934348175
+        },
+        "confronto_stesso_asset_giorno": [
+          {
+            "own_ctr_pct": 1.206156206187641,
+            "peer_ctr_pct": 1.5231512976887835,
+            "delta_ctr_pp": -0.3169950915011426,
+            "matched_own_rows": 119,
+            "method": "same campaign, asset and day; observational, delivery not controlled"
+          }
+        ]
+      },
+      "alternative": [
+        "Il divario può dipendere da contenuto specifico, calendario, costo d'asta o selezione della delivery, senza riflettere un diverso pubblico",
+        "CTR alto può indicare curiosità: mancano conversioni per dimostrare acquisti o redditività"
+      ],
+      "confidence": "bassa",
+      "demografia": "Non identificabile dai dati forniti",
+      "strategie": "Testare scarcity e video entro budget; scegliere i giorni dal forecast, non dal solo CTR storico",
+      "caution": "Associazione osservazionale; ranking di leve/formati non corretto causalmente per il mix di asset e periodi"
+    },
+    {
+      "schema_version": "1.0",
+      "adset_id": "FGR-AS3",
+      "campaign_id": "FGR-C1",
+      "vertical": "abbigliamento",
+      "cutoff": "2026-11-01",
+      "data_kind": "hypothesis",
+      "method": "evidence_rules_v1",
+      "segmento_ipotizzato": "Persone plausibilmente sensibili alla disponibilità limitata, quando il prodotto è già pertinente",
+      "ipotesi": [
+        "Persone plausibilmente sensibili alla disponibilità limitata, quando il prodotto è già pertinente",
+        "Il formato video merita un test controllato su questo gruppo"
+      ],
+      "segnali_osservati": {
+        "ctr_storico_pct": 1.2320287934819152,
+        "cpm_storico_eur": 9.822347908055978,
+        "ctr_recente_pct": 1.1409091804764626,
+        "leva_con_ctr_piu_alto": {
+          "lever": "scarcity",
+          "rows": 84,
+          "impressions": 263823.0,
+          "clicks": 3314.0,
+          "spend_eur": 2545.49,
+          "ctr_pct": 1.2561452185745747,
+          "cpm_eur": 9.648476440643917
+        },
+        "formato_con_ctr_piu_alto": {
+          "format": "video",
+          "rows": 63,
+          "impressions": 178741.0,
+          "clicks": 2717.0,
+          "spend_eur": 1735.55,
+          "ctr_pct": 1.5200765353220582,
+          "cpm_eur": 9.709859517402275
+        },
+        "confronto_stesso_asset_giorno": [
+          {
+            "own_ctr_pct": 1.2339099500325874,
+            "peer_ctr_pct": 1.0107268333099768,
+            "delta_ctr_pp": 0.2231831167226106,
+            "matched_own_rows": 105,
+            "method": "same campaign, asset and day; observational, delivery not controlled"
+          }
+        ]
+      },
+      "alternative": [
+        "Il divario può dipendere da contenuto specifico, calendario, costo d'asta o selezione della delivery, senza riflettere un diverso pubblico",
+        "CTR alto può indicare curiosità: mancano conversioni per dimostrare acquisti o redditività"
+      ],
+      "confidence": "bassa",
+      "demografia": "Non identificabile dai dati forniti",
+      "strategie": "Testare scarcity e video entro budget; scegliere i giorni dal forecast, non dal solo CTR storico",
+      "caution": "Associazione osservazionale; ranking di leve/formati non corretto causalmente per il mix di asset e periodi"
+    },
+    {
+      "schema_version": "1.0",
+      "adset_id": "FGR-AS4",
+      "campaign_id": "FGR-C1",
+      "vertical": "abbigliamento",
+      "cutoff": "2026-11-01",
+      "data_kind": "hypothesis",
+      "method": "evidence_rules_v1",
+      "segmento_ipotizzato": "Persone plausibilmente sensibili alla disponibilità limitata, quando il prodotto è già pertinente",
+      "ipotesi": [
+        "Persone plausibilmente sensibili alla disponibilità limitata, quando il prodotto è già pertinente",
+        "Il formato carosello merita un test controllato su questo gruppo"
+      ],
+      "segnali_osservati": {
+        "ctr_storico_pct": 2.145078161604975,
+        "cpm_storico_eur": 10.606835058425977,
+        "ctr_recente_pct": 2.7561382764137163,
+        "leva_con_ctr_piu_alto": {
+          "lever": "scarcity",
+          "rows": 28,
+          "impressions": 76411.0,
+          "clicks": 1896.0,
+          "spend_eur": 887.59,
+          "ctr_pct": 2.4813181348235203,
+          "cpm_eur": 11.61599769666671
+        },
+        "formato_con_ctr_piu_alto": {
+          "format": "carosello",
+          "rows": 28,
+          "impressions": 76411.0,
+          "clicks": 1896.0,
+          "spend_eur": 887.59,
+          "ctr_pct": 2.4813181348235203,
+          "cpm_eur": 11.61599769666671
+        },
+        "confronto_stesso_asset_giorno": [
+          {
+            "own_ctr_pct": 2.145078161604975,
+            "peer_ctr_pct": 0.985297480575171,
+            "delta_ctr_pp": 1.1597806810298041,
+            "matched_own_rows": 112,
+            "method": "same campaign, asset and day; observational, delivery not controlled"
+          }
+        ]
+      },
+      "alternative": [
+        "Il divario può dipendere da contenuto specifico, calendario, costo d'asta o selezione della delivery, senza riflettere un diverso pubblico",
+        "CTR alto può indicare curiosità: mancano conversioni per dimostrare acquisti o redditività"
+      ],
+      "confidence": "bassa",
+      "demografia": "Non identificabile dai dati forniti",
+      "strategie": "Testare scarcity e carosello entro budget; scegliere i giorni dal forecast, non dal solo CTR storico",
+      "caution": "Associazione osservazionale; ranking di leve/formati non corretto causalmente per il mix di asset e periodi"
+    },
+    {
+      "schema_version": "1.0",
+      "adset_id": "NDL-AS1",
+      "campaign_id": "NDL-C1",
+      "vertical": "beauty_skincare",
+      "cutoff": "2026-11-01",
+      "data_kind": "hypothesis",
+      "method": "evidence_rules_v1",
+      "segmento_ipotizzato": "Persone plausibilmente sensibili alla disponibilità limitata, quando il prodotto è già pertinente",
+      "ipotesi": [
+        "Persone plausibilmente sensibili alla disponibilità limitata, quando il prodotto è già pertinente",
+        "Il formato immagine merita un test controllato su questo gruppo"
+      ],
+      "segnali_osservati": {
+        "ctr_storico_pct": 0.9087396836878966,
+        "cpm_storico_eur": 7.382722848781771,
+        "ctr_recente_pct": 0.8583188157747282,
+        "leva_con_ctr_piu_alto": {
+          "lever": "scarcity",
+          "rows": 77,
+          "impressions": 928894.0,
+          "clicks": 8986.0,
+          "spend_eur": 6720.16,
+          "ctr_pct": 0.967387021554666,
+          "cpm_eur": 7.234582202059654
+        },
+        "formato_con_ctr_piu_alto": {
+          "format": "immagine",
+          "rows": 91,
+          "impressions": 869344.0,
+          "clicks": 8025.0,
+          "spend_eur": 6179.78,
+          "ctr_pct": 0.923109839143078,
+          "cpm_eur": 7.108555416497957
+        },
+        "confronto_stesso_asset_giorno": [
+          {
+            "own_ctr_pct": 0.9087396836878966,
+            "peer_ctr_pct": 1.5896439102436961,
+            "delta_ctr_pp": -0.6809042265557995,
+            "matched_own_rows": 126,
+            "method": "same campaign, asset and day; observational, delivery not controlled"
+          }
+        ]
+      },
+      "alternative": [
+        "Il divario può dipendere da contenuto specifico, calendario, costo d'asta o selezione della delivery, senza riflettere un diverso pubblico",
+        "CTR alto può indicare curiosità: mancano conversioni per dimostrare acquisti o redditività"
+      ],
+      "confidence": "bassa",
+      "demografia": "Non identificabile dai dati forniti",
+      "strategie": "Testare scarcity e immagine entro budget; scegliere i giorni dal forecast, non dal solo CTR storico",
+      "caution": "Associazione osservazionale; ranking di leve/formati non corretto causalmente per il mix di asset e periodi"
+    },
+    {
+      "schema_version": "1.0",
+      "adset_id": "NDL-AS2",
+      "campaign_id": "NDL-C1",
+      "vertical": "beauty_skincare",
+      "cutoff": "2026-11-01",
+      "data_kind": "hypothesis",
+      "method": "evidence_rules_v1",
+      "segmento_ipotizzato": "Persone plausibilmente sensibili alla disponibilità limitata, quando il prodotto è già pertinente",
+      "ipotesi": [
+        "Persone plausibilmente sensibili alla disponibilità limitata, quando il prodotto è già pertinente",
+        "Il formato video merita un test controllato su questo gruppo"
+      ],
+      "segnali_osservati": {
+        "ctr_storico_pct": 1.1528993604624793,
+        "cpm_storico_eur": 8.231093921163565,
+        "ctr_recente_pct": 0.9901910257601744,
+        "leva_con_ctr_piu_alto": {
+          "lever": "scarcity",
+          "rows": 56,
+          "impressions": 368611.0,
+          "clicks": 4976.0,
+          "spend_eur": 3135.06,
+          "ctr_pct": 1.3499325847573729,
+          "cpm_eur": 8.505063603636353
+        },
+        "formato_con_ctr_piu_alto": {
+          "format": "video",
+          "rows": 119,
+          "impressions": 727557.0,
+          "clicks": 8388.0,
+          "spend_eur": 5988.59,
+          "ctr_pct": 1.1528993604624793,
+          "cpm_eur": 8.231093921163565
+        },
+        "confronto_stesso_asset_giorno": [
+          {
+            "own_ctr_pct": 1.1528993604624793,
+            "peer_ctr_pct": 1.6226157381824777,
+            "delta_ctr_pp": -0.4697163777199984,
+            "matched_own_rows": 119,
+            "method": "same campaign, asset and day; observational, delivery not controlled"
+          }
+        ]
+      },
+      "alternative": [
+        "Il divario può dipendere da contenuto specifico, calendario, costo d'asta o selezione della delivery, senza riflettere un diverso pubblico",
+        "CTR alto può indicare curiosità: mancano conversioni per dimostrare acquisti o redditività"
+      ],
+      "confidence": "bassa",
+      "demografia": "Non identificabile dai dati forniti",
+      "strategie": "Testare scarcity e video entro budget; scegliere i giorni dal forecast, non dal solo CTR storico",
+      "caution": "Associazione osservazionale; ranking di leve/formati non corretto causalmente per il mix di asset e periodi"
+    },
+    {
+      "schema_version": "1.0",
+      "adset_id": "NDL-AS3",
+      "campaign_id": "NDL-C1",
+      "vertical": "beauty_skincare",
+      "cutoff": "2026-11-01",
+      "data_kind": "hypothesis",
+      "method": "evidence_rules_v1",
+      "segmento_ipotizzato": "Persone plausibilmente sensibili alla disponibilità limitata, quando il prodotto è già pertinente",
+      "ipotesi": [
+        "Persone plausibilmente sensibili alla disponibilità limitata, quando il prodotto è già pertinente",
+        "Il formato video merita un test controllato su questo gruppo"
+      ],
+      "segnali_osservati": {
+        "ctr_storico_pct": 1.4312713636567944,
+        "cpm_storico_eur": 9.591016401723433,
+        "ctr_recente_pct": 1.2544919960797125,
+        "leva_con_ctr_piu_alto": {
+          "lever": "scarcity",
+          "rows": 112,
+          "impressions": 409750.0,
+          "clicks": 6087.0,
+          "spend_eur": 3883.43,
+          "ctr_pct": 1.4855399633923123,
+          "cpm_eur": 9.477559487492373
+        },
+        "formato_con_ctr_piu_alto": {
+          "format": "video",
+          "rows": 84,
+          "impressions": 246369.0,
+          "clicks": 3544.0,
+          "spend_eur": 2439.73,
+          "ctr_pct": 1.438492667502811,
+          "cpm_eur": 9.902747504759121
+        },
+        "confronto_stesso_asset_giorno": [
+          {
+            "own_ctr_pct": 1.4365677821080407,
+            "peer_ctr_pct": 1.120569136848696,
+            "delta_ctr_pp": 0.3159986452593446,
+            "matched_own_rows": 133,
+            "method": "same campaign, asset and day; observational, delivery not controlled"
+          }
+        ]
+      },
+      "alternative": [
+        "Il divario può dipendere da contenuto specifico, calendario, costo d'asta o selezione della delivery, senza riflettere un diverso pubblico",
+        "CTR alto può indicare curiosità: mancano conversioni per dimostrare acquisti o redditività"
+      ],
+      "confidence": "bassa",
+      "demografia": "Non identificabile dai dati forniti",
+      "strategie": "Testare scarcity e video entro budget; scegliere i giorni dal forecast, non dal solo CTR storico",
+      "caution": "Associazione osservazionale; ranking di leve/formati non corretto causalmente per il mix di asset e periodi"
+    },
+    {
+      "schema_version": "1.0",
+      "adset_id": "NDL-AS4",
+      "campaign_id": "NDL-C1",
+      "vertical": "beauty_skincare",
+      "cutoff": "2026-11-01",
+      "data_kind": "hypothesis",
+      "method": "evidence_rules_v1",
+      "segmento_ipotizzato": "Persone plausibilmente sensibili alla disponibilità limitata, quando il prodotto è già pertinente",
+      "ipotesi": [
+        "Persone plausibilmente sensibili alla disponibilità limitata, quando il prodotto è già pertinente",
+        "Il formato video merita un test controllato su questo gruppo"
+      ],
+      "segnali_osservati": {
+        "ctr_storico_pct": 1.8807278427537508,
+        "cpm_storico_eur": 13.178433649604331,
+        "ctr_recente_pct": 1.8965995194973202,
+        "leva_con_ctr_piu_alto": {
+          "lever": "scarcity",
+          "rows": 28,
+          "impressions": 68894.0,
+          "clicks": 1338.0,
+          "spend_eur": 1049.49,
+          "ctr_pct": 1.9421139721891603,
+          "cpm_eur": 15.233402037913317
+        },
+        "formato_con_ctr_piu_alto": {
+          "format": "video",
+          "rows": 35,
+          "impressions": 106518.0,
+          "clicks": 2182.0,
+          "spend_eur": 1190.42,
+          "ctr_pct": 2.048480069096303,
+          "cpm_eur": 11.175763720685707
+        },
+        "confronto_stesso_asset_giorno": [
+          {
+            "own_ctr_pct": 1.8807278427537508,
+            "peer_ctr_pct": 0.8392802874237687,
+            "delta_ctr_pp": 1.0414475553299822,
+            "matched_own_rows": 112,
+            "method": "same campaign, asset and day; observational, delivery not controlled"
+          }
+        ]
+      },
+      "alternative": [
+        "Il divario può dipendere da contenuto specifico, calendario, costo d'asta o selezione della delivery, senza riflettere un diverso pubblico",
+        "CTR alto può indicare curiosità: mancano conversioni per dimostrare acquisti o redditività"
+      ],
+      "confidence": "bassa",
+      "demografia": "Non identificabile dai dati forniti",
+      "strategie": "Testare scarcity e video entro budget; scegliere i giorni dal forecast, non dal solo CTR storico",
+      "caution": "Associazione osservazionale; ranking di leve/formati non corretto causalmente per il mix di asset e periodi"
+    }
+  ]
+}

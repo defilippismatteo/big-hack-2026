@@ -1,0 +1,145 @@
+{
+  "matteoCommit": "2a9019ecfa6ee2785fe88471a70c4ce34af4ead0",
+  "format": {
+    "width": 1920,
+    "height": 1080,
+    "fps": 30,
+    "duration": 150,
+    "audio": false
+  },
+  "sources": {
+    "adera-revamp/index.html": "efb4466fcef29693422dc7c2f805b65afef5e7961ccc02ef97fe6bbbdc7626bd",
+    "adera-revamp/preview.html": "53f89de8f4ad100c3ffcd57de8d1d77d4102cecf9f446419ec343320a30555ad",
+    "adera-revamp/scripts/export_preview.py": "40eafdf8e53e18aa97930dca3ac752e3419d6d8633c997181210308a96212926",
+    "adera-revamp/src/main.jsx": "f5fa221ccac91d315b6f4752c4a82c6d734bd6b8951fda5c589635ca7cf7118a",
+    "adera-revamp/src/revamp.css": "fb8a577daf8508482822c32f54ac77fcd61d90e0a6c0d8d19c005a62db28b17d",
+    "adera-revamp/src/styles.css": "5e985653ecc86bb07d451cc37a71279c5c6328a2237c603ac0bd7aa8f8d7105f",
+    "adera-revamp/public/adera-logo.png": "f9f4773d45d297d742a8998588b4f8aae25098794aafe59afa7abdfd696e8f92",
+    "adera-revamp/public/adera-mark.png": "b473dd91f0baaf8cbfcbfb3127d8eea4796b7b59f849655032a3c5839e8e7ed3",
+    "adera-revamp/public/data/overview.json": "3b2e8d7bc301a180d4ddc815f9c69353b69440864f731733da8d875bf4eec312",
+    "outputs/adera-reanimate-sol61-low/data.js": "03e4ae5fea0d78fb0283da24a8273dd77e63819665f2f9ab82d774aa1ed09ba1",
+    "outputs/adera-reanimate-gemini4-medium/timeline.js": "d69d0ba082c579e0037639b1146591f31632a12c113fa29153fcf4d9f5dfe067"
+  },
+  "mappingSpec": ".reanimate/adera-unified/spec.md",
+  "graph": {
+    "export": "adera-revamp/public/data/overview.json",
+    "key": "(date, ad_id)",
+    "ad_id": "FGR-AD09",
+    "rows": 15,
+    "columns": [
+      "date",
+      "ad_id",
+      "CTR percent",
+      "CPM EUR"
+    ],
+    "exactCurrentExportMatches": 15,
+    "historyAnchor": null,
+    "forecast": "saved export only; no new inference",
+    "base": "original ChatGPT DOM, axes and timeline, direct seek; no Gemini chart geometry",
+    "additionalLayout": "43.2\u201344s cubic-out container scale 1 to .72, centered translateX 235px; hold until 53s",
+    "dateAnchors": "20/27/30 November: exact series points projected through SVG getScreenCTM; dashed guides and horizontally centered labels",
+    "background": "flat plum #35214f, rounded panel and tinted forecast area from user screenshot; no copied history or trend"
+  },
+  "dashboard": {
+    "source": "current source copied and built locally",
+    "route": "#/overview",
+    "captureSha256": "38fa7ad9a2bc42198930f54581afe13b0f86854259865aa67bca3b5ba7a80ad6",
+    "processPageIncluded": false
+  },
+  "additions": [
+    "Gemini Decision 1 label and logo",
+    "Matteo backgrounds",
+    "current dashboard snapshot",
+    "Gemini event labels above original ChatGPT chart, model widgets below",
+    "cuts between source runtimes"
+  ],
+  "scenes": [
+    {
+      "start": 0,
+      "end": 9,
+      "source": "Matteo",
+      "selection": "intro"
+    },
+    {
+      "start": 9,
+      "end": 16,
+      "source": "Matteo",
+      "selection": "brand animation"
+    },
+    {
+      "start": 16,
+      "end": 27,
+      "source": "Matteo",
+      "selection": "dataset"
+    },
+    {
+      "start": 27,
+      "end": 44,
+      "source": "ChatGPT original chart DOM and timeline",
+      "selection": "forecast"
+    },
+    {
+      "start": 44,
+      "end": 53,
+      "source": "ChatGPT held chart + Gemini event labels and model widgets",
+      "selection": "events and model widgets"
+    },
+    {
+      "start": 53,
+      "end": 65,
+      "source": "Matteo",
+      "selection": "T3 Code"
+    },
+    {
+      "start": 65,
+      "end": 76,
+      "source": "Matteo",
+      "selection": "single persona"
+    },
+    {
+      "start": 76,
+      "end": 95,
+      "source": "Gemini + added Gemini logo",
+      "selection": "probabilities and scroll"
+    },
+    {
+      "start": 95,
+      "end": 104,
+      "source": "Matteo",
+      "selection": "personas zoom-out"
+    },
+    {
+      "start": 104,
+      "end": 112,
+      "source": "Matteo",
+      "selection": "signals"
+    },
+    {
+      "start": 112,
+      "end": 127,
+      "source": "Matteo",
+      "selection": "attention interview example"
+    },
+    {
+      "start": 127,
+      "end": 144,
+      "source": "Gemini motion + current dashboard snapshot",
+      "selection": "dashboard"
+    },
+    {
+      "start": 144,
+      "end": 150,
+      "source": "Matteo",
+      "selection": "finale"
+    }
+  ],
+  "background": "Matteo scenes except chart scene background updated to user-supplied plum panel reference",
+  "narration": {
+    "status": "text_approved_pending_audio_generation",
+    "script": "COPIONE.md",
+    "cues": "copione-cues.json",
+    "audioGenerated": false,
+    "voiceRequested": "MarcoTrox - Warm, Balanced and Polished",
+    "syncReview": "SINCRONIZZAZIONE.md; planned timings only, voice not yet measured"
+  }
+}

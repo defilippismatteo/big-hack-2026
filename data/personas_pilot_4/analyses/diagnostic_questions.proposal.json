@@ -1,0 +1,50 @@
+{
+  "schema_version": "proposal-1",
+  "status": "not_executed",
+  "decision_api_calls": 0,
+  "preserve_original_behavior_question": true,
+  "visibility": "each question sees only its own persona/feed and the shared creative; no analyst conclusions or other answers",
+  "interpretation": "closed-set model diagnostics, not causal proof or spontaneous explanations",
+  "questions": {
+    "main_friction": {
+      "type": "choice",
+      "instructions": "Quale ostacolo prevalente incontrerebbe questa persona nel valutare l'annuncio? Non presumere che esista un difetto correggibile.",
+      "criteria": {
+        "none": "Nessun ostacolo rilevante",
+        "low_need": "Categoria o bisogno poco pertinente",
+        "unclear_benefit": "Beneficio poco comprensibile",
+        "unclear_offer": "Offerta o condizioni poco comprensibili",
+        "trust": "Credibilità o evidenze insufficienti per questa persona",
+        "reading_effort": "Presentazione difficile da leggere o seguire",
+        "pressure": "Pressione promozionale percepita come eccessiva",
+        "context": "Momento o contesto di esposizione",
+        "unknown": "Non determinabile dalle informazioni fornite"
+      }
+    },
+    "missing_information": {
+      "type": "choice",
+      "instructions": "Quale informazione, se rilevante per questa persona e assente dal contenuto, sarebbe più utile prima di aprire? Non affermare fatti non forniti sul prodotto o sulla pagina di destinazione.",
+      "criteria": {
+        "none": "Nessuna informazione aggiuntiva necessaria",
+        "use": "Modalità d'uso o beneficio pratico",
+        "composition": "Composizione o caratteristiche documentabili",
+        "offer_terms": "Prezzo, offerta o condizioni di spedizione",
+        "evidence": "Prove verificabili a sostegno dei claim",
+        "not_relevant": "Informazioni aggiuntive non risolvono il basso bisogno",
+        "unknown": "Non determinabile"
+      }
+    },
+    "context_or_creative": {
+      "type": "choice",
+      "instructions": "Nel contesto specificato quale componente pesa di più nell'eventuale mancato approfondimento? Questa è una diagnosi simulata, non una causa misurata.",
+      "criteria": {
+        "no_barrier": "Nessun mancato approfondimento da spiegare",
+        "context": "Contesto o momento",
+        "creative": "Contenuto o presentazione dell'annuncio",
+        "category_need": "Basso bisogno della categoria",
+        "mixed": "Più componenti senza prevalenza chiara",
+        "unknown": "Non determinabile"
+      }
+    }
+  }
+}

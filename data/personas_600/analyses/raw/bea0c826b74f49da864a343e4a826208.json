@@ -1,0 +1,611 @@
+{
+  "schema_version": "1.0",
+  "data_kind": "simulated_decision",
+  "provider": "google",
+  "model": "gemini-decision-1",
+  "request_sha256": "73c90de0dbfc56657e4654dd5517a400739256f64ef0bc1ba796f13863daae56",
+  "response": {
+    "answers": {
+      "p0130": {
+        "choice": "stop__interested",
+        "confidence": 0.14673967935097104,
+        "probabilities": {
+          "stop__interested": 0.14673967935097104,
+          "click__more_info": 0.08095777515572065,
+          "stop__curiosity": 0.09895759517116859,
+          "click__utility": 0.057184502048688586,
+          "scroll__irrelevant": 0.024179013263411347,
+          "scroll__busy": 0.043508985882878236,
+          "click__offer": 0.06994014510127075,
+          "glance__weak_offer": 0.13018875075442268,
+          "scroll__skeptical": 0.13770831506324335,
+          "glance__low_need": 0.030849666380525345,
+          "stop__trust_check": 0.09171460871140003,
+          "glance__visual": 0.08807096311629938
+        },
+        "type": "choice"
+      },
+      "p0106": {
+        "choice": "scroll__skeptical",
+        "confidence": 0.25240771695642217,
+        "probabilities": {
+          "glance__low_need": 0.02727480619929925,
+          "click__utility": 0.014352924095273792,
+          "scroll__irrelevant": 0.05263406625194035,
+          "click__offer": 0.018451185403055084,
+          "glance__weak_offer": 0.12064568584224694,
+          "scroll__busy": 0.05138832843129922,
+          "stop__trust_check": 0.0961361379817292,
+          "stop__curiosity": 0.07956205100663918,
+          "glance__visual": 0.10687636841627077,
+          "click__more_info": 0.02775943780731639,
+          "stop__interested": 0.15251129160850765,
+          "scroll__skeptical": 0.25240771695642217
+        },
+        "type": "choice"
+      },
+      "p0110": {
+        "choice": "glance__weak_offer",
+        "confidence": 0.19336320609721433,
+        "probabilities": {
+          "scroll__irrelevant": 0.046689143408100583,
+          "click__offer": 0.08791378227818863,
+          "scroll__busy": 0.05041958645374171,
+          "stop__interested": 0.14557064089684205,
+          "click__more_info": 0.0506239713469767,
+          "click__utility": 0.021496953536078056,
+          "glance__visual": 0.095356546815161,
+          "stop__trust_check": 0.09797245427392459,
+          "stop__curiosity": 0.06994701071118199,
+          "glance__weak_offer": 0.19336320609721433,
+          "scroll__skeptical": 0.10667415468980575,
+          "glance__low_need": 0.033972549492784554
+        },
+        "type": "choice"
+      },
+      "p0127": {
+        "choice": "scroll__skeptical",
+        "confidence": 0.15813091138612187,
+        "probabilities": {
+          "glance__weak_offer": 0.14569369435116727,
+          "glance__visual": 0.09587448287853316,
+          "glance__low_need": 0.0663951149756336,
+          "scroll__skeptical": 0.15813091138612187,
+          "click__utility": 0.04274111646091988,
+          "scroll__busy": 0.07912440471261306,
+          "click__more_info": 0.034991437486157954,
+          "stop__interested": 0.11529981143809391,
+          "click__offer": 0.053150294022992185,
+          "scroll__irrelevant": 0.08624051295844021,
+          "stop__trust_check": 0.062912249177957,
+          "stop__curiosity": 0.059445970151369674
+        },
+        "type": "choice"
+      },
+      "p0119": {
+        "choice": "scroll__skeptical",
+        "confidence": 0.21564126358123062,
+        "probabilities": {
+          "click__offer": 0.0469847849198662,
+          "scroll__busy": 0.049756427468511166,
+          "stop__curiosity": 0.06628040206912085,
+          "scroll__irrelevant": 0.03882780620120458,
+          "glance__low_need": 0.02252944710694968,
+          "click__utility": 0.02720334192543214,
+          "glance__weak_offer": 0.18684099847951596,
+          "scroll__skeptical": 0.21564126358123062,
+          "glance__visual": 0.11467745817750473,
+          "stop__trust_check": 0.07232671808794265,
+          "stop__interested": 0.11684273021028287,
+          "click__more_info": 0.042088621772438634
+        },
+        "type": "choice"
+      },
+      "p0100": {
+        "choice": "scroll__skeptical",
+        "confidence": 0.3717292591206484,
+        "probabilities": {
+          "click__offer": 0.014241591480182352,
+          "click__utility": 0.01810270777535672,
+          "click__more_info": 0.03131891038948409,
+          "stop__interested": 0.10961773537296543,
+          "scroll__busy": 0.04526417329615671,
+          "stop__curiosity": 0.05565868346400978,
+          "scroll__irrelevant": 0.05273157171595,
+          "scroll__skeptical": 0.3717292591206484,
+          "glance__visual": 0.051574832059390334,
+          "glance__weak_offer": 0.15576434291583852,
+          "stop__trust_check": 0.0786860393144881,
+          "glance__low_need": 0.015310153095529716
+        },
+        "type": "choice"
+      },
+      "p0129": {
+        "choice": "glance__weak_offer",
+        "confidence": 0.1613870522274347,
+        "probabilities": {
+          "stop__trust_check": 0.0609802629913687,
+          "glance__weak_offer": 0.1613870522274347,
+          "click__more_info": 0.027420347477425982,
+          "stop__interested": 0.14194735178570525,
+          "scroll__skeptical": 0.08477663168633037,
+          "glance__visual": 0.09930125507852822,
+          "scroll__irrelevant": 0.09780164362085604,
+          "click__utility": 0.014075829383494942,
+          "scroll__busy": 0.0774613774433524,
+          "stop__curiosity": 0.10276479177604021,
+          "click__offer": 0.03597331274310127,
+          "glance__low_need": 0.09611014378636187
+        },
+        "type": "choice"
+      },
+      "p0101": {
+        "choice": "scroll__skeptical",
+        "confidence": 0.41692824061770867,
+        "probabilities": {
+          "click__more_info": 0.027939324315192842,
+          "stop__interested": 0.10347705506111314,
+          "stop__curiosity": 0.04864880780018256,
+          "scroll__irrelevant": 0.06092542482083983,
+          "glance__visual": 0.04690053567911191,
+          "scroll__skeptical": 0.41692824061770867,
+          "click__utility": 0.018729939561484648,
+          "scroll__busy": 0.02409894268049892,
+          "glance__low_need": 0.012790334937293792,
+          "glance__weak_offer": 0.1413063962540533,
+          "stop__trust_check": 0.07979876107444982,
+          "click__offer": 0.018456237198070463
+        },
+        "type": "choice"
+      },
+      "p0114": {
+        "choice": "scroll__skeptical",
+        "confidence": 0.2601968222613869,
+        "probabilities": {
+          "stop__interested": 0.10064981152718094,
+          "click__more_info": 0.032928849344429995,
+          "scroll__busy": 0.07109342408136178,
+          "glance__weak_offer": 0.18161443845250774,
+          "stop__curiosity": 0.050449531049393655,
+          "scroll__skeptical": 0.2601968222613869,
+          "click__offer": 0.036320180433116536,
+          "glance__visual": 0.08836453800214783,
+          "stop__trust_check": 0.08440862367432003,
+          "click__utility": 0.022566772783603167,
+          "scroll__irrelevant": 0.045601004748256936,
+          "glance__low_need": 0.025806003642294576
+        },
+        "type": "choice"
+      },
+      "p0122": {
+        "choice": "glance__weak_offer",
+        "confidence": 0.1605523558403292,
+        "probabilities": {
+          "glance__weak_offer": 0.1605523558403292,
+          "glance__low_need": 0.03749285618905492,
+          "scroll__skeptical": 0.11243111475560338,
+          "stop__curiosity": 0.07582885933412722,
+          "stop__trust_check": 0.10773405132789078,
+          "click__utility": 0.03436117730058908,
+          "glance__visual": 0.12209217945414762,
+          "scroll__irrelevant": 0.03791759355340954,
+          "scroll__busy": 0.08533574538362063,
+          "click__more_info": 0.04433455503514708,
+          "stop__interested": 0.11125528384523442,
+          "click__offer": 0.07066422798084628
+        },
+        "type": "choice"
+      },
+      "p0125": {
+        "choice": "scroll__skeptical",
+        "confidence": 0.15696555201427131,
+        "probabilities": {
+          "glance__visual": 0.10654359185985597,
+          "scroll__skeptical": 0.15696555201427131,
+          "glance__weak_offer": 0.13454840757510228,
+          "stop__trust_check": 0.09716440883322747,
+          "glance__low_need": 0.023051030599093324,
+          "scroll__busy": 0.03997404718395818,
+          "scroll__irrelevant": 0.0280683954485823,
+          "click__offer": 0.06353713818062971,
+          "stop__interested": 0.11627992461798321,
+          "click__more_info": 0.0733343114195713,
+          "click__utility": 0.07329026431190713,
+          "stop__curiosity": 0.08724292795581783
+        },
+        "type": "choice"
+      },
+      "p0103": {
+        "choice": "glance__weak_offer",
+        "confidence": 0.21497351784213756,
+        "probabilities": {
+          "click__more_info": 0.050857538937440605,
+          "stop__interested": 0.11569289552273522,
+          "glance__visual": 0.045272990607400525,
+          "scroll__irrelevant": 0.06381069701928337,
+          "stop__trust_check": 0.1196957344014929,
+          "scroll__skeptical": 0.16674147611392054,
+          "stop__curiosity": 0.05888144975425647,
+          "click__offer": 0.04015595775319031,
+          "glance__weak_offer": 0.21497351784213756,
+          "scroll__busy": 0.04031389264725889,
+          "glance__low_need": 0.04850778092018613,
+          "click__utility": 0.03509606848069731
+        },
+        "type": "choice"
+      },
+      "p0118": {
+        "choice": "scroll__skeptical",
+        "confidence": 0.2851456449622914,
+        "probabilities": {
+          "stop__interested": 0.06646202978243908,
+          "click__more_info": 0.019917570262433605,
+          "glance__visual": 0.0653791114136808,
+          "glance__weak_offer": 0.12177462900456207,
+          "click__offer": 0.030000297437148157,
+          "click__utility": 0.01616848883746413,
+          "glance__low_need": 0.055964185128403766,
+          "scroll__busy": 0.11681882821277066,
+          "stop__trust_check": 0.040749966082948876,
+          "stop__curiosity": 0.045522431557275374,
+          "scroll__irrelevant": 0.13609681731858214,
+          "scroll__skeptical": 0.2851456449622914
+        },
+        "type": "choice"
+      },
+      "p0117": {
+        "choice": "scroll__skeptical",
+        "confidence": 0.21287388562396745,
+        "probabilities": {
+          "scroll__skeptical": 0.21287388562396745,
+          "stop__interested": 0.12833596890883273,
+          "click__more_info": 0.04527015343482502,
+          "glance__weak_offer": 0.15083736802039682,
+          "click__utility": 0.021926693804560072,
+          "stop__trust_check": 0.09649190248356494,
+          "click__offer": 0.046502820016106124,
+          "glance__low_need": 0.023639593345945734,
+          "stop__curiosity": 0.06517111761938585,
+          "glance__visual": 0.09027272851359557,
+          "scroll__busy": 0.06491443935468474,
+          "scroll__irrelevant": 0.05376332887413494
+        },
+        "type": "choice"
+      },
+      "p0121": {
+        "choice": "glance__weak_offer",
+        "confidence": 0.14962206525799043,
+        "probabilities": {
+          "scroll__skeptical": 0.11300122212046447,
+          "scroll__irrelevant": 0.03904867670413528,
+          "stop__trust_check": 0.08464110786944136,
+          "click__utility": 0.05408709291297099,
+          "click__offer": 0.09662852385901081,
+          "glance__low_need": 0.03295291603126342,
+          "scroll__busy": 0.045492416981111033,
+          "glance__weak_offer": 0.14962206525799043,
+          "glance__visual": 0.08468212358976057,
+          "click__more_info": 0.07982629888298007,
+          "stop__interested": 0.13650554899387818,
+          "stop__curiosity": 0.08351200679699347
+        },
+        "type": "choice"
+      },
+      "p0123": {
+        "choice": "glance__weak_offer",
+        "confidence": 0.1531915507634656,
+        "probabilities": {
+          "glance__weak_offer": 0.1531915507634656,
+          "scroll__skeptical": 0.0775635438349502,
+          "click__utility": 0.076318952130862,
+          "click__offer": 0.1206298698489697,
+          "glance__low_need": 0.03468267444849082,
+          "stop__trust_check": 0.058393350865267306,
+          "scroll__busy": 0.04432353341227327,
+          "stop__curiosity": 0.0781092848914712,
+          "stop__interested": 0.11918674642933932,
+          "click__more_info": 0.05712842772217342,
+          "scroll__irrelevant": 0.058099501929064136,
+          "glance__visual": 0.12237256372367317
+        },
+        "type": "choice"
+      },
+      "p0109": {
+        "choice": "stop__interested",
+        "confidence": 0.13940291230283722,
+        "probabilities": {
+          "glance__weak_offer": 0.11143249231305612,
+          "glance__low_need": 0.032139110907556896,
+          "stop__curiosity": 0.08786633361635657,
+          "click__utility": 0.1101172505494054,
+          "scroll__busy": 0.04565153762299638,
+          "glance__visual": 0.08723278568126554,
+          "scroll__skeptical": 0.09738613506096436,
+          "scroll__irrelevant": 0.05252666124531603,
+          "click__offer": 0.08242337269741841,
+          "stop__trust_check": 0.0988429828383583,
+          "stop__interested": 0.13940291230283722,
+          "click__more_info": 0.05497842516446875
+        },
+        "type": "choice"
+      },
+      "p0112": {
+        "choice": "scroll__skeptical",
+        "confidence": 0.3445800472272424,
+        "probabilities": {
+          "click__offer": 0.033948491720832044,
+          "glance__visual": 0.07102610426966935,
+          "stop__trust_check": 0.06562967317945298,
+          "scroll__busy": 0.04375499238876881,
+          "glance__weak_offer": 0.16207477047933153,
+          "stop__interested": 0.07461453081309437,
+          "click__more_info": 0.04079985397911652,
+          "scroll__skeptical": 0.3445800472272424,
+          "glance__low_need": 0.017999468938831156,
+          "scroll__irrelevant": 0.07274206665773628,
+          "stop__curiosity": 0.05754338175726816,
+          "click__utility": 0.015286618588656454
+        },
+        "type": "choice"
+      },
+      "p0113": {
+        "choice": "scroll__skeptical",
+        "confidence": 0.25681404903655897,
+        "probabilities": {
+          "scroll__skeptical": 0.25681404903655897,
+          "scroll__irrelevant": 0.03590910725911015,
+          "glance__low_need": 0.01635113598969286,
+          "click__utility": 0.02016717198105357,
+          "stop__trust_check": 0.15147507122291087,
+          "scroll__busy": 0.06436027390313848,
+          "glance__weak_offer": 0.1160111268157571,
+          "click__more_info": 0.0688931324700545,
+          "stop__interested": 0.09781981637023592,
+          "glance__visual": 0.05384933197984576,
+          "stop__curiosity": 0.054721127270804006,
+          "click__offer": 0.06362865570083782
+        },
+        "type": "choice"
+      },
+      "p0102": {
+        "choice": "scroll__skeptical",
+        "confidence": 0.2824988647409232,
+        "probabilities": {
+          "glance__low_need": 0.018899621750631018,
+          "stop__curiosity": 0.04968581294740891,
+          "scroll__skeptical": 0.2824988647409232,
+          "scroll__irrelevant": 0.03801551811199204,
+          "scroll__busy": 0.0649342854144077,
+          "glance__visual": 0.06084870209370396,
+          "stop__trust_check": 0.11140058064967638,
+          "click__offer": 0.03702124135084932,
+          "click__utility": 0.03101091393092866,
+          "glance__weak_offer": 0.163040648035534,
+          "click__more_info": 0.038543903020213176,
+          "stop__interested": 0.10409990795373168
+        },
+        "type": "choice"
+      },
+      "p0115": {
+        "choice": "scroll__skeptical",
+        "confidence": 0.31627262501065084,
+        "probabilities": {
+          "stop__curiosity": 0.06517014745986846,
+          "glance__visual": 0.06103350906878898,
+          "click__more_info": 0.029076652695771806,
+          "stop__interested": 0.09081936517789405,
+          "scroll__irrelevant": 0.08169787878552633,
+          "scroll__busy": 0.044810055341739,
+          "click__utility": 0.016234978036739914,
+          "glance__low_need": 0.05193686898738773,
+          "scroll__skeptical": 0.31627262501065084,
+          "click__offer": 0.018758586964210386,
+          "glance__weak_offer": 0.11590787829930832,
+          "stop__trust_check": 0.10828145417211409
+        },
+        "type": "choice"
+      },
+      "p0124": {
+        "choice": "scroll__skeptical",
+        "confidence": 0.34828150160053,
+        "probabilities": {
+          "glance__visual": 0.0452918279325279,
+          "scroll__skeptical": 0.34828150160053,
+          "scroll__irrelevant": 0.0875241975363406,
+          "click__offer": 0.02211818927827033,
+          "click__more_info": 0.01999611113149911,
+          "scroll__busy": 0.06159224094209237,
+          "stop__interested": 0.07742287798009106,
+          "stop__trust_check": 0.08757112001316021,
+          "glance__low_need": 0.059242170105167975,
+          "click__utility": 0.011145274137717605,
+          "stop__curiosity": 0.058001215004665686,
+          "glance__weak_offer": 0.12181327433793707
+        },
+        "type": "choice"
+      },
+      "p0126": {
+        "choice": "scroll__skeptical",
+        "confidence": 0.16886638706811152,
+        "probabilities": {
+          "scroll__busy": 0.045515528954230305,
+          "scroll__skeptical": 0.16886638706811152,
+          "glance__low_need": 0.02682613440535447,
+          "click__offer": 0.05337008681800961,
+          "glance__visual": 0.08176302498297987,
+          "stop__curiosity": 0.08227630325701309,
+          "stop__trust_check": 0.09405303694910198,
+          "scroll__irrelevant": 0.03734142126785565,
+          "glance__weak_offer": 0.14245928198990918,
+          "stop__interested": 0.15039238939535787,
+          "click__utility": 0.04709839730609798,
+          "click__more_info": 0.07003800760597852
+        },
+        "type": "choice"
+      },
+      "p0105": {
+        "choice": "scroll__skeptical",
+        "confidence": 0.1883132177974136,
+        "probabilities": {
+          "click__offer": 0.04287849506449182,
+          "click__utility": 0.037065731116778015,
+          "scroll__busy": 0.04031074667863461,
+          "glance__weak_offer": 0.17292000197926485,
+          "stop__curiosity": 0.09008265824055385,
+          "click__more_info": 0.06548598488093586,
+          "stop__interested": 0.12204420291913361,
+          "scroll__irrelevant": 0.04375965581836874,
+          "stop__trust_check": 0.05770680587954688,
+          "glance__low_need": 0.03467435972089751,
+          "scroll__skeptical": 0.1883132177974136,
+          "glance__visual": 0.10475813990398047
+        },
+        "type": "choice"
+      },
+      "p0107": {
+        "choice": "glance__weak_offer",
+        "confidence": 0.1938643162464173,
+        "probabilities": {
+          "click__offer": 0.04897853316647382,
+          "click__utility": 0.059111399484204456,
+          "stop__interested": 0.0983907880412983,
+          "click__more_info": 0.05663983479074455,
+          "scroll__busy": 0.08020870071148342,
+          "glance__weak_offer": 0.1938643162464173,
+          "scroll__skeptical": 0.17340073818127513,
+          "scroll__irrelevant": 0.0572836636254859,
+          "stop__trust_check": 0.05947555888291679,
+          "stop__curiosity": 0.06462503509036739,
+          "glance__low_need": 0.03589673703449239,
+          "glance__visual": 0.0721246947448407
+        },
+        "type": "choice"
+      },
+      "p0116": {
+        "choice": "scroll__skeptical",
+        "confidence": 0.23762204566343142,
+        "probabilities": {
+          "click__more_info": 0.041484744692456575,
+          "click__offer": 0.07808550747085945,
+          "scroll__skeptical": 0.23762204566343142,
+          "stop__interested": 0.08479917891547925,
+          "click__utility": 0.036690969308898425,
+          "stop__curiosity": 0.06182187493480744,
+          "scroll__busy": 0.08889234062512864,
+          "stop__trust_check": 0.05769481889607151,
+          "scroll__irrelevant": 0.031248100955175103,
+          "glance__weak_offer": 0.17719098309542383,
+          "glance__low_need": 0.021410921130286732,
+          "glance__visual": 0.08305851431198148
+        },
+        "type": "choice"
+      },
+      "p0104": {
+        "choice": "stop__interested",
+        "confidence": 0.1354668437999844,
+        "probabilities": {
+          "click__utility": 0.03459654587702831,
+          "glance__low_need": 0.06432186658032446,
+          "scroll__irrelevant": 0.07941311857399784,
+          "stop__trust_check": 0.06005964133211176,
+          "scroll__busy": 0.061639730750587776,
+          "glance__visual": 0.10233378316177091,
+          "glance__weak_offer": 0.13472936779700012,
+          "scroll__skeptical": 0.13163974697378616,
+          "stop__curiosity": 0.09363257900103879,
+          "click__more_info": 0.04367361359446709,
+          "stop__interested": 0.1354668437999844,
+          "click__offer": 0.05849316255790243
+        },
+        "type": "choice"
+      },
+      "p0120": {
+        "choice": "scroll__skeptical",
+        "confidence": 0.18192157961670558,
+        "probabilities": {
+          "glance__weak_offer": 0.17347328389727584,
+          "click__offer": 0.028409247765295628,
+          "scroll__busy": 0.06387644655200059,
+          "click__more_info": 0.024991771023467033,
+          "stop__interested": 0.0847136240610743,
+          "stop__curiosity": 0.06612835874668001,
+          "glance__visual": 0.09196681932334337,
+          "scroll__skeptical": 0.18192157961670558,
+          "scroll__irrelevant": 0.10958848063651143,
+          "click__utility": 0.020039210890734436,
+          "stop__trust_check": 0.054508807027585794,
+          "glance__low_need": 0.10038237045932594
+        },
+        "type": "choice"
+      },
+      "p0108": {
+        "choice": "glance__weak_offer",
+        "confidence": 0.23916787718873705,
+        "probabilities": {
+          "click__offer": 0.08057460638671232,
+          "scroll__skeptical": 0.15372310022660077,
+          "scroll__busy": 0.03673127811380549,
+          "glance__visual": 0.10088966777949801,
+          "stop__trust_check": 0.06392530816871823,
+          "click__more_info": 0.05961222113330235,
+          "stop__interested": 0.118875039765286,
+          "scroll__irrelevant": 0.02823842055201339,
+          "glance__low_need": 0.01742391449436705,
+          "click__utility": 0.03637119812329922,
+          "glance__weak_offer": 0.23916787718873705,
+          "stop__curiosity": 0.0644673680676601
+        },
+        "type": "choice"
+      },
+      "p0111": {
+        "choice": "scroll__skeptical",
+        "confidence": 0.2060412075687322,
+        "probabilities": {
+          "glance__low_need": 0.05505559646608065,
+          "glance__visual": 0.0865546626030607,
+          "scroll__busy": 0.08030735571677128,
+          "stop__curiosity": 0.09318161979340975,
+          "click__offer": 0.02414411937174058,
+          "glance__weak_offer": 0.15222837568053413,
+          "stop__trust_check": 0.0482912092326391,
+          "scroll__irrelevant": 0.09744641241930764,
+          "stop__interested": 0.11000943278706322,
+          "click__more_info": 0.0278322533259218,
+          "scroll__skeptical": 0.2060412075687322,
+          "click__utility": 0.018907755034738856
+        },
+        "type": "choice"
+      },
+      "p0128": {
+        "choice": "glance__weak_offer",
+        "confidence": 0.1719874411679967,
+        "probabilities": {
+          "glance__low_need": 0.05588398566186509,
+          "click__offer": 0.037201703868663304,
+          "stop__curiosity": 0.06649006755670255,
+          "glance__visual": 0.0841710012344917,
+          "scroll__busy": 0.06948682216160378,
+          "scroll__irrelevant": 0.09517561507450141,
+          "click__utility": 0.030955155510220034,
+          "scroll__skeptical": 0.16884147049325937,
+          "glance__weak_offer": 0.1719874411679967,
+          "stop__trust_check": 0.06597465110174346,
+          "stop__interested": 0.11602168633497412,
+          "click__more_info": 0.03781039983397856
+        },
+        "type": "choice"
+      }
+    },
+    "usage": {
+      "input_tokens_by_modality": [
+        {
+          "modality": "text",
+          "tokens": 33794
+        }
+      ],
+      "total_input_tokens": 33794,
+      "total_output_tokens": 0,
+      "total_tokens": 33794
+    }
+  }
+}

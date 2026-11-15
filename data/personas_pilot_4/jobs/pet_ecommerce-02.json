@@ -1,0 +1,87 @@
+{
+  "schema_version": "2.0",
+  "job_id": "pet_ecommerce-02",
+  "sector": {
+    "vertical": "pet_ecommerce",
+    "market": "IT",
+    "industry_description": "E-commerce di cibo, snack e accessori per cani e gatti.",
+    "campaign_goal": "vendite"
+  },
+  "slots": [
+    {
+      "persona_id": "pet_ecommerce-P005",
+      "vertical": "pet_ecommerce",
+      "country": "IT",
+      "age_band": "18-24",
+      "gender_identity": "donna",
+      "motivation": "curiosita",
+      "social_habit": "facebook",
+      "risk_attitude": "esplorativo",
+      "interest_in_category": "medium",
+      "sampling_weight": 0.041666666666666664,
+      "seed": 2026,
+      "age_years": 19
+    },
+    {
+      "persona_id": "pet_ecommerce-P006",
+      "vertical": "pet_ecommerce",
+      "country": "IT",
+      "age_band": "35-44",
+      "gender_identity": "non_binary_or_undeclared",
+      "motivation": "sostenibilita",
+      "social_habit": "social_misto",
+      "risk_attitude": "moderato",
+      "interest_in_category": "high",
+      "sampling_weight": 0.041666666666666664,
+      "seed": 2026,
+      "age_years": 44
+    },
+    {
+      "persona_id": "pet_ecommerce-P007",
+      "vertical": "pet_ecommerce",
+      "country": "IT",
+      "age_band": "18-24",
+      "gender_identity": "donna",
+      "motivation": "abitudine",
+      "social_habit": "instagram",
+      "risk_attitude": "esplorativo",
+      "interest_in_category": "low",
+      "sampling_weight": 0.041666666666666664,
+      "seed": 2026,
+      "age_years": 19
+    },
+    {
+      "persona_id": "pet_ecommerce-P008",
+      "vertical": "pet_ecommerce",
+      "country": "IT",
+      "age_band": "35-44",
+      "gender_identity": "uomo",
+      "motivation": "convenienza",
+      "social_habit": "uso_social_limitato",
+      "risk_attitude": "esplorativo",
+      "interest_in_category": "medium",
+      "sampling_weight": 0.041666666666666664,
+      "seed": 2026,
+      "age_years": 41
+    }
+  ],
+  "output_contract": {
+    "root": "personas",
+    "records": {
+      "persona_id": "identico allo slot",
+      "name": "nome fittizio",
+      "interests": "array di 3–8 interessi distinti",
+      "occupation": "stringa italiana non vuota",
+      "economic_context": "stringa italiana non vuota",
+      "daily_routine": "stringa italiana non vuota",
+      "decision_habits": "stringa italiana non vuota",
+      "trust_requirements": "stringa italiana non vuota",
+      "ad_avoidance": "stringa italiana non vuota",
+      "concerns": "stringa italiana non vuota",
+      "contradiction": "stringa italiana non vuota",
+      "persona_summary": "stringa italiana non vuota"
+    }
+  },
+  "sampling_notice": "Quote manuali; età 65+ limitata a 80 per questo disegno. Nessuna quota osservata.",
+  "input_sha256": "f646004a9dd1549828f67d353e0cc1ec5aa079c7801a4d010a634003db5295b2"
+}

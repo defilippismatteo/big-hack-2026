@@ -7,7 +7,7 @@ Leggi la specifica operativa v4 prima di definire le priorità. P0 forecast e
 backtest, P1 Timestral solo se utile, P2 pubblici e decisioni, P3 viewer/README/video.
 Il pool generico e Decision 1 sono P4 opzionale e non producono il CTR numerico.
 
-Runtime: `python -m market_mirror deliver`. L'opzione
+Runtime: `python3 -m quantitative_analysis.pipeline.delivery`. L'opzione
 `--timestral-ref origin/feat/timestral-pilot` legge Prima_Analisi da un commit
 senza cambiare checkout; conserva il commit e lo snapshot del CSV. La regola
 attuale sceglie separatamente CTR/CPM sul primo fold WMAE fra baseline e Timestral.

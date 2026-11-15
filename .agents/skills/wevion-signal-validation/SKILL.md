@@ -8,9 +8,9 @@ predizioni forecast-only e metriche train dello stesso cutoff. Mai usare fixture
 Confronta baseline, forecast-only e forecast+segnali; pesi/calibrazione scelti
 prima del holdout, inclusa l'inferenza del pubblico. Tieni 02–15/11 come verifica
 finale di sviluppo anziché ottimizzare ripetutamente su quelle etichette.
-Il comando `market_mirror join` affianca colonne esplicative e verifica le chiavi:
+Il comando `personas_simulation.runtime join` affianca colonne esplicative e verifica le chiavi:
 non allena, non calibra e non dimostra miglioramenti. Il CPM resta quantitativo.
 Output futuro: persona_ablation.json con fold, seed, errori CTR in punti
 percentuali, errori CPM in euro e provenienza.
 
-Vedi [integrazione Timestral](../../../docs/MARKET_MIRROR_GUIDA.md).
+Vedi [integrazione Timestral](../../../docs/PERSONAS_T3.md).

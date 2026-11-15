@@ -15,4 +15,4 @@ Le 12 audience Analytics e i 3 pool di 24 personas hanno ruoli diversi.
 viewer standalone. Per il video usa la traccia di 180 secondi in docs/VIDEO_180S.md.
 Non chiamare le metriche importate dal branch Timestral esperimenti rieseguiti qui.
 
-Vedi [guida](../../../docs/MARKET_MIRROR_GUIDA.md).
+Vedi [guida](../../../docs/PERSONAS_T3.md).

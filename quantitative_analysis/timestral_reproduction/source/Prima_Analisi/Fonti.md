@@ -1,0 +1,18 @@
+# Dati pubblici di campagne Meta
+
+Verifica delle fonti il 14 novembre 2026. I valori sono riportati dagli operatori che hanno gestito o misurato le campagne. I dati pubblici sono aggregati e variano per mercato, placement e obiettivo.
+
+| Fonte e periodo | Dato pubblicato | Uso nell'analisi |
+| --- | --- | --- |
+| adtribute, Meta e-commerce, settembre 2026 | Beauty: CTR link **1,58%**, CPM **€20,06**. Fashion: CTR link **1,13%**, CPM **€9,93**. Intero panel: CTR link **1,19%**, CPM **€12,76**. | Confronto con settembre del kit. Panel di negozi collegati, con almeno €500/mese su Meta, tutti gli obiettivi e placement. Numerosità e perimetro italiano non documentati. [Benchmark Meta Ads](https://www.adtribute.io/data/benchmarks/meta-ads) |
+| Kanbar Digital, dettagliante pet della California meridionale, 72 giorni da maggio a luglio | Dopo il passaggio a campagne orientate alle conversioni, CTR link da **0,45%** a **0,77%** e CPM da **$4,07** a **$10,31**. | Caso di settore su Meta; tracking e obiettivo cambiano insieme. Il CTR offre un ordine di grandezza. Il CPM in dollari resta nel perimetro della fonte. [Caso Meta Ads Pet Retail](https://kanbar.digital/case-studies/meta-ads-conversion-tracking-for-pet-retail/) |
+| Acquiro Media, brand skincare britannico rivolto anche all'Europa continentale, Q4 2025 | **£34.976** spesi su Meta e **3,42×** ROAS attribuito, inclusa la finestra Black Friday. | Caso skincare comparabile per canale e stagione. La fonte pubblica spesa e ritorno, senza impression o clic da cui ricavare CPM e CTR. [Caso UK Premium Skincare](https://www.acquiro.media/case-studies/uk-beauty-brand/) |
+| Officina Startup, Bonsai Fashion, Italia | Il Black Friday del secondo anno ha concentrato **34%** del fatturato mensile in quattro giorni. Creatività con countdown e campagne di recupero carrello. | Riferimento per la promozione fashion italiana; il risultato riguarda una strategia con Meta e Google Performance Max. [Caso Bonsai Fashion](https://www.officinastartup.com/pages/case-study-bonsai-fashion-meta-ads-performance-max) |
+| Biddyco, brand consumer di grandi account USA, autunno 2025 | CPM mediano rispetto alla media di ottobre dei singoli account: **1,35×** nella settimana 24–30 novembre, **1,57×** il Black Friday e **1,41×** il Cyber Monday. | Fattori giornalieri per gli scenari CPM. La coorte include pet e beauty. Soglia di spesa di $30.000 in ottobre per gli account analizzati. [Costi Meta durante Black Friday 2025](https://www.biddyco.com/blog-posts/meta-ads-black-friday-cpm) |
+| Olifant Digital, sette account e-commerce Meta nel 2025 | CPM mediano Black Friday **2,12×** rispetto al giorno medio di ottobre. | Secondo scenario Black Friday. Campione piccolo di account gestiti dall'agenzia, senza dettaglio Italia per settore. [Costi Meta e Google nel Black Friday 2024–2025](https://olifantdigital.com/blog/black-friday-ad-costs-meta-google) |
+
+## Applicazione
+
+`scenari_cpm.csv` mappa i fattori giornalieri del 2025 ai corrispondenti eventi del 2026. Lo script li moltiplica per il CPM ponderato di ogni verticale nel kit a ottobre 2026. I risultati indicano quanto costerebbe l'asta **se** questi segnali si trasferissero alle campagne simulate. I due campioni Black Friday danno due scenari indipendenti. La differenza fra loro misura la sensibilità alla fonte, senza significato probabilistico.
+
+Il pilota conserva budget, calendario e indici settimanali **simulati** del kit come covariate. I dati pubblici alimentano il confronto esterno e gli scenari relativi del CPM. Le fonti raccolte non espongono serie giornaliere complete con esiti per annuncio negli stessi settori e mercati. Il CTR resta stimato sui dati del kit, senza imporre un moltiplicatore Black Friday.

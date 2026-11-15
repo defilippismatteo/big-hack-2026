@@ -1,0 +1,112 @@
+{
+  "verified_utc": "2026-11-14T13:27:47.867447+00:00",
+  "branch_snapshot_commit": "2d8adf033e747e147c401246c07ce656f9f1cfb7",
+  "timestral_source_commit": "a534bdbd244d64f3d9d743f46c7bf6fc330ed4ff",
+  "local_environment": {
+    "python": "3.12.13",
+    "torch": "2.7.1",
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "architecture": "arm64",
+    "device": "cpu",
+    "threads": 2
+  },
+  "reference_environment": {
+    "python": "3.12.16",
+    "torch": "2.7.1",
+    "architettura": "x86_64",
+    "thread_cpu": 2
+  },
+  "kit_sha256": {
+    "adset.csv": "f809712d08dbf153de230b167875b65da329a9f9cf98bc8bcf3ad4bfb0c9cd4e",
+    "annunci.csv": "57cc84f895e547dcb731430b0c60429170b1c7965b730f4e7433cac7f073e013",
+    "asset_creativi/asset_abbigliamento.csv": "5b66755e46fe8fd6c2414192c17b8bb8c7a31534f0f9b63a88fcd129fc052b50",
+    "asset_creativi/asset_beauty_skincare.csv": "1baa7243c7969072aaab6f58405e419b000c575f4cf88b7f8db9f4135b35108d",
+    "asset_creativi/asset_pet_ecommerce.csv": "0b6d20a362e10a49d8ed936bf4603312cd372f2e5b7fc828e960db56673b5708",
+    "benchmark_mercato_settimanale_2025.csv": "56a24eb83090d50c916056b17246d1b7018ec8dd654d09f82a18fb66d850af64",
+    "budget_giornaliero.csv": "a49463763ab882ce7211a54c5c16035c2e8ffc6582199887604f7b4103ecf4cc",
+    "calendario.csv": "7eab7da14532998a22f4d82b667f4565286c7bbfd8065ef39d754300bc54090e",
+    "campagne.csv": "c66e765268e1179a3952aa7c0adb35e073e09a135e24bd151a5700bcf65459fe",
+    "cpm_storici.csv": "84645776a4aa6f35e33e83f481eca864fc1c0ff02f1a625c781e1fda9f5c4c64",
+    "da_prevedere.csv": "133e244d3d8b13585140aafbdaf33b65fef382c9a807fbbdf7db7dd581f7f8e5",
+    "inserzionisti.csv": "f56c580e558a93aa914e448e578b2ecb042c727614d266e1bf843bc6213c18a5",
+    "storico_giornaliero.csv": "e517cd39565f22ef9660f7b3bc012cf26f6591f7c9546887da3a413a73b290db"
+  },
+  "specification_sha256": "5ccb3df1fdf7b68a26ec8832c1a479839b90ae9029805e6a5d5025affa1ce07e",
+  "source_sha256": {
+    "Prima_Analisi/analisi.py": "99d5c16d7fc5e4576ce1a14d36ee3d6363974acb3a1c153fa8e04a2152d932a0",
+    "TEST INIZIALI FATTI DA CHAT GPT DA VERIFICARE /Wevion_Validation_Baseline.py": "5bf404edc20d0b5ffd3fa4a12fecd5f7da58037d4b89f7435eb87aba9d256b03",
+    "Test_Timestral/test_timestral_pilot.py": "955752d75b4b498013b482b5da5592a9fd100f9f87de88c226b1e29d4dd9d526",
+    "Test_Timestral/timestral_pilot.py": "6dbf43a7f7fecd5be11a7f624a47c9366eb0f104c113f149fbe90ae7769f657b"
+  },
+  "metric_differences_at_published_precision": [],
+  "catboost_reference_metrics_exact": true,
+  "models": [
+    {
+      "model": "mistralai/Timestral-5M",
+      "hub_revision": "bdd20cfc15a3fea0e4cb5ccef37f8d3ca7aa335f",
+      "weight_sha256": "7ace108c4987e7f2a99a75a445240019d1d31c2117139d1bd05ffdfd25aca738",
+      "weight_bytes": 20843960,
+      "config_sha256": "b5f27f61513f8fd1a3aa996f3720d3679cb40bce5bcb08eb3dc320ce726e7c2f",
+      "published_metrics_identical": true,
+      "forecast_max_abs_deltas_by_column": {
+        "ctr_baseline_pct": 0.0,
+        "cpm_baseline_eur": 0.0,
+        "ctr_timestral_p10": 6.0000000000060005e-06,
+        "ctr_timestral_p50": 6.000000000394579e-06,
+        "ctr_timestral_p90": 2.4999999999941735e-05,
+        "cpm_timestral_p10": 2.8000000000139025e-05,
+        "cpm_timestral_p50": 2.7000000002885827e-05,
+        "cpm_timestral_p90": 0.0002309999999994261
+      },
+      "forecast_bitwise_identical": false,
+      "local_timing_seconds": 0.33,
+      "validated_rows": 699,
+      "no_future_target_leak": [
+        {
+          "cutoff": "2026-10-18",
+          "future_target_mutation_changes_input": false
+        },
+        {
+          "cutoff": "2026-11-01",
+          "future_target_mutation_changes_input": false
+        }
+      ]
+    },
+    {
+      "model": "mistralai/Timestral-28M",
+      "hub_revision": "49b26409ac87b5935539a5d8ffe7f397b720db47",
+      "weight_sha256": "dfc83c6220937ce5fc6687b35a4df94cd25e28a2cfe6fb92a23dad6301b2015d",
+      "weight_bytes": 111296464,
+      "config_sha256": "0cdf44b8ea981191de53078e0a5ecbbd437046bd939a546d5dbe17868f71281f",
+      "published_metrics_identical": true,
+      "forecast_max_abs_deltas_by_column": {
+        "ctr_baseline_pct": 0.0,
+        "cpm_baseline_eur": 0.0,
+        "ctr_timestral_p10": 1.399999999995849e-05,
+        "ctr_timestral_p50": 1.9999999998354667e-06,
+        "ctr_timestral_p90": 6.500000000020378e-05,
+        "cpm_timestral_p10": 3.1000000000336314e-05,
+        "cpm_timestral_p50": 5.3999999998666226e-05,
+        "cpm_timestral_p90": 6.30000000008124e-05
+      },
+      "forecast_bitwise_identical": false,
+      "local_timing_seconds": 0.85,
+      "validated_rows": 699,
+      "no_future_target_leak": [
+        {
+          "cutoff": "2026-10-18",
+          "future_target_mutation_changes_input": false
+        },
+        {
+          "cutoff": "2026-11-01",
+          "future_target_mutation_changes_input": false
+        }
+      ]
+    }
+  ],
+  "existing_delivery_forecast_max_abs_delta": {
+    "ctr_predetto_pct": 4.885561761813761e-07,
+    "cpm_predetto_eur": 5.429425461400683e-05
+  }
+}

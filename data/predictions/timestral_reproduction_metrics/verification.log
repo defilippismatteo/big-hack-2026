@@ -1,0 +1,67 @@
+{
+  "models": [
+    {
+      "model": "mistralai/Timestral-5M",
+      "hub_revision": "bdd20cfc15a3fea0e4cb5ccef37f8d3ca7aa335f",
+      "weight_sha256": "7ace108c4987e7f2a99a75a445240019d1d31c2117139d1bd05ffdfd25aca738",
+      "weight_bytes": 20843960,
+      "config_sha256": "b5f27f61513f8fd1a3aa996f3720d3679cb40bce5bcb08eb3dc320ce726e7c2f",
+      "published_metrics_identical": true,
+      "forecast_max_abs_deltas_by_column": {
+        "ctr_baseline_pct": 0.0,
+        "cpm_baseline_eur": 0.0,
+        "ctr_timestral_p10": 6.0000000000060005e-06,
+        "ctr_timestral_p50": 6.000000000394579e-06,
+        "ctr_timestral_p90": 2.4999999999941735e-05,
+        "cpm_timestral_p10": 2.8000000000139025e-05,
+        "cpm_timestral_p50": 2.7000000002885827e-05,
+        "cpm_timestral_p90": 0.0002309999999994261
+      },
+      "forecast_bitwise_identical": false,
+      "local_timing_seconds": 0.33,
+      "validated_rows": 699,
+      "no_future_target_leak": [
+        {
+          "cutoff": "2026-10-18",
+          "future_target_mutation_changes_input": false
+        },
+        {
+          "cutoff": "2026-11-01",
+          "future_target_mutation_changes_input": false
+        }
+      ]
+    },
+    {
+      "model": "mistralai/Timestral-28M",
+      "hub_revision": "49b26409ac87b5935539a5d8ffe7f397b720db47",
+      "weight_sha256": "dfc83c6220937ce5fc6687b35a4df94cd25e28a2cfe6fb92a23dad6301b2015d",
+      "weight_bytes": 111296464,
+      "config_sha256": "0cdf44b8ea981191de53078e0a5ecbbd437046bd939a546d5dbe17868f71281f",
+      "published_metrics_identical": true,
+      "forecast_max_abs_deltas_by_column": {
+        "ctr_baseline_pct": 0.0,
+        "cpm_baseline_eur": 0.0,
+        "ctr_timestral_p10": 1.399999999995849e-05,
+        "ctr_timestral_p50": 1.9999999998354667e-06,
+        "ctr_timestral_p90": 6.500000000020378e-05,
+        "cpm_timestral_p10": 3.1000000000336314e-05,
+        "cpm_timestral_p50": 5.3999999998666226e-05,
+        "cpm_timestral_p90": 6.30000000008124e-05
+      },
+      "forecast_bitwise_identical": false,
+      "local_timing_seconds": 0.85,
+      "validated_rows": 699,
+      "no_future_target_leak": [
+        {
+          "cutoff": "2026-10-18",
+          "future_target_mutation_changes_input": false
+        },
+        {
+          "cutoff": "2026-11-01",
+          "future_target_mutation_changes_input": false
+        }
+      ]
+    }
+  ],
+  "catboost_reference_metrics_exact": true
+}

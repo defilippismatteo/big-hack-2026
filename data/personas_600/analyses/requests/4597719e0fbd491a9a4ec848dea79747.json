@@ -1,0 +1,261 @@
+{
+  "schema_version": "1.0",
+  "asset_id": "CDF-S1",
+  "vertical": "pet_ecommerce",
+  "seed": 2026,
+  "scenario": "single_exposure_text_feed_v1",
+  "request_sha256": "8d36dd8bf9b482e0e81025334c4c8dee6792f05b99252f9f057271b5fedda19d",
+  "assignments": {
+    "p0195": {
+      "persona_id": "pet_ecommerce-P196",
+      "sampling_weight": 0.005,
+      "persona_sha256": "9f73f244c204f3b8e396ade883ae633631da98a7ecaf4d530e092017214b0446",
+      "persona_data_kind": "synthetic",
+      "feed": {
+        "platform": "facebook",
+        "hour": 13,
+        "exposure_number": 1,
+        "items": [
+          {
+            "author": "Elena (fittizia)",
+            "text": "Passeggiata al parco questa mattina."
+          },
+          {
+            "author": "Sara (fittizia)",
+            "text": "Oggi provo una nuova ricetta per cena."
+          },
+          {
+            "kind": "sponsored",
+            "content": "creatività nell'input condiviso"
+          },
+          {
+            "author": "Luca (fittizio)",
+            "text": "Una foto del panorama durante il viaggio."
+          }
+        ],
+        "ad_position": 3,
+        "visual_mode": "organizer_text_description_only"
+      }
+    },
+    "p0196": {
+      "persona_id": "pet_ecommerce-P197",
+      "sampling_weight": 0.005,
+      "persona_sha256": "576a9be23b22700598ef740aae4082cea0feee2eed87c2671d2e9934f56bb49e",
+      "persona_data_kind": "synthetic",
+      "feed": {
+        "platform": "instagram",
+        "hour": 8,
+        "exposure_number": 1,
+        "items": [
+          {
+            "author": "Luca (fittizio)",
+            "text": "Una foto del panorama durante il viaggio."
+          },
+          {
+            "author": "Sara (fittizia)",
+            "text": "Oggi provo una nuova ricetta per cena."
+          },
+          {
+            "kind": "sponsored",
+            "content": "creatività nell'input condiviso"
+          },
+          {
+            "author": "Elena (fittizia)",
+            "text": "Passeggiata al parco questa mattina."
+          }
+        ],
+        "ad_position": 3,
+        "visual_mode": "organizer_text_description_only"
+      }
+    },
+    "p0197": {
+      "persona_id": "pet_ecommerce-P198",
+      "sampling_weight": 0.005,
+      "persona_sha256": "7f195558d88098f4bb19a43401d206f21c9a27e853cddc462b742bba86fce041",
+      "persona_data_kind": "synthetic",
+      "feed": {
+        "platform": "instagram",
+        "hour": 13,
+        "exposure_number": 1,
+        "items": [
+          {
+            "author": "Sara (fittizia)",
+            "text": "Oggi provo una nuova ricetta per cena."
+          },
+          {
+            "author": "Luca (fittizio)",
+            "text": "Una foto del panorama durante il viaggio."
+          },
+          {
+            "kind": "sponsored",
+            "content": "creatività nell'input condiviso"
+          },
+          {
+            "author": "Elena (fittizia)",
+            "text": "Passeggiata al parco questa mattina."
+          }
+        ],
+        "ad_position": 3,
+        "visual_mode": "organizer_text_description_only"
+      }
+    },
+    "p0198": {
+      "persona_id": "pet_ecommerce-P199",
+      "sampling_weight": 0.005,
+      "persona_sha256": "ceb1ba41fe9590be6fc8233f4ef6208c432093d3b93642e92363fbadfc066957",
+      "persona_data_kind": "synthetic",
+      "feed": {
+        "platform": "facebook",
+        "hour": 21,
+        "exposure_number": 1,
+        "items": [
+          {
+            "author": "Sara (fittizia)",
+            "text": "Oggi provo una nuova ricetta per cena."
+          },
+          {
+            "kind": "sponsored",
+            "content": "creatività nell'input condiviso"
+          },
+          {
+            "author": "Luca (fittizio)",
+            "text": "Una foto del panorama durante il viaggio."
+          },
+          {
+            "author": "Elena (fittizia)",
+            "text": "Passeggiata al parco questa mattina."
+          }
+        ],
+        "ad_position": 2,
+        "visual_mode": "organizer_text_description_only"
+      }
+    },
+    "p0199": {
+      "persona_id": "pet_ecommerce-P200",
+      "sampling_weight": 0.005,
+      "persona_sha256": "33b933c9b2b107f79537ec9eddacb2eeca7aead5cd060749ad52615ad3f4cdfc",
+      "persona_data_kind": "synthetic",
+      "feed": {
+        "platform": "facebook",
+        "hour": 18,
+        "exposure_number": 1,
+        "items": [
+          {
+            "author": "Sara (fittizia)",
+            "text": "Oggi provo una nuova ricetta per cena."
+          },
+          {
+            "kind": "sponsored",
+            "content": "creatività nell'input condiviso"
+          },
+          {
+            "author": "Elena (fittizia)",
+            "text": "Passeggiata al parco questa mattina."
+          },
+          {
+            "author": "Luca (fittizio)",
+            "text": "Una foto del panorama durante il viaggio."
+          }
+        ],
+        "ad_position": 2,
+        "visual_mode": "organizer_text_description_only"
+      }
+    }
+  },
+  "request": {
+    "model": "gemini-decision-1",
+    "input": "Annuncio sponsorizzato Meta. {\"vertical\": \"pet_ecommerce\", \"formato\": \"video\", \"durata_video_s\": \"16\", \"headline\": \"Le crocchette monoproteiche stanno finendo\", \"testo_principale\": \"L'ultimo lotto del mese: poi tre settimane di attesa.\", \"call_to_action\": \"Acquista ora\", \"descrizione_visual\": \"Proprietaria in cucina riprende il suo cane che svuota la ciotola, parla in camera; apre sul sacco quasi vuoto.\"}",
+    "questions": {
+      "p0195": {
+        "type": "choice",
+        "instructions": "Valuta solo questa persona fittizia durante la singola esposizione nel feed. Le descrizioni visual sono testo, non immagini viste. Non inventare prezzi, landing page o commenti non forniti. Scegli il comportamento finale più plausibile; click include l'attenzione precedente, stop implica fermarsi senza cliccare, glance una breve occhiata senza fermarsi, scroll ignorare. {\"persona\": {\"country\": \"IT\", \"age_band\": \"35-44\", \"gender_identity\": \"donna\", \"motivation\": \"convenienza\", \"social_habit\": \"facebook\", \"risk_attitude\": \"esplorativo\", \"interest_in_category\": \"high\", \"occupation\": \"Operatrice socio-sanitaria in RSA\", \"economic_context\": \"Stipendio da OSS intorno ai 1.380 euro netti mensili e affitto condiviso con il compagno; la spesa mensile tra gatti di casa e colonia arriva a 110-125 euro, rendendo indispensabile cacciare offerte reali.\", \"daily_routine\": \"Trentottenne di Salerno, operatrice socio-sanitaria in una RSA. Tra i turni mattutini o pomeridiani cura i suoi tre gatti in casa e porta acqua e crocchette alla colonia condominiale; la sera controlla gruppi Facebook di offerte pet e sconti reali per pianificare scorte consistenti senza sforare il budget.\", \"decision_habits\": \"Alto interesse e profilo esplorativo orientato alla convenienza: testa volentieri nuovi e-commerce se offrono pacchi multipli convenienti, codici sconto cumulabili reali o omaggi utili, confrontando sempre almeno tre siti prima di chiudere l'ordine.\", \"trust_requirements\": \"Prezzi finali chiari senza trucchi di carrello, sconti reali sui formati multipli, imballaggio resistente per scatolette e spedizione gratuita raggiungibile con scorte medie.\", \"ad_avoidance\": \"Salta gli annunci su Facebook che mostrano prezzi singoli alti travestiti da offerta o che limitano a un pezzo per cliente i prodotti in promozione, rendendo inutile l'ordine multiplo.\", \"concerns\": \"Teme offerte civetta con spese di spedizione alte che annullano il risparmio, scatolette ammaccate in consegna e crocchette troppo polverose sul fondo del sacco.\", \"contradiction\": \"Cerca ossessivamente lo sconto migliore per riuscire a mantenere i suoi tre gatti e aiutare la colonia del cortile, ma appena vede una cuccia morbida in offerta finisce per prenderne una nuova anche se ne ha già quattro in casa.\", \"persona_summary\": \"Donna di 38 anni di Salerno con tre gatti e una colonia felina da aiutare, molto attiva nel pet e-commerce per convenienza. Segue gruppi su Facebook ed esplora nuovi store, ma verifica sempre il costo netto finale incluse spedizioni e rifiuta falsi ribassi.\", \"age_years\": 38, \"name\": \"Nadia Esposito\", \"interests\": [\"Offerte e multipack per gatti\", \"Pasticceria casalinga campana\", \"Romanzi sentimentali e familiari\", \"Tutela delle colonie feline di quartiere\", \"Coltivazione di aromatiche sul balcone\"]}, \"feed\": {\"platform\": \"facebook\", \"hour\": 13, \"exposure_number\": 1, \"items\": [{\"author\": \"Elena (fittizia)\", \"text\": \"Passeggiata al parco questa mattina.\"}, {\"author\": \"Sara (fittizia)\", \"text\": \"Oggi provo una nuova ricetta per cena.\"}, {\"kind\": \"sponsored\", \"content\": \"creatività nell'input condiviso\"}, {\"author\": \"Luca (fittizio)\", \"text\": \"Una foto del panorama durante il viaggio.\"}], \"ad_position\": 3, \"visual_mode\": \"organizer_text_description_only\"}}",
+        "criteria": {
+          "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+          "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+          "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+          "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+          "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+          "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+          "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+          "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+          "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+          "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+          "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+          "click__more_info": "Apre il link per approfondire prima di decidere."
+        }
+      },
+      "p0196": {
+        "type": "choice",
+        "instructions": "Valuta solo questa persona fittizia durante la singola esposizione nel feed. Le descrizioni visual sono testo, non immagini viste. Non inventare prezzi, landing page o commenti non forniti. Scegli il comportamento finale più plausibile; click include l'attenzione precedente, stop implica fermarsi senza cliccare, glance una breve occhiata senza fermarsi, scroll ignorare. {\"persona\": {\"country\": \"IT\", \"age_band\": \"65+\", \"gender_identity\": \"donna\", \"motivation\": \"qualita\", \"social_habit\": \"instagram\", \"risk_attitude\": \"prudente\", \"interest_in_category\": \"medium\", \"occupation\": \"Pensionata ex impiegata bancaria\", \"economic_context\": \"Buona pensione bancaria attorno ai 1.900 euro netti e casa di proprietà in centro; destina circa 85 euro al mese alle esigenze alimentari specifiche del gatto senza inseguire l'economia a discapito della salute.\", \"daily_routine\": \"Settantacinquenne di Trieste, pensionata ex impiegata bancaria. La mattina dedica molta attenzione al suo gatto siamese con lieve insufficienza renale pesando umido e crocchette renali, legge i giornali, guarda Instagram nel pomeriggio per seguire profili culturali e di animali, e ordina online solo linee veterinarie ben verificate.\", \"decision_habits\": \"Interesse medio nella categoria e massima prudenza: cerca soprattutto qualità garantita per esigenze senior, controlla i valori nutrizionali con calma leggendo dal tablet e si fa consigliare dal veterinario prima di cambiare marchio.\", \"trust_requirements\": \"Rivenditore autorizzato di linee veterinarie, scadenze lontane e leggibili, assistenza telefonica chiara in caso di problemi e consegna affidabile al portone con preavviso.\", \"ad_avoidance\": \"Ignora qualsiasi pubblicità frenetica con caratteri enormi, timer finti o promesse miracolistiche di ringiovanimento per animali anziani.\", \"concerns\": \"Teme errori nelle diete veterinarie prescritte (ad esempio valori di fosforo o sodio non aggiornati), prodotti contraffatti o conservati male e difficoltà a gestire resi complicati online.\", \"contradiction\": \"È molto prudente e tradizionalista su cibo e cure del suo gatto siamese di 13 anni, ma usa Instagram più delle sue amiche coetanee per cercare consigli estetici e piccoli cuscini artigianali per il terrazzo.\", \"persona_summary\": \"Donna di 75 anni di Trieste molto attenta alla qualità della dieta veterinaria per il suo gatto siamese di 13 anni. Usa Instagram con curiosità misurata, resta prudente davanti alle novità commerciali e compra online solo con certezza di autenticità e valori nutrizionali corretti.\", \"age_years\": 75, \"name\": \"Maria Teresa Galli\", \"interests\": [\"Opera lirica e concerti sinfonici\", \"Cucina tradizionale triestina\", \"Alimentazione veterinaria per gatti anziani\", \"Giardinaggio sul terrazzo\", \"Fotografia storica locale\"]}, \"feed\": {\"platform\": \"instagram\", \"hour\": 8, \"exposure_number\": 1, \"items\": [{\"author\": \"Luca (fittizio)\", \"text\": \"Una foto del panorama durante il viaggio.\"}, {\"author\": \"Sara (fittizia)\", \"text\": \"Oggi provo una nuova ricetta per cena.\"}, {\"kind\": \"sponsored\", \"content\": \"creatività nell'input condiviso\"}, {\"author\": \"Elena (fittizia)\", \"text\": \"Passeggiata al parco questa mattina.\"}], \"ad_position\": 3, \"visual_mode\": \"organizer_text_description_only\"}}",
+        "criteria": {
+          "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+          "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+          "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+          "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+          "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+          "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+          "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+          "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+          "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+          "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+          "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+          "click__more_info": "Apre il link per approfondire prima di decidere."
+        }
+      },
+      "p0197": {
+        "type": "choice",
+        "instructions": "Valuta solo questa persona fittizia durante la singola esposizione nel feed. Le descrizioni visual sono testo, non immagini viste. Non inventare prezzi, landing page o commenti non forniti. Scegli il comportamento finale più plausibile; click include l'attenzione precedente, stop implica fermarsi senza cliccare, glance una breve occhiata senza fermarsi, scroll ignorare. {\"persona\": {\"country\": \"IT\", \"age_band\": \"55-64\", \"gender_identity\": \"non_binary_or_undeclared\", \"motivation\": \"praticita\", \"social_habit\": \"social_misto\", \"risk_attitude\": \"esplorativo\", \"interest_in_category\": \"high\", \"occupation\": \"Bibliotecario/a comunale\", \"economic_context\": \"Stipendio pubblico stabile intorno ai 1.750 euro netti, casa in affitto calmierato; ha un budget combinato di circa 120 euro al mese per cane e gatto e apprezza la chiarezza senza costi accessori.\", \"daily_routine\": \"Sessantenne di Reggio Emilia (persona non binaria), lavora come bibliotecario/a comunale. Prima di aprire la biblioteca prepara i pasti per il cane meticcio di taglia media e la gatta di 8 anni; usa diversi social per eventi culturali e gruppi cittadini, e preferisce fare un ordine unico mensile online ben organizzato per entrambi gli animali.\", \"decision_habits\": \"Alto interesse nella categoria e attitudine esplorativa guidata dalla praticità: prova nuovi e-commerce che promettono ordini combinati cane+gatto più rapidi, filtri efficaci per intolleranze e consegne puntuali su fascia oraria concordata.\", \"trust_requirements\": \"Filtri di ricerca affidabili, spedizione unica per l'intero carrello, possibilità di modificare o saltare facilmente eventuali riordini e tracciamento preciso del corriere.\", \"ad_avoidance\": \"Evita gli annunci che complicano inutilmente l'acquisto, richiedono iscrizioni forzate a newsletter per vedere il prezzo o spingono gadget inutili invece di soluzioni pratiche.\", \"concerns\": \"Teme consegne spezzettate in tre pacchi diversi in giorni differenti, errori nell'assortimento tra cibo per cane e cibo per gatto, e abbonamenti rigidi difficili da mettere in pausa.\", \"contradiction\": \"Dice di scegliere un sito solo per pura praticità di gestione degli ordini tra lavoro e impegni, eppure perde spesso tempo a esplorare nuovi negozi per verificare se hanno un interfaccia più ordinata e filtri di ricerca migliori.\", \"persona_summary\": \"Persona di 60 anni non binaria a Reggio Emilia che convive con un cane e una gatta, molto attiva online e orientata alla praticità. Naviga più social ed esplora volentieri siti meglio organizzati, ma abbandona subito se l'ordine unico risulta confuso o rigido.\", \"age_years\": 60, \"name\": \"Sasha Rossi\", \"interests\": [\"Catalogazione libraria e storia locale\", \"Organizzazione pratica di scorte multi-pet\", \"Teatro contemporaneo\", \"Camminate lungo i parchi fluviali\", \"Cucina vegetariana stagionale\"]}, \"feed\": {\"platform\": \"instagram\", \"hour\": 13, \"exposure_number\": 1, \"items\": [{\"author\": \"Sara (fittizia)\", \"text\": \"Oggi provo una nuova ricetta per cena.\"}, {\"author\": \"Luca (fittizio)\", \"text\": \"Una foto del panorama durante il viaggio.\"}, {\"kind\": \"sponsored\", \"content\": \"creatività nell'input condiviso\"}, {\"author\": \"Elena (fittizia)\", \"text\": \"Passeggiata al parco questa mattina.\"}], \"ad_position\": 3, \"visual_mode\": \"organizer_text_description_only\"}}",
+        "criteria": {
+          "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+          "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+          "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+          "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+          "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+          "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+          "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+          "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+          "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+          "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+          "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+          "click__more_info": "Apre il link per approfondire prima di decidere."
+        }
+      },
+      "p0198": {
+        "type": "choice",
+        "instructions": "Valuta solo questa persona fittizia durante la singola esposizione nel feed. Le descrizioni visual sono testo, non immagini viste. Non inventare prezzi, landing page o commenti non forniti. Scegli il comportamento finale più plausibile; click include l'attenzione precedente, stop implica fermarsi senza cliccare, glance una breve occhiata senza fermarsi, scroll ignorare. {\"persona\": {\"country\": \"IT\", \"age_band\": \"55-64\", \"gender_identity\": \"uomo\", \"motivation\": \"convenienza\", \"social_habit\": \"social_misto\", \"risk_attitude\": \"esplorativo\", \"interest_in_category\": \"high\", \"occupation\": \"Agente di commercio nel settore ferramenta\", \"economic_context\": \"Reddito commerciale discreto ma legato al fatturato, intorno ai 2.100 euro netti medi; mantenere due cani di grossa taglia richiede 140-170 euro al mese, quindi ottimizzare l'acquisto all'ingrosso è essenziale.\", \"daily_routine\": \"Cinquantottenne di Catania, agente di commercio nel settore ferramenta sempre in giro in auto. La mattina presto e la sera gestisce i suoi due cani meticci di taglia grande in villetta; consulta diversi social nelle pause tra un cliente e l'altro e confronta le migliori promozioni sui formati maxi.\", \"decision_habits\": \"Alto interesse e approccio esplorativo centrato sulla convenienza reale: sa riconoscere al volo una promozione vera da una trovata pubblicitaria, compara più portali in pochi minuti e acquista formati convenienza solo se le spese per la Sicilia non annullano il vantaggio.\", \"trust_requirements\": \"Nessun supplemento nascosto per spedizioni in Sicilia, imballi rinforzati per sacchi da 15-20 kg, scadenza minima garantita di almeno sei mesi e fattura o ricevuta puntuale.\", \"ad_avoidance\": \"Salta i banner con offerte finte in cui il prezzo base viene alzato prima dello sconto o dove manca il costo netto al chilo per i formati da allevatori.\", \"concerns\": \"Teme sacchi da 20 kg bucati durante il trasporto verso la Sicilia, offerte su lotti vecchi vicini alla scadenza e costi extra per consegna nelle isole o zone periferiche.\", \"contradiction\": \"Controlla con attenzione da venditore esperto ogni margine di risparmio sui grandi sacchi di crocchette per i due cani di taglia grande, ma poi per fare contenta la moglie compra online piccoli accessori o biscotti costosi senza nemmeno confrontare il prezzo.\", \"persona_summary\": \"Uomo di 58 anni di Catania con due cani di taglia grande, molto interessato al pet e-commerce e abile cacciatore di convenienza reale. Esplora diversi social e store online ma smonta subito sconti gonfiati, sovrapprezzi per le isole e lotti quasi scaduti.\", \"age_years\": 58, \"name\": \"Massimo Vitale\", \"interests\": [\"Mototurismo su strade panoramiche\", \"Acquisti all'ingrosso di cibo per cani grandi\", \"Cucina siciliana alla brace\", \"Pesca dalla barca nel fine settimana\", \"Cura dell'agrumeto di casa\"]}, \"feed\": {\"platform\": \"facebook\", \"hour\": 21, \"exposure_number\": 1, \"items\": [{\"author\": \"Sara (fittizia)\", \"text\": \"Oggi provo una nuova ricetta per cena.\"}, {\"kind\": \"sponsored\", \"content\": \"creatività nell'input condiviso\"}, {\"author\": \"Luca (fittizio)\", \"text\": \"Una foto del panorama durante il viaggio.\"}, {\"author\": \"Elena (fittizia)\", \"text\": \"Passeggiata al parco questa mattina.\"}], \"ad_position\": 2, \"visual_mode\": \"organizer_text_description_only\"}}",
+        "criteria": {
+          "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+          "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+          "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+          "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+          "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+          "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+          "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+          "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+          "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+          "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+          "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+          "click__more_info": "Apre il link per approfondire prima di decidere."
+        }
+      },
+      "p0199": {
+        "type": "choice",
+        "instructions": "Valuta solo questa persona fittizia durante la singola esposizione nel feed. Le descrizioni visual sono testo, non immagini viste. Non inventare prezzi, landing page o commenti non forniti. Scegli il comportamento finale più plausibile; click include l'attenzione precedente, stop implica fermarsi senza cliccare, glance una breve occhiata senza fermarsi, scroll ignorare. {\"persona\": {\"country\": \"IT\", \"age_band\": \"25-34\", \"gender_identity\": \"uomo\", \"motivation\": \"qualita\", \"social_habit\": \"social_misto\", \"risk_attitude\": \"esplorativo\", \"interest_in_category\": \"high\", \"occupation\": \"Sviluppatore software backend da remoto\", \"economic_context\": \"Stipendio da sviluppatore intorno ai 2.350 euro netti in città media; destina 90-110 euro al mese al gatto tra alimentazione ad alta quota proteica e arricchimento verticale, ma taglia subito prodotti sovrapprezzati senza sostanza.\", \"daily_routine\": \"Trentunenne di Trento, sviluppatore software backend da remoto. Lavora da casa interagendo spesso durante le pause con il suo energico gatto Bengala di 2 anni; usa vari social tecnici e community verticali la sera, confronta analisi nutrizionali indipendenti e testa nuovi marchi ad alto contenuto proteico.\", \"decision_habits\": \"Alto interesse nella categoria e spiccato profilo esplorativo orientato alla qualità: legge forum specializzati, compara composizioni su fogli di calcolo, testa piccoli sacchi o pacchi prova di brand europei emergenti, ma non ricompra mai se nota cali qualitativi.\", \"trust_requirements\": \"Analisi nutrizionale completa inclusi minerali e carboidrati stimati, schede tecniche precise per accessori da parete, recensioni verificabili di proprietari esperti e politica di reso chiara.\", \"ad_avoidance\": \"Usa ad-blocker su desktop e da mobile salta all'istante annunci generici, sponsorizzate con finte recensioni entusiaste o claim nutrizionali vaghi senza numeri precisi.\", \"concerns\": \"Teme farine proteiche di bassa qualità mascherate da etichette furbe \\\"grain-free\\\", eccesso di carboidrati/legumi nascosti nelle crocchette e tiragraffi da parete con tasselli o fissaggi scadenti.\", \"contradiction\": \"Analizza con precisione ingegneristica le percentuali di proteine e ceneri nelle formule per il suo Bengala e diffida del marketing emotivo, ma poi ha acquistato una fontanella smart connessa al Wi-Fi spinto dal design tech più che da una reale necessità del gatto.\", \"persona_summary\": \"Uomo di 31 anni di Trento con un gatto Bengala, molto coinvolto nel pet e-commerce e guidato da qualità nutrizionale e curiosità esplorativa. Frequenta più social e community, rifiuta marketing superficiale e confronta i dati analitici reali prima di cambiare alimento o accessorio.\", \"age_years\": 31, \"name\": \"Gabriele Neri\", \"interests\": [\"Arrampicata sportiva su roccia\", \"Nutrizione felina ad alto tenore proteico\", \"Stampa 3D e prototipazione\", \"Caffè filtro e tostatura chiara\", \"Videogiochi strategici a turni\"]}, \"feed\": {\"platform\": \"facebook\", \"hour\": 18, \"exposure_number\": 1, \"items\": [{\"author\": \"Sara (fittizia)\", \"text\": \"Oggi provo una nuova ricetta per cena.\"}, {\"kind\": \"sponsored\", \"content\": \"creatività nell'input condiviso\"}, {\"author\": \"Elena (fittizia)\", \"text\": \"Passeggiata al parco questa mattina.\"}, {\"author\": \"Luca (fittizio)\", \"text\": \"Una foto del panorama durante il viaggio.\"}], \"ad_position\": 2, \"visual_mode\": \"organizer_text_description_only\"}}",
+        "criteria": {
+          "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+          "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+          "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+          "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+          "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+          "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+          "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+          "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+          "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+          "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+          "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+          "click__more_info": "Apre il link per approfondire prima di decidere."
+        }
+      }
+    }
+  }
+}

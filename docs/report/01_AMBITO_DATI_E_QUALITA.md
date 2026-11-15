@@ -41,7 +41,7 @@
 
 ## 3. Anomalie di Qualità Dati Rilevate (`quality_audit`)
 
-Verificate in [market_mirror/analytics.py](../../market_mirror/analytics.py) e [data_quality.json](../../artifacts/wevion_v4/data_quality.json):
+Verificate in [personas_simulation.runtime/analytics.py](../../personas_simulation.runtime/analytics.py) e [data_quality.json](../../artifacts/wevion_v4/data_quality.json):
 
 1. **Giornate di overspend rispetto al budget ad set (preservate nei CSV sorgente, escluse dal calcolo pacing):**
    - `2026-10-21` · `FGR-AS1`: spesa aggregata di **`€397,55`** contro un budget pianificato di **`€100,00`** (quasi `4×`).
@@ -54,7 +54,7 @@ Verificate in [market_mirror/analytics.py](../../market_mirror/analytics.py) e [
 
 ## 4. Controlli Anti-Leakage Implementati
 
-Sia `market_mirror/forecast.py` sia `Prima_Analisi/valida_modelli.py` (su `origin/feat/timestral-pilot`) e `artifacts/timestral_reproduction/verify.py` verificano:
+Sia `personas_simulation.runtime/forecast.py` sia `Prima_Analisi/valida_modelli.py` (su `origin/feat/timestral-pilot`) e `artifacts/timestral_reproduction/verify.py` verificano:
 - **Cutoff rigido (`<= cutoff`):** le feature rolling a 7 giorni in CatBoost usano `shift(1).rolling(7)`; nei test `verify_no_leakage`, alterare a `0` tutti gli outcome dopo il cutoff o nello stesso giorno agli estremi del training produce matrici `X_train`, `X_holdout` e tensori Timestral **bit-identici**.
 - **Assenza di colonne target future:** `future_outcomes_present = []` verificato programmaticamente su `da_prevedere.csv`.
-- **Evidenze audience separate per fold:** `market_mirror/delivery.py` genera `audience_evidence_2026-10-18.json` e `audience_evidence_2026-11-01.json` oltre a `2026-11-15` per evitare retrospettive con dati futuri.
+- **Evidenze audience separate per fold:** `personas_simulation.runtime/delivery.py` genera `audience_evidence_2026-10-18.json` e `audience_evidence_2026-11-01.json` oltre a `2026-11-15` per evitare retrospettive con dati futuri.

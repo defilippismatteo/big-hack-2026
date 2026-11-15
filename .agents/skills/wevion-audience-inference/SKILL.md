@@ -17,4 +17,4 @@ campione delle creatività; registra provider e modello senza alterare i numeri.
 Non reintrodurre queste ipotesi nel writer del pool simulation_blind: Analytics
 può associare e ripesare i segnali dopo la simulazione, allenandosi solo sul train.
 
-Vedi [differenza rispetto allo starter](../../../docs/MARKET_MIRROR_GUIDA.md).
+Vedi [differenza rispetto allo starter](../../../docs/PERSONAS_T3.md).

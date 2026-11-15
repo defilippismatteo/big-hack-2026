@@ -1,0 +1,110 @@
+{
+  "cutoff": "2026-11-15",
+  "dal": "2026-11-16",
+  "al": "2026-11-30",
+  "fonte_dati": "Solo dati forniti dagli organizzatori (senza moltiplicatori esterni Black Friday)",
+  "strategia_modelli": {
+    "ctr": "baseline_14g",
+    "cpm": "mix_50_50_catboost_timestral28m"
+  },
+  "versioni": {
+    "catboost": "1.2.10",
+    "numpy": "2.5.4",
+    "pandas": "2.3.3",
+    "pytorch": "2.7.1"
+  },
+  "timestral_28m_sha256": "dfc83c6220937ce5fc6687b35a4df94cd25e28a2cfe6fb92a23dad6301b2015d",
+  "catboost_originale_sha256": "5bf404edc20d0b5ffd3fa4a12fecd5f7da58037d4b89f7435eb87aba9d256b03",
+  "verifiche": [
+    "699 chiavi esattamente corrispondenti a da_prevedere.csv",
+    "calendario annunci e budget coerenti",
+    "baseline equivalente tra CatBoost script e Timestral pilot",
+    "valori finiti, CTR in [0, 100], CPM > 0"
+  ],
+  "totale": {
+    "righe": 699,
+    "annunci_distinti": 51,
+    "ctr_scelto_mediana_pct": 1.0243,
+    "ctr_scelto_media_pct": 1.2973,
+    "cpm_scelto_mediana_eur": 10.8511,
+    "cpm_scelto_media_eur": 11.4515,
+    "cpm_catboost_mediana_eur": 10.2497,
+    "cpm_timestral_28m_mediana_eur": 11.4779
+  },
+  "per_vertical": {
+    "abbigliamento": {
+      "righe": 233,
+      "annunci_distinti": 17,
+      "ctr_scelto_mediana_pct": 1.0503,
+      "ctr_scelto_media_pct": 1.3671,
+      "cpm_scelto_mediana_eur": 12.4125,
+      "cpm_scelto_media_eur": 11.0124,
+      "cpm_catboost_mediana_eur": 11.9443,
+      "cpm_timestral_28m_mediana_eur": 12.3774
+    },
+    "beauty_skincare": {
+      "righe": 233,
+      "annunci_distinti": 17,
+      "ctr_scelto_mediana_pct": 1.0764,
+      "ctr_scelto_media_pct": 1.2202,
+      "cpm_scelto_mediana_eur": 12.2896,
+      "cpm_scelto_media_eur": 13.92,
+      "cpm_catboost_mediana_eur": 11.5932,
+      "cpm_timestral_28m_mediana_eur": 12.7744
+    },
+    "pet_ecommerce": {
+      "righe": 233,
+      "annunci_distinti": 17,
+      "ctr_scelto_mediana_pct": 0.9316,
+      "ctr_scelto_media_pct": 1.3047,
+      "cpm_scelto_mediana_eur": 8.5019,
+      "cpm_scelto_media_eur": 9.4222,
+      "cpm_catboost_mediana_eur": 8.0246,
+      "cpm_timestral_28m_mediana_eur": 9.0404
+    }
+  },
+  "per_periodo": {
+    "pre_black_week_16_19_nov": {
+      "righe": 156,
+      "annunci_distinti": 39,
+      "ctr_scelto_mediana_pct": 1.0082,
+      "ctr_scelto_media_pct": 1.2928,
+      "cpm_scelto_mediana_eur": 11.0321,
+      "cpm_scelto_media_eur": 11.383,
+      "cpm_catboost_mediana_eur": 10.4866,
+      "cpm_timestral_28m_mediana_eur": 11.3732
+    },
+    "black_week_e_eventi_20_30_nov": {
+      "righe": 543,
+      "annunci_distinti": 51,
+      "ctr_scelto_mediana_pct": 1.0243,
+      "ctr_scelto_media_pct": 1.2986,
+      "cpm_scelto_mediana_eur": 10.8125,
+      "cpm_scelto_media_eur": 11.4712,
+      "cpm_catboost_mediana_eur": 10.2334,
+      "cpm_timestral_28m_mediana_eur": 11.5615
+    }
+  },
+  "per_stato_annuncio": {
+    "annunci_gia_visti": {
+      "righe": 585,
+      "annunci_distinti": 39,
+      "ctr_scelto_mediana_pct": 1.0082,
+      "ctr_scelto_media_pct": 1.2928,
+      "cpm_scelto_mediana_eur": 10.8607,
+      "cpm_scelto_media_eur": 11.4865,
+      "cpm_catboost_mediana_eur": 10.2769,
+      "cpm_timestral_28m_mediana_eur": 11.4779
+    },
+    "annunci_nuovi": {
+      "righe": 114,
+      "annunci_distinti": 12,
+      "ctr_scelto_mediana_pct": 1.0719,
+      "ctr_scelto_media_pct": 1.3207,
+      "cpm_scelto_mediana_eur": 10.4604,
+      "cpm_scelto_media_eur": 11.2722,
+      "cpm_catboost_mediana_eur": 9.8175,
+      "cpm_timestral_28m_mediana_eur": 11.4014
+    }
+  }
+}

@@ -8,7 +8,7 @@ Usa [il task del worker](../../../docs/prompts/decision-worker.md) con modalità
 PRECHECK prima del LIVE. Questa è l'unica fase che usa un'API Google distinta.
 La chiave GEMINI_API_KEY serve solo a Decision 1, mai a generare le persone.
 
-Runtime: `market_mirror/feed.py` e `providers.decide`.
+Runtime: `personas_simulation.runtime/feed.py` e `providers.decide`.
 Esecuzione registrata: `analyze --live`, con prima prova `--asset-id NDL-S1`.
 Il registro per persona/asset è `artifacts/personas_t3/analyses/ledger.sqlite`:
 le risposte completed vengono riusate anche se cambia l'ordine del panel o si
@@ -32,5 +32,5 @@ Opzioni action__reason mutuamente esclusive; click include attenzione, stop
 non include click. Salva la risposta SDK raw prima di interpretarla.
 Errori di quota/accesso non autorizzano un cambio provider.
 
-Vedi [guida](../../../docs/MARKET_MIRROR_GUIDA.md) e
+Vedi [guida](../../../docs/PERSONAS_T3.md) e
 [Google Decisions](https://aistudio.google.com/docs/decisions-api).

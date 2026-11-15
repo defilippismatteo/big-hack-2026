@@ -1,0 +1,219 @@
+{
+  "schema_version": "1.0",
+  "model": "weighted_hierarchical_14d_v1",
+  "folds": [
+    {
+      "cutoff": "2026-10-18",
+      "start": "2026-10-19",
+      "end": "2026-11-01",
+      "rows": 315,
+      "metrics": {
+        "mae_ctr_pp": 0.24514216655684165,
+        "mae_cpm_eur": 0.7986309830550709,
+        "wmae_ctr_pp": 0.19771746011220362,
+        "wmae_cpm_eur": 0.7142802096319603
+      },
+      "cold_start_rows": 63,
+      "cold_start_metrics": {
+        "mae_ctr_pp": 0.3376503155361716,
+        "mae_cpm_eur": 1.1280527358639603,
+        "wmae_ctr_pp": 0.29685867406406946,
+        "wmae_cpm_eur": 0.9010496258225187
+      }
+    },
+    {
+      "cutoff": "2026-11-01",
+      "start": "2026-11-02",
+      "end": "2026-11-15",
+      "rows": 444,
+      "metrics": {
+        "mae_ctr_pp": 0.31628508586755183,
+        "mae_cpm_eur": 1.0218284782316145,
+        "wmae_ctr_pp": 0.25756233674742407,
+        "wmae_cpm_eur": 0.8021932238893719
+      },
+      "cold_start_rows": 66,
+      "cold_start_metrics": {
+        "mae_ctr_pp": 0.4472746046438052,
+        "mae_cpm_eur": 1.5309818105684676,
+        "wmae_ctr_pp": 0.4072892623187707,
+        "wmae_cpm_eur": 1.2349266656991604
+      }
+    }
+  ],
+  "reported_external": {
+    "modello": "mistralai/Timestral-28M",
+    "sha256_pesi": "dfc83c6220937ce5fc6687b35a4df94cd25e28a2cfe6fb92a23dad6301b2015d",
+    "secondi_caricamento_backtest_e_forecast": 11.22,
+    "backtest": [
+      {
+        "inizio": "2026-10-19",
+        "fine": "2026-11-01",
+        "cutoff": "2026-10-18",
+        "context_shape": [
+          12,
+          2,
+          63
+        ],
+        "covariates_shape": [
+          12,
+          7,
+          77
+        ],
+        "righe_annuncio": 315,
+        "annunci": {
+          "baseline": {
+            "mae_ctr_pp": 0.2451,
+            "mae_cpm_eur": 0.7986,
+            "wmae_ctr_pp": 0.1977,
+            "wmae_cpm_eur": 0.7143
+          },
+          "timestral_adjusted": {
+            "mae_ctr_pp": 0.242,
+            "mae_cpm_eur": 0.7649,
+            "wmae_ctr_pp": 0.202,
+            "wmae_cpm_eur": 0.6927
+          },
+          "q10_q90_coverage_unadjusted_for_calibration": {
+            "ctr": 0.8698,
+            "cpm": 0.8254
+          }
+        },
+        "ad_set": {
+          "righe": 168,
+          "ctr": {
+            "baseline": {
+              "mae": 0.1951,
+              "wmae": 0.1574
+            },
+            "timestral": {
+              "mae": 0.2043,
+              "wmae": 0.1781
+            },
+            "copertura_q10_q90": 0.9048
+          },
+          "cpm": {
+            "baseline": {
+              "mae": 0.7617,
+              "wmae": 0.6625
+            },
+            "timestral": {
+              "mae": 0.7057,
+              "wmae": 0.6349
+            },
+            "copertura_q10_q90": 0.8452
+          }
+        },
+        "avvio_a_freddo": {
+          "annunci": 9,
+          "righe": 63,
+          "metriche": {
+            "baseline": {
+              "mae_ctr_pp": 0.3377,
+              "mae_cpm_eur": 1.1281,
+              "wmae_ctr_pp": 0.2969,
+              "wmae_cpm_eur": 0.901
+            },
+            "timestral_adjusted": {
+              "mae_ctr_pp": 0.358,
+              "mae_cpm_eur": 1.0922,
+              "wmae_ctr_pp": 0.3352,
+              "wmae_cpm_eur": 0.8827
+            },
+            "q10_q90_coverage_unadjusted_for_calibration": {
+              "ctr": 0.7778,
+              "cpm": 0.6667
+            }
+          }
+        }
+      },
+      {
+        "inizio": "2026-11-02",
+        "fine": "2026-11-15",
+        "cutoff": "2026-11-01",
+        "context_shape": [
+          12,
+          2,
+          77
+        ],
+        "covariates_shape": [
+          12,
+          7,
+          91
+        ],
+        "righe_annuncio": 444,
+        "annunci": {
+          "baseline": {
+            "mae_ctr_pp": 0.3163,
+            "mae_cpm_eur": 1.0218,
+            "wmae_ctr_pp": 0.2576,
+            "wmae_cpm_eur": 0.8022
+          },
+          "timestral_adjusted": {
+            "mae_ctr_pp": 0.3446,
+            "mae_cpm_eur": 0.8841,
+            "wmae_ctr_pp": 0.2815,
+            "wmae_cpm_eur": 0.7067
+          },
+          "q10_q90_coverage_unadjusted_for_calibration": {
+            "ctr": 0.6959,
+            "cpm": 0.8311
+          }
+        },
+        "ad_set": {
+          "righe": 168,
+          "ctr": {
+            "baseline": {
+              "mae": 0.2231,
+              "wmae": 0.1836
+            },
+            "timestral": {
+              "mae": 0.254,
+              "wmae": 0.2047
+            },
+            "copertura_q10_q90": 0.875
+          },
+          "cpm": {
+            "baseline": {
+              "mae": 0.8794,
+              "wmae": 0.7479
+            },
+            "timestral": {
+              "mae": 0.6921,
+              "wmae": 0.6045
+            },
+            "copertura_q10_q90": 0.9226
+          }
+        },
+        "avvio_a_freddo": {
+          "annunci": 12,
+          "righe": 66,
+          "metriche": {
+            "baseline": {
+              "mae_ctr_pp": 0.4473,
+              "mae_cpm_eur": 1.531,
+              "wmae_ctr_pp": 0.4073,
+              "wmae_cpm_eur": 1.2349
+            },
+            "timestral_adjusted": {
+              "mae_ctr_pp": 0.4674,
+              "mae_cpm_eur": 1.3232,
+              "wmae_ctr_pp": 0.428,
+              "wmae_cpm_eur": 1.0431
+            },
+            "q10_q90_coverage_unadjusted_for_calibration": {
+              "ctr": 0.5606,
+              "cpm": 0.697
+            }
+          }
+        }
+      }
+    ],
+    "forecast": {
+      "file": "previsioni_28m.csv",
+      "righe": 699,
+      "nuovi_annunci": 12,
+      "righe_nuovi_annunci": 114
+    }
+  }
+}

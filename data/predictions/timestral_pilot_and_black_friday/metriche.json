@@ -1,0 +1,367 @@
+{
+  "python": "3.12.16",
+  "torch": "2.7.1",
+  "architettura": "x86_64",
+  "thread_cpu": 2,
+  "covariate_pilota": [
+    "budget_adset",
+    "market_ctr_2025",
+    "market_cpm_2025",
+    "weekend",
+    "black_week",
+    "black_friday",
+    "cyber_monday"
+  ],
+  "modelli": [
+    {
+      "modello": "mistralai/Timestral-5M",
+      "sha256_pesi": "7ace108c4987e7f2a99a75a445240019d1d31c2117139d1bd05ffdfd25aca738",
+      "secondi_caricamento_backtest_e_forecast": 3.78,
+      "backtest": [
+        {
+          "inizio": "2026-10-19",
+          "fine": "2026-11-01",
+          "cutoff": "2026-10-18",
+          "context_shape": [
+            12,
+            2,
+            63
+          ],
+          "covariates_shape": [
+            12,
+            7,
+            77
+          ],
+          "righe_annuncio": 315,
+          "annunci": {
+            "baseline": {
+              "mae_ctr_pp": 0.2451,
+              "mae_cpm_eur": 0.7986,
+              "wmae_ctr_pp": 0.1977,
+              "wmae_cpm_eur": 0.7143
+            },
+            "timestral_adjusted": {
+              "mae_ctr_pp": 0.2727,
+              "mae_cpm_eur": 0.7705,
+              "wmae_ctr_pp": 0.2235,
+              "wmae_cpm_eur": 0.7013
+            },
+            "q10_q90_coverage_unadjusted_for_calibration": {
+              "ctr": 0.7873,
+              "cpm": 0.746
+            }
+          },
+          "ad_set": {
+            "righe": 168,
+            "ctr": {
+              "baseline": {
+                "mae": 0.1951,
+                "wmae": 0.1574
+              },
+              "timestral": {
+                "mae": 0.206,
+                "wmae": 0.1691
+              },
+              "copertura_q10_q90": 0.875
+            },
+            "cpm": {
+              "baseline": {
+                "mae": 0.7617,
+                "wmae": 0.6625
+              },
+              "timestral": {
+                "mae": 0.7198,
+                "wmae": 0.6577
+              },
+              "copertura_q10_q90": 0.8036
+            }
+          },
+          "avvio_a_freddo": {
+            "annunci": 9,
+            "righe": 63,
+            "metriche": {
+              "baseline": {
+                "mae_ctr_pp": 0.3377,
+                "mae_cpm_eur": 1.1281,
+                "wmae_ctr_pp": 0.2969,
+                "wmae_cpm_eur": 0.901
+              },
+              "timestral_adjusted": {
+                "mae_ctr_pp": 0.3153,
+                "mae_cpm_eur": 1.1485,
+                "wmae_ctr_pp": 0.2802,
+                "wmae_cpm_eur": 0.9154
+              },
+              "q10_q90_coverage_unadjusted_for_calibration": {
+                "ctr": 0.7619,
+                "cpm": 0.5714
+              }
+            }
+          }
+        },
+        {
+          "inizio": "2026-11-02",
+          "fine": "2026-11-15",
+          "cutoff": "2026-11-01",
+          "context_shape": [
+            12,
+            2,
+            77
+          ],
+          "covariates_shape": [
+            12,
+            7,
+            91
+          ],
+          "righe_annuncio": 444,
+          "annunci": {
+            "baseline": {
+              "mae_ctr_pp": 0.3163,
+              "mae_cpm_eur": 1.0218,
+              "wmae_ctr_pp": 0.2576,
+              "wmae_cpm_eur": 0.8022
+            },
+            "timestral_adjusted": {
+              "mae_ctr_pp": 0.3585,
+              "mae_cpm_eur": 0.9673,
+              "wmae_ctr_pp": 0.2859,
+              "wmae_cpm_eur": 0.7573
+            },
+            "q10_q90_coverage_unadjusted_for_calibration": {
+              "ctr": 0.6419,
+              "cpm": 0.6644
+            }
+          },
+          "ad_set": {
+            "righe": 168,
+            "ctr": {
+              "baseline": {
+                "mae": 0.2231,
+                "wmae": 0.1836
+              },
+              "timestral": {
+                "mae": 0.2744,
+                "wmae": 0.2111
+              },
+              "copertura_q10_q90": 0.8631
+            },
+            "cpm": {
+              "baseline": {
+                "mae": 0.8794,
+                "wmae": 0.7479
+              },
+              "timestral": {
+                "mae": 0.8092,
+                "wmae": 0.6891
+              },
+              "copertura_q10_q90": 0.756
+            }
+          },
+          "avvio_a_freddo": {
+            "annunci": 12,
+            "righe": 66,
+            "metriche": {
+              "baseline": {
+                "mae_ctr_pp": 0.4473,
+                "mae_cpm_eur": 1.531,
+                "wmae_ctr_pp": 0.4073,
+                "wmae_cpm_eur": 1.2349
+              },
+              "timestral_adjusted": {
+                "mae_ctr_pp": 0.4702,
+                "mae_cpm_eur": 1.4587,
+                "wmae_ctr_pp": 0.421,
+                "wmae_cpm_eur": 1.1615
+              },
+              "q10_q90_coverage_unadjusted_for_calibration": {
+                "ctr": 0.4545,
+                "cpm": 0.4091
+              }
+            }
+          }
+        }
+      ],
+      "forecast": {
+        "file": "previsioni_5m.csv",
+        "righe": 699,
+        "nuovi_annunci": 12,
+        "righe_nuovi_annunci": 114
+      }
+    },
+    {
+      "modello": "mistralai/Timestral-28M",
+      "sha256_pesi": "dfc83c6220937ce5fc6687b35a4df94cd25e28a2cfe6fb92a23dad6301b2015d",
+      "secondi_caricamento_backtest_e_forecast": 11.22,
+      "backtest": [
+        {
+          "inizio": "2026-10-19",
+          "fine": "2026-11-01",
+          "cutoff": "2026-10-18",
+          "context_shape": [
+            12,
+            2,
+            63
+          ],
+          "covariates_shape": [
+            12,
+            7,
+            77
+          ],
+          "righe_annuncio": 315,
+          "annunci": {
+            "baseline": {
+              "mae_ctr_pp": 0.2451,
+              "mae_cpm_eur": 0.7986,
+              "wmae_ctr_pp": 0.1977,
+              "wmae_cpm_eur": 0.7143
+            },
+            "timestral_adjusted": {
+              "mae_ctr_pp": 0.242,
+              "mae_cpm_eur": 0.7649,
+              "wmae_ctr_pp": 0.202,
+              "wmae_cpm_eur": 0.6927
+            },
+            "q10_q90_coverage_unadjusted_for_calibration": {
+              "ctr": 0.8698,
+              "cpm": 0.8254
+            }
+          },
+          "ad_set": {
+            "righe": 168,
+            "ctr": {
+              "baseline": {
+                "mae": 0.1951,
+                "wmae": 0.1574
+              },
+              "timestral": {
+                "mae": 0.2043,
+                "wmae": 0.1781
+              },
+              "copertura_q10_q90": 0.9048
+            },
+            "cpm": {
+              "baseline": {
+                "mae": 0.7617,
+                "wmae": 0.6625
+              },
+              "timestral": {
+                "mae": 0.7057,
+                "wmae": 0.6349
+              },
+              "copertura_q10_q90": 0.8452
+            }
+          },
+          "avvio_a_freddo": {
+            "annunci": 9,
+            "righe": 63,
+            "metriche": {
+              "baseline": {
+                "mae_ctr_pp": 0.3377,
+                "mae_cpm_eur": 1.1281,
+                "wmae_ctr_pp": 0.2969,
+                "wmae_cpm_eur": 0.901
+              },
+              "timestral_adjusted": {
+                "mae_ctr_pp": 0.358,
+                "mae_cpm_eur": 1.0922,
+                "wmae_ctr_pp": 0.3352,
+                "wmae_cpm_eur": 0.8827
+              },
+              "q10_q90_coverage_unadjusted_for_calibration": {
+                "ctr": 0.7778,
+                "cpm": 0.6667
+              }
+            }
+          }
+        },
+        {
+          "inizio": "2026-11-02",
+          "fine": "2026-11-15",
+          "cutoff": "2026-11-01",
+          "context_shape": [
+            12,
+            2,
+            77
+          ],
+          "covariates_shape": [
+            12,
+            7,
+            91
+          ],
+          "righe_annuncio": 444,
+          "annunci": {
+            "baseline": {
+              "mae_ctr_pp": 0.3163,
+              "mae_cpm_eur": 1.0218,
+              "wmae_ctr_pp": 0.2576,
+              "wmae_cpm_eur": 0.8022
+            },
+            "timestral_adjusted": {
+              "mae_ctr_pp": 0.3446,
+              "mae_cpm_eur": 0.8841,
+              "wmae_ctr_pp": 0.2815,
+              "wmae_cpm_eur": 0.7067
+            },
+            "q10_q90_coverage_unadjusted_for_calibration": {
+              "ctr": 0.6959,
+              "cpm": 0.8311
+            }
+          },
+          "ad_set": {
+            "righe": 168,
+            "ctr": {
+              "baseline": {
+                "mae": 0.2231,
+                "wmae": 0.1836
+              },
+              "timestral": {
+                "mae": 0.254,
+                "wmae": 0.2047
+              },
+              "copertura_q10_q90": 0.875
+            },
+            "cpm": {
+              "baseline": {
+                "mae": 0.8794,
+                "wmae": 0.7479
+              },
+              "timestral": {
+                "mae": 0.6921,
+                "wmae": 0.6045
+              },
+              "copertura_q10_q90": 0.9226
+            }
+          },
+          "avvio_a_freddo": {
+            "annunci": 12,
+            "righe": 66,
+            "metriche": {
+              "baseline": {
+                "mae_ctr_pp": 0.4473,
+                "mae_cpm_eur": 1.531,
+                "wmae_ctr_pp": 0.4073,
+                "wmae_cpm_eur": 1.2349
+              },
+              "timestral_adjusted": {
+                "mae_ctr_pp": 0.4674,
+                "mae_cpm_eur": 1.3232,
+                "wmae_ctr_pp": 0.428,
+                "wmae_cpm_eur": 1.0431
+              },
+              "q10_q90_coverage_unadjusted_for_calibration": {
+                "ctr": 0.5606,
+                "cpm": 0.697
+              }
+            }
+          }
+        }
+      ],
+      "forecast": {
+        "file": "previsioni_28m.csv",
+        "righe": 699,
+        "nuovi_annunci": 12,
+        "righe_nuovi_annunci": 114
+      }
+    }
+  ]
+}

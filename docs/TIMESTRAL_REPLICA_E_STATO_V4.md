@@ -205,7 +205,7 @@ provenienza del file originale resta corretta. Il confronto col forecast locale
 ha scarto massimo di circa 0,00000049 pp CTR e 0,00005430 € CPM, coerente con
 arrotondamento della baseline e differenze numeriche già descritte.
 
-La guida `MARKET_MIRROR_GUIDA.md`, sezione 9, descrive ancora la verifica precedente
+La guida `PERSONAS_T3.md`, sezione 9, descrive ancora la verifica precedente
 al commit `c0f0281` e l'assenza di inferenza locale. È un resoconto storico superato
 da questa replica. Non confondere quello stato con la verifica odierna del report
 successivo sul remoto.

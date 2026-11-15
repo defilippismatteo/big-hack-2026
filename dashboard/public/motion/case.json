@@ -1,0 +1,105 @@
+{
+  "schemaVersion": 1,
+  "dataKind": "simulated_decision",
+  "persona": {
+    "persona_id": "abbigliamento-P001",
+    "name": "Chiara Bellini",
+    "age_years": 46,
+    "occupation": "Tecnica di laboratorio analisi chimiche a Padova",
+    "persona_summary": "Donna di 46 anni, tecnica di laboratorio a Padova, poco interessata all'abbigliamento quotidiano e quasi assente dai social. Cerca essenzialmente praticità e facilità di gestione, ma è disposta a provare brand nuovi se risolvono un bisogno concreto senza fronzoli estetici.",
+    "trust_requirements": "Etichetta chiara con composizione dei tessuti, indicazioni di lavaggio semplici in lavatrice a 30-40 gradi, tabella taglie in centimetri e reso gratuito senza dover stampare etichette.",
+    "concerns": "Teme che i capi di fascia media si deformino dopo pochi lavaggi o richiedano stiratura complessa, facendole perdere tempo prezioso prima del turno in laboratorio."
+  },
+  "personaSha256": "910d5c022e7a8dca798d0672f3301da19f80bf0dafb8827e2c365ab8d502f99b",
+  "asset": {
+    "asset_id": "FGR-U3",
+    "vertical": "abbigliamento",
+    "leva": "urgency",
+    "formato": "carosello",
+    "durata_video_s": "",
+    "headline": "48 ore: spedizione e reso gratis",
+    "testo_principale": "Due giorni per ordinare con spedizione e reso gratuiti.",
+    "call_to_action": "Acquista ora",
+    "descrizione_visual": "Carosello di 4 schede: timer, pacco, capo indossato, reso facile."
+  },
+  "decision": {
+    "model": "gemini-decision-1",
+    "provider": "google",
+    "runId": "8baed6e78ba8d3fd",
+    "requestSha256": "9fc95bc3d102815d74c1686ee640d452be543c9e8688a193900c8d80a6ca7360",
+    "actions": {
+      "scroll": 0.4674571909575836,
+      "glance": 0.2620603651490929,
+      "stop": 0.1696825018126338,
+      "click": 0.10079994208068976
+    },
+    "probabilities": {
+      "glance__visual": 0.060531350875222725,
+      "click__more_info": 0.027326948536089225,
+      "stop__trust_check": 0.0543247773334607,
+      "stop__curiosity": 0.056754936217190605,
+      "scroll__irrelevant": 0.2389125431388645,
+      "scroll__skeptical": 0.13983545037364756,
+      "click__utility": 0.03516695440740625,
+      "stop__interested": 0.0586027882619825,
+      "glance__weak_offer": 0.09941327884024255,
+      "scroll__busy": 0.08870919744507151,
+      "glance__low_need": 0.10211573543362766,
+      "click__offer": 0.038306039137194284
+    },
+    "calibratedToHumanCtr": false
+  },
+  "interview": {
+    "method": "blind_reflective_reexposure",
+    "stimulus": "C12",
+    "answers": {
+      "stimulus_id": "C12",
+      "first_impression": "È un carosello che in 48 ore offre spedizione e reso gratuiti, mostrando timer, pacco, un capo indossato e l'idea del reso facile. Mi fa capire che l'azienda punta a rassicurare sull'acquisto online più che a descrivere un singolo prodotto.",
+      "positive": "Apprezzo molto il riferimento a spedizione e reso gratuiti e al 'reso facile', perché per me provare un marchio nuovo online ha senso solo se posso restituire senza complicazioni o spese.",
+      "negative": "Anche qui c'è il timer delle 48 ore, che trovo superfluo e un po' forzato, e soprattutto l'annuncio parla solo di logistica senza spiegare cosa vendano davvero o come funzioni nel dettaglio quel reso.",
+      "missing": "Mi manca sapere di che capi e materiali si tratti, i prezzi, le taglie in centimetri e soprattutto se il 'reso facile' significhi davvero non dover stampare etichette. Dal solo testo non è determinabile.",
+      "next_step": "Tra i caroselli è quello che mi frena meno per via del reso gratuito, ma senza sapere che tipo di abbigliamento sia probabilmente scorrerei comunque oltre senza cliccare.",
+      "change": "Toglierei il timer delle 48 ore e affiancherei al messaggio sul reso gratuito una descrizione concreta di un capo pratico con composizione e lavaggio, precisando come avviene il reso."
+    },
+    "literalExcerpts": {
+      "positive": "Apprezzo molto il riferimento a spedizione e reso gratuiti e al 'reso facile'",
+      "negative": "Anche qui c'è il timer delle 48 ore, che trovo superfluo e un po' forzato"
+    },
+    "receipt": {
+      "status": "completed",
+      "model": "gemini-4-hydrogen",
+      "executedModel": null,
+      "providerInstanceId": "antigravity",
+      "taskId": "node:delegated-task:command%3Amcp%3Ac009aa40-dca5-48e6-9114-8534728d8391%3Adelegate-task%3A34236d0e-aa2f-4103-b6a7-06e9d2acf0b9",
+      "link": "[Intervista individuale abbigliamento-P001](t3-thread://v2/1915473b-6566-444a-ba7c-09af4b8ab75e/thread:delegated-task:command%3Amcp%3Ac009aa40-dca5-48e6-9114-8534728d8391%3Adelegate-task%3A34236d0e-aa2f-4103-b6a7-06e9d2acf0b9)"
+    },
+    "decisionOutputsVisible": false
+  },
+  "poolCount": 600,
+  "sources": {
+    "cards": {
+      "path": "data/personas_600/persona_cards.json",
+      "sha256": "85cf1dc212d00ea87f77a20621b8643ebf88f20f9eee7e39dacf12f89d720324"
+    },
+    "summary": {
+      "path": "data/personas_600/analyses/summary.json",
+      "sha256": "28e9458648d13b4661cf6b6717d3358244d632aca564d47ea8f81eec4df3b8db"
+    },
+    "interview": {
+      "path": "data/personas_600/interviews/responses/abbigliamento-P001.json",
+      "sha256": "022a91a53f7d9f0fce49d6fdfb0129538e37dc8b79b60ac33348738d80fb89c5"
+    },
+    "job": {
+      "path": "data/personas_600/interviews/jobs/abbigliamento-P001.json",
+      "sha256": "8a2357e9979ca6b5b8c35f00aebf652a9b1b5e1354460cec0a9ab025fb63ecef"
+    },
+    "receipt": {
+      "path": "data/personas_600/interviews/responses/abbigliamento-P001.receipt.json",
+      "sha256": "c54373d734eb9f5b45bf8c34b16797db166c4c3e88e95c3e43db2f3aebbb1703"
+    },
+    "catalog": {
+      "path": "data/personas_600/safe_inputs/creative_catalog.json",
+      "sha256": "9e7fecc6a8a254a75409bebe1511922016c587540e567ab8b430fba9cb468f4f"
+    }
+  }
+}

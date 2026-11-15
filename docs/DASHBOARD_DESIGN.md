@@ -1,6 +1,6 @@
 # Wevion · Dashboard Design (`dashboard_design.html`)
 
-Dashboard HTML standalone offline generata da `market_mirror/design_dashboard.py` e dal template `market_mirror/templates/dashboard_design.html` secondo i criteri della specifica operativa (`BigHack2026_Wevion_Specifica_Operativa_v4.md` §§8 e 11), la skill `frontend-design` e i pattern accessibili di `modern-web-guidance`.
+Dashboard HTML standalone offline generata da `personas_simulation.runtime/design_dashboard.py` e dal template `personas_simulation.runtime/templates/dashboard_design.html` secondo i criteri della specifica operativa (`BigHack2026_Wevion_Specifica_Operativa_v4.md` §§8 e 11), la skill `frontend-design` e i pattern accessibili di `modern-web-guidance`.
 
 ## Direzione Visiva & Principi Epistemici
 
@@ -33,7 +33,7 @@ Dashboard HTML standalone offline generata da `market_mirror/design_dashboard.py
 
 ```bash
 cd big-hack-2026
-.venv-market-mirror/bin/python -m market_mirror design-dashboard
+.venv-adera/bin/python -m personas_simulation.runtime design-dashboard
 # opzionale: --root /percorso/repo --out /percorso/output.html
 ```
 

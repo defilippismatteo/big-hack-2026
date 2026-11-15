@@ -1,0 +1,541 @@
+<!doctype html>
+<html lang="it">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>ADERA — Presentazione Video (Reanimate)</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="viewport-wrap">
+    <main id="stage" aria-label="Presentazione ADERA">
+
+      <!-- SCENA 1 (0–9s): DOMANDA [CLONED SEQ1] -->
+      <section id="s1" class="scene light" aria-label="Domanda iniziale">
+        <div class="s1-grid">
+          <div class="s1-left">
+            <span class="kicker"><span class="dot"></span>Campagna simulata · Prima del lancio</span>
+            <h1 class="s1-headline" id="s1-headline"></h1>
+            <p class="s1-sub" id="s1-sub">Prima di allocare il budget su 3 campagne e 12 gruppi di annunci, leggi i segnali quantitativi e qualitativi.</p>
+          </div>
+          <div class="s1-right">
+            <article class="s1-card s1-card-1">
+              <div>
+                <div class="s1-card-meta">Scenario kit · FGR-C1</div>
+                <div class="s1-card-title">Quale creatività ferma il feed?</div>
+                <div class="s1-card-sub">Carosello FGR-U3 vs sconti Black Friday FGR-B1 / S1</div>
+              </div>
+              <div class="s1-card-badge">36 asset</div>
+            </article>
+            <article class="s1-card s1-card-2">
+              <div>
+                <div class="s1-card-meta">Budget simulato · 15 giorni</div>
+                <div class="s1-card-title">Come allocare senza sprecare?</div>
+                <div class="s1-card-sub">Pianificazione 16–30 novembre 2026 entro ±20%</div>
+              </div>
+              <div class="s1-card-badge">16.950 €</div>
+            </article>
+            <article class="s1-card s1-card-3">
+              <div>
+                <div class="s1-card-meta">Pubblico sintetico</div>
+                <div class="s1-card-title">Perché le persone scorrono oltre?</div>
+                <div class="s1-card-sub">Reazioni Decision 1 e 600 interviste cieche</div>
+              </div>
+              <div class="s1-card-badge">600 profili</div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENA 2 (9–16s): ADERA BRAND [CLONED SEQ2] -->
+      <section id="s2" class="scene" aria-label="ADERA Brand">
+        <div class="s2-wipe" id="s2-wipe"></div>
+        <div class="s2-content">
+          <div class="s2-brand-lockup">
+            <span class="kicker"><span class="dot"></span>Analisi pre-campagna</span>
+            <div class="s2-mark-row">
+              <div class="s2-symbol-box" id="s2-symbol">
+                <svg viewBox="0 0 800 600" width="210" height="158" aria-hidden="true">
+                  <defs>
+                    <linearGradient id="aderaTriGrad" x2="0.8" y2="1">
+                      <stop offset="0%" stop-color="#8861E8" />
+                      <stop offset="100%" stop-color="#7046CE" />
+                    </linearGradient>
+                  </defs>
+                  <path id="s2-tri" d="M50 550 335 85Q400-15 465 85L750 550Z" fill="url(#aderaTriGrad)" />
+                  <g fill="#FFFFFF">
+                    <rect id="s2-bar1" x="245" y="425" width="75" height="125" rx="18" />
+                    <rect id="s2-bar2" x="350" y="345" width="75" height="205" rx="18" />
+                    <rect id="s2-bar3" x="455" y="255" width="75" height="295" rx="18" />
+                  </g>
+                </svg>
+              </div>
+              <div class="s2-wordmark" id="s2-wordmark">ADERA</div>
+            </div>
+            <div class="s2-payoff" id="s2-payoff">Prima di investire, capisci.</div>
+          </div>
+          <div class="s2-pill-card" id="s2-pill">
+            <h3>Un workspace che separa previsioni e reazioni</h3>
+            <p>Serie storiche e forecast giornalieri da un lato; pubblico sintetico e interviste cieche dall'altro. Ogni dato resta tracciabile.</p>
+            <div class="s2-chips">
+              <span class="s2-chip">699 previsioni</span>
+              <span class="s2-chip">12 ad set</span>
+              <span class="s2-chip">600 profili sintetici</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENA 3 (16–27s): DATI CHALLENGE [ADDITION] -->
+      <section id="s3" class="scene light" aria-label="Dati challenge">
+        <div class="s3-wrap">
+          <div class="scene-head">
+            <div>
+              <span class="kicker"><span class="dot"></span>Storico simulato del kit · Cutoff 15/11/2026</span>
+              <h2>Partiamo dai dati.</h2>
+            </div>
+            <p>12 gruppi di annunci su 3 settori (Beauty, Pet, Abbigliamento) si compattano in serie temporali leggibili.</p>
+          </div>
+          <div class="s3-kpis" id="s3-kpis"></div>
+          <div class="s3-morph-stage">
+            <div class="s3-table-grid" id="s3-table"></div>
+            <div class="s3-series-overlay" id="s3-series">
+              <div class="s3-series-title">
+                <span>12 ad set osservati compattati per efficienza CPM e CTR</span>
+                <span style="color:var(--action)">Pronto per il forecast 16–30 novembre</span>
+              </div>
+              <svg class="s3-series-svg" id="s3-bars-svg" viewBox="0 0 1640 460"></svg>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENA 4 & 5 (27–53s): FORECAST + EVENTI & MODELLI [ADDITION] -->
+      <section id="s4" class="scene light" aria-label="Forecast ed eventi">
+        <div class="s4-wrap">
+          <div class="scene-head">
+            <div>
+              <span class="kicker" id="s4-kicker"><span class="dot"></span>Forecast · CTR baseline 14gg · CPM Timestral-28M</span>
+              <h2 id="s4-title">Previsione su 15 giorni, senza picchi artificiali.</h2>
+            </div>
+            <p id="s4-sub">699 stime annuncio–giorno dopo il cutoff del 15/11/2026, con gap temporale visibile rispetto allo storico osservato.</p>
+          </div>
+
+          <div class="s4-chart-frame">
+            <div class="s4-chart-header">
+              <div class="s4-legend">
+                <span class="s4-leg-item"><span class="s4-leg-swatch" style="background:#9B93B3"></span>Storico osservato (fino al 15/11: CPM 7,43 €)</span>
+                <span class="s4-leg-item"><span class="s4-leg-swatch" style="background:#7046CE"></span>Previsione 16–30/11 (CPM Timestral-28M)</span>
+              </div>
+              <div class="s4-live-readout" id="s4-readout">16/11 · CPM 10,23 € · CTR 1,168%</div>
+            </div>
+            <div class="s5-events-row" id="s5-events">
+              <div class="s5-popup" id="pop-bw"><span>20/11/2026</span><strong>Black Week</strong><small>CPM stimato 10,26 € · CTR 1,165%</small></div>
+              <div class="s5-popup" id="pop-bf"><span>27/11/2026</span><strong>Black Friday</strong><small>CPM stimato 10,92 € · CTR 1,175%</small></div>
+              <div class="s5-popup" id="pop-cm"><span>30/11/2026</span><strong>Cyber Monday</strong><small>CPM stimato 10,87 € · CTR 1,171%</small></div>
+            </div>
+            <div class="s4-camera" id="s4-camera">
+              <svg id="s4-svg" viewBox="0 0 1660 620" width="100%" height="100%"></svg>
+            </div>
+          </div>
+
+          <div class="s5-models-dock" id="s5-models">
+            <div class="s5-model-card">
+              <div class="s5-model-head">
+                <div class="s5-brand-pair">
+                  <img class="mistral-logo" src="assets/brands/mistral.svg" alt="Mistral" />
+                  <span style="font-size:24px;font-weight:800;color:var(--ink)">Timestral 28M</span>
+                </div>
+                <span class="s5-tag">Modello CPM in Overview</span>
+              </div>
+              <div class="s5-metrics-row">
+                <div class="s5-m-box"><span>Fold 2 · CPM MAE</span><strong>0,8841 €</strong></div>
+                <div class="s5-m-box"><span>Fold 2 · CPM WMAE</span><strong>0,7067 €</strong></div>
+                <div class="s5-m-box"><span>Ruolo verificato</span><strong>Previsione CPM</strong></div>
+              </div>
+            </div>
+            <div class="s5-model-card">
+              <div class="s5-model-head">
+                <div class="s5-brand-pair">
+                  <img class="catboost-logo" src="assets/brands/catboost.svg" alt="CatBoost" />
+                  <span style="font-size:24px;font-weight:800;color:var(--ink)">CatBoost &amp; Confronto</span>
+                </div>
+                <span class="s5-tag">Validazione 2–15/11</span>
+              </div>
+              <div class="s5-metrics-row">
+                <div class="s5-m-box"><span>CatBoost CTR MAE</span><strong>0,2743 pp</strong></div>
+                <div class="s5-m-box"><span>Baseline 14gg CTR</span><strong>0,3163 pp</strong></div>
+                <div class="s5-m-box"><span>Mix 50/50 CPM MAE</span><strong>0,8741 €</strong></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENA 6 (53–65s): ORCHESTRAZIONE [CLONED SEQ5] -->
+      <section id="s6" class="scene dark" aria-label="Orchestrazione T3 Code">
+        <div class="s6-wrap">
+          <div class="scene-head">
+            <div>
+              <span class="kicker"><span class="dot"></span>Orchestrazione · Ruoli operativi distinti</span>
+              <h2>T3 Code coordina modelli e agenti.</h2>
+            </div>
+            <p>Ogni provider svolge un compito verificato nel flusso di lavoro, senza attribuire a tutti lo stesso ruolo.</p>
+          </div>
+          <div class="s6-stage">
+            <svg class="s6-lines" viewBox="0 0 1700 720" aria-hidden="true">
+              <path id="s6-p1" d="M 850 320 C 620 320, 560 190, 440 190" fill="none" stroke="#8861E8" stroke-width="4" stroke-dasharray="10 8" />
+              <path id="s6-p2" d="M 850 320 C 1080 320, 1140 190, 1260 190" fill="none" stroke="#8861E8" stroke-width="4" stroke-dasharray="10 8" />
+              <path id="s6-p3" d="M 850 400 L 850 560" fill="none" stroke="#8861E8" stroke-width="4" stroke-dasharray="10 8" />
+            </svg>
+            <div class="s6-hub" id="s6-hub">
+              <img src="assets/brands/t3-code.svg" alt="T3 Code" />
+              <h3>T3 Code</h3>
+              <p>Orchestrazione thread, isolamento prompt e tracciabilità run</p>
+            </div>
+            <article class="s6-agent s6-a1" id="s6-a1">
+              <div class="s6-agent-icon"><img src="assets/brands/gemini.svg" alt="Gemini" /></div>
+              <div>
+                <h4>Gemini</h4>
+                <span class="role-badge">Decision 1 + Interviste cieche</span>
+                <p>7.200 valutazioni feed persona-creatività e 600 interviste indipendenti</p>
+              </div>
+            </article>
+            <article class="s6-agent s6-a2" id="s6-a2">
+              <div class="s6-agent-icon"><img src="assets/brands/claude.svg" alt="Claude" /></div>
+              <div>
+                <h4>Claude</h4>
+                <span class="role-badge">Architettura UI &amp; Audit</span>
+                <p>Struttura dashboard ADERA, separazione viste e verifica schemi</p>
+              </div>
+            </article>
+            <article class="s6-agent s6-a3" id="s6-a3">
+              <div class="s6-agent-icon"><img src="assets/brands/chatgpt.svg" alt="ChatGPT" /></div>
+              <div>
+                <h4>ChatGPT</h4>
+                <span class="role-badge">Prototipi &amp; Controllo dati</span>
+                <p>Verifica coerenza JSON, script esplorativi e test riproducibilità</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENA 7 (65–76s): PERSONA CHIARA [CLONED SEQ3-PERSONA] -->
+      <section id="s7" class="scene light" aria-label="Persona Chiara Bellini">
+        <div class="s7-grid">
+          <div class="s7-copy">
+            <span class="kicker"><span class="dot"></span>Profilo sintetico salvato · abbigliamento-P001</span>
+            <h2>Un pubblico sintetico. Profili diversi.</h2>
+            <p>I profili nascono separatamente dai dati di campagna: abitudini, freni reali e criteri di fiducia guidano ogni reazione.</p>
+          </div>
+          <article class="s7-card" id="s7-card">
+            <div class="s7-card-top">
+              <div class="s7-avatar-wrap">
+                <img src="assets/avatars/chiara-hero.png" alt="Chiara Bellini" />
+              </div>
+              <div class="s7-person-meta">
+                <h3>Chiara Bellini, 46</h3>
+                <div class="occ">Tecnica di laboratorio analisi chimiche · Padova</div>
+                <div class="pid">persona_id: abbigliamento-P001 · Campione unbiased</div>
+              </div>
+            </div>
+            <div class="s7-attrs">
+              <div class="s7-attr" id="s7-at1"><span>Abitudine social</span><strong>Uso social limitato; salta i caroselli moda</strong></div>
+              <div class="s7-attr" id="s7-at2"><span>Motivazione</span><strong>Praticità, lavaggio semplice e durata tessuti</strong></div>
+              <div class="s7-attr" id="s7-at3"><span>Requisito fiducia</span><strong>Reso gratuito e tabella taglie in centimetri</strong></div>
+              <div class="s7-attr" id="s7-at4"><span>Contesto economico</span><strong>Circa 1.750 € netti/mese · Zero acquisti d'impulso</strong></div>
+            </div>
+            <div class="s7-quote-box" id="s7-at5">
+              «Ignora quasi tutti i banner online e chiude subito i popup con offerte a tempo.»
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <!-- SCENA 8 (76–95s): FEED DECISION 1 [CLONED SEQ4-FEED] -->
+      <section id="s8" class="scene dark" aria-label="Feed simulato Decision 1">
+        <div class="s8-grid">
+          <div class="s8-left">
+            <span class="kicker"><span class="dot"></span>Gemini Decision 1 · Feed simulato</span>
+            <h2>Swipe su creatività illustrative del kit.</h2>
+            <p>Le card rappresentano in forma tipografica le descrizioni del kit (non i bitmap originali). Le probabilità Decision 1 non sono CTR misurati.</p>
+            <div class="s8-notice" id="s8-asset-status">Asset attivo: <strong>FGR-U3</strong> · Carosello (timer, pacco, capo indossato, reso facile)</div>
+          </div>
+
+          <div class="s8-phone">
+            <div class="s8-phone-top">
+              <span>Feed simulato · Campagna FGR-C1</span>
+              <span id="s8-counter">1 / 3</span>
+            </div>
+            <div class="s8-deck">
+              <div class="feed-card s1" id="fc-s1" style="z-index:1">
+                <span class="fc-tag">FGR-S1 · Card illustrativa kit</span>
+                <div class="fc-visual">
+                  <div style="font-size:16px;font-weight:750;color:var(--action);margin-bottom:8px">SALDI FINE ESTATE</div>
+                  <div style="font-size:44px;font-weight:900;letter-spacing:-0.03em;line-height:1.05;color:var(--ink)">ULTIME TAGLIE</div>
+                  <div style="font-size:32px;font-weight:850;color:var(--danger);margin-top:10px">FINO AL -50%</div>
+                  <p style="font-size:15px;color:var(--muted);margin-top:16px;line-height:1.4">Fino al -50% sulle ultime taglie disponibili. Date e condizioni dettagliate su sfondo chiaro.</p>
+                </div>
+                <div class="fc-cta">Acquista ora</div>
+                <div class="swipe-stamp skip" id="st-s1">SCROLL</div>
+              </div>
+
+              <div class="feed-card b1" id="fc-b1" style="z-index:2">
+                <span class="fc-tag">FGR-B1 · Card illustrativa kit</span>
+                <div class="fc-visual">
+                  <div style="font-size:15px;font-weight:700;color:#CBB7FF;letter-spacing:0.08em">BLACK FRIDAY ANTICIPATO</div>
+                  <div style="font-size:84px;font-weight:900;color:#FFFFFF;letter-spacing:-0.04em;margin:10px 0">-30%</div>
+                  <p style="font-size:16px;color:#CFC7E4;line-height:1.45">La collezione autunno-inverno a -30%, prima di tutti. Grafica nera con righe di condizioni.</p>
+                </div>
+                <div class="fc-cta" style="background:#8861E8">Acquista ora</div>
+                <div class="swipe-stamp skip" id="st-b1">SCROLL</div>
+              </div>
+
+              <div class="feed-card u3" id="fc-u3" style="z-index:3">
+                <span class="fc-tag">FGR-U3 · Card illustrativa kit · 4 schede</span>
+                <div class="fc-visual">
+                  <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px;width:100%;margin-bottom:14px">
+                    <div style="background:#fff;border:1px solid #DED5F5;border-radius:14px;padding:12px;font-size:14px;font-weight:700">1. Timer 48 ore</div>
+                    <div style="background:#fff;border:1px solid #DED5F5;border-radius:14px;padding:12px;font-size:14px;font-weight:700">2. Pacco spedizione</div>
+                    <div style="background:#fff;border:1px solid #DED5F5;border-radius:14px;padding:12px;font-size:14px;font-weight:700">3. Capo indossato</div>
+                    <div style="background:#fff;border:1px solid #DED5F5;border-radius:14px;padding:12px;font-size:14px;font-weight:700">4. Reso facile</div>
+                  </div>
+                  <div style="font-size:28px;font-weight:850;color:var(--ink);line-height:1.15">48 ore: spedizione e reso gratis</div>
+                  <p style="font-size:15px;color:var(--muted);margin-top:10px">Due giorni per ordinare con spedizione e reso gratuiti.</p>
+                </div>
+                <div class="fc-cta">Acquista ora</div>
+                <div class="swipe-stamp ok" id="st-u3">STOP / CLICK</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="s8-right">
+            <div class="s8-telemetry">
+              <h3><span>Probabilità Decision 1</span><span id="s8-tel-id" style="color:#CBB7FF">FGR-U3</span></h3>
+              <div class="prob-row"><span>Click intent</span><div class="prob-track"><div class="prob-fill click" id="pf-click" style="width:15%"></div></div><span id="pv-click">14,96%</span></div>
+              <div class="prob-row"><span>Stop</span><div class="prob-track"><div class="prob-fill stop" id="pf-stop" style="width:27%"></div></div><span id="pv-stop">26,57%</span></div>
+              <div class="prob-row"><span>Glance</span><div class="prob-track"><div class="prob-fill glance" id="pf-glance" style="width:29%"></div></div><span id="pv-glance">28,64%</span></div>
+              <div class="prob-row"><span>Scroll</span><div class="prob-track"><div class="prob-fill scroll" id="pf-scroll" style="width:30%"></div></div><span id="pv-scroll">29,84%</span></div>
+            </div>
+            <div class="s8-toast" id="s8-toast1"><span>FGR-U3 · 200 profili</span><strong style="color:#38D399">1° per click intent (14,96%)</strong></div>
+            <div class="s8-toast" id="s8-toast2"><span>FGR-B1 · 200 profili</span><strong style="color:#F59E0B">Scroll dominante (37,35%)</strong></div>
+            <div class="s8-toast" id="s8-toast3"><span>FGR-S1 · 200 profili</span><strong style="color:#F59E0B">Scroll dominante (36,24%)</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENA 9 (95–104s): SCALA 10 AVATAR -> 600 PROFILI [CLONED SEQ3-CROWD] -->
+      <section id="s9" class="scene light" aria-label="Scala 600 profili sintetici">
+        <div class="s9-wrap">
+          <div class="s9-camera" id="s9-camera">
+            <div class="s9-ghost-ring" id="s9-ghosts"></div>
+            <div class="s9-grid" id="s9-grid"></div>
+          </div>
+          <div class="s9-hud">
+            <div>
+              <span class="kicker"><span class="dot"></span>Dataset sintetico verificato</span>
+              <h2 style="margin-top:8px">Da Chiara a 10 profili mostrati, fino all'intero pannello.</h2>
+            </div>
+            <div style="text-align:right">
+              <div class="s9-hud-num" id="s9-count">600 profili</div>
+              <div style="font-size:19px;color:var(--muted);font-weight:650">200 per settore · 7.200 reazioni Decision 1 · 600 interviste</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENA 10 (104–112s): MORPH SEGNALI -> DOCUMENTO [ADDITION] -->
+      <section id="s10" class="scene light" aria-label="Morph segnali in documento">
+        <div class="s10-wrap">
+          <div class="scene-head">
+            <div>
+              <span class="kicker"><span class="dot"></span>Sintesi qualitativa · Nessuna fusione automatica col forecast</span>
+              <h2>Dalle reazioni, segnali.</h2>
+            </div>
+            <p>Le reazioni individuali e le menzioni raccolte convergono in un documento operativo verificabile.</p>
+          </div>
+          <div class="s10-stage">
+            <div class="s10-chip-card" id="s10-c1" style="left:60px;top:40px"><strong>FGR-U3 · +150 saldo</strong><span>151 menzioni utili vs 1 negativa</span></div>
+            <div class="s10-chip-card" id="s10-c2" style="right:60px;top:40px"><strong>FGR-B1 · -113 saldo</strong><span>0 utili · 113 critiche su grafica nera</span></div>
+            <div class="s10-chip-card" id="s10-c3" style="left:60px;bottom:40px"><strong>FGR-S1 · -83 saldo</strong><span>Troppo testo · dubbio su taglie</span></div>
+            <div class="s10-chip-card" id="s10-c4" style="right:60px;bottom:40px"><strong>Freno ricorrente</strong><span>Timer e countdown percepiti come forzati</span></div>
+
+            <article class="s10-doc" id="s10-doc">
+              <div class="s10-doc-head">
+                <div>
+                  <span class="kicker"><span class="dot"></span>Documento qualitativo congelato · 600 interviste</span>
+                  <h3 style="margin-top:10px">Cosa riduce il rischio d'acquisto vs cosa blocca</h3>
+                </div>
+                <strong style="font-size:28px;color:var(--action)">36 asset valutati</strong>
+              </div>
+              <div class="s10-doc-rows">
+                <div class="s10-doc-col">
+                  <h4 style="color:var(--success)">Leve che convincono</h4>
+                  <p>Spedizione e reso gratuiti (FGR-U3), chiarezza taglie in cm, composizione materiali e spiegazioni pratiche.</p>
+                </div>
+                <div class="s10-doc-col">
+                  <h4 style="color:var(--danger)">Attriti principali</h4>
+                  <p>Countdown aggressivi (48h/24h), grafiche scure con molte clausole (FGR-B1) e volantini affollati (FGR-S1).</p>
+                </div>
+                <div class="s10-doc-col">
+                  <h4 style="color:var(--action)">Prossimo passo</h4>
+                  <p>Mantenere la promessa di reso semplice di FGR-U3, sostituendo il timer con dettagli concreti su tessuto e vestibilità.</p>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENA 11 (112–127s): INTERVISTE LETTERALI [ADDITION] -->
+      <section id="s11" class="scene dark" aria-label="Interviste cieche">
+        <div class="s11-wrap">
+          <div class="s11-top">
+            <div>
+              <span class="kicker"><span class="dot"></span>Interviste cieche congelate · product-story.json</span>
+              <h2 style="font-size:56px;font-weight:800;letter-spacing:-0.04em;margin-top:10px">Ascoltare il perché dietro ogni scelta.</h2>
+            </div>
+            <div class="s11-orch-pill">
+              <img src="assets/brands/t3-code.svg" alt="T3 Code" />
+              <span>T3 Code</span>
+              <span style="opacity:0.5">→</span>
+              <img src="assets/brands/gemini.svg" alt="Gemini" />
+              <span>Gemini (istanza cieca)</span>
+            </div>
+          </div>
+
+          <div class="s11-question" id="s11-q">
+            <span>Domanda su FGR-U3 · 151 menzioni utili / 1 meno utile (saldo +150)</span>
+            <h3>«Quali aspetti funzionano o frenano nella creatività FGR-U3 ("48 ore: spedizione e reso gratis")?»</h3>
+          </div>
+
+          <div class="s11-quotes">
+            <article class="s11-quote-card" id="s11-card1">
+              <div class="s11-q-head">
+                <img src="assets/avatars/chiara-hero.png" alt="Chiara Bellini" />
+                <div>
+                  <strong>Chiara Bellini · abbigliamento-P001</strong>
+                  <span>46 anni · Tecnica di laboratorio · Padova</span>
+                </div>
+              </div>
+              <p class="s11-q-pos">«Apprezzo molto il riferimento a spedizione e reso gratuiti e al 'reso facile', perché per me provare un marchio nuovo online ha senso solo se posso restituire senza complicazioni o spese.»</p>
+              <p class="s11-q-neg"><strong>Freno rilevato:</strong> «Anche qui c'è il timer delle 48 ore, che trovo superfluo e un po' forzato, e soprattutto l'annuncio parla solo di logistica senza spiegare cosa vendano davvero.»</p>
+            </article>
+
+            <article class="s11-quote-card" id="s11-card2">
+              <div class="s11-q-head">
+                <img src="assets/avatars/avatar-03.png" alt="Ettore Marchetti" />
+                <div>
+                  <strong>Ettore Marchetti · abbigliamento-P003</strong>
+                  <span>Profilo sintetico Abbigliamento · Intervista cieca</span>
+                </div>
+              </div>
+              <p class="s11-q-pos">«Apprezzo l'attenzione al reso gratuito e facile, perché per chi valuta acquisti online la rapidità e semplicità nel cambiare taglia è un requisito concreto di fiducia.»</p>
+              <p class="s11-q-neg"><strong>Freno rilevato:</strong> «Mettere in primo piano timer e imballaggi lasciando il prodotto sullo sfondo mi dà l'impressione che conti più l'incentivo delle 48 ore che la qualità del capo.»</p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENA 12 (127–144s): PAN LEFT -> DASHBOARD SPLIT [ADDITION] -->
+      <section id="s12" class="scene light" aria-label="Dashboard ADERA">
+        <div class="s12-viewport">
+          <div class="s12-track" id="s12-track">
+            <div class="s12-dash-pane">
+              <aside class="s12-sidebar">
+                <div class="s12-sb-brand">
+                  <img src="assets/brands/adera-original.png" alt="ADERA" />
+                  <span>ADERA</span>
+                </div>
+                <div class="s12-nav-item active">Overview &amp; Forecast</div>
+                <div class="s12-nav-item">Forecast Analytics</div>
+                <div class="s12-nav-item">Model Validation</div>
+                <div class="s12-nav-item">Budget Planner</div>
+                <div class="s12-nav-item" style="margin-top:14px;border-top:1px solid var(--border);padding-top:18px">Audience Lab</div>
+                <div class="s12-nav-item">Persona Library (600)</div>
+                <div class="s12-nav-item">Interviste cieche</div>
+              </aside>
+              <div class="s12-dash-main">
+                <div class="s12-topbar">
+                  <div><strong style="font-size:22px">ADERA · Dashboard decisionale</strong> <span style="color:var(--muted);font-size:16px;margin-left:10px">Cutoff 15 nov 2026 · Orizzonte 16–30 nov</span></div>
+                  <span class="kicker" style="font-size:14px">Viste separate · Nessuna fusione predittiva</span>
+                </div>
+                <div class="s12-split">
+                  <section class="s12-view quant" id="s12-v1">
+                    <div>
+                      <span class="kicker" style="font-size:14px">Analisi Quantitativa · Overview &amp; Validazione</span>
+                      <h3>Forecast &amp; Riallocazione Budget</h3>
+                      <div class="s12-stat-grid">
+                        <div class="s12-stat"><span>Previsioni attive</span><strong>699</strong></div>
+                        <div class="s12-stat"><span>Budget pianificato</span><strong>16.950 €</strong></div>
+                        <div class="s12-stat"><span>Scenario ±20%</span><strong style="color:var(--success)">+3,01% clic</strong></div>
+                        <div class="s12-stat"><span>Metodo Overview</span><strong style="font-size:20px">Baseline 14gg · Timestral-28M</strong></div>
+                      </div>
+                    </div>
+                    <div class="s12-sep-banner">Metriche basate esclusivamente sullo storico del kit e sui backtest fino al 15 novembre.</div>
+                  </section>
+
+                  <section class="s12-view qual" id="s12-v2">
+                    <div>
+                      <span class="kicker" style="font-size:14px;background:#F0EAFB;color:var(--plum)">Segnali Qualitativi · Audience Lab</span>
+                      <h3>Pubblico Sintetico &amp; Decision 1</h3>
+                      <div class="s12-stat-grid">
+                        <div class="s12-stat"><span>Profili sintetici</span><strong>600</strong></div>
+                        <div class="s12-stat"><span>Valutazioni Decision 1</span><strong>7.200</strong></div>
+                        <div class="s12-stat"><span>Top FGR-U3 (click intent)</span><strong style="color:var(--action)">14,96%</strong></div>
+                        <div class="s12-stat"><span>Saldo interviste FGR-U3</span><strong style="color:var(--success)">+150 (+151 / -1)</strong></div>
+                      </div>
+                    </div>
+                    <div class="s12-sep-banner">Le probabilità Decision 1 e le interviste cieche orientano il copy senza alterare il CTR stimato.</div>
+                  </section>
+                </div>
+              </div>
+            </div>
+
+            <div class="s12-intro-pane">
+              <div>
+                <span class="kicker"><span class="dot"></span>Due livelli nella stessa interfaccia</span>
+                <h2 style="margin-top:20px">Analisi quantitativa e segnali qualitativi restano distinti.</h2>
+              </div>
+              <div class="s12-arrow-box" id="s12-arrow">
+                <svg width="110" height="72" viewBox="0 0 110 72" fill="none" aria-hidden="true">
+                  <path d="M98 36H14M14 36L42 10M14 36L42 62" stroke="#7046CE" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+                <span>Apri dashboard ADERA</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SCENA 13 (144–150s): CHIUSURA [CLONED SEQ6] -->
+      <section id="s13" class="scene light" aria-label="Chiusura ADERA">
+        <div class="s13-wipe" id="s13-wipe"></div>
+        <div class="s13-center">
+          <div class="s13-lockup" id="s13-lockup">
+            <img src="assets/brands/adera-original.png" alt="Logo ADERA" />
+            <span>ADERA</span>
+          </div>
+          <div class="s13-payoff" id="s13-payoff">ADERA. Prima di investire, capisci.</div>
+          <div class="s13-sub" id="s13-sub">Previsioni serie storiche · Pubblico sintetico · Interviste cieche tracciabili</div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <div id="preview-hud">
+    <button id="hud-play" type="button">Pause</button>
+    <input id="hud-scrub" type="range" min="0" max="150000" value="0" step="33" />
+    <span id="hud-time">00:00.0 / 02:30.0</span>
+  </div>
+
+  <script src="data.js"></script>
+  <script src="../chatgpt/data.js"></script>
+  <script>
+  ADERA_DATA.dailyForecast=DATA.series.map((r,i)=>({...ADERA_DATA.dailyForecast[i],day:r[0],label:r[0].slice(8)+'/11',ctr:r[2],cpm:r[3]}));
+  </script>
+  <script src="timeline.js"></script>
+</body>
+</html>

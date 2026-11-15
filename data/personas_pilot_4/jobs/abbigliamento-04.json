@@ -1,0 +1,87 @@
+{
+  "schema_version": "2.0",
+  "job_id": "abbigliamento-04",
+  "sector": {
+    "vertical": "abbigliamento",
+    "market": "IT",
+    "industry_description": "Marchio italiano di abbigliamento uomo e donna, fascia di prezzo media.",
+    "campaign_goal": "vendite"
+  },
+  "slots": [
+    {
+      "persona_id": "abbigliamento-P013",
+      "vertical": "abbigliamento",
+      "country": "IT",
+      "age_band": "18-24",
+      "gender_identity": "donna",
+      "motivation": "convenienza",
+      "social_habit": "social_misto",
+      "risk_attitude": "prudente",
+      "interest_in_category": "low",
+      "sampling_weight": 0.041666666666666664,
+      "seed": 2026,
+      "age_years": 19
+    },
+    {
+      "persona_id": "abbigliamento-P014",
+      "vertical": "abbigliamento",
+      "country": "IT",
+      "age_band": "25-34",
+      "gender_identity": "uomo",
+      "motivation": "fiducia",
+      "social_habit": "facebook",
+      "risk_attitude": "esplorativo",
+      "interest_in_category": "medium",
+      "sampling_weight": 0.041666666666666664,
+      "seed": 2026,
+      "age_years": 33
+    },
+    {
+      "persona_id": "abbigliamento-P015",
+      "vertical": "abbigliamento",
+      "country": "IT",
+      "age_band": "35-44",
+      "gender_identity": "uomo",
+      "motivation": "curiosita",
+      "social_habit": "instagram",
+      "risk_attitude": "prudente",
+      "interest_in_category": "high",
+      "sampling_weight": 0.041666666666666664,
+      "seed": 2026,
+      "age_years": 43
+    },
+    {
+      "persona_id": "abbigliamento-P016",
+      "vertical": "abbigliamento",
+      "country": "IT",
+      "age_band": "25-34",
+      "gender_identity": "donna",
+      "motivation": "praticita",
+      "social_habit": "instagram",
+      "risk_attitude": "moderato",
+      "interest_in_category": "low",
+      "sampling_weight": 0.041666666666666664,
+      "seed": 2026,
+      "age_years": 34
+    }
+  ],
+  "output_contract": {
+    "root": "personas",
+    "records": {
+      "persona_id": "identico allo slot",
+      "name": "nome fittizio",
+      "interests": "array di 3–8 interessi distinti",
+      "occupation": "stringa italiana non vuota",
+      "economic_context": "stringa italiana non vuota",
+      "daily_routine": "stringa italiana non vuota",
+      "decision_habits": "stringa italiana non vuota",
+      "trust_requirements": "stringa italiana non vuota",
+      "ad_avoidance": "stringa italiana non vuota",
+      "concerns": "stringa italiana non vuota",
+      "contradiction": "stringa italiana non vuota",
+      "persona_summary": "stringa italiana non vuota"
+    }
+  },
+  "sampling_notice": "Quote manuali; età 65+ limitata a 80 per questo disegno. Nessuna quota osservata.",
+  "input_sha256": "43440874728cac16defbf3a520816c51d00f96400899cbd65cf36e2d0b062812"
+}

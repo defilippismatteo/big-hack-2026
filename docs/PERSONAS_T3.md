@@ -5,7 +5,7 @@
 Il primo round è salvato in `artifacts/personas_t3/interviews/REPORT.md`: quattro
 colloqui indipendenti tramite Gemini Hydrogen/Antigravity, dodici asset per
 persona, risposte complete e confronto con Decision dopo il congelamento.
-Il codice riutilizzabile è `market_mirror/interviews.py`: `prepare` costruisce
+Il codice riutilizzabile è `personas_simulation.runtime/interviews.py`: `prepare` costruisce
 job e prompt inline, `freeze` valida risposte e ricevute T3, `report` produce
 il report e il confronto strutturato. Non avvia automaticamente modelli/API.
 
@@ -53,8 +53,8 @@ del modello non è garantito deterministico e viene perciò salvato e riusato.
 ## Job e prompt riutilizzabili
 
 ```bash
-source .venv-market-mirror/bin/activate
-python -m market_mirror t3-prepare
+source .venv-adera/bin/activate
+python -m personas_simulation.runtime t3-prepare
 ```
 
 In `artifacts/personas_t3/`:
@@ -83,8 +83,8 @@ T3 con `taskId`, `link`, `providerInstanceId`, `executedModel`; il modello non
 autocertifica quale provider sia stato usato.
 
 ```bash
-python -m market_mirror t3-import --job artifacts/personas_t3/jobs/beauty_skincare-01.json --response artifacts/personas_t3/responses/beauty_skincare-01.json --receipt artifacts/personas_t3/responses/beauty_skincare-01.receipt.json
-python -m market_mirror personas-view
+python -m personas_simulation.runtime t3-import --job artifacts/personas_t3/jobs/beauty_skincare-01.json --response artifacts/personas_t3/responses/beauty_skincare-01.json --receipt artifacts/personas_t3/responses/beauty_skincare-01.receipt.json
+python -m personas_simulation.runtime personas-view
 ```
 
 L'import rifiuta job alterati, record mancanti/duplicati, campi KPI o modifiche
@@ -100,8 +100,8 @@ che replica l'algoritmo Meta. Posizione, piattaforma e ora dipendono dal seed e
 dall'identità; restano stabili nel confronto tra creatività.
 
 ```bash
-python -m market_mirror plan --personas artifacts/personas_t3/persona_cards.json --asset-id NDL-S1 --n 4 --out artifacts/personas_t3/decision_plan.json
-python -m market_mirror personas-view --plan artifacts/personas_t3/decision_plan.json
+python -m personas_simulation.runtime plan --personas artifacts/personas_t3/persona_cards.json --asset-id NDL-S1 --n 4 --out artifacts/personas_t3/decision_plan.json
+python -m personas_simulation.runtime personas-view --plan artifacts/personas_t3/decision_plan.json
 ```
 
 Il coordinatore delega il task di `docs/prompts/decision-worker.md` a un nuovo
@@ -115,10 +115,10 @@ Il preflight non usa rete o token Decisions. Per il live serve la chiave
 a quella API sono distinti. Non scrivere il segreto nel task o nella ricevuta.
 
 ```bash
-python -m market_mirror decide --preflight --plan artifacts/personas_t3/decision_plan.json --out artifacts/personas_t3/decision_preflight.json
+python -m personas_simulation.runtime decide --preflight --plan artifacts/personas_t3/decision_plan.json --out artifacts/personas_t3/decision_preflight.json
 # Solo nel worker Decision e con chiave disponibile:
-python -m market_mirror decide --live --plan artifacts/personas_t3/decision_plan.json --out artifacts/personas_t3/decision_raw.json
-python -m market_mirror aggregate --plan artifacts/personas_t3/decision_plan.json --raw artifacts/personas_t3/decision_raw.json --out artifacts/personas_t3/signals.json
+python -m personas_simulation.runtime decide --live --plan artifacts/personas_t3/decision_plan.json --out artifacts/personas_t3/decision_raw.json
+python -m personas_simulation.runtime aggregate --plan artifacts/personas_t3/decision_plan.json --raw artifacts/personas_t3/decision_raw.json --out artifacts/personas_t3/signals.json
 ```
 
 Niente fallback inventato in caso di accesso o quota insufficienti. La presenza
@@ -126,7 +126,7 @@ dei feed e la validazione locale non garantiscono l'esito o la qualità dell'API
 
 ## Analisi registrate: evitare richieste duplicate
 
-Il worker live usa ora `python -m market_mirror analyze --live`, iniziando con
+Il worker live usa ora `python -m personas_simulation.runtime analyze --live`, iniziando con
 `--asset-id NDL-S1`. Il registro persistente è
 `artifacts/personas_t3/analyses/ledger.sqlite`, esportato anche in `ledger.json`.
 `summary.json`, `assets/` e `raw/` contengono rispettivamente confronto, risultati
@@ -138,8 +138,8 @@ il panel vengono richieste solo le nuove persone; riordinare il panel non costa
 nuove analisi. Anche il vecchio comando `decide --live` usa questo registro.
 
 ```bash
-python -m market_mirror analyze             # legge solo cache; zero API
-python -m market_mirror analysis-view       # produce analyses/results.html
+python -m personas_simulation.runtime analyze             # legge solo cache; zero API
+python -m personas_simulation.runtime analysis-view       # produce analyses/results.html
 ```
 
 I raw vengono salvati prima di validarli. Se il processo si interrompe dopo

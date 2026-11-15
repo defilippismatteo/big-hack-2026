@@ -1,0 +1,69 @@
+/Users/fede/Documents/Progetti/hackathon/big-hack-2026/artifacts/timestral_reproduction/source/TEST INIZIALI FATTI DA CHAT GPT DA VERIFICARE /Wevion_Validation_Baseline.py:32: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  df['week_2025']=(df.data-pd.Timedelta(days=364)).dt.to_period('W-SUN').dt.start_time
+/Users/fede/Documents/Progetti/hackathon/big-hack-2026/artifacts/timestral_reproduction/source/TEST INIZIALI FATTI DA CHAT GPT DA VERIFICARE /Wevion_Validation_Baseline.py:32: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  df['week_2025']=(df.data-pd.Timedelta(days=364)).dt.to_period('W-SUN').dt.start_time
+/Users/fede/Documents/Progetti/hackathon/big-hack-2026/artifacts/timestral_reproduction/source/TEST INIZIALI FATTI DA CHAT GPT DA VERIFICARE /Wevion_Validation_Baseline.py:74: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  x=hist[hist.data>=hist.data.max()-pd.Timedelta(days=13)].groupby(name).agg(click=('click','sum'),impression=('impression','sum'),spesa=('spesa','sum'))
+/Users/fede/Documents/Progetti/hackathon/big-hack-2026/artifacts/timestral_reproduction/source/TEST INIZIALI FATTI DA CHAT GPT DA VERIFICARE /Wevion_Validation_Baseline.py:74: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  x=hist[hist.data>=hist.data.max()-pd.Timedelta(days=13)].groupby(name).agg(click=('click','sum'),impression=('impression','sum'),spesa=('spesa','sum'))
+/Users/fede/Documents/Progetti/hackathon/big-hack-2026/artifacts/timestral_reproduction/source/TEST INIZIALI FATTI DA CHAT GPT DA VERIFICARE /Wevion_Validation_Baseline.py:74: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  x=hist[hist.data>=hist.data.max()-pd.Timedelta(days=13)].groupby(name).agg(click=('click','sum'),impression=('impression','sum'),spesa=('spesa','sum'))
+/Users/fede/Documents/Progetti/hackathon/big-hack-2026/artifacts/timestral_reproduction/source/TEST INIZIALI FATTI DA CHAT GPT DA VERIFICARE /Wevion_Validation_Baseline.py:74: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  x=hist[hist.data>=hist.data.max()-pd.Timedelta(days=13)].groupby(name).agg(click=('click','sum'),impression=('impression','sum'),spesa=('spesa','sum'))
+/Users/fede/Documents/Progetti/hackathon/big-hack-2026/artifacts/timestral_reproduction/source/TEST INIZIALI FATTI DA CHAT GPT DA VERIFICARE /Wevion_Validation_Baseline.py:74: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  x=hist[hist.data>=hist.data.max()-pd.Timedelta(days=13)].groupby(name).agg(click=('click','sum'),impression=('impression','sum'),spesa=('spesa','sum'))
+/Users/fede/Documents/Progetti/hackathon/big-hack-2026/artifacts/timestral_reproduction/source/TEST INIZIALI FATTI DA CHAT GPT DA VERIFICARE /Wevion_Validation_Baseline.py:74: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  x=hist[hist.data>=hist.data.max()-pd.Timedelta(days=13)].groupby(name).agg(click=('click','sum'),impression=('impression','sum'),spesa=('spesa','sum'))
+/Users/fede/Documents/Progetti/hackathon/big-hack-2026/artifacts/timestral_reproduction/source/TEST INIZIALI FATTI DA CHAT GPT DA VERIFICARE /Wevion_Validation_Baseline.py:74: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  x=hist[hist.data>=hist.data.max()-pd.Timedelta(days=13)].groupby(name).agg(click=('click','sum'),impression=('impression','sum'),spesa=('spesa','sum'))
+/Users/fede/Documents/Progetti/hackathon/big-hack-2026/artifacts/timestral_reproduction/source/TEST INIZIALI FATTI DA CHAT GPT DA VERIFICARE /Wevion_Validation_Baseline.py:74: DeprecationWarning: The 'generic' unit for NumPy timedelta is deprecated, and will raise an error in the future. This includes implicit conversion of bare integers (e.g. `+ 1`). Please use a specific unit instead.
+  x=hist[hist.data>=hist.data.max()-pd.Timedelta(days=13)].groupby(name).agg(click=('click','sum'),impression=('impression','sum'),spesa=('spesa','sum'))
+{
+  "method": "Chronological holdout per fold, per-adset/ad/asset trailing features frozen at cutoff. CatBoost models for logit CTR and log CPM; naive trailing 14-day hierarchical benchmark. No Timestral fitted.",
+  "folds": [
+    {
+      "train_to": "2026-10-18",
+      "valid_from": "2026-10-19",
+      "valid_to": "2026-11-01",
+      "n_train": 1120,
+      "n_validation": 315,
+      "new_ad_ids_in_validation": 9,
+      "heuristic": {
+        "n_rows": 315,
+        "ctr_mae_pp": 0.2451,
+        "cpm_mae_eur": 0.7986,
+        "ctr_wmae_pp": 0.1977,
+        "cpm_wmae_eur": 0.7143
+      },
+      "catboost": {
+        "n_rows": 315,
+        "ctr_mae_pp": 0.3536,
+        "cpm_mae_eur": 0.7122,
+        "ctr_wmae_pp": 0.3057,
+        "cpm_wmae_eur": 0.6862
+      }
+    },
+    {
+      "train_to": "2026-11-01",
+      "valid_from": "2026-11-02",
+      "valid_to": "2026-11-15",
+      "n_train": 1435,
+      "n_validation": 444,
+      "new_ad_ids_in_validation": 12,
+      "heuristic": {
+        "n_rows": 444,
+        "ctr_mae_pp": 0.3163,
+        "cpm_mae_eur": 1.0218,
+        "ctr_wmae_pp": 0.2576,
+        "cpm_wmae_eur": 0.8022
+      },
+      "catboost": {
+        "n_rows": 444,
+        "ctr_mae_pp": 0.2743,
+        "cpm_mae_eur": 0.9274,
+        "ctr_wmae_pp": 0.2103,
+        "cpm_wmae_eur": 0.7161
+      }
+    }
+  ]
+}

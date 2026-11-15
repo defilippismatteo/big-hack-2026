@@ -1,0 +1,212 @@
+{
+  "schema_version": "1.0",
+  "asset_id": "NDL-B3",
+  "vertical": "beauty_skincare",
+  "seed": 2026,
+  "scenario": "single_exposure_text_feed_v1",
+  "request_sha256": "23ca863b1be427063614ebb621aa85c6770576e631ea4e4df02cbbb51b57a238",
+  "assignments": {
+    "p0000": {
+      "persona_id": "beauty_skincare-P001",
+      "sampling_weight": 0.041666666666666664,
+      "persona_sha256": "2b2f284bc5735dc51d5c84ab05b0a1e3d52636fce27be0da37f8414f952704b2",
+      "persona_data_kind": "synthetic",
+      "feed": {
+        "platform": "facebook",
+        "hour": 8,
+        "exposure_number": 1,
+        "items": [
+          {
+            "author": "Luca (fittizio)",
+            "text": "Una foto del panorama durante il viaggio."
+          },
+          {
+            "kind": "sponsored",
+            "content": "creatività nell'input condiviso"
+          },
+          {
+            "author": "Elena (fittizia)",
+            "text": "Passeggiata al parco questa mattina."
+          },
+          {
+            "author": "Sara (fittizia)",
+            "text": "Oggi provo una nuova ricetta per cena."
+          }
+        ],
+        "ad_position": 2,
+        "visual_mode": "organizer_text_description_only"
+      }
+    },
+    "p0001": {
+      "persona_id": "beauty_skincare-P002",
+      "sampling_weight": 0.041666666666666664,
+      "persona_sha256": "4ae591a09be65f89861f898626c3410666b91b70a8690b0c9fbe1ba5cba556a4",
+      "persona_data_kind": "synthetic",
+      "feed": {
+        "platform": "facebook",
+        "hour": 8,
+        "exposure_number": 1,
+        "items": [
+          {
+            "author": "Sara (fittizia)",
+            "text": "Oggi provo una nuova ricetta per cena."
+          },
+          {
+            "author": "Elena (fittizia)",
+            "text": "Passeggiata al parco questa mattina."
+          },
+          {
+            "kind": "sponsored",
+            "content": "creatività nell'input condiviso"
+          },
+          {
+            "author": "Luca (fittizio)",
+            "text": "Una foto del panorama durante il viaggio."
+          }
+        ],
+        "ad_position": 3,
+        "visual_mode": "organizer_text_description_only"
+      }
+    },
+    "p0002": {
+      "persona_id": "beauty_skincare-P003",
+      "sampling_weight": 0.041666666666666664,
+      "persona_sha256": "101c91173268a47293877a6c30e864e75794d3b256843a2b6f74bef9669afab1",
+      "persona_data_kind": "synthetic",
+      "feed": {
+        "platform": "instagram",
+        "hour": 8,
+        "exposure_number": 1,
+        "items": [
+          {
+            "author": "Luca (fittizio)",
+            "text": "Una foto del panorama durante il viaggio."
+          },
+          {
+            "kind": "sponsored",
+            "content": "creatività nell'input condiviso"
+          },
+          {
+            "author": "Elena (fittizia)",
+            "text": "Passeggiata al parco questa mattina."
+          },
+          {
+            "author": "Sara (fittizia)",
+            "text": "Oggi provo una nuova ricetta per cena."
+          }
+        ],
+        "ad_position": 2,
+        "visual_mode": "organizer_text_description_only"
+      }
+    },
+    "p0003": {
+      "persona_id": "beauty_skincare-P004",
+      "sampling_weight": 0.041666666666666664,
+      "persona_sha256": "da23f7ac8afe356707d088bbe7461b809d66b2abbba64243627f6f661fe7a4b6",
+      "persona_data_kind": "synthetic",
+      "feed": {
+        "platform": "instagram",
+        "hour": 13,
+        "exposure_number": 1,
+        "items": [
+          {
+            "author": "Sara (fittizia)",
+            "text": "Oggi provo una nuova ricetta per cena."
+          },
+          {
+            "author": "Elena (fittizia)",
+            "text": "Passeggiata al parco questa mattina."
+          },
+          {
+            "kind": "sponsored",
+            "content": "creatività nell'input condiviso"
+          },
+          {
+            "author": "Luca (fittizio)",
+            "text": "Una foto del panorama durante il viaggio."
+          }
+        ],
+        "ad_position": 3,
+        "visual_mode": "organizer_text_description_only"
+      }
+    }
+  },
+  "request": {
+    "model": "gemini-decision-1",
+    "input": "Annuncio sponsorizzato Meta. {\"vertical\": \"beauty_skincare\", \"formato\": \"carosello\", \"durata_video_s\": \"\", \"headline\": \"Black Friday: fino al -40%\", \"testo_principale\": \"I kit più amati al prezzo più basso dell'anno.\", \"call_to_action\": \"Acquista ora\", \"descrizione_visual\": \"Carosello di 6 kit con prezzo barrato e nuovo prezzo, sfondo nero.\"}",
+    "questions": {
+      "p0000": {
+        "type": "choice",
+        "instructions": "Valuta solo questa persona fittizia durante la singola esposizione nel feed. Le descrizioni visual sono testo, non immagini viste. Non inventare prezzi, landing page o commenti non forniti. Scegli il comportamento finale più plausibile; click include l'attenzione precedente, stop implica fermarsi senza cliccare, glance una breve occhiata senza fermarsi, scroll ignorare. {\"persona\": {\"country\": \"IT\", \"age_band\": \"25-34\", \"gender_identity\": \"donna\", \"motivation\": \"sostenibilita\", \"social_habit\": \"facebook\", \"risk_attitude\": \"esplorativo\", \"interest_in_category\": \"low\", \"occupation\": \"Tecnica di laboratorio agroalimentare presso un consorzio emiliano per il controllo di filiere biologiche.\", \"economic_context\": \"Stipendio stabile da dipendente e appartamento condiviso in provincia di Reggio Emilia; investe volentieri in cibo locale, viaggi in treno e attrezzatura outdoor usata, riducendo gli acquisti domestici superflui.\", \"daily_routine\": \"Si sveglia presto, fa una doccia rapida con saponetta solida dell'erboristeria di quartiere e va al lavoro in bicicletta; la sera cucina con calma, controlla qualche gruppo locale su Facebook e va a dormire senza passaggi cosmetici dedicati.\", \"decision_habits\": \"Acquista prodotti per la detersione solo quando ha finito quelli in casa; esplora volentieri formati nuovi o marchi emergenti a basso impatto ambientale, ma dedica pochissimi minuti a confrontare creme viso.\", \"trust_requirements\": \"Cerca certificazioni ecologiche verificabili, liste ingredienti brevi e comprensibili, imballaggi riciclabili o ricaricabili e chiarezza sulla sede produttiva europea.\", \"ad_avoidance\": \"Salta le sponsorizzate patinate e i caroselli con sconti a tempo o promesse miracolose; su Facebook ignora subito i contenuti promozionali con testimonial dall'aria artefatta.\", \"concerns\": \"Teme il greenwashing, gli imballaggi di plastica monodose, le spedizioni piene di riempitivi inutili e il rischio di accumulare flaconi mezzi usati in bagno.\", \"contradiction\": \"Pur avendo pochissimo interesse per la cura del viso ed evitando qualsiasi routine articolata, le capita di comprare un detergente solido o un piccolo siero artigianale scoperto a una fiera di paese solo per sperimentarne la formula zero-waste.\", \"persona_summary\": \"Tecnica agroalimentare di 31 anni che valuta quasi esclusivamente l'impatto ambientale e compra prodotti di cura personale solo per necessità pratica, usando Facebook per comunità locali e scambi.\", \"age_years\": 31, \"name\": \"Chiara Bellini\", \"interests\": [\"escursionismo in Appennino\", \"fermentazione domestica\", \"gruppi di scambio di quartiere su Facebook\", \"fotografia analogica\", \"riparazione biciclette\"]}, \"feed\": {\"platform\": \"facebook\", \"hour\": 8, \"exposure_number\": 1, \"items\": [{\"author\": \"Luca (fittizio)\", \"text\": \"Una foto del panorama durante il viaggio.\"}, {\"kind\": \"sponsored\", \"content\": \"creatività nell'input condiviso\"}, {\"author\": \"Elena (fittizia)\", \"text\": \"Passeggiata al parco questa mattina.\"}, {\"author\": \"Sara (fittizia)\", \"text\": \"Oggi provo una nuova ricetta per cena.\"}], \"ad_position\": 2, \"visual_mode\": \"organizer_text_description_only\"}}",
+        "criteria": {
+          "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+          "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+          "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+          "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+          "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+          "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+          "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+          "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+          "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+          "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+          "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+          "click__more_info": "Apre il link per approfondire prima di decidere."
+        }
+      },
+      "p0001": {
+        "type": "choice",
+        "instructions": "Valuta solo questa persona fittizia durante la singola esposizione nel feed. Le descrizioni visual sono testo, non immagini viste. Non inventare prezzi, landing page o commenti non forniti. Scegli il comportamento finale più plausibile; click include l'attenzione precedente, stop implica fermarsi senza cliccare, glance una breve occhiata senza fermarsi, scroll ignorare. {\"persona\": {\"country\": \"IT\", \"age_band\": \"55-64\", \"gender_identity\": \"donna\", \"motivation\": \"qualita\", \"social_habit\": \"uso_social_limitato\", \"risk_attitude\": \"esplorativo\", \"interest_in_category\": \"medium\", \"occupation\": \"Architetta restauratrice prossima alla pensione, attiva come consulente per beni storici a Perugia.\", \"economic_context\": \"Buon reddito cumulato e casa di proprietà; preferisce comprare meno articoli ma di fascia medio-alta e qualità verificabile, senza cercare promozioni al ribasso.\", \"daily_routine\": \"Al mattino cura le piante sul terrazzo, poi usa un detergente delicato, una crema idratante protettiva e la protezione solare prima dei sopralluoghi; usa pochissimo i social e la sera preferisce leggere riviste e newsletter.\", \"decision_habits\": \"Non segue le mode passeggere, ma al cambio di stagione esplora volentieri linee dermatologiche nuove o laboratori italiani indipendenti, cercando schede tecniche o campioncini prima di ordinare online.\", \"trust_requirements\": \"Pretende elenchi INCI trasparenti, test di tollerabilità documentati, tracciabilità della produzione, servizio clienti competente e toni informativi privi di esagerazioni.\", \"ad_avoidance\": \"Evita i video brevi frenetici, i banner con conti alla rovescia e tutte le comunicazioni che usano il timore dell'invecchiamento con toni allarmistici.\", \"concerns\": \"Teme formule troppo profumate o occlusive che irritino la pelle, recensioni visibilmente artificiali e procedure di reso macchinose in caso di intolleranza.\", \"contradiction\": \"Pur dichiarando scarsa simpatia per gli acquisti impulsivi online e frequentando pochissimo i social, quando trova una formula tecnicamente convincente ordina subito direttamente dal sito di un marchio nuovo mai visto in farmacia.\", \"persona_summary\": \"Architetta 64enne attenta alla qualità delle formulazioni e aperta a provare realtà indipendenti ben documentate, che acquista skincare con criterio selettivo pur restando lontana dai social.\", \"age_years\": 64, \"name\": \"Patrizia Ferri\", \"interests\": [\"restauro di ceramiche storiche\", \"giardinaggio botanico\", \"saggi di storia dell'arte\", \"camminate mattutine\", \"cosmetica essenziale formulata in farmacia\", \"enogastronomia umbra\"]}, \"feed\": {\"platform\": \"facebook\", \"hour\": 8, \"exposure_number\": 1, \"items\": [{\"author\": \"Sara (fittizia)\", \"text\": \"Oggi provo una nuova ricetta per cena.\"}, {\"author\": \"Elena (fittizia)\", \"text\": \"Passeggiata al parco questa mattina.\"}, {\"kind\": \"sponsored\", \"content\": \"creatività nell'input condiviso\"}, {\"author\": \"Luca (fittizio)\", \"text\": \"Una foto del panorama durante il viaggio.\"}], \"ad_position\": 3, \"visual_mode\": \"organizer_text_description_only\"}}",
+        "criteria": {
+          "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+          "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+          "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+          "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+          "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+          "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+          "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+          "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+          "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+          "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+          "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+          "click__more_info": "Apre il link per approfondire prima di decidere."
+        }
+      },
+      "p0002": {
+        "type": "choice",
+        "instructions": "Valuta solo questa persona fittizia durante la singola esposizione nel feed. Le descrizioni visual sono testo, non immagini viste. Non inventare prezzi, landing page o commenti non forniti. Scegli il comportamento finale più plausibile; click include l'attenzione precedente, stop implica fermarsi senza cliccare, glance una breve occhiata senza fermarsi, scroll ignorare. {\"persona\": {\"country\": \"IT\", \"age_band\": \"45-54\", \"gender_identity\": \"uomo\", \"motivation\": \"abitudine\", \"social_habit\": \"social_misto\", \"risk_attitude\": \"prudente\", \"interest_in_category\": \"high\", \"occupation\": \"Direttore d'orchestra e docente di conservatorio tra Milano e Brescia.\", \"economic_context\": \"Reddito medio-alto accompagnato da spese frequenti per trasferte; mantiene un budget mensile regolare e prevedibile per la cura personale, evitando acquisti d'impulso.\", \"daily_routine\": \"Nuota tre mattine a settimana alle sette, poi segue sempre la stessa sequenza di detergente delicato, siero antiossidante, crema idratante e protezione solare alta anche in città, ripetendo detersione e crema notte dopo le prove serali.\", \"decision_habits\": \"Riordina in anticipo i suoi due o tre prodotti abituali prima che finiscano; consulta più piattaforme social per leggere confronti reali su assorbimento e resa post-rasatura, ma introduce un cambio solo dopo mesi di valutazione.\", \"trust_requirements\": \"Cerca costanza tra i lotti produttivi, assenza di riformulazioni improvvise, indicazioni chiare sui filtri solari e sul pH, oltre a pareri argomentati di utenti con pelle sensibile.\", \"ad_avoidance\": \"Salta subito gli annunci basati su confronti prima e dopo irrealistici, le offerte lampo pressanti e le campagne che trattano la cura maschile in modo caricaturale.\", \"concerns\": \"Teme che un prodotto nuovo causi arrossamenti sotto le luci di scena o sbilanci una routine già consolidata, e diffida dei negozi online poco chiari sulle date di scadenza.\", \"contradiction\": \"Pur essendo molto informato sugli attivi cosmetici e curioso di leggere analisi approfondite su più social, alla fine riordina quasi sempre la stessa crema storica invece di acquistare la novità salvata nei preferiti.\", \"persona_summary\": \"Musicista 53enne con un forte interesse consolidato per la cura del viso, metodico e cauto nei cambiamenti, che si informa su diversi social ma resta fedele alle proprie abitudini.\", \"age_years\": 53, \"name\": \"Lorenzo Cattaneo\", \"interests\": [\"musica da camera contemporanea\", \"cura quotidiana della pelle e foto-protezione\", \"nuoto in vasca al mattino\", \"orologeria meccanica\", \"cucina regionale lombarda\", \"biografie storiche\"]}, \"feed\": {\"platform\": \"instagram\", \"hour\": 8, \"exposure_number\": 1, \"items\": [{\"author\": \"Luca (fittizio)\", \"text\": \"Una foto del panorama durante il viaggio.\"}, {\"kind\": \"sponsored\", \"content\": \"creatività nell'input condiviso\"}, {\"author\": \"Elena (fittizia)\", \"text\": \"Passeggiata al parco questa mattina.\"}, {\"author\": \"Sara (fittizia)\", \"text\": \"Oggi provo una nuova ricetta per cena.\"}], \"ad_position\": 2, \"visual_mode\": \"organizer_text_description_only\"}}",
+        "criteria": {
+          "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+          "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+          "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+          "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+          "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+          "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+          "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+          "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+          "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+          "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+          "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+          "click__more_info": "Apre il link per approfondire prima di decidere."
+        }
+      },
+      "p0003": {
+        "type": "choice",
+        "instructions": "Valuta solo questa persona fittizia durante la singola esposizione nel feed. Le descrizioni visual sono testo, non immagini viste. Non inventare prezzi, landing page o commenti non forniti. Scegli il comportamento finale più plausibile; click include l'attenzione precedente, stop implica fermarsi senza cliccare, glance una breve occhiata senza fermarsi, scroll ignorare. {\"persona\": {\"country\": \"IT\", \"age_band\": \"45-54\", \"gender_identity\": \"uomo\", \"motivation\": \"praticita\", \"social_habit\": \"uso_social_limitato\", \"risk_attitude\": \"esplorativo\", \"interest_in_category\": \"low\", \"occupation\": \"Responsabile della logistica portuale a Trieste, impegnato quotidianamente tra banchine e magazzini.\", \"economic_context\": \"Stipendio medio-stabile con mutuo familiare; gestisce le spese in modo pragmatico ed è disposto a provare soluzioni essenziali solo se fanno risparmiare tempo.\", \"daily_routine\": \"Esce prima delle sette dopo una lavata rapida al viso con acqua fredda; passa gran parte della giornata tra vento e sole in porto e applica una crema o un balsamo solo quando sente la pelle tirare; apre i social pochi minuti la sera per meteo e risultati sportivi.\", \"decision_habits\": \"Non cerca attivamente prodotti cosmetici; quando gli serve un solare o un detergente essenziale prova volentieri formati due-in-uno o stick rapidi suggeriti da colleghi, purché l'acquisto online richieda due clic e arrivi in fretta.\", \"trust_requirements\": \"Apprezza istruzioni immediate in etichetta, zero gergo cosmetico superfluo, buona resistenza a sudore e vento e trasparenza totale sui costi di spedizione.\", \"ad_avoidance\": \"Chiude all'istante le pagine piene di finestre pop-up, i questionari per individuare il tipo di pelle e le campagne che propongono routine in più passaggi.\", \"concerns\": \"Teme prodotti untuosi che facciano bruciare gli occhi con il sudore, confezioni fragili da tenere nello zaino da lavoro e resi complicati se sbaglia formato.\", \"contradiction\": \"Sostiene di non sopportare chi perde tempo davanti allo specchio, eppure quando trova uno stick solare o un detergente multiuso davvero comodo ne compra due confezioni per tenerne una fissa nella borsa del porto.\", \"persona_summary\": \"Responsabile logistico 52enne disinteressato al mondo skincare, che accetta di sperimentare prodotti nuovi soltanto se essenziali, rapidi da applicare e acquistabili senza perdere tempo sui social.\", \"age_years\": 52, \"name\": \"Davide Marchetti\", \"interests\": [\"vela da diporto nel Golfo di Trieste\", \"manutenzione motori marini\", \"modellismo navale\", \"podcast storici\", \"pallacanestro locale\"]}, \"feed\": {\"platform\": \"instagram\", \"hour\": 13, \"exposure_number\": 1, \"items\": [{\"author\": \"Sara (fittizia)\", \"text\": \"Oggi provo una nuova ricetta per cena.\"}, {\"author\": \"Elena (fittizia)\", \"text\": \"Passeggiata al parco questa mattina.\"}, {\"kind\": \"sponsored\", \"content\": \"creatività nell'input condiviso\"}, {\"author\": \"Luca (fittizio)\", \"text\": \"Una foto del panorama durante il viaggio.\"}], \"ad_position\": 3, \"visual_mode\": \"organizer_text_description_only\"}}",
+        "criteria": {
+          "scroll__irrelevant": "Ignora la pubblicità perché categoria o proposta non sono pertinenti.",
+          "scroll__busy": "Scorre subito perché è distratta o non ha tempo.",
+          "scroll__skeptical": "Evita la pubblicità perché diffida dei messaggi promozionali.",
+          "glance__visual": "Guarda un istante, attirata dalla presentazione, poi prosegue.",
+          "glance__weak_offer": "Guarda un istante ma non trova convincente la proposta.",
+          "glance__low_need": "Guarda ma non ha un bisogno concreto della categoria.",
+          "stop__curiosity": "Si ferma per curiosità, ma non apre il link.",
+          "stop__trust_check": "Si ferma per capire affidabilità o condizioni, senza aprire.",
+          "stop__interested": "Si ferma perché interessata al tema, ma non abbastanza da aprire.",
+          "click__utility": "Apre il link per utilità percepita o interesse pratico.",
+          "click__offer": "Apre il link perché attratta da offerta, urgenza o disponibilità.",
+          "click__more_info": "Apre il link per approfondire prima di decidere."
+        }
+      }
+    }
+  }
+}

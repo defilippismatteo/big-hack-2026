@@ -1,6 +1,6 @@
 # Ambito 4 — Simulazione Sintetica: Personas T3, Decision 1 & Interviste Cieche
 
-**Moduli e artefatti:** [Wevion_Personas_Architettura_v1/](../../Wevion_Personas_Architettura_v1/), [market_mirror/t3_personas.py](../../market_mirror/t3_personas.py), [feed.py](../../market_mirror/feed.py), [decision_runs.py](../../market_mirror/decision_runs.py), [signals.py](../../market_mirror/signals.py), [interviews.py](../../market_mirror/interviews.py), [handoff.py](../../market_mirror/handoff.py), [artifacts/personas_t3/](../../artifacts/personas_t3/).
+**Moduli e artefatti:** [Wevion_Personas_Architettura_v1/](../../Wevion_Personas_Architettura_v1/), [personas_simulation.runtime/t3_personas.py](../../personas_simulation.runtime/t3_personas.py), [feed.py](../../personas_simulation.runtime/feed.py), [decision_runs.py](../../personas_simulation.runtime/decision_runs.py), [signals.py](../../personas_simulation.runtime/signals.py), [interviews.py](../../personas_simulation.runtime/interviews.py), [handoff.py](../../personas_simulation.runtime/handoff.py), [artifacts/personas_t3/](../../artifacts/personas_t3/).
 
 ---
 

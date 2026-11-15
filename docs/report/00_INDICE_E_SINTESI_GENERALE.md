@@ -22,7 +22,7 @@ Questo dossier scompone l'intero repository (inclusi il branch `main`, i branch 
 ## Quadro Sintetico dello Stato Attuale del Progetto
 
 1. **Esistono due rami principali di lavoro quantitativo non ancora fusi in un unico runtime su `main`:**
-   - Su `main`, `python -m market_mirror deliver --timestral-ref origin/feat/timestral-pilot` legge `Prima_Analisi/previsioni_28m.csv` (commit `2d8adf0`) e seleziona sul solo Fold 1 **`baseline_14d` per il CTR** e **`Timestral-28M` per il CPM** (`artifacts/wevion_v4/`).
+   - Su `main`, `python -m personas_simulation.runtime deliver --timestral-ref origin/feat/timestral-pilot` legge `Prima_Analisi/previsioni_28m.csv` (commit `2d8adf0`) e seleziona sul solo Fold 1 **`baseline_14d` per il CTR** e **`Timestral-28M` per il CPM** (`artifacts/wevion_v4/`).
    - Sul branch remoto `origin/feat/timestral-pilot`, esistono script successivi più completi (`Prima_Analisi/valida_modelli.py`, `prevedi_periodo_vuoto.py`, `arricchisci_black_friday.py`) che confrontano **Baseline + CatBoost + Timestral-28M + Mix 50/50**, identificano nel **Mix 50/50 CatBoost+Timestral-28M** il miglior modello CPM su entrambi i fold (`WMAE €0,6742` aggregato) e applicano un arricchimento Black Friday/Cyber Monday senza doppio conteggio stagionale (`CPM` mediana BF `€17,04`, `CTR` mediana BF `1,55%`).
    - Sul macOS locale esiste inoltre la replica verificata in `artifacts/timestral_reproduction/` (stessi SHA-256 dei pesi 5M/28M, conferma di tutte le metriche dei singoli modelli e diagnosi di copertura `q10–q90` per cold-start).
 2. **Il binario qualitativo/sintetico (`Track B` — Personas T3 + Decision 1 + Interviste) è isolato e operativo in modalità pilota su `beauty_skincare`:**

@@ -1,6 +1,6 @@
 # Ambito 3 — Audience Inference & Motore Decisionale Budget/Creatività
 
-**Moduli di riferimento:** [market_mirror/analytics.py](../../market_mirror/analytics.py), [market_mirror/marketing.py](../../market_mirror/marketing.py), [market_mirror/delivery.py](../../market_mirror/delivery.py), [artifacts/wevion_v4/persona_adset.json](../../artifacts/wevion_v4/persona_adset.json), [decisions.csv](../../artifacts/wevion_v4/decisions.csv), più `Prima_Analisi/arricchisci_black_friday.py` su `origin/feat/timestral-pilot`.
+**Moduli di riferimento:** [personas_simulation.runtime/analytics.py](../../personas_simulation.runtime/analytics.py), [personas_simulation.runtime/marketing.py](../../personas_simulation.runtime/marketing.py), [personas_simulation.runtime/delivery.py](../../personas_simulation.runtime/delivery.py), [artifacts/wevion_v4/persona_adset.json](../../artifacts/wevion_v4/persona_adset.json), [decisions.csv](../../artifacts/wevion_v4/decisions.csv), più `Prima_Analisi/arricchisci_black_friday.py` su `origin/feat/timestral-pilot`.
 
 ---
 
@@ -19,7 +19,7 @@ Poiché il kit oscura intenzionalmente i pubblici reali di Meta, il sistema dedu
 
 ## 2. Motore di Decisione Budget & Creatività: Due Versioni nel Repository
 
-| Aspetto | Pipeline `main` (`market_mirror/marketing.py`) | Pipeline arricchita (`origin/feat/timestral-pilot`: `arricchisci_black_friday.py`) |
+| Aspetto | Pipeline `main` (`personas_simulation.runtime/marketing.py`) | Pipeline arricchita (`origin/feat/timestral-pilot`: `arricchisci_black_friday.py`) |
 |---|---|---|
 | **Previsione sottostante** | `ctr_baseline14d__cpm_timestral28m` (senza moltiplicatore BF esplicito sul CTR) | `ctr_baseline14d` + `cpm_mix_50_50` + curva 2025 anti-doppio-conteggio + picchi BF/CM |
 | **Budget totale 15 giorni** | **€16.950,00** (`€1.130/giorno`) | **€16.950,00** (`€1.130/giorno`) |

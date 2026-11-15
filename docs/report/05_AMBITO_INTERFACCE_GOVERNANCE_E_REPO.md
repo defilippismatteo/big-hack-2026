@@ -8,7 +8,7 @@ Nel repository convivono **6 visualizzazioni HTML standalone** più **1 app Reac
 
 | Artefatto / Percorso | Branch | Funzione | Stato & Dati Collegati |
 |---|---|---|---|
-| [artifacts/wevion_v4/viewer.html](../../artifacts/wevion_v4/viewer.html) | `main` (generato da `market_mirror/viewer.py`) | **Viewer ufficiale consegna v4:** 4 tab (*Decisioni*, *Previsioni*, *Pubblici*, *Validazione e limiti*), grafici CTR/CPM, download CSV | Collegato a tutti i file reali generati da `deliver` (`699` forecast, `12` audience, `180` decisioni). Nessun server richiesto. |
+| [artifacts/wevion_v4/viewer.html](../../artifacts/wevion_v4/viewer.html) | `main` (generato da `personas_simulation.runtime/viewer.py`) | **Viewer ufficiale consegna v4:** 4 tab (*Decisioni*, *Previsioni*, *Pubblici*, *Validazione e limiti*), grafici CTR/CPM, download CSV | Collegato a tutti i file reali generati da `deliver` (`699` forecast, `12` audience, `180` decisioni). Nessun server richiesto. |
 | [dashboard_unificata.html](../../dashboard_unificata.html) | `main` (untracked) | **Dashboard unificata Track A + Track B:** matrice Information Boundary, schede delle 4 personas, confronto Fold 1/2, 12 ad set unificati, ranking `NDL-*` vs forecast, 4 A/B proposti | Dati incorporati da `wevion_v4` + `personas_t3`. Origine non generata automaticamente da `deliver`. |
 | [artifacts/personas_t3/viewer.html](../../artifacts/personas_t3/viewer.html) | `main` | Schede persona T3 e feed simulato | Collegato a `persona_cards.json` (4 schede reali Beauty). |
 | [artifacts/personas_t3/analyses/results.html](../../artifacts/personas_t3/analyses/results.html) & `diagnostic-patterns.html` & `interviews/preferences.html` | `main` | Analisi Decision 1, pattern motivi e preferenze interviste | Collegati a `analyses/` e `interviews/` (`beauty_skincare`). |
@@ -21,10 +21,10 @@ Nel repository convivono **6 visualizzazioni HTML standalone** più **1 app Reac
 
 ## 2. Skill Canoniche (`.agents/skills/`), Runtime e Test
 
-- **11 skill canoniche** in `.agents/skills/`: `audit-marketmirror`, `wevion-persona-diversity`, `wevion-persona-writer`, `wevion-decision1`, `wevion-persona-signals`, `wevion-evidence`, `wevion-audience-inference`, `wevion-signal-validation`, `wevion-persona-explain`, `wevion-delivery` (più le skill globali di workspace).
-- **Dipendenza dinamica da preservare:** `market_mirror/starter.py` e `Dockerfile.market-mirror` importano per percorso 4 script da `Wevion_Personas_Architettura_v1/scripts/` (`prepare_safe_inputs`, `build_creative_catalog`, `make_slots`, `decision1_requests`).
+- **11 skill canoniche** in `.agents/skills/`: `wevion-persona-diversity`, `wevion-persona-writer`, `wevion-decision1`, `wevion-persona-signals`, `wevion-evidence`, `wevion-audience-inference`, `wevion-signal-validation`, `wevion-persona-explain`, `wevion-delivery` (più le skill globali di workspace).
+- **Dipendenza dinamica da preservare:** `personas_simulation.runtime/starter.py` e `Dockerfile.adera` importano per percorso 4 script da `Wevion_Personas_Architettura_v1/scripts/` (`prepare_safe_inputs`, `build_creative_catalog`, `make_slots`, `decision1_requests`).
 - **Suite di test (`567` righe su 5 file in `tests/`):**
-  - [test_market_mirror.py](../../tests/test_market_mirror.py) (190 righe)
+  - [test_personas_simulation.runtime.py](../../tests/test_personas_simulation.runtime.py) (190 righe)
   - [test_decision_runs.py](../../tests/test_decision_runs.py) (133 righe)
   - [test_delivery.py](../../tests/test_delivery.py) (107 righe)
   - [test_t3_personas.py](../../tests/test_t3_personas.py) (83 righe)
