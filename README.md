@@ -1,12 +1,15 @@
 # ADERA — Audience & Advertising Intelligence (Wevion · Big Hack 2026)
 
+## 👉 [APRI LA DASHBOARD ADERA](https://adera-dashboard.wavyporpoise64.chatgpt.site)
+
+**Accesso pubblico per tutti: clicca sul link qui sopra per esplorare la dashboard online.**
+
 > **Decidere prima di spendere:** forecasting quantitativo giornaliero su Meta Ads (`699` coppie annuncio/giorno, `16–30 novembre 2026`), inferenza comportamentale dei `12` pubblici nascosti, riallocazione vincolata di budget (`±20%`) e simulazione diagnostica *outcome-blind* (`600` buyer personas, `7.200` valutazioni **Gemini Decision 1** e `600` interviste cieche), orchestrati da **T3 Code** con una **dashboard puramente esplicativa**.
 
 <p align="center">
   <img src="docs/media/dashboard_overview.png" alt="ADERA Dashboard Overview" width="100%" />
 </p>
 
-> **Dashboard online (accesso pubblico):** [Apri ADERA su Sites](https://adera-dashboard.wavyporpoise64.chatgpt.site).<br>
 > **Dashboard standalone (sola lettura):** apri direttamente [`dashboard/preview.html#/overview`](dashboard/preview.html) nel browser senza server né chiamate API.  
 > **Video pitch unificato (150s con voce):** [`video/ADERA-UNIFICATO-150s-CON-VOCE.mp4`](video/ADERA-UNIFICATO-150s-CON-VOCE.mp4)
 
