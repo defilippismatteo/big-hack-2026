@@ -6,6 +6,7 @@
   <img src="docs/media/dashboard_overview.png" alt="ADERA Dashboard Overview" width="100%" />
 </p>
 
+> **Dashboard online (accesso pubblico):** [Apri ADERA su Sites](https://adera-dashboard.wavyporpoise64.chatgpt.site).  
 > **Dashboard standalone (sola lettura):** apri direttamente [`dashboard/preview.html#/overview`](dashboard/preview.html) nel browser senza server né chiamate API.  
 > **Video pitch unificato (150s con voce):** [`video/ADERA-UNIFICATO-150s-CON-VOCE.mp4`](video/ADERA-UNIFICATO-150s-CON-VOCE.mp4)
 
