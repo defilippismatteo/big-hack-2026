@@ -11,7 +11,7 @@
 </p>
 
 > **Dashboard standalone (sola lettura):** apri direttamente [`dashboard/preview.html#/overview`](dashboard/preview.html) nel browser senza server né chiamate API.  
-> **Video pitch unificato — taglio rapido (140.5s con voce):** [`video/ADERA-DINAMICO-TAGLIO-RAPIDO.mp4`](video/ADERA-DINAMICO-TAGLIO-RAPIDO.mp4) *(versione estesa 150s: [`ADERA-UNIFICATO-150s-CON-VOCE.mp4`](video/ADERA-UNIFICATO-150s-CON-VOCE.mp4))*
+> **Video pitch unificato (140.5s con voce):** [`video/ADERA-DINAMICO-TAGLIO-RAPIDO.mp4`](video/ADERA-DINAMICO-TAGLIO-RAPIDO.mp4)
 
 ---
 
@@ -177,7 +177,7 @@ Manteniamo piena trasparenza sui limiti emersi durante sviluppo e validazione:
 
 ## 9. Animazioni dal video e tour della dashboard
 
-### Animazioni estratte dal video pitch ([`video/ADERA-UNIFICATO-150s-CON-VOCE.mp4`](video/ADERA-UNIFICATO-150s-CON-VOCE.mp4))
+### Animazioni estratte dal video pitch ([`video/ADERA-DINAMICO-TAGLIO-RAPIDO.mp4`](video/ADERA-DINAMICO-TAGLIO-RAPIDO.mp4))
 
 | Apertura Dashboard Unificata | Orchestrazione & Modelli |
 |---|---|
@@ -236,8 +236,6 @@ Manteniamo piena trasparenza sui limiti emersi durante sviluppo e validazione:
 │
 ├── video/                             # Asset, copione, audio, sorgenti e render video
 │   ├── ADERA-DINAMICO-TAGLIO-RAPIDO.mp4
-│   ├── ADERA-UNIFICATO-150s-CON-VOCE.mp4
-│   ├── ADERA-UNIFICATO-150s.mp4
 │   ├── COPIONE.md / copione-cues.json / SINCRONIZZAZIONE.md
 │   ├── audio/                         # Segmenti voce ElevenLabs, alignment JSON e tracce sync
 │   ├── Video_Matteo/ chatgpt/ gemini/ dashboard/ v1_assets/
