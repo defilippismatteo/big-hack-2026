@@ -1,6 +1,6 @@
 # ADERA — Audience & Advertising Intelligence (Wevion · Big Hack 2026)
 
-## 👉 [APRI LA DASHBOARD ADERA](https://adera-dashboard.wavyporpoise64.chatgpt.site)
+##  [APRI LA DASHBOARD ADERA](https://adera-dashboard.wavyporpoise64.chatgpt.site)
 
 **Accesso pubblico per tutti: clicca sul link qui sopra per esplorare la dashboard online.**
 
