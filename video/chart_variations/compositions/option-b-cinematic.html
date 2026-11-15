@@ -1,0 +1,614 @@
+<!doctype html>
+<html lang="it">
+  <head>
+    <meta charset="UTF-8" />
+    <title>ADERA Chart — Opzione B (3D Cinematic Punch-In + Two-Beat Whip Pull-Back)</title>
+  </head>
+  <body>
+    <template>
+      <div id="root" data-composition-id="option-b-cinematic" data-duration="26" data-fps="30">
+        <style>
+          @font-face {
+            font-family: "Inter";
+            src: url("assets/inter.woff2") format("woff2");
+            font-weight: 100 900;
+            font-display: swap;
+          }
+          *,
+          *::before,
+          *::after {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+          }
+          #root {
+            position: absolute;
+            inset: 0;
+            overflow: hidden;
+            background: #35214f;
+            color: #f6f5f9;
+            font-family: "Inter", sans-serif;
+            isolation: isolate;
+          }
+          .opt-bg-glow {
+            position: absolute;
+            inset: 0;
+            background:
+              radial-gradient(circle at 78% 20%, rgba(173, 137, 255, 0.22), transparent 50%),
+              radial-gradient(circle at 18% 85%, rgba(136, 97, 232, 0.14), transparent 46%);
+            pointer-events: none;
+          }
+          .opt-header {
+            position: absolute;
+            left: 120px;
+            top: 52px;
+            width: 1120px;
+            z-index: 4;
+          }
+          .opt-eyebrow {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 3.4px;
+            text-transform: uppercase;
+            color: #d9c8ff;
+            margin-bottom: 10px;
+          }
+          .opt-title {
+            font-size: 62px;
+            font-weight: 780;
+            letter-spacing: -2.4px;
+            line-height: 1.04;
+            color: #ffffff;
+          }
+          .opt-sub {
+            margin-top: 10px;
+            font-size: 28px;
+            font-weight: 500;
+            color: #d5c7e6;
+          }
+          .opt-readout {
+            position: absolute;
+            right: 120px;
+            top: 66px;
+            min-width: 400px;
+            padding: 16px 24px;
+            border-radius: 18px;
+            background: rgba(255, 255, 255, 0.08);
+            border: 1px solid rgba(222, 208, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            gap: 20px;
+            z-index: 4;
+          }
+          .opt-readout-left {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+          }
+          .opt-readout-tag {
+            font-size: 15px;
+            font-weight: 700;
+            letter-spacing: 1.4px;
+            text-transform: uppercase;
+            color: #d9c8ff;
+          }
+          .opt-readout-day {
+            font-size: 28px;
+            font-weight: 760;
+            color: #ffffff;
+            font-variant-numeric: tabular-nums;
+          }
+          .opt-readout-val {
+            font-size: 40px;
+            font-weight: 800;
+            letter-spacing: -1.4px;
+            color: #ded0ff;
+            font-variant-numeric: tabular-nums;
+          }
+          .ob-ground {
+            position: absolute;
+            left: 280px;
+            top: 805px;
+            width: 1360px;
+            height: 76px;
+            border-radius: 50%;
+            background: rgba(136, 97, 232, 0.32);
+            filter: blur(36px);
+            pointer-events: none;
+            z-index: 2;
+          }
+          .opt-chartwindow {
+            position: absolute;
+            left: 120px;
+            top: 265px;
+            width: 1680px;
+            height: 560px;
+            border-radius: 22px;
+            border: 1px solid #8a6ca8;
+            background: #3d275b;
+            box-shadow: 0 32px 90px rgba(10, 5, 20, 0.55);
+            overflow: hidden;
+            transform-origin: 0 0;
+            z-index: 3;
+            will-change: transform, opacity;
+          }
+          .opt-cam-world {
+            position: absolute;
+            inset: 0;
+            transform-origin: 50% 50%;
+            will-change: transform;
+          }
+          .opt-halo {
+            position: absolute;
+            width: 280px;
+            height: 280px;
+            border-radius: 50%;
+            background: radial-gradient(
+              circle,
+              rgba(195, 167, 255, 0.42) 0%,
+              rgba(136, 97, 232, 0.18) 46%,
+              transparent 72%
+            );
+            pointer-events: none;
+          }
+          .opt-defocus {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            opacity: 0;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            -webkit-mask-image: radial-gradient(
+              ellipse 60% 56% at 50% 50%,
+              transparent 52%,
+              rgba(0, 0, 0, 0.9) 92%
+            );
+            mask-image: radial-gradient(
+              ellipse 60% 56% at 50% 50%,
+              transparent 52%,
+              rgba(0, 0, 0, 0.9) 92%
+            );
+          }
+          .opt-tip-pill {
+            position: absolute;
+            padding: 9px 16px;
+            border-radius: 12px;
+            background: #231338;
+            border: 1.5px solid #c3a6ff;
+            color: #ffffff;
+            font-size: 20px;
+            font-weight: 780;
+            font-variant-numeric: tabular-nums;
+            white-space: nowrap;
+            box-shadow: 0 12px 30px rgba(10, 5, 20, 0.6);
+            pointer-events: none;
+            z-index: 4;
+          }
+          .opt-guides {
+            position: absolute;
+            inset: 0;
+            width: 1920px;
+            height: 1080px;
+            pointer-events: none;
+            z-index: 5;
+          }
+          .opt-events {
+            position: absolute;
+            inset: 0;
+            pointer-events: none;
+            z-index: 6;
+          }
+          .opt-ev-card {
+            position: absolute;
+            top: 220px;
+            width: 218px;
+            padding: 12px 14px;
+            border-radius: 14px;
+            background: #ffffff;
+            border: 1px solid #e4dbf2;
+            color: #35214f;
+            box-shadow: 0 16px 38px rgba(14, 7, 26, 0.35);
+          }
+          .opt-ev-date {
+            display: block;
+            font-size: 14px;
+            font-weight: 750;
+            color: #633bc4;
+          }
+          .opt-ev-title {
+            display: block;
+            margin-top: 2px;
+            font-size: 22px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #35214f;
+          }
+          .opt-ev-meta {
+            display: block;
+            margin-top: 3px;
+            font-size: 14px;
+            font-weight: 600;
+            color: #534463;
+            font-variant-numeric: tabular-nums;
+          }
+          .opt-models {
+            position: absolute;
+            left: 120px;
+            right: 120px;
+            top: 794px;
+            height: 224px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 48px;
+            z-index: 6;
+          }
+          .opt-model-card {
+            background: #ffffff;
+            border: 1px solid #e4dbf2;
+            border-radius: 20px;
+            padding: 22px 28px;
+            color: #35214f;
+            box-shadow: 0 20px 52px rgba(14, 7, 26, 0.35);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+          }
+          .opt-model-head {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+          }
+          .opt-model-brand {
+            display: flex;
+            align-items: center;
+            gap: 14px;
+          }
+          .opt-model-brand img {
+            width: 46px;
+            height: 46px;
+            object-fit: contain;
+          }
+          .opt-model-brand h3 {
+            font-size: 32px;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: #35214f;
+          }
+          .opt-model-tag {
+            padding: 7px 14px;
+            border-radius: 999px;
+            background: #efe9fc;
+            color: #562eb2;
+            font-size: 15px;
+            font-weight: 700;
+          }
+          .opt-model-metrics {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 14px;
+            margin-top: 14px;
+          }
+          .opt-m-box {
+            background: #f7f4fc;
+            border: 1px solid #e7def7;
+            border-radius: 12px;
+            padding: 12px 14px;
+          }
+          .opt-m-box span {
+            display: block;
+            font-size: 14px;
+            font-weight: 650;
+            color: #534463;
+          }
+          .opt-m-box strong {
+            display: block;
+            margin-top: 4px;
+            font-size: 24px;
+            font-weight: 800;
+            letter-spacing: -0.5px;
+            color: #35214f;
+            font-variant-numeric: tabular-nums;
+          }
+          .opt-opt-pill {
+            position: absolute;
+            left: 120px;
+            bottom: 22px;
+            font-size: 15px;
+            font-weight: 650;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            color: #cec2df;
+            z-index: 4;
+          }
+        </style>
+
+        <div class="opt-bg-glow"></div>
+
+        <header class="opt-header" id="ob-header">
+          <div class="opt-eyebrow" data-layout-ignore>Forecast / CPM · FGR-AD09</div>
+          <h1 class="opt-title">Segui la previsione.</h1>
+          <p class="opt-sub">16–30 novembre 2026 · serie salvata · CTR 0,809%</p>
+        </header>
+
+        <div class="opt-readout" id="ob-readout">
+          <div class="opt-readout-left">
+            <span class="opt-readout-tag" id="ob-phase" data-layout-ignore>Ingresso 3D</span>
+            <span class="opt-readout-day" id="ob-day" data-layout-ignore>16/11/2026</span>
+          </div>
+          <div class="opt-readout-val" id="ob-cpm" data-layout-ignore>9,49 €</div>
+        </div>
+
+        <div class="ob-ground" id="ob-ground"></div>
+
+        <div class="opt-chartwindow" id="ob-window" data-hold>
+          <div class="opt-cam-world" id="ob-world" data-layout-allow-overflow>
+            <div class="opt-halo" id="ob-halo"></div>
+            <svg id="ob-svg" viewBox="0 0 1680 560" width="1680" height="560" data-layout-ignore></svg>
+            <div class="opt-tip-pill" id="ob-tip-pill" data-layout-ignore>16/11 · 9,49 €</div>
+          </div>
+          <div class="opt-defocus" id="ob-defocus"></div>
+        </div>
+
+        <svg class="opt-guides" id="ob-guides" viewBox="0 0 1920 1080" data-layout-ignore></svg>
+
+        <div class="opt-events" id="ob-events">
+          <article class="opt-ev-card" id="ob-ev-bw" style="left: 648px" data-layout-ignore>
+            <span class="opt-ev-date">20/11/2026</span>
+            <strong class="opt-ev-title">Black Week</strong>
+            <small class="opt-ev-meta">CPM 9,76 € · CTR 0,809%</small>
+          </article>
+          <article class="opt-ev-card" id="ob-ev-bf" style="left: 1146px" data-layout-ignore>
+            <span class="opt-ev-date">27/11/2026</span>
+            <strong class="opt-ev-title">Black Friday</strong>
+            <small class="opt-ev-meta">CPM 10,07 € · CTR 0,809%</small>
+          </article>
+          <article class="opt-ev-card" id="ob-ev-cm" style="left: 1410px" data-layout-ignore>
+            <span class="opt-ev-date">30/11/2026</span>
+            <strong class="opt-ev-title">Cyber Monday</strong>
+            <small class="opt-ev-meta">CPM 10,12 € · CTR 0,809%</small>
+          </article>
+        </div>
+
+        <div class="opt-models" id="ob-models">
+          <article class="opt-model-card" id="ob-m-tim" data-layout-ignore>
+            <div class="opt-model-head">
+              <div class="opt-model-brand">
+                <img src="assets/mistral.svg" alt="Mistral" />
+                <h3>Timestral 28M</h3>
+              </div>
+              <span class="opt-model-tag">Modello CPM</span>
+            </div>
+            <div class="opt-model-metrics">
+              <div class="opt-m-box">
+                <span>Fold 2 · CPM MAE</span>
+                <strong>0,884 €</strong>
+              </div>
+              <div class="opt-m-box">
+                <span>Fold 2 · CPM WMAE</span>
+                <strong>0,707 €</strong>
+              </div>
+              <div class="opt-m-box">
+                <span>CTR stimato</span>
+                <strong>Baseline 14gg</strong>
+              </div>
+            </div>
+          </article>
+          <article class="opt-model-card" id="ob-m-cat" data-layout-ignore>
+            <div class="opt-model-head">
+              <div class="opt-model-brand">
+                <img src="assets/catboost.svg" alt="CatBoost" />
+                <h3>CatBoost</h3>
+              </div>
+              <span class="opt-model-tag">Validazione 02–15/11</span>
+            </div>
+            <div class="opt-model-metrics">
+              <div class="opt-m-box">
+                <span>CatBoost CTR MAE</span>
+                <strong>0,274 pp</strong>
+              </div>
+              <div class="opt-m-box">
+                <span>Baseline 14gg CTR</span>
+                <strong>0,316 pp</strong>
+              </div>
+              <div class="opt-m-box">
+                <span>Mix 50/50 CPM MAE</span>
+                <strong>0,874 €</strong>
+              </div>
+            </div>
+          </article>
+        </div>
+
+        <div class="opt-opt-pill" data-layout-ignore>Opzione B · 3D Cinematic Punch-In + Two-Beat Whip Pull-Back</div>
+
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+        <script>
+          (function () {
+            "use strict";
+            var NS = "http://www.w3.org/2000/svg";
+            var SERIES = [
+              ["2026-11-16", 9.494775], ["2026-11-17", 9.561391], ["2026-11-18", 9.604424],
+              ["2026-11-19", 9.677681], ["2026-11-20", 9.762157], ["2026-11-21", 9.733823],
+              ["2026-11-22", 9.689617], ["2026-11-23", 9.884194], ["2026-11-24", 9.944378],
+              ["2026-11-25", 9.968093], ["2026-11-26", 10.043659], ["2026-11-27", 10.074528],
+              ["2026-11-28", 10.037266], ["2026-11-29", 9.947334], ["2026-11-30", 10.118596],
+            ];
+            var W = 1680, H = 560, X_LEFT = 175, X_RIGHT = 1555, Y_TOP = 86, Y_BOT = 428, Y_MIN = 9.4, Y_MAX = 10.2;
+            function px(i) { return X_LEFT + (i / (SERIES.length - 1)) * (X_RIGHT - X_LEFT); }
+            function py(v) { return Y_BOT - ((v - Y_MIN) / (Y_MAX - Y_MIN)) * (Y_BOT - Y_TOP); }
+            var pts = SERIES.map(function (row, i) {
+              return { i: i, day: row[0].slice(8) + "/11", fullDay: row[0].slice(8) + "/11/2026", val: row[1], x: px(i), y: py(row[1]) };
+            });
+
+            var svg = document.getElementById("ob-svg");
+            function addEl(tag, attrs, parent) {
+              var el = document.createElementNS(NS, tag);
+              for (var k in attrs) el.setAttribute(k, String(attrs[k]));
+              (parent || svg).appendChild(el);
+              return el;
+            }
+            var defs = addEl("defs", {});
+            var grad = addEl("linearGradient", { id: "ob-area-grad", x1: 0, y1: 0, x2: 0, y2: 1 }, defs);
+            addEl("stop", { offset: "0%", "stop-color": "#C2A4FF", "stop-opacity": "0.38" }, grad);
+            addEl("stop", { offset: "100%", "stop-color": "#AD89FF", "stop-opacity": "0.02" }, grad);
+            addEl("rect", { x: 115, y: 42, width: 1495, height: 422, rx: 16, fill: "#FFFFFF", "fill-opacity": "0.055" });
+
+            var gridGroup = addEl("g", {});
+            [9.4, 9.6, 9.8, 10.0, 10.2].forEach(function (v) {
+              var yy = py(v);
+              addEl("line", { x1: 125, y1: yy, x2: 1600, y2: yy, stroke: "#FFFFFF", "stroke-opacity": "0.14", "stroke-width": "1.5" }, gridGroup);
+              addEl("text", { x: 42, y: yy + 8, fill: "#D4C6E6", "font-family": "Inter, sans-serif", "font-size": "22", "font-weight": "600" }, gridGroup).textContent = v.toFixed(1).replace(".", ",") + " €";
+            });
+            [0, 2, 4, 6, 8, 10, 11, 12, 14].forEach(function (idx) {
+              var p = pts[idx], isEv = idx === 4 || idx === 11 || idx === 14;
+              addEl("text", {
+                x: p.x, y: 506, "text-anchor": "middle", fill: isEv ? "#EAE0FF" : "#C9BADB",
+                "font-family": "Inter, sans-serif", "font-size": "21", "font-weight": isEv ? "780" : "600",
+              }, gridGroup).textContent = p.day;
+            });
+
+            var pathD = pts.map(function (p, i) { return (i ? "L" : "M") + p.x.toFixed(2) + "," + p.y.toFixed(2); }).join(" ");
+            var areaD = pathD + " L" + pts[pts.length - 1].x.toFixed(2) + "," + Y_BOT + " L" + pts[0].x.toFixed(2) + "," + Y_BOT + " Z";
+            var areaEl = addEl("path", { d: areaD, fill: "url(#ob-area-grad)", opacity: "0" });
+            var curveEl = addEl("path", { d: pathD, fill: "none", stroke: "#B595FF", "stroke-width": "8", "stroke-linecap": "round", "stroke-linejoin": "round" });
+            var totalLen = curveEl.getTotalLength();
+            curveEl.style.strokeDasharray = totalLen + " " + totalLen;
+            curveEl.style.strokeDashoffset = totalLen;
+
+            var evNodes = [4, 11, 14].map(function (idx) {
+              return addEl("circle", { cx: pts[idx].x, cy: pts[idx].y, r: 9, fill: "#35214F", stroke: "#DED0FF", "stroke-width": "3.5", opacity: "0" });
+            });
+            var tipEl = addEl("circle", { cx: pts[0].x, cy: pts[0].y, r: 12, fill: "#FFFFFF", stroke: "#8861E8", "stroke-width": "6" });
+
+            var guidesSvg = document.getElementById("ob-guides");
+            var guideGroups = [4, 11, 14].map(function (idx) {
+              var sx = 330 + pts[idx].x * 0.75, sy = 342 + pts[idx].y * 0.75;
+              var g = addEl("g", { opacity: "0" }, guidesSvg);
+              addEl("line", { x1: sx.toFixed(1), y1: "314", x2: sx.toFixed(1), y2: sy.toFixed(1), stroke: "#C7ABFF", "stroke-width": "2.2", "stroke-dasharray": "6 6" }, g);
+              addEl("circle", { cx: sx.toFixed(1), cy: sy.toFixed(1), r: "6.5", fill: "#FFFFFF", stroke: "#8861E8", "stroke-width": "3" }, g);
+              return g;
+            });
+
+            var worldEl = document.getElementById("ob-world");
+            var haloEl = document.getElementById("ob-halo");
+            var tipPill = document.getElementById("ob-tip-pill");
+            var readoutDay = document.getElementById("ob-day");
+            var readoutCpm = document.getElementById("ob-cpm");
+            var readoutPhase = document.getElementById("ob-phase");
+
+            var cam = { scale: 1, focusX: pts[0].x, focusY: pts[0].y, zoomWeight: 0, rotX: 0, rotY: 0 };
+            var drawState = { p: 0 };
+
+            function samplePoint(p) {
+              var f = Math.max(0, Math.min(1, p)) * (pts.length - 1);
+              var idx = Math.min(pts.length - 2, Math.floor(f)), frac = f - idx;
+              var a = pts[idx], b = pts[idx + 1];
+              var near = pts[Math.round(f)];
+              return { x: a.x + (b.x - a.x) * frac, y: a.y + (b.y - a.y) * frac, val: a.val + (b.val - a.val) * frac, day: near.day, fullDay: near.fullDay };
+            }
+
+            function applyState() {
+              var cur = samplePoint(drawState.p);
+              curveEl.style.strokeDashoffset = (totalLen * (1 - drawState.p)).toFixed(2);
+              tipEl.setAttribute("cx", cur.x.toFixed(2));
+              tipEl.setAttribute("cy", cur.y.toFixed(2));
+              haloEl.style.left = (cur.x - 140).toFixed(1) + "px";
+              haloEl.style.top = (cur.y - 140).toFixed(1) + "px";
+              tipPill.style.left = Math.min(W - 180, Math.max(20, cur.x - 74)).toFixed(1) + "px";
+              tipPill.style.top = (cur.y > 120 ? cur.y - 64 : cur.y + 24).toFixed(1) + "px";
+              tipPill.textContent = cur.day + " · " + cur.val.toFixed(2).replace(".", ",") + " €";
+              readoutDay.textContent = cur.fullDay;
+              readoutCpm.textContent = cur.val.toFixed(2).replace(".", ",") + " €";
+
+              var S = cam.scale, maxTx = (W / 2) * (S - 1), maxTy = (H / 2) * (S - 1);
+              var fx = cur.x * cam.zoomWeight + cam.focusX * (1 - cam.zoomWeight);
+              var fy = cur.y * cam.zoomWeight + cam.focusY * (1 - cam.zoomWeight);
+              var tx = S > 1.001 ? Math.max(-maxTx, Math.min(maxTx, -((fx - W / 2) * S))) : 0;
+              var ty = S > 1.001 ? Math.max(-maxTy, Math.min(maxTy, -((fy - H / 2) * S))) : 0;
+              worldEl.style.transform =
+                "perspective(1200px) translate3d(" + tx.toFixed(2) + "px, " + ty.toFixed(2) + "px, 0px) " +
+                "rotateX(" + cam.rotX.toFixed(2) + "deg) rotateY(" + cam.rotY.toFixed(2) + "deg) scale(" + S.toFixed(4) + ")";
+              readoutPhase.textContent = S > 1.2 ? "Macro 3D · " + cur.day : drawState.p > 0.99 ? "Orizzonte completo" : "Apertura 3D";
+            }
+
+            gsap.set("#ob-header", { opacity: 0, y: 28 });
+            gsap.set("#ob-readout", { opacity: 0, y: 20 });
+            gsap.set("#ob-window", { opacity: 0, y: 44, scale: 0.9, rotationX: 7, transformPerspective: 1200, x: 0 });
+            gsap.set("#ob-ground", { opacity: 0, scaleX: 0.72 });
+            gsap.set(gridGroup, { opacity: 0 });
+            gsap.set(haloEl, { opacity: 0, scale: 0.6 });
+            gsap.set(tipPill, { opacity: 0, y: 10 });
+            gsap.set("#ob-defocus", { opacity: 0 });
+            gsap.set(["#ob-ev-bw", "#ob-ev-bf", "#ob-ev-cm"], { opacity: 0, y: 18, scale: 0.95 });
+            gsap.set(["#ob-m-tim", "#ob-m-cat"], { opacity: 0, y: 40 });
+            applyState();
+
+            var tl = gsap.timeline({ paused: true });
+
+            // 1. 0.00-0.90s: 3D Stage Arrival
+            tl.fromTo("#ob-header", { opacity: 0, y: 28 }, { opacity: 1, y: 0, duration: 0.7, ease: "power4.out" }, 0.04);
+            tl.fromTo("#ob-readout", { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.65, ease: "power4.out" }, 0.12);
+            tl.fromTo(
+              "#ob-window",
+              { opacity: 0, y: 44, scale: 0.9, rotationX: 7, transformPerspective: 1200, x: 0 },
+              { opacity: 1, y: 0, scale: 1, rotationX: 0, duration: 0.85, ease: "power4.out" },
+              0.05,
+            );
+            tl.fromTo(gridGroup, { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "power2.out" }, 0.28);
+
+            // 2. 1.05-2.35s: Dramatic 3D Punch-In Zoom Entrance + Defocus optical pulse
+            tl.fromTo(
+              cam,
+              { scale: 1, focusX: pts[0].x, focusY: pts[0].y, zoomWeight: 0, rotX: 0, rotY: 0 },
+              { scale: 2.18, focusX: pts[0].x, focusY: pts[0].y, zoomWeight: 0.25, rotX: 1.4, rotY: -2.4, duration: 1.3, ease: "power3.inOut", onUpdate: applyState },
+              1.05,
+            );
+            tl.fromTo("#ob-defocus", { opacity: 0 }, { opacity: 0.85, duration: 0.55, ease: "power2.out" }, 1.05);
+            tl.to("#ob-defocus", { opacity: 0, duration: 0.75, ease: "power2.in" }, 1.6);
+            tl.fromTo(haloEl, { opacity: 0, scale: 0.6 }, { opacity: 0.95, scale: 1.05, duration: 0.7, ease: "power2.out" }, 1.6);
+            tl.fromTo(tipPill, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 1.85);
+
+            // 3. 2.35-9.70s: Parallax pan sweep across the 15 days
+            tl.to(cam, { zoomWeight: 1, rotY: 1.6, rotX: -0.6, duration: 7.35, ease: "sine.inOut", onUpdate: applyState }, 2.35);
+            tl.fromTo(drawState, { p: 0 }, { p: 1, duration: 7.35, ease: "none", onUpdate: applyState }, 2.35);
+            tl.fromTo(areaEl, { opacity: 0 }, { opacity: 1, duration: 1.8, ease: "power1.out" }, 3.0);
+
+            // 4. 9.70-12.20s: Two-Beat Whip Pull-Back Zoom-Out (pull-back-reveal law!)
+            // Beat 1: fast whip-out 2.18 -> 1.06 + edge defocus
+            tl.to(cam, { scale: 1.06, zoomWeight: 0, rotX: 0, rotY: 0, duration: 1.25, ease: "power4.out", onUpdate: applyState }, 9.7);
+            tl.to("#ob-defocus", { opacity: 0.9, duration: 0.45, ease: "power2.out" }, 9.7);
+            tl.to("#ob-defocus", { opacity: 0, duration: 0.85, ease: "power2.in" }, 10.15);
+            // Beat 2: silk drift settle 1.06 -> 1.00 + soft ground shadow bloom
+            tl.to(cam, { scale: 1, duration: 1.2, ease: "sine.inOut", onUpdate: applyState }, 10.95);
+            tl.fromTo("#ob-ground", { opacity: 0, scaleX: 0.72 }, { opacity: 0.75, scaleX: 1, duration: 1.15, ease: "power2.out" }, 10.95);
+
+            // 5. 12.20-16.40s: Ground shadow breath hold
+            tl.to("#ob-ground", { opacity: 0.52, scaleX: 0.95, duration: 2.0, ease: "sine.inOut" }, 12.3);
+            tl.to("#ob-ground", { opacity: 0.78, scaleX: 1, duration: 2.0, ease: "sine.inOut" }, 14.3);
+
+            // 6. 16.45-17.40s: Docked horizon shift
+            tl.to("#ob-window", { x: 210, y: 77, scale: 0.75, duration: 0.92, ease: "power3.inOut" }, 16.45);
+            tl.to("#ob-ground", { opacity: 0, duration: 0.5 }, 16.45);
+            tl.to([tipPill, haloEl], { opacity: 0, duration: 0.35 }, 16.45);
+
+            ["#ob-ev-bw", "#ob-ev-bf", "#ob-ev-cm"].forEach(function (id, idx) {
+              var at = 17.05 + idx * 0.42;
+              tl.fromTo(id, { opacity: 0, y: 18, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.48, ease: "power3.out" }, at);
+              tl.fromTo(guideGroups[idx], { opacity: 0 }, { opacity: 1, duration: 0.42, ease: "power2.out" }, at + 0.06);
+              tl.fromTo(evNodes[idx], { opacity: 0 }, { opacity: 1, duration: 0.38, ease: "power2.out" }, at + 0.06);
+            });
+
+            tl.fromTo("#ob-m-tim", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.65, ease: "power3.out" }, 19.1);
+            tl.fromTo("#ob-m-cat", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.65, ease: "power3.out" }, 21.4);
+
+            tl.set({}, {}, 26.0);
+            tl.seek(0);
+
+            window.__timelines = window.__timelines || {};
+            window.__timelines["option-b-cinematic"] = tl;
+          })();
+        </script>
+      </div>
+    </template>
+  </body>
+</html>

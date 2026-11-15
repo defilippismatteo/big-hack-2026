@@ -1,9 +1,9 @@
-const m=document.querySelector('#m'),g=document.querySelector('#g'),c=document.querySelector('#c');
+const m=document.querySelector('#m'),g=document.querySelector('#g'),c=document.querySelector('#c'),a=document.querySelector('#a');
 const cuts=[0,9,16,27,44,53,65,76,95,104,112,127,144,150];
 const ids=['question','brand','dataset','forecast','events','agents','persona','feed','audience','signals','interview','dashboard','end'];
-window.ready=Promise.all([m,g,c].map(f=>new Promise(r=>f.onload=r))).then(async()=>{
+window.ready=Promise.all([m,g,c,a].map(f=>new Promise(r=>f.onload=r))).then(async()=>{
  const md=m.contentDocument,gd=g.contentDocument;
- await Promise.all([md.fonts.ready,gd.fonts.ready]);
+ await Promise.all([md.fonts.ready,gd.fonts.ready,a.contentWindow.ready]);
  const css=gd.createElement('style');css.textContent='html,body,#stage,.scene.light,.scene.dark,.scene.plum{background:transparent!important}#hud{display:none!important}.s12-dash-pane{padding:0!important;background:transparent!important}.s12-dash-pane>*{visibility:hidden}.unified-dash{position:absolute;inset:0;width:1920px;height:1080px;object-fit:contain;visibility:visible!important}';gd.head.append(css);
  const cd=c.contentDocument;await cd.fonts.ready;
  const cc=cd.createElement('style');cc.textContent='html,body,.scene{background:transparent!important}#controls,#eventbf,#eventcm{display:none!important}';cd.head.append(cc);
@@ -26,15 +26,33 @@ window.ready=Promise.all([m,g,c].map(f=>new Promise(r=>f.onload=r))).then(async(
 window.seek=function(t){
  const mw=m.contentWindow,gw=g.contentWindow,md=m.contentDocument;
  mw.__timelines.adera.seek(t,false);gw.__ADERA_SEEK__(t*1000);
- c.style.display=t>=27&&t<53?'block':'none';
- if(t>=27&&t<53){c.contentWindow.seek(Math.min(t,43.999));const cw=c.contentDocument.querySelector('#chartwindow');const p=Math.max(0,Math.min(1,(t-43.2)/.8)),e=1-Math.pow(1-p,3);cw.style.transformOrigin='0 0';cw.style.transform=`translateX(${235*e}px) scale(${1-.28*e})`;}
- if(t>=27&&t<53){const cd=c.contentDocument,gd=g.contentDocument,cam=cd.querySelector('#chartcam'),matrix=cam.getScreenCTM();for(const [id,day] of [['pop-bw','20'],['pop-bf','27'],['pop-cm','30']]){const i=c.contentWindow.DATA.series.findIndex(r=>r[0].endsWith(day)),row=c.contentWindow.DATA.series[i],point=new DOMPoint(140+i*100,410-(row[3]-9.4)*430).matrixTransform(matrix),bottom=new DOMPoint(140+i*100,485).matrixTransform(matrix),el=gd.querySelector('#'+id);el.style.left=(point.x-104)+'px';el.style.top='320px';const group=gd.querySelector('#'+id+'-guide');group.style.opacity=el.style.opacity;const line=group.querySelector('line'),circle=group.querySelector('circle');Object.entries({x1:point.x,x2:point.x,y1:420,y2:bottom.y}).forEach(([k,v])=>line.setAttribute(k,v));circle.setAttribute('cx',point.x);circle.setAttribute('cy',point.y);}}
+ const inChart=t>=27&&t<53;
+ a.style.display=inChart?'block':'none';
+ c.style.display='none';
+ if(inChart){a.contentWindow.seek(t-27);}
  const idx=Math.max(0,cuts.findIndex((v,i)=>t>=v&&t<cuts[i+1]));
- const overlay=(t>=27&&t<53)||(t>=76&&t<95)||(t>=127&&t<144);
+ const overlay=(t>=76&&t<95)||(t>=127&&t<144);
  g.style.display=overlay?'block':'none';
- // Preserve Matteo's original animated orbit/background; remove only its foreground when Gemini supplies selected components.
- md.querySelectorAll('.scene-content').forEach(el=>el.style.visibility=overlay||['forecast','events','feed','dashboard'].includes(el.closest('.scene').id)?'hidden':'visible');
- if(overlay){md.querySelectorAll('.scene').forEach(el=>{el.style.opacity=el.id===(t>=27&&t<53?'forecast':ids[idx])?'1':'0';el.style.transform='none'});}
+ if(t>=127&&t<144){
+   const gd=g.contentDocument;
+   const dashEl=gd&&gd.querySelector('.unified-dash');
+   if(dashEl){
+     const dt=t-127;
+     const easeIO=x=>x<.5?4*x*x*x:1-Math.pow(-2*x+2,3)/2;
+     const seg=(a,b)=>Math.max(0,Math.min(1,(dt-a)/(b-a)));
+     const z1=easeIO(seg(3.8,5.6));
+     const pan=easeIO(seg(8.2,10.2));
+     const zOut=easeIO(seg(13.2,15.6));
+     let sc=1+0.46*z1-0.04*pan-0.40*zOut;
+     let ox=50-18*z1+44*pan-24*zOut;
+     let oy=50-22*z1+30*pan-8*zOut;
+     dashEl.style.transformOrigin=ox.toFixed(2)+'% '+oy.toFixed(2)+'%';
+     dashEl.style.transform='scale('+sc.toFixed(4)+')';
+   }
+ }
+ // Preserve Matteo's original animated orbit/background; remove only its foreground when Gemini/HyperFrames supplies selected components.
+ md.querySelectorAll('.scene-content').forEach(el=>el.style.visibility=inChart||overlay||['forecast','events','feed','dashboard'].includes(el.closest('.scene').id)?'hidden':'visible');
+ if(overlay){md.querySelectorAll('.scene').forEach(el=>{el.style.opacity=el.id===ids[idx]?'1':'0';el.style.transform='none'});}
  window.currentTime=t;
 };
 function fit(){document.querySelector('#stage').style.transform=`scale(${Math.min(innerWidth/1920,innerHeight/1080)})`}fit();addEventListener('resize',fit);

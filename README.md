@@ -11,7 +11,7 @@
 </p>
 
 > **Dashboard standalone (sola lettura):** apri direttamente [`dashboard/preview.html#/overview`](dashboard/preview.html) nel browser senza server né chiamate API.  
-> **Video pitch unificato (150s con voce):** [`video/ADERA-UNIFICATO-150s-CON-VOCE.mp4`](video/ADERA-UNIFICATO-150s-CON-VOCE.mp4)
+> **Video pitch unificato — taglio rapido (140.5s con voce):** [`video/ADERA-DINAMICO-TAGLIO-RAPIDO.mp4`](video/ADERA-DINAMICO-TAGLIO-RAPIDO.mp4) *(versione estesa 150s: [`ADERA-UNIFICATO-150s-CON-VOCE.mp4`](video/ADERA-UNIFICATO-150s-CON-VOCE.mp4))*
 
 ---
 
@@ -234,7 +234,8 @@ Manteniamo piena trasparenza sui limiti emersi durante sviluppo e validazione:
 │   ├── personas_pilot_4/              # Pilota iniziale 4 personas Beauty (48 valutazioni Decision 1 + 4 interviste)
 │   └── personas_600/                  # Dataset completo 600 personas, 7.200 valutazioni Decision 1 (SQLite+JSON) e 600 interviste cieche
 │
-├── video/                             # Asset, copione, audio, sorgenti e render finale video 150s
+├── video/                             # Asset, copione, audio, sorgenti e render video
+│   ├── ADERA-DINAMICO-TAGLIO-RAPIDO.mp4
 │   ├── ADERA-UNIFICATO-150s-CON-VOCE.mp4
 │   ├── ADERA-UNIFICATO-150s.mp4
 │   ├── COPIONE.md / copione-cues.json / SINCRONIZZAZIONE.md

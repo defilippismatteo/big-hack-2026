@@ -1,0 +1,68 @@
+<!doctype html>
+<html lang="it" data-resolution="landscape">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <title>ADERA Chart Scene — Main (Opzione A Promossa)</title>
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+      }
+      html,
+      body {
+        width: 1920px;
+        height: 1080px;
+        overflow: hidden;
+        background: #35214f;
+      }
+      #root {
+        position: relative;
+        width: 1920px;
+        height: 1080px;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="26"
+      data-width="1920"
+      data-height="1080"
+    >
+      <div
+        id="option-a-servo"
+        class="clip"
+        data-composition-id="option-a-servo"
+        data-composition-src="compositions/option-a-servo.html"
+        data-variable-values='{"show_label":"false"}'
+        data-start="0"
+        data-duration="26"
+        data-track-index="0"
+        data-width="1920"
+        data-height="1080"
+        style="position: absolute; inset: 0"
+      ></div>
+      <audio
+        id="narration"
+        class="clip"
+        src="assets/narration-26s.mp3"
+        data-start="0"
+        data-duration="26"
+        data-volume="1"
+        data-track-index="1"
+      ></audio>
+    </div>
+    <script>
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+      tl.set({}, {}, 26);
+      window.__timelines["main"] = tl;
+      tl.seek(0);
+    </script>
+  </body>
+</html>

@@ -1,0 +1,308 @@
+<!doctype html>
+<html
+  lang="it"
+  data-composition-variables='[{"id":"show_label","type":"enum","role":"style","label":"Mostra etichetta opzione","default":"false","options":[{"value":"false","label":"Nascosta (Main)"},{"value":"true","label":"Visibile (Preview)"}]}]'
+>
+  <head>
+    <meta charset="UTF-8" />
+    <title>ADERA Chart — Opzione A (Camera Servo)</title>
+  </head>
+  <body>
+    <template>
+      <div id="root" data-composition-id="option-a-servo" data-duration="26" data-fps="30">
+        <style>
+          @font-face { font-family: "Inter"; src: url("assets/inter.woff2") format("woff2"); font-weight: 100 900; font-display: swap; }
+          *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+          #root { position: absolute; inset: 0; overflow: hidden; background: #35214f; color: #f6f5f9; font-family: "Inter", sans-serif; isolation: isolate; }
+          .opt-bg-glow { position: absolute; inset: 0; background: radial-gradient(circle at 82% 16%, rgba(136, 97, 232, 0.2), transparent 48%), radial-gradient(circle at 14% 88%, rgba(173, 137, 255, 0.12), transparent 45%); pointer-events: none; }
+          .opt-header { position: absolute; left: 120px; top: 52px; width: 1120px; z-index: 4; }
+          .opt-eyebrow { font-size: 22px; font-weight: 700; letter-spacing: 3.4px; text-transform: uppercase; color: #d9c8ff; margin-bottom: 10px; }
+          .opt-title { font-size: 62px; font-weight: 780; letter-spacing: -2.4px; line-height: 1.04; color: #ffffff; }
+          .opt-sub { margin-top: 10px; font-size: 28px; font-weight: 500; color: #d5c7e6; }
+          .opt-readout { position: absolute; right: 120px; top: 66px; min-width: 400px; padding: 16px 24px; border-radius: 18px; background: rgba(255, 255, 255, 0.08); border: 1px solid rgba(222, 208, 255, 0.28); display: flex; align-items: center; justify-content: space-between; gap: 20px; z-index: 4; }
+          .opt-readout-left { display: flex; flex-direction: column; gap: 4px; }
+          .opt-readout-tag { font-size: 15px; font-weight: 700; letter-spacing: 1.4px; text-transform: uppercase; color: #d9c8ff; }
+          .opt-readout-day { font-size: 28px; font-weight: 760; color: #ffffff; font-variant-numeric: tabular-nums; }
+          .opt-readout-val { font-size: 40px; font-weight: 800; letter-spacing: -1.4px; color: #ded0ff; font-variant-numeric: tabular-nums; }
+          .opt-chartwindow { position: absolute; left: 120px; top: 265px; width: 1680px; height: 560px; border-radius: 22px; border: 1px solid #80649b; background: #3d275b; box-shadow: 0 28px 80px rgba(14, 7, 26, 0.45); overflow: hidden; transform-origin: 0 0; z-index: 3; will-change: transform, opacity; }
+          .opt-cam-world { position: absolute; inset: 0; transform-origin: 50% 50%; will-change: transform; }
+          .opt-halo { position: absolute; width: 260px; height: 260px; border-radius: 50%; background: radial-gradient(circle, rgba(173, 137, 255, 0.38) 0%, rgba(136, 97, 232, 0.16) 45%, transparent 72%); pointer-events: none; will-change: transform, opacity; }
+          .opt-defocus { position: absolute; inset: 0; pointer-events: none; opacity: 0; backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px); -webkit-mask-image: radial-gradient(ellipse 64% 60% at 50% 50%, transparent 56%, rgba(0, 0, 0, 0.85) 94%); mask-image: radial-gradient(ellipse 64% 60% at 50% 50%, transparent 56%, rgba(0, 0, 0, 0.85) 94%); }
+          .opt-tip-pill { position: absolute; padding: 8px 14px; border-radius: 12px; background: #27173d; border: 1.5px solid #ad89ff; color: #ffffff; font-size: 20px; font-weight: 760; font-variant-numeric: tabular-nums; white-space: nowrap; box-shadow: 0 10px 26px rgba(14, 7, 26, 0.55); pointer-events: none; z-index: 4; }
+          .opt-guides { position: absolute; inset: 0; width: 1920px; height: 1080px; pointer-events: none; z-index: 5; }
+          .opt-events { position: absolute; inset: 0; pointer-events: none; z-index: 6; }
+          .opt-ev-card { position: absolute; top: 220px; width: 218px; padding: 12px 14px; border-radius: 14px; background: #ffffff; border: 1px solid #e4dbf2; color: #35214f; box-shadow: 0 16px 38px rgba(14, 7, 26, 0.35); }
+          .opt-ev-date { display: block; font-size: 14px; font-weight: 750; letter-spacing: 0.4px; color: #633bc4; }
+          .opt-ev-title { display: block; margin-top: 2px; font-size: 22px; font-weight: 800; letter-spacing: -0.5px; color: #35214f; }
+          .opt-ev-meta { display: block; margin-top: 3px; font-size: 14px; font-weight: 600; color: #534463; font-variant-numeric: tabular-nums; }
+          .opt-models { position: absolute; left: 120px; right: 120px; top: 794px; height: 224px; display: grid; grid-template-columns: 1fr 1fr; gap: 48px; z-index: 6; }
+          .opt-model-card { background: #ffffff; border: 1px solid #e4dbf2; border-radius: 20px; padding: 22px 28px; color: #35214f; box-shadow: 0 20px 52px rgba(14, 7, 26, 0.35); display: flex; flex-direction: column; justify-content: space-between; }
+          .opt-model-head { display: flex; align-items: center; justify-content: space-between; }
+          .opt-model-brand { display: flex; align-items: center; gap: 14px; }
+          .opt-model-brand img { width: 46px; height: 46px; object-fit: contain; }
+          .opt-model-brand h3 { font-size: 32px; font-weight: 800; letter-spacing: -1px; color: #35214f; }
+          .opt-model-tag { padding: 7px 14px; border-radius: 999px; background: #efe9fc; color: #562eb2; font-size: 15px; font-weight: 700; }
+          .opt-model-metrics { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; margin-top: 14px; }
+          .opt-m-box { background: #f7f4fc; border: 1px solid #e7def7; border-radius: 12px; padding: 12px 14px; }
+          .opt-m-box span { display: block; font-size: 14px; font-weight: 650; color: #534463; }
+          .opt-m-box strong { display: block; margin-top: 4px; font-size: 24px; font-weight: 800; letter-spacing: -0.5px; color: #35214f; font-variant-numeric: tabular-nums; }
+          .opt-opt-pill { position: absolute; left: 120px; bottom: 22px; font-size: 15px; font-weight: 650; letter-spacing: 1px; text-transform: uppercase; color: #cec2df; z-index: 4; }
+          .opt-scan-beam { position: absolute; top: 56px; bottom: 124px; left: 175px; width: 3px; background: linear-gradient(180deg, transparent, #decfff 24%, #8861e8 76%, transparent); box-shadow: 0 0 18px rgba(173, 137, 255, 0.55); pointer-events: none; z-index: 3; }
+          .opt-trend-chip { position: absolute; top: 96px; padding: 10px 18px; border-radius: 999px; background: rgba(53, 33, 79, 0.9); border: 1px solid rgba(222, 208, 255, 0.44); color: #f6f5f9; font-size: 19px; font-weight: 700; letter-spacing: -0.2px; pointer-events: none; z-index: 3; }
+        </style>
+
+        <div class="opt-bg-glow"></div>
+
+        <header class="opt-header" id="oa-header">
+          <div class="opt-eyebrow" data-layout-ignore>Forecast / CPM · FGR-AD09</div>
+          <h1 class="opt-title">Segui la previsione.</h1>
+          <p class="opt-sub">16–30 novembre 2026 · serie salvata · CTR 0,809%</p>
+        </header>
+
+        <div class="opt-readout" id="oa-readout">
+          <div class="opt-readout-left">
+            <span class="opt-readout-tag" id="oa-phase" data-layout-ignore>Vista completa</span>
+            <span class="opt-readout-day" id="oa-day" data-layout-ignore>16/11/2026</span>
+          </div>
+          <div class="opt-readout-val" id="oa-cpm" data-layout-ignore>9,49 €</div>
+        </div>
+
+        <div class="opt-chartwindow" id="oa-window" data-hold>
+          <div class="opt-cam-world" id="oa-world" data-layout-allow-overflow>
+            <div class="opt-halo" id="oa-halo"></div>
+            <div class="opt-scan-beam" id="oa-scan" data-layout-ignore></div>
+            <div class="opt-trend-chip" id="oa-chip-trend" style="left: 330px" data-layout-ignore>Trend continuo 16–30/11</div>
+            <div class="opt-trend-chip" id="oa-chip-clean" style="left: 840px" data-layout-ignore>Nessun picco sintetico</div>
+            <svg id="oa-svg" viewBox="0 0 1680 560" width="1680" height="560" data-layout-ignore></svg>
+            <div class="opt-tip-pill" id="oa-tip-pill" data-layout-ignore>16/11 · 9,49 €</div>
+          </div>
+          <div class="opt-defocus" id="oa-defocus"></div>
+        </div>
+
+        <svg class="opt-guides" id="oa-guides" viewBox="0 0 1920 1080" data-layout-ignore></svg>
+
+        <div class="opt-events" id="oa-events">
+          <article class="opt-ev-card" id="oa-ev-bw" style="left: 648px" data-layout-ignore>
+            <span class="opt-ev-date">20/11/2026</span>
+            <strong class="opt-ev-title">Black Week</strong>
+            <small class="opt-ev-meta">CPM 9,76 € · CTR 0,809%</small>
+          </article>
+          <article class="opt-ev-card" id="oa-ev-bf" style="left: 1146px" data-layout-ignore>
+            <span class="opt-ev-date">27/11/2026</span>
+            <strong class="opt-ev-title">Black Friday</strong>
+            <small class="opt-ev-meta">CPM 10,07 € · CTR 0,809%</small>
+          </article>
+          <article class="opt-ev-card" id="oa-ev-cm" style="left: 1410px" data-layout-ignore>
+            <span class="opt-ev-date">30/11/2026</span>
+            <strong class="opt-ev-title">Cyber Monday</strong>
+            <small class="opt-ev-meta">CPM 10,12 € · CTR 0,809%</small>
+          </article>
+        </div>
+
+        <div class="opt-models" id="oa-models">
+          <article class="opt-model-card" id="oa-m-tim" data-layout-ignore>
+            <div class="opt-model-head">
+              <div class="opt-model-brand">
+                <img src="assets/mistral.svg" alt="Mistral" />
+                <h3>Timestral 28M</h3>
+              </div>
+              <span class="opt-model-tag">Modello CPM</span>
+            </div>
+            <div class="opt-model-metrics">
+              <div class="opt-m-box"><span>Fold 2 · CPM MAE</span><strong>0,884 €</strong></div>
+              <div class="opt-m-box"><span>Fold 2 · CPM WMAE</span><strong>0,707 €</strong></div>
+              <div class="opt-m-box"><span>CTR stimato</span><strong>Baseline 14gg</strong></div>
+            </div>
+          </article>
+          <article class="opt-model-card" id="oa-m-cat" data-layout-ignore>
+            <div class="opt-model-head">
+              <div class="opt-model-brand"><img src="assets/catboost.svg" alt="CatBoost" /><h3>CatBoost</h3></div>
+              <span class="opt-model-tag">Validazione 02–15/11</span>
+            </div>
+            <div class="opt-model-metrics">
+              <div class="opt-m-box"><span>CatBoost CTR MAE</span><strong>0,274 pp</strong></div>
+              <div class="opt-m-box"><span>Baseline 14gg CTR</span><strong>0,316 pp</strong></div>
+              <div class="opt-m-box"><span>Mix 50/50 CPM MAE</span><strong>0,874 €</strong></div>
+            </div>
+          </article>
+        </div>
+
+        <div class="opt-opt-pill" data-layout-ignore>Opzione A · Camera Servo Push-In + Pull-Back</div>
+
+        <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+        <script>
+          (function () {
+            "use strict";
+            var vars = window.__hyperframes && window.__hyperframes.getVariables ? window.__hyperframes.getVariables() : {};
+            var badgeEl = document.querySelector(".opt-opt-pill");
+            if (badgeEl && vars.show_label !== "true") badgeEl.style.display = "none";
+            var NS = "http://www.w3.org/2000/svg";
+            var SERIES = [["2026-11-16",9.494775],["2026-11-17",9.561391],["2026-11-18",9.604424],["2026-11-19",9.677681],["2026-11-20",9.762157],["2026-11-21",9.733823],["2026-11-22",9.689617],["2026-11-23",9.884194],["2026-11-24",9.944378],["2026-11-25",9.968093],["2026-11-26",10.043659],["2026-11-27",10.074528],["2026-11-28",10.037266],["2026-11-29",9.947334],["2026-11-30",10.118596]];
+            var W = 1680, H = 560, X_LEFT = 175, X_RIGHT = 1555, Y_TOP = 86, Y_BOT = 428, Y_MIN = 9.4, Y_MAX = 10.2;
+            function px(i) { return X_LEFT + (i / (SERIES.length - 1)) * (X_RIGHT - X_LEFT); }
+            function py(v) { return Y_BOT - ((v - Y_MIN) / (Y_MAX - Y_MIN)) * (Y_BOT - Y_TOP); }
+            var pts = SERIES.map(function (row, i) {
+              return { i: i, day: row[0].slice(8) + "/11", fullDay: row[0].slice(8) + "/11/2026", val: row[1], x: px(i), y: py(row[1]) };
+            });
+
+            var svg = document.getElementById("oa-svg");
+            function addEl(tag, attrs, parent) {
+              var el = document.createElementNS(NS, tag);
+              for (var k in attrs) el.setAttribute(k, String(attrs[k]));
+              (parent || svg).appendChild(el);
+              return el;
+            }
+            var defs = addEl("defs", {});
+            var grad = addEl("linearGradient", { id: "oa-area-grad", x1: 0, y1: 0, x2: 0, y2: 1 }, defs);
+            addEl("stop", { offset: "0%", "stop-color": "#AD89FF", "stop-opacity": "0.34" }, grad);
+            addEl("stop", { offset: "100%", "stop-color": "#AD89FF", "stop-opacity": "0.02" }, grad);
+            addEl("rect", { x: 115, y: 42, width: 1495, height: 422, rx: 16, fill: "#FFFFFF", "fill-opacity": "0.055" });
+
+            var gridGroup = addEl("g", { id: "oa-grid-group" });
+            [9.4, 9.6, 9.8, 10.0, 10.2].forEach(function (v) {
+              var yy = py(v);
+              addEl("line", { x1: 125, y1: yy, x2: 1600, y2: yy, stroke: "#FFFFFF", "stroke-opacity": "0.14", "stroke-width": "1.5" }, gridGroup);
+              addEl("text", { x: 42, y: yy + 8, fill: "#D4C6E6", "font-family": "Inter, sans-serif", "font-size": "22", "font-weight": "600" }, gridGroup).textContent = v.toFixed(1).replace(".", ",") + " €";
+            });
+            [0, 2, 4, 6, 8, 10, 11, 12, 14].forEach(function (idx) {
+              var p = pts[idx], isEv = idx === 4 || idx === 11 || idx === 14;
+              addEl("text", {
+                x: p.x, y: 506, "text-anchor": "middle", fill: isEv ? "#EAE0FF" : "#C9BADB",
+                "font-family": "Inter, sans-serif", "font-size": "21", "font-weight": isEv ? "780" : "600",
+              }, gridGroup).textContent = p.day;
+            });
+
+            var pathD = pts.map(function (p, i) { return (i ? "L" : "M") + p.x.toFixed(2) + "," + p.y.toFixed(2); }).join(" ");
+            var areaD = pathD + " L" + pts[pts.length - 1].x.toFixed(2) + "," + Y_BOT + " L" + pts[0].x.toFixed(2) + "," + Y_BOT + " Z";
+            var areaEl = addEl("path", { d: areaD, fill: "url(#oa-area-grad)", opacity: "0" });
+            var curveEl = addEl("path", { d: pathD, fill: "none", stroke: "#AD89FF", "stroke-width": "7.5", "stroke-linecap": "round", "stroke-linejoin": "round" });
+            var totalLen = curveEl.getTotalLength();
+            curveEl.style.strokeDasharray = totalLen + " " + totalLen;
+            curveEl.style.strokeDashoffset = totalLen;
+
+            var evNodes = [4, 11, 14].map(function (idx) {
+              return addEl("circle", { cx: pts[idx].x, cy: pts[idx].y, r: 9, fill: "#35214F", stroke: "#DED0FF", "stroke-width": "3.5", opacity: "0" });
+            });
+            var tipEl = addEl("circle", { cx: pts[0].x, cy: pts[0].y, r: 12, fill: "#FFFFFF", stroke: "#8861E8", "stroke-width": "6" });
+
+            var guidesSvg = document.getElementById("oa-guides");
+            var guideGroups = [4, 11, 14].map(function (idx) {
+              var sx = 330 + pts[idx].x * 0.75, sy = 342 + pts[idx].y * 0.75;
+              var g = addEl("g", { opacity: "0" }, guidesSvg);
+              addEl("line", { x1: sx.toFixed(1), y1: "314", x2: sx.toFixed(1), y2: sy.toFixed(1), stroke: "#C7ABFF", "stroke-width": "2.2", "stroke-dasharray": "6 6" }, g);
+              addEl("circle", { cx: sx.toFixed(1), cy: sy.toFixed(1), r: "6.5", fill: "#FFFFFF", stroke: "#8861E8", "stroke-width": "3" }, g);
+              return g;
+            });
+
+            var worldEl = document.getElementById("oa-world");
+            var haloEl = document.getElementById("oa-halo");
+            var tipPill = document.getElementById("oa-tip-pill");
+            var readoutDay = document.getElementById("oa-day");
+            var readoutCpm = document.getElementById("oa-cpm");
+            var readoutPhase = document.getElementById("oa-phase");
+
+            var cam = { scale: 1, focusX: pts[0].x, focusY: pts[0].y, zoomWeight: 0 };
+            var drawState = { p: 0 };
+
+            function samplePoint(p) {
+              var f = Math.max(0, Math.min(1, p)) * (pts.length - 1);
+              var idx = Math.min(pts.length - 2, Math.floor(f)), frac = f - idx;
+              var a = pts[idx], b = pts[idx + 1];
+              var near = pts[Math.round(f)];
+              return { x: a.x + (b.x - a.x) * frac, y: a.y + (b.y - a.y) * frac, val: a.val + (b.val - a.val) * frac, day: near.day, fullDay: near.fullDay };
+            }
+
+            function applyState() {
+              var cur = samplePoint(drawState.p);
+              curveEl.style.strokeDashoffset = (totalLen * (1 - drawState.p)).toFixed(2);
+              tipEl.setAttribute("cx", cur.x.toFixed(2));
+              tipEl.setAttribute("cy", cur.y.toFixed(2));
+              haloEl.style.left = (cur.x - 130).toFixed(1) + "px";
+              haloEl.style.top = (cur.y - 130).toFixed(1) + "px";
+              tipPill.style.left = Math.min(W - 180, Math.max(20, cur.x - 74)).toFixed(1) + "px";
+              tipPill.style.top = (cur.y > 120 ? cur.y - 62 : cur.y + 24).toFixed(1) + "px";
+              tipPill.textContent = cur.day + " · " + cur.val.toFixed(2).replace(".", ",") + " €";
+              readoutDay.textContent = cur.fullDay;
+              readoutCpm.textContent = cur.val.toFixed(2).replace(".", ",") + " €";
+
+              var S = cam.scale, maxTx = (W / 2) * (S - 1), maxTy = (H / 2) * (S - 1);
+              var fx = cur.x * cam.zoomWeight + cam.focusX * (1 - cam.zoomWeight);
+              var fy = cur.y * cam.zoomWeight + cam.focusY * (1 - cam.zoomWeight);
+              var tx = S > 1.001 ? Math.max(-maxTx, Math.min(maxTx, -((fx - W / 2) * S))) : 0;
+              var ty = S > 1.001 ? Math.max(-maxTy, Math.min(maxTy, -((fy - H / 2) * S))) : 0;
+              worldEl.style.transform = "translate(" + tx.toFixed(2) + "px, " + ty.toFixed(2) + "px) scale(" + S.toFixed(4) + ")";
+              readoutPhase.textContent = S > 1.2 ? "Zoom su giorno " + cur.day : drawState.p > 0.99 ? "Andamento completo" : "Vista iniziale";
+            }
+
+            gsap.set("#oa-header", { opacity: 0, y: 32 });
+            gsap.set("#oa-readout", { opacity: 0, y: 24 });
+            gsap.set("#oa-window", { opacity: 0, y: 40, scale: 0.96, x: 0 });
+            gsap.set(gridGroup, { opacity: 0 });
+            gsap.set(haloEl, { opacity: 0, scale: 0.65 });
+            gsap.set(tipPill, { opacity: 0, y: 10 });
+            gsap.set("#oa-defocus", { opacity: 0 });
+            gsap.set("#oa-scan", { opacity: 0, x: 0 });
+            gsap.set(["#oa-chip-trend", "#oa-chip-clean"], { opacity: 0, y: 12, scale: 0.94 });
+            gsap.set(["#oa-ev-bw", "#oa-ev-bf", "#oa-ev-cm"], { opacity: 0, y: 18, scale: 0.95 });
+            gsap.set(["#oa-m-tim", "#oa-m-cat"], { opacity: 0, y: 40 });
+            applyState();
+
+            var tl = gsap.timeline({ paused: true });
+
+            tl.fromTo("#oa-header", { opacity: 0, y: 32 }, { opacity: 1, y: 0, duration: 0.72, ease: "power3.out" }, 0.05);
+            tl.fromTo("#oa-readout", { opacity: 0, y: 24 }, { opacity: 1, y: 0, duration: 0.65, ease: "power3.out" }, 0.14);
+            tl.fromTo("#oa-window", { opacity: 0, y: 40, scale: 0.96, x: 0 }, { opacity: 1, y: 0, scale: 1, x: 0, duration: 0.8, ease: "power3.out" }, 0.08);
+            tl.fromTo(gridGroup, { opacity: 0 }, { opacity: 1, duration: 0.55, ease: "power2.out" }, 0.25);
+
+            // Zoom-in servo entrance onto 16/11
+            tl.fromTo(cam, { scale: 1, focusX: pts[0].x, focusY: pts[0].y, zoomWeight: 0 }, { scale: 1.88, focusX: pts[0].x, focusY: pts[0].y, zoomWeight: 0.2, duration: 1.25, ease: "power2.inOut", onUpdate: applyState }, 1.05);
+            tl.fromTo(haloEl, { opacity: 0, scale: 0.65 }, { opacity: 0.9, scale: 1, duration: 0.7, ease: "power2.out" }, 1.55);
+            tl.fromTo(tipPill, { opacity: 0, y: 10 }, { opacity: 1, y: 0, duration: 0.45, ease: "power2.out" }, 1.75);
+
+            // Smooth track & draw
+            tl.to(cam, { zoomWeight: 1, duration: 0.9, ease: "power1.inOut", onUpdate: applyState }, 2.3);
+            tl.fromTo(drawState, { p: 0 }, { p: 1, duration: 7.4, ease: "none", onUpdate: applyState }, 2.3);
+            tl.fromTo(areaEl, { opacity: 0 }, { opacity: 1, duration: 1.8, ease: "power1.out" }, 3.0);
+
+            // Zoom-out on cue "poi la vista si allarga"
+            tl.to(cam, { scale: 1, zoomWeight: 0, duration: 2.05, ease: "power3.out", onUpdate: applyState }, 9.7);
+            tl.fromTo("#oa-defocus", { opacity: 0 }, { opacity: 0.68, duration: 0.65, ease: "power2.out" }, 9.7);
+            tl.to("#oa-defocus", { opacity: 0, duration: 1.0, ease: "power2.in" }, 10.35);
+            tl.to(haloEl, { opacity: 0.35, scale: 0.85, duration: 1.1, ease: "power2.out" }, 9.9);
+
+            // Trend-scan sweep + contextual micro-badges during 12.0-16.2s readability window
+            tl.to(haloEl, { opacity: 0.62, scale: 1.08, duration: 2.1, ease: "sine.inOut" }, 12.0);
+            tl.to(haloEl, { opacity: 0.28, scale: 0.92, duration: 2.1, ease: "sine.inOut" }, 14.1);
+            tl.to("#oa-scan", { opacity: 0.85, duration: 0.35, ease: "power2.out" }, 11.95);
+            tl.to("#oa-scan", { x: 1380, duration: 3.6, ease: "sine.inOut" }, 12.05);
+            tl.to("#oa-scan", { opacity: 0, duration: 0.45, ease: "power2.in" }, 15.6);
+            tl.to("#oa-chip-trend", { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "power3.out" }, 12.45);
+            tl.to("#oa-chip-clean", { opacity: 1, y: 0, scale: 1, duration: 0.45, ease: "power3.out" }, 14.1);
+
+            // Symmetric dock scale for events & models
+            tl.to("#oa-window", { x: 210, y: 77, scale: 0.75, duration: 0.95, ease: "power3.inOut" }, 16.4);
+            tl.to(["#oa-chip-trend", "#oa-chip-clean"], { opacity: 0, y: -8, duration: 0.32, ease: "power2.in" }, 16.25);
+            tl.to(tipPill, { opacity: 0, duration: 0.35, ease: "power2.in" }, 16.4);
+            tl.to(haloEl, { opacity: 0, duration: 0.35 }, 16.4);
+
+            ["#oa-ev-bw", "#oa-ev-bf", "#oa-ev-cm"].forEach(function (id, idx) {
+              var at = 17.05 + idx * 0.42;
+              tl.fromTo(id, { opacity: 0, y: 18, scale: 0.95 }, { opacity: 1, y: 0, scale: 1, duration: 0.48, ease: "power3.out" }, at);
+              tl.fromTo(guideGroups[idx], { opacity: 0 }, { opacity: 1, duration: 0.42, ease: "power2.out" }, at + 0.06);
+              tl.fromTo(evNodes[idx], { opacity: 0 }, { opacity: 1, duration: 0.38, ease: "power2.out" }, at + 0.06);
+            });
+
+            tl.fromTo("#oa-m-tim", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.65, ease: "power3.out" }, 19.1);
+            tl.fromTo("#oa-m-cat", { opacity: 0, y: 40 }, { opacity: 1, y: 0, duration: 0.65, ease: "power3.out" }, 21.4);
+
+            tl.set({}, {}, 26.0);
+            tl.seek(0);
+
+            window.__timelines = window.__timelines || {};
+            window.__timelines["option-a-servo"] = tl;
+          })();
+        </script>
+      </div>
+    </template>
+  </body>
+</html>

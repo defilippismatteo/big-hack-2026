@@ -133,6 +133,7 @@
   tl.fromTo(".shimmer-sweep-target", { "--shimmer-pos": "-20%" }, {
     "--shimmer-pos": "120%", duration: 1.45, ease: "power2.inOut"
   }, 4.55);
+  tl.to(".open-deck", { y: -26, scale: 1.035, rotation: 0.4, duration: 1.85, ease: "sine.inOut" }, 6.9);
   brand("brand", 9);
   tl.to("#brand .logo", { scale: 1.055, duration: 2.6, ease: "sine.inOut" }, 12.8);
 
@@ -140,10 +141,15 @@
   reveal(".data-table", 16.5, { x: 85 }, .85, "expo.out");
   reveal("#kit-rows tr", 17.0, { x: 28, stagger: .23 }, .48, "power2.out");
   reveal(".row-count", 18.2, { y: 30, scale: .975 }, .75, "back.out(1.15)");
+  // Riempiamo la pausa 19.0–22.5s con scansione delle righe e focus sul totale record
+  tl.to("#record-count", { scale: 1.06, transformOrigin: "0% 50%", duration: .42, repeat: 1, yoyo: true, ease: "sine.inOut" }, 19.25);
+  tl.to("#kit-rows tr", { x: 8, backgroundColor: "#f3edff", stagger: { each: .24, repeat: 1, yoyo: true }, duration: .34, ease: "sine.inOut" }, 19.3);
   tl.to(".data-table", { scale: .97, y: -8, duration: .85, ease: "sine.inOut" }, 22.5);
   tl.to("#kit-rows tr", { backgroundColor: "#f0e8ff", stagger: .12, duration: .43, ease: "power2.out" }, 22.58);
   reveal(".data-strip", 23.1, { y: 43, scaleX: .87 }, .78, "expo.out");
-  tl.to(".data-strip strong", { x: 7, duration: .48, repeat: 1, yoyo: true, ease: "sine.inOut" }, 24.8);
+  tl.to(".data-strip strong", { x: 7, duration: .45, repeat: 1, yoyo: true, ease: "sine.inOut" }, 24.45);
+  tl.to(".data-table", { scale: 1.005, y: -14, duration: 2.35, ease: "sine.inOut" }, 24.3);
+  tl.to(".data-strip strong", { x: 9, duration: .42, repeat: 1, yoyo: true, ease: "sine.inOut" }, 25.85);
 
   enterCopy("forecast", 27);
   reveal(".chart-plate", 27.45, { y: 58 }, .84, "expo.out");
@@ -176,15 +182,31 @@
   link.style.strokeDasharray = linkLength;
   link.style.strokeDashoffset = linkLength;
   tl.to(link, { strokeDashoffset: 0, duration: 1.55, ease: "power2.inOut" }, 55.0);
-  reveal(".network-lines circle", 55.41, { scale: .1, transformOrigin: "50% 50%" }, .55, "back.out(1.5)");
+  reveal(".network-lines circle:first-of-type", 55.41, { scale: .1, transformOrigin: "50% 50%" }, .55, "back.out(1.5)");
   reveal(".agent", 56.0, { y: 58, stagger: .58 }, .71, "expo.out");
+  // Impulsi dati lungo le diramazioni SVG tra T3 Code e i 3 modelli (57.6–64.0s)
+  for (const [id, tx, at] of [["#np-1", 132, 57.6], ["#np-2", 410, 58.65], ["#np-3", 688, 59.7]]) {
+    tl.set(id, { attr: { cx: 410, cy: 230 }, opacity: 0 }, at);
+    tl.to(id, { opacity: 1, duration: .18, ease: "power1.out" }, at);
+    tl.to(id, { attr: { cy: 340 }, duration: .42, ease: "power1.inOut" }, at);
+    if (tx !== 410) {
+      tl.to(id, { attr: { cx: tx }, duration: .52, ease: "power1.inOut" }, at + .42);
+      tl.to(id, { attr: { cy: 437 }, duration: .4, ease: "power1.in" }, at + .94);
+      tl.to(id, { opacity: 0, duration: .25 }, at + 1.25);
+    } else {
+      tl.to(id, { attr: { cy: 437 }, duration: .52, ease: "power1.in" }, at + .42);
+      tl.to(id, { opacity: 0, duration: .25 }, at + .88);
+    }
+  }
   tl.to(".agent", { y: -12, stagger: .51, duration: .62, repeat: 1, yoyo: true, ease: "sine.inOut" }, 60.1);
+  tl.to(".agent-hub", { scale: 1.045, duration: 1.15, repeat: 1, yoyo: true, ease: "sine.inOut" }, 62.4);
 
   enterCopy("persona", 65);
   reveal(".persona-plate", 65.5, { x: 80, scale: .935 }, .92, "expo.out");
   reveal(".hero-portrait", 66.08, { y: 90 }, .91, "power4.out");
   reveal(".persona-meta > *", 67.02, { y: 23, stagger: .28 }, .62, "sine.out");
-  tl.to(".hero-portrait", { scale: 1.08, y: 11, duration: 4.25, ease: "sine.inOut" }, 69.6);
+  tl.to(".hero-portrait", { scale: 1.09, y: 11, duration: 5.2, ease: "sine.inOut" }, 69.2);
+  tl.to(".persona-plate", { y: -10, duration: 2.0, ease: "sine.inOut" }, 73.6);
 
   enterCopy("feed", 76);
   reveal(".feed-frame", 76.5, { x: 91, rotation: 5 }, .91, "back.out(1.15)");
@@ -213,7 +235,11 @@
   tl.from(".cast", { scale: 2.05, x: -270, y: -139, duration: 2.35, ease: "power3.inOut" }, 95.4);
   reveal(heroCast, 95.32, { scale: .86 }, .68, "back.out(1.35)");
   reveal(".cast-card:not(.hero-cast)", 96.11, { y: 42, scale: .93, stagger: { amount: 1.12, from: 6 } }, .69, "expo.out");
-  tl.to(".cast", { y: -12, scale: 1.025, duration: 2.4, ease: "sine.inOut" }, 100.8);
+  // Spotlight sequenziale sui profili durante 98.0–103.2s
+  for (const [idx, at] of [[2, 98.1], [4, 99.1], [9, 100.1], [7, 101.2]]) {
+    tl.to(`.cast-card:nth-child(${idx})`, { y: -12, scale: 1.055, boxShadow: "0 18px 34px rgba(136,97,232,0.38)", duration: .46, repeat: 1, yoyo: true, ease: "sine.inOut" }, at);
+  }
+  tl.to(".cast", { y: -14, scale: 1.03, duration: 2.6, ease: "sine.inOut" }, 100.8);
 
   enterCopy("signals", 104);
   reveal(".doc", 105.45, { scale: .65, y: 48 }, .86, "expo.out");
@@ -228,16 +254,20 @@
     tl.to(chip, { x: 107, y: -35 + i * 24, scale: .28, opacity: 0, duration: .68, ease: "power3.in" }, 106.12 + i * .22);
   });
   reveal(".signal-rows > div", 106.85, { x: 29, stagger: .23 }, .65, "sine.out");
-  tl.to(".doc", { y: -11, duration: 1.05, ease: "sine.inOut" }, 109.15);
+  tl.to(".signal-rows > div", { x: 10, stagger: { each: .32, repeat: 1, yoyo: true }, duration: .34, ease: "sine.inOut" }, 108.4);
+  tl.to(".doc", { y: -12, duration: 1.6, ease: "sine.inOut" }, 109.4);
 
   enterCopy("interview", 112);
   reveal(".interview-marks span", 113.65, { y: 24, stagger: .22 }, .64, "back.out(1.2)");
   reveal(".lead-question", 114.17, { x: 67, scale: .97 }, .75, "expo.out");
-  tl.to(".conversation", { x: 12, duration: 1.15, ease: "sine.inOut" }, 116.35);
+  tl.to(".lead-question", { scale: 1.022, y: -5, duration: .85, repeat: 1, yoyo: true, ease: "sine.inOut" }, 115.2);
+  tl.to(".conversation", { x: 14, duration: 1.15, ease: "sine.inOut" }, 116.35);
   reveal(".follow-question:nth-child(2)", 118.1, { x: -54 }, .76, "power3.out");
+  tl.to(".follow-question:nth-child(2)", { x: 10, scale: 1.02, duration: .75, repeat: 1, yoyo: true, ease: "sine.inOut" }, 119.15);
   tl.to(".conversation", { x: 0, duration: 1.15, ease: "sine.inOut" }, 120.2);
   reveal(".follow-question:nth-child(3)", 122.1, { y: 49, scale: .96 }, .81, "power3.out");
-  tl.to(".conversation", { y: -13, duration: 1.4, ease: "sine.inOut" }, 124.3);
+  tl.to(".follow-question:nth-child(3)", { scale: 1.024, y: -6, duration: .9, repeat: 1, yoyo: true, ease: "sine.inOut" }, 123.3);
+  tl.to(".conversation", { y: -15, duration: 2.1, ease: "sine.inOut" }, 124.3);
 
   enterCopy("dashboard", 127);
   reveal(".dash-viewport", 127.65, { y: 77, scale: .98 }, .94, "expo.out");

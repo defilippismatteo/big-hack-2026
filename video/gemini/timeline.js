@@ -428,6 +428,22 @@
       s1.style.transform = `translateX(${(-sw3 * 85).toFixed(1)}px) rotate(${(-sw3 * 5).toFixed(2)}deg)`;
       document.getElementById('st-s1').style.opacity = clamp01(sw3 * 1.2).toFixed(3);
 
+      // Subtle human inspection micro-motion between swipes so phone never freezes 4-5s
+      const inspectPulse = Math.sin(lt * 0.0022);
+      const s8PhoneScale = 1 + 0.012 * Math.sin(lt * 0.0014);
+      s8Phone.style.transform = `translateY(${(lerp(40, 0, pEnter) + inspectPulse * 5).toFixed(1)}px) scale(${s8PhoneScale.toFixed(4)})`;
+
+      // Smooth telemetry interpolation across card transitions
+      const mix1 = seg(lt, 5000, 650, EASE.inOutCubic);
+      const mix2 = seg(lt, 9850, 650, EASE.inOutCubic);
+      const a0 = D.feedAssets[0].actions;
+      const a1 = D.feedAssets[1].actions;
+      const a2 = D.feedAssets[2].actions;
+      const curClick = lerp(lerp(a0.click, a1.click, mix1), a2.click, mix2);
+      const curStop = lerp(lerp(a0.stop, a1.stop, mix1), a2.stop, mix2);
+      const curGlance = lerp(lerp(a0.glance, a1.glance, mix1), a2.glance, mix2);
+      const curScroll = lerp(lerp(a0.scroll, a1.scroll, mix1), a2.scroll, mix2);
+
       // Active asset telemetry
       let activeIdx = 0;
       if (lt >= 10300) activeIdx = 2;
@@ -436,14 +452,16 @@
       document.getElementById('s8-counter').textContent = `${activeIdx + 1} / 3`;
       document.getElementById('s8-tel-id').textContent = asset.assetId;
       document.getElementById('s8-asset-status').innerHTML = `Asset attivo: <strong>${asset.assetId}</strong> · ${asset.visualDesc}`;
-      document.getElementById('pf-click').style.width = `${asset.actions.click * 2.2}%`;
-      document.getElementById('pf-stop').style.width = `${asset.actions.stop * 2.2}%`;
-      document.getElementById('pf-glance').style.width = `${asset.actions.glance * 2.2}%`;
-      document.getElementById('pf-scroll').style.width = `${asset.actions.scroll * 2.2}%`;
-      document.getElementById('pv-click').textContent = fmtIt(asset.actions.click, 2) + '%';
-      document.getElementById('pv-stop').textContent = fmtIt(asset.actions.stop, 2) + '%';
-      document.getElementById('pv-glance').textContent = fmtIt(asset.actions.glance, 2) + '%';
-      document.getElementById('pv-scroll').textContent = fmtIt(asset.actions.scroll, 2) + '%';
+      document.getElementById('pf-click').style.width = `${(curClick * 2.2).toFixed(2)}%`;
+      document.getElementById('pf-stop').style.width = `${(curStop * 2.2).toFixed(2)}%`;
+      document.getElementById('pf-glance').style.width = `${(curGlance * 2.2).toFixed(2)}%`;
+      document.getElementById('pf-scroll').style.width = `${(curScroll * 2.2).toFixed(2)}%`;
+      document.getElementById('pv-click').textContent = fmtIt(curClick, 2) + '%';
+      document.getElementById('pv-stop').textContent = fmtIt(curStop, 2) + '%';
+      document.getElementById('pv-glance').textContent = fmtIt(curGlance, 2) + '%';
+      document.getElementById('pv-scroll').textContent = fmtIt(curScroll, 2) + '%';
+      const rightDrift = Math.sin(lt * 0.0017) * 4;
+      s8Right.style.transform = `translateY(${(lerp(26, 0, pTel) + rightDrift).toFixed(1)}px)`;
 
       const toasts = [
         { id: 's8-toast1', start: 4600 },
