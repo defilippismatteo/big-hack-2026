@@ -7,7 +7,7 @@ from pathlib import Path
 root = Path(__file__).resolve().parents[1]
 dist = root / 'dist'
 def data_uri(path):
-    mime = 'font/woff2' if path.suffix == '.woff2' else 'image/svg+xml'
+    mime = {'woff2': 'font/woff2', 'png': 'image/png'}.get(path.suffix.lstrip('.'), 'image/svg+xml')
     return 'data:' + mime + ';base64,' + base64.b64encode(path.read_bytes()).decode()
 css = next((dist / 'assets').glob('index-*.css')).read_text()
 css = re.sub(r'url\(([^)]+)\)', lambda m: 'url(' + data_uri(dist / m[1].strip('\"\'').lstrip('/')) + ')', css)
@@ -15,6 +15,8 @@ css = re.sub(r'url\(([^)]+)\)', lambda m: 'url(' + data_uri(dist / m[1].strip('\
 css = re.sub(r'\d+(?:\.\d+)?(?:d|s|l)?vh', '800px', css)
 js = next((dist / 'assets').glob('index-*.js')).read_text()
 js = js.replace('"/adera.svg"', json.dumps(data_uri(dist / 'adera.svg')))
+for avatar in sorted((dist / 'avatars').glob('*.png')):
+    js = js.replace(f'"/avatars/{avatar.name}"', json.dumps(data_uri(avatar)))
 snapshots = {p.name:json.loads(p.read_text()) for p in (dist / 'data').glob('*.json')}
 bootstrap = 'const snapshots=' + json.dumps(snapshots,ensure_ascii=False).replace('<','\\u003c') + ';window.fetch=async(url)=>new Response(JSON.stringify(snapshots[String(url).split("/").pop()]),{status:200,headers:{"Content-Type":"application/json"}});'
 route = sys.argv[2] if len(sys.argv)>2 else '#/overview'

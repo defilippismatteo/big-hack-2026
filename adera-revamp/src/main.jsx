@@ -13,7 +13,6 @@ import { ForecastAnalytics } from './pages/ForecastAnalytics';
 import { AudienceLab } from './pages/AudienceLab';
 import { CreativeExplorer } from './creatives/CreativeExplorer';
 import './revamp.css';
-import { MotionStudio } from './motion/MotionStudio';
 
 const logo = import.meta.env.BASE_URL + 'adera.svg';
 
@@ -85,7 +84,7 @@ function Header({ current, onMenu, menuOpen }) {
 }
 
 const pages = {
-  process: MotionStudio, overview: Overview, audience: AudienceLab, creatives: CreativeExplorer,
+  overview: Overview, audience: AudienceLab, creatives: CreativeExplorer,
   forecast: ForecastAnalytics, budget: BudgetPlanner, validation: ModelValidation,
 };
 

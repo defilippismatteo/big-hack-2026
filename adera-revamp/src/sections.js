@@ -1,5 +1,5 @@
 import {
-  Film, ChartNoAxesCombined, LayoutGrid, PanelsTopLeft, ShieldCheck, UsersRound, WalletCards,
+  ChartNoAxesCombined, LayoutGrid, PanelsTopLeft, ShieldCheck, UsersRound, WalletCards,
 } from 'lucide-react';
 
 export const groups = ['Workspace', 'Qualità'];
@@ -8,7 +8,6 @@ export const sections = [
   {
     id: 'overview', label: 'Panoramica', group: 'Workspace', icon: LayoutGrid,
   },
-  { id: 'process', label: 'Come funziona', group: 'Workspace', icon: Film },
   {
     id: 'audience', label: 'Pubblici e persone', group: 'Workspace', icon: UsersRound, tone: 'violet',
     description: 'Esplora ipotesi sul pubblico e profili sintetici per segmento.',

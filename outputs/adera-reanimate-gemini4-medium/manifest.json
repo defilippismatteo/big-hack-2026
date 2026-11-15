@@ -1,0 +1,82 @@
+{
+  "project": "adera-reanimate-gemini4-medium",
+  "model": "gemini-4-hydrogen",
+  "harness": "t3-code/antigravity",
+  "skill": "reanimate",
+  "created_at": "2026-11-15",
+  "output": {
+    "html": "outputs/adera-reanimate-gemini4-medium/index.html",
+    "video": "outputs/adera-reanimate-gemini4-medium/adera-presentation-150s.mp4",
+    "resolution": "1920x1080",
+    "fps": 30,
+    "duration_seconds": 150.0,
+    "audio": "none",
+    "subtitles": "none"
+  },
+  "reference": {
+    "file": "/Users/fede/.t3/userdata/attachments/8fbeb383-0c4d-4a5b-a591-edcfe3dc03f7-fdd6f97e-75af-4d73-b48f-febae4a64c6d-mp4.mp4",
+    "resolution": "1920x1080",
+    "fps": 30,
+    "duration_seconds": 60.7,
+    "fidelity": "mixed (motion-faithful on mapped microsequences + ADERA brand/palette/font/copy/150s additions)"
+  },
+  "data_sources": {
+    "overview": "adera-revamp/public/data/overview.json",
+    "model_validation": "adera-revamp/public/data/model-validation.json",
+    "pilot_forecast": "adera-revamp/public/data/pilot-forecast.json",
+    "persona_library": "adera-revamp/public/data/persona-library.json",
+    "product_story": "adera-revamp/public/data/product-story.json",
+    "sha256": {
+      "overview.json": "3b2e8d7bc301a180d4ddc815f9c69353b69440864f731733da8d875bf4eec312",
+      "model-validation.json": "4b48eea98e7b2c9c3ab7221edba8b34adc71b21f6077b3dbc61814ed88bcb25c",
+      "pilot-forecast.json": "1a4d746d81198b304510195ab13826952f8f71cc5f2ee8eac79c859ecd351c73",
+      "persona-library.json": "b81bf9f6dec85d06008f96a6abf01f8199879a19fd86f3bebe7f452df4f73b84",
+      "product-story.json": "d905960485eecc9ac8d3b428b6889fa78a0d196d677b8907c4dc2d41826c8bc3",
+      "adera-original.png": "92eac736aa09a0412ab6ce05714554e00fcaa7dbb100e50da9d16ff184811154",
+      "t3-code.svg": "fbceddbceeb75136fb8e2c702cf0fe459d153b629abbda6262a63d7c4c65e673",
+      "claude.svg": "b150888bc7257af83e3b85d3c2be4294f88986026f8168f6c12fc1fde6697350",
+      "gemini.svg": "2a60c2610c33938a402dc487286f7ba2b02c9816dd448bb34b58af1099cbc3d5",
+      "chatgpt.svg": "2021463df9935dda89cef407aa564bced9d83b4f9b6ae8945d649e56676624f0",
+      "catboost.svg": "0aef57730fca4b1359fabb1d41b54acb429011e3aadd1f84cae95fc38729eb76",
+      "mistral.svg": "fc80b75ec0caa9c1c7c3c5d92b7b895711cc7efac688923038141b645d0253b4",
+      "chiara-hero.png": "9602fccd87a0b617a0b617a7bbb574a0e7f3f6a4ce9b96924b67",
+      "sheet-ten-grid.png": "a6db176d7ffa8e1634a63e674694a3a8bf00bc5f41867f666d01e86ef028a2e5"
+    },
+    "cutoff": "2026-11-15",
+    "overview_method": "ctr_baseline14d__cpm_timestral28m",
+    "forecast_rows": 699,
+    "synthetic_personas": 600,
+    "simulated_decision_evaluations": 7200,
+    "blind_interviews": 600
+  },
+  "assets": {
+    "font": "adera-revamp/node_modules/@fontsource-variable/inter/files/inter-latin-wght-normal.woff2",
+    "brands": [
+      "outputs/adera-video-v1/brands/adera-original.png",
+      "outputs/adera-video-v1/brands/t3-code.svg",
+      "outputs/adera-video-v1/brands/claude.svg",
+      "outputs/adera-video-v1/brands/gemini.svg",
+      "outputs/adera-video-v1/brands/chatgpt.svg",
+      "outputs/adera-video-v1/brands/catboost.svg",
+      "outputs/adera-video-v1/brands/mistral.svg"
+    ],
+    "avatars": {
+      "hero": "outputs/adera-video-v1/avatars/originals/chiara-hero.png (alpha-cleaned -> assets/avatars/chiara-hero.png)",
+      "ten_grid": "outputs/adera-video-v1/avatars/originals/sheet-ten-grid.png (split & alpha-cleaned -> assets/avatars/avatar-01..10.png)",
+      "skipped_checkerboard_sheets": [
+        "sheet-five-grid.png",
+        "sheet-five-row.png"
+      ]
+    },
+    "creative_placeholders": {
+      "FGR-U3": "Typographic HTML/CSS card reconstructed from assetDetails + persona-library descriptions (not original Decision bitmap)",
+      "FGR-B1": "Typographic HTML/CSS card reconstructed from assetDetails + persona-library descriptions (not original Decision bitmap)",
+      "FGR-S1": "Typographic HTML/CSS card reconstructed from assetDetails + persona-library descriptions (not original Decision bitmap)"
+    }
+  },
+  "limitations": [
+    "No generative image API called; FGR-U3, FGR-B1, FGR-S1 use typographic HTML cards clearly marked as kit illustrations.",
+    "overview.json stores aggregated observed totals per adset up to cutoff 2026-11-15 (not daily historical pre-cutoff series), so historical zone shows the verified cutoff aggregate before the temporal gap.",
+    "Decision 1 probabilities are simulated persona action distributions, distinct from measured CTR and kept separate from forecast curves."
+  ]
+}

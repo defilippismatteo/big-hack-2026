@@ -163,7 +163,6 @@ export function Overview({ headingRef }) {
           <ForecastChart timeline={model.timeline} seasonal={model.seasonal} events={data.events} sourceMethod={method} />
           <CreativeSpotlight creative={model.best} />
         </div>
-        <a className="data-panel process-entry" href="#/process"><div><h2>Come arriva un annuncio a una persona sintetica?</h2><p>Guarda il flusso, le probabilità registrate e l’intervista, passo per passo.</p></div><span>Esplora le animazioni <ArrowRight size={17}/></span></a>
         <CampaignDecisions data={data} campaign={campaign} />
         <div className="product-explainer"><div><UsersRound size={22}/><h2>Cosa sono le nostre buyer persona?</h2><p>{data.synthetic?.count ?? 0} profili di persone inventate, con abitudini, bisogni e obiezioni diverse. Valutano gli annunci e aiutano a formulare domande e test: non sono clienti reali.</p><a className="panel-link" href="#/audience">Guarda un profilo e le reazioni <ArrowRight size={15}/></a></div><div><BarChart3 size={22}/><h2>Quanto fidarsi dei numeri?</h2><p>Le previsioni sono verificate su due finestre passate. Non abbiamo risultati futuri del Black Friday né intervalli d’incertezza calibrati. Il kit stesso è simulato.</p><a className="panel-link" href="#/validation">Esamina il confronto fra modelli <ArrowRight size={15}/></a></div></div>
         <p className="overview-source">Dati del kit simulato Wevion · Storico fino al {shortDate(data.source.cutoff)} 2026 · Output Market Mirror {data.source.commit.slice(0, 7)}.</p>

@@ -292,7 +292,7 @@ def build_unified_payload(
             "quant_mean_ecpm_eur": round(mean_ecpm, 2),
         })
 
-    ext_bt = {b["cutoff"]: b for b in val.get("reported_external", {}).get("backtest", [])}
+    ext_bt = {b["cutoff"]: b for b in (val.get("reported_external") or {}).get("backtest", [])}
     folds_out = []
     for idx, f in enumerate(val.get("folds", []), 1):
         bt = ext_bt.get(f["cutoff"], {}).get("annunci", {})

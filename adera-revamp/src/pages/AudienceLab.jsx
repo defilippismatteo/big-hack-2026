@@ -10,7 +10,7 @@ const actions={scroll:'Passa oltre',glance:'Guarda brevemente',stop:'Si sofferma
 function AudienceContent({ data }) {
  const {data:story,phase,retry}=useDashboardData('product-story.json');
  const initial=new URLSearchParams(window.location.hash.split('?')[1]).get('campaign');
- const [campaign,setCampaign]=useState(data.campaigns.some(c=>c.id===initial)?initial:'');
+ const [campaign,setCampaign]=useState(data.campaigns.some(c=>c.id===initial)?initial:(data.campaigns[0]?.id??''));
  const [adset,setAdset]=useState('');
  const heading=useRef(null);
  const selected=data.campaigns.find(c=>c.id===campaign);
@@ -18,7 +18,7 @@ function AudienceContent({ data }) {
  const totalPairs=Object.values(data.simulatedDecision??{}).reduce((s,r)=>s+r.n_personas,0);
  const totalAssets=Object.keys(data.simulatedDecision??{}).length;
  const totalInterviews=story?.reportsSource?.nInterviews??600;
- const pick=id=>{setCampaign(id);setAdset('');setTimeout(()=>{heading.current?.scrollIntoView({block:'start'});heading.current?.focus({preventScroll:true});},0);};
+ const pick=id=>{setCampaign(id);setAdset('');};
  return <>
   <div className="audience-introduction"><div><UsersRound size={25}/><h2>600 Personas sintetiche. 36 annunci valutati e 600 interviste cieche acquisite.</h2><p>Abbiamo generato <strong>{whole(data.synthetic?.count??0)} profili sintetici</strong> (200 per settore, metà generalisti e metà in-target critici). Ogni profilo ha valutato i 12 annunci della propria campagna con <strong>Gemini Decision 1</strong> e ha risposto a un’<strong>intervista cieca indipendente</strong> senza vedere punteggi o metriche.</p></div><div className="audience-coverage"><strong>{whole(totalPairs)}</strong><span>valutazioni Decision 1</span><small>{totalAssets} asset analizzati · {whole(totalInterviews)} interviste cieche acquisite</small></div></div>
   <div className="section-line"><h2>Scegli una campagna</h2><span>Ogni scheda apre il suo pubblico, i 12 asset e il recap delle 200 interviste</span></div>
